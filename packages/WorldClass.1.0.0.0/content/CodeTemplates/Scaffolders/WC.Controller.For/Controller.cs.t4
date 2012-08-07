@@ -1,0 +1,94 @@
+﻿<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+<#@ assembly name="System.ComponentModel.DataAnnotations" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Data.Linq.Mapping" #>
+<#@ import namespace="System.Data.Objects.DataClasses" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<# var DataType = (EnvDTE.CodeType) Model.DataType; #>
+<#
+foreach(string ns in Model.ExtraUsings.Split(','))
+{
+#>
+using <#= ns #>;
+<#
+}
+#>
+using System.Web.Mvc;
+
+namespace <#= Model.Namespace #>.Controllers
+{   
+   public partial class <#= DataType.Name #>Controller : BaseController<<#= DataType.Name #>>
+    {         
+        protected I<#= DataType.Name #>Service <#= DataType.Name #>Service;			
+				
+		public <#= DataType.Name #>Controller(I<#= DataType.Name #>Service <#= DataType.Name #>Service)
+		{		    
+            base.Service = this.<#= DataType.Name #>Service = <#= DataType.Name #>Service;	
+        }        
+
+        public ViewResult Index()
+        {
+            return View(<#= DataType.Name #>Service.GetAll());
+        }
+
+        public ViewResult Details(int id)
+        {
+            return View(<#= DataType.Name #>Service.GetById(id));
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        } 
+
+        [HttpPost]
+        public ActionResult Create(<#= DataType.Name #> entity)
+        {
+            if (ModelState.IsValid) {
+                <#= DataType.Name #>Service.SaveOrUpdate(entity);
+                return RedirectToAction("Index");
+            } else {
+				return View();
+			}
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View(<#= DataType.Name #>Service.GetById(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(<#= DataType.Name #> entity)
+        {
+            if (ModelState.IsValid) {
+                <#= DataType.Name #>Service.SaveOrUpdate(entity);
+                return RedirectToAction("Index");
+            } else {
+				return View();
+			}
+        }
+
+		[HttpGet]
+        public ActionResult ConfirmDelete(int id)
+        {
+            return View(<#= DataType.Name #>Service.GetById(id));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var entity = <#= DataType.Name #>Service.GetById(id);
+            <#= DataType.Name #>Service.Delete(entity);
+
+            return RedirectToAction("Index");
+        }
+    }
+}

@@ -1,0 +1,230 @@
+﻿@using Edrive.NADA_UsedCars
+@using Edrive.UsedCarPrices
+@model List<Edrive.Core.Model.Products>
+
+@{
+    ViewBag.Title = "CompareVehicle";
+}
+@section Head{
+  <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+     @if(User.Identity.IsAuthenticated)
+     {
+         if (User.IsInRole("Guest"))
+         {
+  <script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function ShowFullRegisterPopUp() {
+            $("#ModalPopUpRegister").dialog();
+        }
+    </script>
+         }}
+  }
+  @if (ViewData["Msg"] != null)
+  {<div style="text-align:center;font-weight:bold">
+  <span style="background-color:Yellow;padding-left:5px;padding-right:5px;">@(ViewData["Msg"] ?? "")</span> 
+  </div>
+  }
+  
+<div id="ModalPopUpRegister" class="ModalPopUpRegister" style="">
+<b>To Use this Feature, Register For<br /> <a href="/Register">Full Access.</a> </b>
+</div>
+  	<div id="BreadCrumb">
+		<a class="back" href="/Search" >Back</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="window.print()">Print Brochure</a>
+	</div>
+    <div class="master-wrapper-cph-1">
+      <div class="product-inner-page">
+        <div class="divdetail-inner">
+          <div class="clear"> </div>
+        </div>
+        <div class="tab-new">
+          <div class="teb-left"> </div>
+          <div class="tab-line">
+            <div class="tab-tital"> Compare Vehicles</div>
+          </div>
+          <div class="tab-right"> </div>
+          <div class="clear"> </div>
+        </div>
+        <div class="clear1"> </div>
+        <div class="divbottom-home">
+          <div class="divbottomleft-new-top"> </div>
+          <div class="divbottommiddetail-new-line-top-inner"> </div>
+          <div class="divbottomright-new-top"> </div>
+          <div class="clear"> </div>
+        </div>
+        <div class="divinnercontent-home-new-one">
+          <div class="divinnercontent">
+          
+            <div id="CompareVehicle">
+
+            @{
+				var lstModels = Model;
+              if (lstModels != null)
+              {
+                  for (int i = 0; i < lstModels.Count && i < 3; i++)
+                  {
+                    <div class="Column">
+					<div class="Head">
+						<h2 class="Flt">Vehicle #@(i+1)</h2>
+						<span class="Share Flr"><a href="#">
+                        
+                            
+                         <div class="addthis_toolbox addthis_default_style "> 
+                        <a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4e28222d475d1103"
+                          class="addthis_button_compact">Share</a>  </div>  <script type="text/javascript" 
+                          src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e28222d475d1103"></script>
+                         
+                        </a></span>
+						<div class="Clr"></div>
+					</div>
+					<div class="CompImg">
+                    @{
+                      String Pics = lstModels[i].pics;
+                      if (String.IsNullOrEmpty(Pics))
+                      {
+                          Pics = "/Content/Images/photo-comming-soon.jpg";
+                      }
+                      else
+                      {
+                          Pics = Pics.Split(';')[0];
+                      }
+                       <a href="/Product/ProductDetail/@lstModels[i].productId"><img src="@Pics" alt=""/></a> 
+                        }
+                   
+                    </div>
+					<div class="RoundedBox Width_228">
+						<h2 class="BoxTitle"><center>Vehicle Details</center></h2>
+						<div class="Height_255">
+							<div class="VehicleDetails">
+								<h3 style="font-size:15px;">@lstModels[i].Year @lstModels[i].MakeName @lstModels[i].ModelName</h3>
+								<ul>
+									<li>Mileage: @String.Format("{0:n2}", lstModels[i].mileage)</li>
+									<li>Transmision: @(lstModels[i].transmission == "" ? "N/A" : lstModels[i].transmission)</li>
+									<li>Engine: @(lstModels[i].engine == "" ? "N/A" : lstModels[i].engine)</li>
+									<li>Exterior:@(lstModels[i].exterior == "" ? "N/A" : lstModels[i].exterior)</li>
+									<li>Interior:@(lstModels[i].interior == "" ? "N/A" : lstModels[i].interior)</li>
+									<li>VIN:  @lstModels[i].vin</li>
+									<li>Stock#  @(lstModels[i].stock == "" ? "N/A" : lstModels[i].stock)</li>
+									<li>Body: @(lstModels[i].body == "" ? "N/A" : lstModels[i].body)</li>
+									<li>Trim: @(lstModels[i].trim == "" ? "N/A" : lstModels[i].trim)</li>
+									<li>Drive Type: @(lstModels[i].drive_Type == "" ? "N/A" : lstModels[i].drive_Type)</li>
+									<li>Warranty: @(lstModels[i].warranty ? "Yes" : "No")</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                    @{
+                   var PriceSave = @lstModels[i].averageRetailPrice - @lstModels[i].price_Current;
+                   Decimal AvgMarketPrice = lstModels[i].averageRetailPrice;
+                   try
+                   {
+
+
+                       UsedCars oUsedCarService = new UsedCars();
+                       UsedCarResultSet oUsedCarsResultSet = oUsedCarService.GetUsedCars("EdriveAutos", "ed12uc20", lstModels[i].vin);
+                       UsedCarPrices oUsedCarPrices = new UsedCarPrices();
+                       if (oUsedCarsResultSet.UsedCars != null)
+                       {
+                           foreach (UsedCar uc in oUsedCarsResultSet.UsedCars)
+                           {
+                               //var userLogin = NopContext.Current.User;
+                               AvgMarketPrice = uc.AverageRetailPrice;
+                               ViewData["ltrDifference"] = ((Decimal)uc.AverageRetailPrice - lstModels[i].price_Current).ToString();
+                               // ltrDifference.Visible = false;
+
+
+                               // PriceSave = String.Format("${0:n0}", ((Decimal)uc.AverageRetailPrice - item.price_Current));
+                               PriceSave = ((Decimal)uc.AverageRetailPrice - lstModels[i].price_Current);
+
+                               var obj = oUsedCarPrices.GetStylesForModel("EdriveAutos", "ed12uc20", uc.C_ModelID);
+                               System.Data.DataSet ds = obj.GetData;
+                               System.Data.DataTable dt = ds.Tables[0];
+                               foreach (System.Data.DataRow dr in dt.Rows)
+                               {
+                                   if (dr["VehicleID"].ToString() == uc.StyleID.ToString())
+                                   {
+                                       lstModels[i].city_Fuel = Convert.ToInt32(dr["CityFuel"].ToString());
+                                       lstModels[i].highWay_Fuel = Convert.ToInt32(dr["HighwayFuel"].ToString());
+                                       break;
+                                   }
+                               }
+
+                           }
+                       }
+
+                   }
+                   catch (Exception)
+                   {
+
+
+                   }
+                   <div class="RoundedBox Width_228" style="border: 1px solid #D5D5D5">
+					<h2 class="BoxTitle"><center>Pricing Analytics</center></h2>
+					<div class="Height_255">	
+						<div class="PricingAnalytics">
+							<div class="Price">@String.Format("${0:n0}", lstModels[i].price_Current)</div>
+							<div class="AvrPrice">
+                            @if (PriceSave > 0)
+                            {
+                                <strong style="color:green">@String.Format("${0:n0}", PriceSave) below</strong>
+                                 <img alt="" src="/Content/Images/arrow-down01.png"/>
+                            }
+                            else
+                            {
+                              <strong style="color:red">@String.Format("${0:n0}", -PriceSave) up</strong>
+                                <img alt="" src="/Content/Images/arrow-up01.png"/>
+                                
+                            }
+								<br/><span>Average Market Price</span>
+								<br/><span>of @String.Format("${0:n0}", AvgMarketPrice)</span>
+							</div>
+							<p>You can buy this vehicle with confidence knowing that we have verified its price through <a href="http://www.nadaguides.com/?nozip=1&nopop=1" target="_blank">NADA Guide</a></p>
+							<div class="MPG">	
+								<span class="City">@lstModels[i].city_Fuel</span>
+								<span class="Hwy">@lstModels[i].highWay_Fuel</span>
+							</div>
+						</div>
+					</div>
+				</div>
+                   }
+					
+					<div class="BtmLogo"><a href="http://www.carfax.com/cfm/check_order.cfm?partner=EDA_2&VIN=@(lstModels[i].vin)">
+                    <img src="/Content/Images/carfax.png" alt="">
+                    </a> 
+                    </div>
+					<div class="BtmLinks">
+                    @if(User.IsInRole("Guest")==false)
+                    {<a href="/Product/SaveWistListProduct?id=@(lstModels[i].productId)&comp=@(ViewData["CompareID"])">Save to Wishlist</a>
+                        }
+                        else
+                        { 
+                       <span style="cursor:pointer"   onclick="ShowFullRegisterPopUp()" class="lnkdisabled">Save to My Wishlist</span>
+                         
+                    }
+                        <br>
+
+						<a href="/Product/ProductDetail/@lstModels[i].productId#ThirdBox">Contact Dealer</a><br>
+						<a href="#">Order an Inspection</a>
+					</div>
+				</div>
+                
+                  }
+              }
+            }
+				
+			 
+				<div class="Clr"></div>
+			</div>
+          
+          </div>
+        </div>
+        <div class="clear"> </div>
+        <div class="divbottom-home">
+          <div class="divbottomleft-new"> </div>
+          <div class="divbottommiddetail-new-line-inner"> </div>
+          <div class="divbottomright-new"> </div>
+        </div>
+        <div class="clear"> </div>
+      </div>
+    </div>
+    <div class="Clr"></div>

@@ -1,0 +1,129 @@
+﻿@model Edrive.Models.DealerInfo
+@{
+    ViewBag.Title = "Edit Dealer Info";
+}
+
+@section Head{
+   
+    <script src="@Url.Content("~/Scripts/ckeditor.js")" type="text/javascript"></script>	<link href="@Url.Content("~/Content/sample.css")" rel="stylesheet" type="text/css" />    
+
+ 
+    <style>
+        .section-body
+{
+	border: 1px solid #afdffd;
+	background-color: #F3FBFE;
+	padding: 15px;
+	width:95%;
+}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                $("#Country").change(function () {
+
+                    $("#State").html("");
+                    if ($(this).val() == "-1") {
+                        $("#State").attr("disabled", "disabled");
+                        return;
+                    };
+
+
+                    var flag = true;
+                    $.post(serverurl + "/Dealer/DealerDetail/GetState?CountryID=" + $(this).val(), null, function (data) {
+
+
+                        $.each(data, function () {
+                            flag = false
+                            $("#State").append("<option value='" + this.StateProvinceID + "'>" + this.Name + "</option>")
+                         .removeAttr("disabled");
+                        });
+
+                        if (flag) {
+                            $("#State").append("<option value='-1'>Other (Non us)</option>");
+                        }
+                    }, "json");
+
+
+
+                });
+
+
+            } catch (e) {
+                alert(e.Message);
+            }
+        });
+          </script>
+             <script type="text/javascript">
+                 $(document).ready(function () {
+                     $("#DateofBirth").datepicker({
+                         changeMonth: true,
+                         changeYear: true
+                     });
+
+                    
+
+                 });
+           </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#DeletePageImage").click(function () {
+
+                    $("#form1").attr('action', '@Url.Action("DeletePageImage", "ManageDealer")');
+                
+                    $("#form1").submit();
+                });
+                $("#deleteLogo").click(function () {
+                    $("#form1").attr('action', '@Url.Action("DeleteLogo", "ManageDealer")');
+                    $("#form1").submit();
+                });
+            });
+           
+
+            function ChangeCustomerPassword() {
+
+                $("#form1").attr("action", '@Url.Action("ChangePassword", "ManageDealer", new { area = "Dealer" }, null)')
+
+
+
+            }
+           </script>           <script type="text/javascript">
+               function deleteDealer() {
+                   if (confirm('Are you sure you want to delete.') == false) {
+                       return false;
+                   }
+                   else {
+                       $("#form1").attr("action", '@Url.Action("Delete", "ManageDealer", null, null)');
+
+                   }
+               }
+    </script>}
+ 
+ <h2>Dealer Info</h2>
+
+<div id="CustomerAdd" style=" ">
+@using (Html.BeginForm("DealerProfile", "ManageDealer", FormMethod.Post, new { id = "form1" , enctype = "multipart/form-data" }))
+{
+    
+     <div style="color:Red;text-align:center;margin-bottom:5px;">
+        @(ViewData["Msg"] ?? "")
+        <br />
+
+        </div>
+    <div class="section-body">
+    <div class="section-info">
+    @Html.HiddenFor(m=>m.CustomerID)
+                   @Html.Partial("_DealerProfile",Model)
+
+                   <br>
+                  
+     
+     <div style="margin-left: 217px;margin-top: 15px;">
+            <input type="submit" value="Save" id="Save" />
+        </div>
+      </div>
+
+      </div>
+
+}
+</div>

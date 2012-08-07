@@ -1,0 +1,77 @@
+﻿@model Edrive.Models.Nop_News
+@{
+    ViewBag.Title = "Add Press";
+}
+@section Head{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/sample.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/fckEditor/fckeditor.js")"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#Title").rules("add", {
+ required: true,
+ messages: {
+   required: "* Required"
+ }
+});
+});
+
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        var sBasePath = '@Url.Content("~/fckeditor/")';
+        var oFCKeditor = new FCKeditor('content');
+        oFCKeditor.BasePath = sBasePath;
+        oFCKeditor.Height = 450;
+        oFCKeditor.ReplaceTextarea();
+    }
+    </script>
+<style>
+    #AddPress {width: 963px;margin-top: 15px;}
+    #AddPress table {width:100%;}
+    #AddPress  td.firstPress{width:150px;}
+ #AddPress   input[type='text']{width:280px;}
+  #AddPress   textarea{width:280px;height:80px; }
+</style>
+
+}
+<h2>Add Press</h2> <span style="margin-left:0px"><a href="@Url.Action("Press")">Back to press list</a> </span> 
+<div>
+@using (Html.BeginForm())
+{
+    <div  style="text-align:right;margin-right:15px;">
+<input type="submit" value="Save" />
+</div>
+<div id="AddPress"  style="background:#F7FBFF;border:solid 1px #AFDFFD;color:#245D75">
+<table>
+<tr>
+<td class="firstPress">Title
+  </td>
+  <td class="secondPress">@Html.TextBoxFor(m => m.Title)
+  </td></tr>
+
+  <tr>
+<td class="firstPress">Short description
+  </td>
+  <td class="secondPress">@Html.TextAreaFor(m => m.Short)
+  </td></tr>
+<tr>
+<td class="firstPress">Full description
+  </td>
+  <td class="secondPress">@Html.TextAreaFor(m => m.Full, new { id="content",style="width:98%;height:300px;"})
+  </td></tr>
+
+  <tr>
+<td class="firstPress">Published
+  </td>
+  <td class="secondPress">@Html.CheckBox("Published",true)
+  </td></tr>
+
+</table>
+</div>
+     
+}
+</div>
+
+

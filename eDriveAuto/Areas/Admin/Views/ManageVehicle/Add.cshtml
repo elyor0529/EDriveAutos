@@ -1,0 +1,83 @@
+﻿@model Edrive.Edrivie_Service_Ref.Products
+@{
+    ViewBag.Title = "Add";
+    
+}
+@*<script src="../../Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>*@
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    function showTabs() {
+        //$("#tabcontainer").tabs();
+        $("#tabcontainer").tabs({
+            select: function (event, ui) {
+                if (ui.index == 2) {
+                    try {
+                        if ($("#prdId").val() == "0") {
+                            $("#addproductDiv").hide();
+                            $("#msgShow").show();
+                            
+                        }
+                        else { 
+                        }
+                    } catch (e) {
+                        alert(e.Message);
+
+                    }
+
+                }
+
+            }
+        });
+    }
+
+    $(document).ready(function () {
+
+        $("#date_in_Stock").datepicker({ changeMonth: true,
+            changeYear: true
+        });
+
+        $("#PicSave").click(function () {
+
+            alert("");
+            $("#form1").attr("action", "/ManageVehicle/AddPics");
+            alert("")
+            $("#form1").submit();
+        });
+
+
+         
+    });
+
+	 
+
+</script>
+@section Head{
+     <style type="text/css">           #ProductsOptions .prdOptions div{width: 237px;float: left;}             div#tabcontainer ul li a {background-color:white}
+                div#tabcontainer  tr td{padding-bottom:5px;}
+                #ProductsOptions{margin-top:15px;overflow:hidden;}
+.prdOptions{}
+#ProductsOptions .prdOptions div{width: 237px;float: left;}
+                #ProductsOptions  div{width: 237px;float: left;}
+
+        .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited{color:#EB8F00;}       </style>
+}
+<div style="padding: 10px;">
+<div class="back">
+@Html.ActionLink("Back To Manage Vehicle", "Manage", "ManageVehicle")
+
+</div>
+    <h2>
+        Add Vehicle</h2>
+    @using (Html.BeginForm("Add", "ManageVehicle", FormMethod.Post, new { id = "form1", enctype = "multipart/form-data" }))
+    {
+        <div style="text-align:right;position:relative;">
+          
+      <input type="submit" name="Save" value="Save" />
+        
+
+          </div>
+       @Html.Partial("_CreateProduct",Model)
+        
+        }
+</div>

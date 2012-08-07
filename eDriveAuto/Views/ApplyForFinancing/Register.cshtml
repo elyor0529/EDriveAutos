@@ -1,0 +1,256 @@
+﻿@model Edrive.Models.FinancingInfo
+@{
+    ViewBag.Title = "Register";
+}
+ 
+@section  head{
+    <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+}
+@using (Html.BeginForm())
+{
+    <div class="product-inner-page">
+        <div class="divdetail-inner">
+            <div class="clear">
+            </div>
+        </div>
+        <div class="tab-new">
+            <div class="teb-left">
+            </div>
+            <div class="tab-line">
+                <div class="tab-tital">
+                    Apply For Financing</div>
+            </div>
+            <div class="tab-right">
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear1">
+        </div>
+        <div class="divbottom-home">
+            <div class="divbottomleft-new-top">
+            </div>
+            <div class="divbottommiddetail-new-line-top-inner">
+            </div>
+            <div class="divbottomright-new-top">
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="divinnercontent-home-new-one">
+            <div class="divinnercontent">
+                <div id="PreApproval_Form">
+                    <h1>
+                        Good Credit, Bad Credit, No Credit... No Problem!</h1>
+                    <h2>
+                        <span>START NOW</span> and you can get the process going <span>IN LESS THAN 2 MINUTES!</span></h2>
+                        @if (ViewData["Msg"] != null)
+                        {<div style="color: red;font-weight: bold;text-align: center;margin-top: 15px;margin-bottom: -14px;">
+                        @(ViewData["Msg"] ?? "")
+                        </div>
+                        }
+                    <div class="LeftCol Form">
+                        <h3 class="Title">
+                            Personal Information</h3>
+                        <div class="row">
+                            <label>
+                                First Name:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.FirstName, new { @class = "width_205" })
+                            </span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Last Name:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.LastName, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Street Address:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.StreedAddress, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Zip Code:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.ZipCode, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                City:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.City, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                State/Province:</label>
+                            <span class="flds">@Html.DropDownListFor(m => m.State, ViewData["States"] as SelectList)</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                E-mail:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.Email, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Home Phone:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.HomePhone1, new { style = "width:53px;" })<span>
+                                - </span>@Html.TextBoxFor(m => m.HomePhone2, new { style = "width:53px;" }) <span>-
+                                </span>
+                                @Html.TextBoxFor(m => m.HomePhone3, new { style = "width:53px;" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Mobile Phone:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.MobilePhone1, new { style = "width:53px;" })
+                                <span>- </span>@Html.TextBoxFor(m => m.MobilePhone2, new { style = "width:53px;" })<span>
+                                    - </span>@Html.TextBoxFor(m => m.MobilePhone3, new { style = "width:53px;" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Residence Type:</label>
+                            <span class="flds">
+                            <select id="ResidenceType" name="ResidenceType">
+                            <option value="City">City</option>
+                            </select>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                How Long at Address?:</label>
+                            <span class="flds">
+                                <select name="HowLongAtAddressYear" id="HowLongAtAddressYear" style="width: 56px;">
+                                    @for (int i = 0; i < 30; i++)
+                                    {<option value="@i">@i</option>
+			 
+                                    }
+                                </select><span> years </span>
+                                <select name="HowLongAtAddressMonth" id="HowLongAtAddressMonth" style="width: 56px;">
+                                    @for (int i = 0; i < 12; i++)
+                                    {<option value="@i">@i</option>
+			 
+                                    }
+                                </select><span> months </span></span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Monthly Rent/Mortage:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.MonthlyRent, new { @class = "width_205" })</span>
+                        </div>
+                    </div>
+                    <div class="RightCol Form">
+                        <h3 class="Title">
+                            Employment Information</h3>
+                        <div class="row">
+                            <label>
+                                Employer's Name:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.EmpolyerName, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Job Title:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.JobTitle, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Work Phone:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.WorkPhone1, new { style = "width:53px;" })<span>
+                                - </span>@Html.TextBoxFor(m => m.WorkPhone2, new { style = "width:53px;" })<span> -
+                                </span>@Html.TextBoxFor(m => m.WorkPhone3, new { style = "width:53px;" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                How Long Have You Worked Here:</label>
+                            <span class="flds">
+                                <select name="WorkedForYear" id="WorkedForYear" style="width: 56px;">
+                                    @for (int i = 0; i < 30; i++)
+                                    {<option value="@i">@i</option>
+			 
+                                    }
+                                </select><span> years </span>
+                                <select name="WorkedForMonth" id="WorkedForMonth" style="width: 56px;">
+                                    @for (int i = 0; i < 12; i++)
+                                    {<option value="@i">@i</option>
+			 
+                                    }
+                                </select><span> months </span></span>
+                        </div>
+                        <div class="row">
+                            <h3 class="Title">
+                                Income Information</h3>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Monthly Income Before Taxes:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.MonthlyIncome, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Available Down Payment:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.DownPayment, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Have you declare bankruptcy within<br />
+                                last 7 years:</label>
+                            <span class="flds" style="padding-top: 10px;"><span>&nbsp;&nbsp;<input checked="checked" name="IsBankrupt"
+                                id="IsBankrupt1" type="radio" value="" />
+                                Yes </span>&nbsp;&nbsp;&nbsp;&nbsp; <span>
+                                    <input name="IsBankrupt" id="IsBankrupt2" type="radio" value="" />
+                                    No </span></span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                What is your credit score?:</label>
+                            <span class="flds">@Html.TextBoxFor(m => m.CreditScore, new { @class = "width_205" })</span>
+                        </div>
+                        <div class="row">
+                            <div class="link">
+                                <a href="#">Don't Know? Get your free credit here</a></div>
+                        </div>
+                        <div class="row">
+                            <label>
+                                Co-Signer available:</label>
+                           @* <span class="flds">@Html.TextBoxFor(m => m., new { @class = "width_205" })</span>
+*@
+                            <span class="flds"><span>&nbsp;&nbsp;<input checked="checked" name="CoSigner"
+                                id="CoSigner1" type="radio" value="" />
+                                Yes </span>&nbsp;&nbsp;&nbsp;&nbsp; <span>
+                                    <input name="CoSigner" id="CoSigner2" type="radio" value="" />
+                                    No </span></span>
+                        </div>
+                    </div>
+                    <div class="Clr">
+                    </div>
+                    <div class="Disclaimer">
+                        <h3>
+                            Disclaimer</h3>
+                        E-Drive auto is not a lender, nor do we act as an agent or broker on your behalf.
+                        We work with various lenders across the United States that have programs for every
+                        type of customer. By submitting this application you understand that an autofinance
+                        representative may contact you to discuss your chances of securing financing. E-Drive
+                        auto makes no representations in writing or implied about your chances of approval.
+                        All applicants are subject to credit approval by lender.
+                    </div>
+                    <div class="Submit">
+                        <p>
+                            I have read the <a href="/PrivacyInfo">Privacy Policy</a>.</p>
+                        <div>
+                            <input name="Submit" type="image" src="/Content/images/submit_btn.jpg" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        <div class="divbottom-home">
+            <div class="divbottomleft-new">
+            </div>
+            <div class="divbottommiddetail-new-line-inner">
+            </div>
+            <div class="divbottomright-new">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}

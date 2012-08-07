@@ -1,0 +1,9 @@
+-----------Error-------------
+
+-----------Exception-------------
+
+Could not find a part of the path 'c:\inetpub\vhosts\edriveautos.com\dev\EdriveDataCsv\Autobase\'.
+
+-----------Inner Exception-------------
+
+

@@ -1,0 +1,2868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EdriveAutosModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EdriveAutosModelStoreContainer">
+          <EntitySet Name="BUYER" EntityType="EdriveAutosModel.Store.BUYER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BUYER_FAQ" EntityType="EdriveAutosModel.Store.BUYER_FAQ" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BUYER_FINANCEREQUEST" EntityType="EdriveAutosModel.Store.BUYER_FINANCEREQUEST" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BUYER_INTERESTED" EntityType="EdriveAutosModel.Store.BUYER_INTERESTED" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BUYER_PASSWORDRECOVERY" EntityType="EdriveAutosModel.Store.BUYER_PASSWORDRECOVERY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BUYER_QUERY" EntityType="EdriveAutosModel.Store.BUYER_QUERY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BUYER_WISHLIST" EntityType="EdriveAutosModel.Store.BUYER_WISHLIST" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DEALER" EntityType="EdriveAutosModel.Store.DEALER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DEALER_ATTRIBUTE" EntityType="EdriveAutosModel.Store.DEALER_ATTRIBUTE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DEALER_FAQ" EntityType="EdriveAutosModel.Store.DEALER_FAQ" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DEALER_FTPDIRECTORIES" EntityType="EdriveAutosModel.Store.DEALER_FTPDIRECTORIES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DEALER_PROFILE" EntityType="EdriveAutosModel.Store.DEALER_PROFILE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DEALER_SALESPERSON" EntityType="EdriveAutosModel.Store.DEALER_SALESPERSON" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_CAMPAIGN" EntityType="EdriveAutosModel.Store.EDRIVE_CAMPAIGN" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_EGEAR" EntityType="EdriveAutosModel.Store.EDRIVE_EGEAR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_EMAILQUEUE" EntityType="EdriveAutosModel.Store.EDRIVE_EMAILQUEUE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_MANAGEMENTTEAM" EntityType="EdriveAutosModel.Store.EDRIVE_MANAGEMENTTEAM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_NEWS" EntityType="EdriveAutosModel.Store.EDRIVE_NEWS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_PARTNERS" EntityType="EdriveAutosModel.Store.EDRIVE_PARTNERS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_PICTURE" EntityType="EdriveAutosModel.Store.EDRIVE_PICTURE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EDRIVE_TESTIMONIALS" EntityType="EdriveAutosModel.Store.EDRIVE_TESTIMONIALS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EMAIL_TEMPLATE" EntityType="EdriveAutosModel.Store.EMAIL_TEMPLATE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_BUYERTYPE" EntityType="EdriveAutosModel.Store.LST_BUYERTYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_COUNTRY" EntityType="EdriveAutosModel.Store.LST_COUNTRY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_DEALERTYPE" EntityType="EdriveAutosModel.Store.LST_DEALERTYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_STATE" EntityType="EdriveAutosModel.Store.LST_STATE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_VEHICLEBODY" EntityType="EdriveAutosModel.Store.LST_VEHICLEBODY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_VEHICLEMAKE" EntityType="EdriveAutosModel.Store.LST_VEHICLEMAKE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_VEHICLEMAKE_ALIAS" EntityType="EdriveAutosModel.Store.LST_VEHICLEMAKE_ALIAS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_VEHICLEMODEL" EntityType="EdriveAutosModel.Store.LST_VEHICLEMODEL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_VEHICLEOPTION" EntityType="EdriveAutosModel.Store.LST_VEHICLEOPTION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_VEHICLETYPE" EntityType="EdriveAutosModel.Store.LST_VEHICLETYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LST_ZIP" EntityType="EdriveAutosModel.Store.LST_ZIP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SITE_SETTINGS" EntityType="EdriveAutosModel.Store.SITE_SETTINGS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SITE_STATISTICS" EntityType="EdriveAutosModel.Store.SITE_STATISTICS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VEHICLE" EntityType="EdriveAutosModel.Store.VEHICLE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VEHICLE_IMAGES" EntityType="EdriveAutosModel.Store.VEHICLE_IMAGES" store:Type="Tables" Schema="dbo" Table="VEHICLE.IMAGES" />
+          <EntitySet Name="VEHICLE_OPTIONS" EntityType="EdriveAutosModel.Store.VEHICLE_OPTIONS" store:Type="Tables" Schema="dbo" Table="VEHICLE.OPTIONS" />
+          <EntitySet Name="VEHICLE_RATING" EntityType="EdriveAutosModel.Store.VEHICLE_RATING" store:Type="Tables" Schema="dbo" Table="VEHICLE.RATING" />
+          <AssociationSet Name="FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST" Association="EdriveAutosModel.Store.FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST">
+            <End Role="BUYER" EntitySet="BUYER" />
+            <End Role="BUYER_FINANCEREQUEST" EntitySet="BUYER_FINANCEREQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_INTERESTED_BUYER" Association="EdriveAutosModel.Store.FK_BUYER_INTERESTED_BUYER">
+            <End Role="BUYER" EntitySet="BUYER" />
+            <End Role="BUYER_INTERESTED" EntitySet="BUYER_INTERESTED" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_LST_BUYERTYPE" Association="EdriveAutosModel.Store.FK_BUYER_LST_BUYERTYPE">
+            <End Role="LST_BUYERTYPE" EntitySet="LST_BUYERTYPE" />
+            <End Role="BUYER" EntitySet="BUYER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_PASSWORDRECOVERY_BUYER" Association="EdriveAutosModel.Store.FK_BUYER_PASSWORDRECOVERY_BUYER">
+            <End Role="BUYER" EntitySet="BUYER" />
+            <End Role="BUYER_PASSWORDRECOVERY" EntitySet="BUYER_PASSWORDRECOVERY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_QUERY_BUYER" Association="EdriveAutosModel.Store.FK_BUYER_QUERY_BUYER">
+            <End Role="BUYER" EntitySet="BUYER" />
+            <End Role="BUYER_QUERY" EntitySet="BUYER_QUERY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_WISHLIST_BUYER" Association="EdriveAutosModel.Store.FK_BUYER_WISHLIST_BUYER">
+            <End Role="BUYER" EntitySet="BUYER" />
+            <End Role="BUYER_WISHLIST" EntitySet="BUYER_WISHLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_WISHLIST_VEHICLE1" Association="EdriveAutosModel.Store.FK_BUYER_WISHLIST_VEHICLE1">
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+            <End Role="BUYER_WISHLIST" EntitySet="BUYER_WISHLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_ATTRIBUTE_DEALER" Association="EdriveAutosModel.Store.FK_DEALER_ATTRIBUTE_DEALER">
+            <End Role="DEALER" EntitySet="DEALER" />
+            <End Role="DEALER_ATTRIBUTE" EntitySet="DEALER_ATTRIBUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_FTPDIRECTORIES_DEALER" Association="EdriveAutosModel.Store.FK_DEALER_FTPDIRECTORIES_DEALER">
+            <End Role="DEALER" EntitySet="DEALER" />
+            <End Role="DEALER_FTPDIRECTORIES" EntitySet="DEALER_FTPDIRECTORIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_PROFILE_DEALER" Association="EdriveAutosModel.Store.FK_DEALER_PROFILE_DEALER">
+            <End Role="DEALER" EntitySet="DEALER" />
+            <End Role="DEALER_PROFILE" EntitySet="DEALER_PROFILE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_SALESPERSON_DEALER" Association="EdriveAutosModel.Store.FK_DEALER_SALESPERSON_DEALER">
+            <End Role="DEALER" EntitySet="DEALER" />
+            <End Role="DEALER_SALESPERSON" EntitySet="DEALER_SALESPERSON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_EGEAR_EDRIVE_PICTURE" Association="EdriveAutosModel.Store.FK_EDRIVE_EGEAR_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_EGEAR" EntitySet="EDRIVE_EGEAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE" Association="EdriveAutosModel.Store.FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_MANAGEMENTTEAM" EntitySet="EDRIVE_MANAGEMENTTEAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_PARTNERS_EDRIVE_PICTURE" Association="EdriveAutosModel.Store.FK_EDRIVE_PARTNERS_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_PARTNERS" EntitySet="EDRIVE_PARTNERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE" Association="EdriveAutosModel.Store.FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_TESTIMONIALS" EntitySet="EDRIVE_TESTIMONIALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LST_VEHICLEMAKE_ALIAS_VEHICLE" Association="EdriveAutosModel.Store.FK_LST_VEHICLEMAKE_ALIAS_VEHICLE">
+            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
+            <End Role="LST_VEHICLEMAKE_ALIAS" EntitySet="LST_VEHICLEMAKE_ALIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE" Association="EdriveAutosModel.Store.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE">
+            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
+            <End Role="LST_VEHICLEMODEL" EntitySet="LST_VEHICLEMODEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION" Association="EdriveAutosModel.Store.FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION">
+            <End Role="LST_VEHICLEOPTION" EntitySet="LST_VEHICLEOPTION" />
+            <End Role="VEHICLE_OPTIONS" EntitySet="VEHICLE_OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_OPTIONS_VEHICLE" Association="EdriveAutosModel.Store.FK_VEHICLE_OPTIONS_VEHICLE">
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+            <End Role="VEHICLE_OPTIONS" EntitySet="VEHICLE_OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_DEALER_SALESPERSON" Association="EdriveAutosModel.Store.FK_VEHICLE_DEALER_SALESPERSON">
+            <End Role="DEALER_SALESPERSON" EntitySet="DEALER_SALESPERSON" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_IMAGES_VEHICLE" Association="EdriveAutosModel.Store.FK_VEHICLE_IMAGES_VEHICLE">
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+            <End Role="VEHICLE_IMAGES" EntitySet="VEHICLE_IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLEBODY" Association="EdriveAutosModel.Store.FK_VEHICLE_LST_VEHICLEBODY">
+            <End Role="LST_VEHICLEBODY" EntitySet="LST_VEHICLEBODY" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLEMAKE" Association="EdriveAutosModel.Store.FK_VEHICLE_LST_VEHICLEMAKE">
+            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLEMODEL" Association="EdriveAutosModel.Store.FK_VEHICLE_LST_VEHICLEMODEL">
+            <End Role="LST_VEHICLEMODEL" EntitySet="LST_VEHICLEMODEL" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLETYPE" Association="EdriveAutosModel.Store.FK_VEHICLE_LST_VEHICLETYPE">
+            <End Role="LST_VEHICLETYPE" EntitySet="LST_VEHICLETYPE" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_RATING_VEHICLE" Association="EdriveAutosModel.Store.FK_VEHICLE_RATING_VEHICLE">
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+            <End Role="VEHICLE_RATING" EntitySet="VEHICLE_RATING" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BUYER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_FIRST" Type="varchar" MaxLength="100" />
+          <Property Name="NAME_LAST" Type="varchar" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+          <Property Name="PASSWORD" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="TYPE_ID" Type="int" />
+          <Property Name="IPADDRESS" Type="varchar" MaxLength="50" />
+          <Property Name="DATE_REGISTERED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_EXPIRED" Type="datetime" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="ISDELETED" Type="bit" Nullable="false" />
+          <Property Name="ISNEWSLETTER" Type="bit" Nullable="false" />
+          <Property Name="ISTRIAL" Type="bit" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="200" />
+          <Property Name="CITY" Type="varchar" MaxLength="100" />
+          <Property Name="STATE" Type="char" MaxLength="2" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="BUYER_FAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER" Type="bigint" Nullable="false" />
+          <Property Name="QUESTION" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="ANSWER" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BUYER_FINANCEREQUEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BUYER_ID" Type="int" Nullable="false" />
+          <Property Name="NAME_EMPLOYER" Type="varchar" MaxLength="50" />
+          <Property Name="NAME_FIRST" Type="varchar" MaxLength="50" />
+          <Property Name="NAME_LAST" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="150" />
+          <Property Name="CITY" Type="varchar" MaxLength="50" />
+          <Property Name="STATE" Type="char" MaxLength="2" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+          <Property Name="EMIAL" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE_HOME" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE_CELL" Type="varchar" MaxLength="50" />
+          <Property Name="RESIDENCE_TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="LENGTHOFTIME_ATADDRESS" Type="varchar" MaxLength="50" />
+          <Property Name="LENGTHOFTIME_ATJOB" Type="varchar" MaxLength="50" />
+          <Property Name="MONTHRENT_MORTGAGE" Type="varchar" MaxLength="50" />
+          <Property Name="JOB_TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE_WORK" Type="varchar" MaxLength="50" />
+          <Property Name="GROSSINCOME" Type="varchar" MaxLength="50" />
+          <Property Name="DOWNPAYMENT" Type="varchar" MaxLength="50" />
+          <Property Name="ISBANKRUPT" Type="bit" />
+          <Property Name="CREDITSCORE" Type="varchar" MaxLength="50" />
+          <Property Name="ISCOSIGNER" Type="bit" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BUYER_INTERESTED">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BUYER_ID" Type="int" Nullable="false" />
+          <Property Name="NAME_FIRST" Type="varchar" MaxLength="50" />
+          <Property Name="NAME_LAST" Type="varchar" MaxLength="50" />
+          <Property Name="VEHICLE_ID" Type="int" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+          <Property Name="ZIPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="CONTACT_TYPE" Type="int" />
+          <Property Name="INTEREST_TYPE" Type="int" />
+          <Property Name="COMMENTS" Type="nvarchar(max)" />
+          <Property Name="DATE_CREATED" Type="datetime" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="ISFINANCE" Type="bit" />
+          <Property Name="ISPRICELOCK" Type="bit" />
+          <Property Name="ISTRADEIN" Type="bit" />
+          <Property Name="DEALER_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="BUYER_PASSWORDRECOVERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BUYER_ID" Type="int" Nullable="false" />
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="ISEXPIRED" Type="bit" />
+        </EntityType>
+        <EntityType Name="BUYER_QUERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="BUYER_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_FIRST" Type="varchar" MaxLength="1000" />
+          <Property Name="NAME_LAST" Type="varchar" MaxLength="1000" />
+          <Property Name="EMAIL" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ZIP" Type="varchar" MaxLength="1000" />
+          <Property Name="PHONE" Type="varchar" MaxLength="1000" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="ISACTIVE" Type="int" Nullable="false" />
+          <Property Name="ISDELETED" Type="bit" Nullable="false" />
+          <Property Name="IPADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="DATE_EXPIRED" Type="datetime" />
+          <Property Name="DATE_REGISTERED" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BUYER_WISHLIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLE_ID" Type="int" />
+          <Property Name="BUYER_ID" Type="int" />
+          <Property Name="TYPE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="DEALER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" MaxLength="150" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="250" />
+          <Property Name="CITY" Type="varchar" MaxLength="150" />
+          <Property Name="STATE" Type="char" MaxLength="2" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DEALER_ATTRIBUTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DEALER_ID" Type="int" Nullable="false" />
+          <Property Name="KEY" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="VALUE" Type="varchar" Nullable="false" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="DEALER_FAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER" Type="int" Nullable="false" />
+          <Property Name="QUESTION" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="ANSWER" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DEALER_FTPDIRECTORIES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DEALER_ID" Type="int" />
+          <Property Name="PATH" Type="varchar" MaxLength="250" />
+          <Property Name="USE" Type="bit" />
+        </EntityType>
+        <EntityType Name="DEALER_PROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DEALER_ID" Type="int" />
+          <Property Name="LOGO" Type="varchar" MaxLength="500" />
+          <Property Name="APPLICATION_URL" Type="varchar" MaxLength="500" />
+          <Property Name="WARRANTY_URL" Type="varchar" MaxLength="500" />
+          <Property Name="SERVICE_URL" Type="varchar" MaxLength="500" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="1000" />
+          <Property Name="PAGE_IMAGE" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DEALER_SALESPERSON">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DEALERTYPE_ID" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="ISDELETED" Type="bit" Nullable="false" />
+          <Property Name="DATE_REGISTRATION" Type="datetime" Nullable="false" />
+          <Property Name="DATE_EXPIRES" Type="datetime" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="255" />
+          <Property Name="IPADDRESS" Type="varchar" MaxLength="20" />
+          <Property Name="ISTRIAL" Type="bit" />
+          <Property Name="NAME" Type="varchar" MaxLength="200" />
+          <Property Name="DEALER_ID" Type="int" Nullable="false" />
+          <Property Name="PHONE" Type="varchar" MaxLength="50" />
+          <Property Name="FAX" Type="varchar" MaxLength="200" />
+          <Property Name="NEWSLETTER" Type="bit" />
+          <Property Name="ISFEATURED" Type="bit" />
+        </EntityType>
+        <EntityType Name="EDRIVE_CAMPAIGN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="SUBJECT" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="BODY" Type="varchar" Nullable="false" MaxLength="2500" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDRIVE_EGEAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PRICE" Type="money" Nullable="false" />
+          <Property Name="QUATITY" Type="int" Nullable="false" />
+          <Property Name="PICTURE_ID" Type="int" />
+          <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="DISPLAYORDER" Type="int" Nullable="false" />
+          <Property Name="ISPUBLISHED" Type="bit" />
+          <Property Name="ISDELETED" Type="bit" />
+          <Property Name="DATE_CREATED" Type="datetime" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EDRIVE_EMAILQUEUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PRIORITY" Type="int" Nullable="false" />
+          <Property Name="EMAIL_FROM" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="EMAIL_TO" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="NAME_FROM" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="NAME_TO" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="CC" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="BCC" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="SUBJECT" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="BODY" Type="varchar" Nullable="false" MaxLength="3000" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_SENT" Type="datetime" />
+          <Property Name="SEND_ATTEMPTS" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDRIVE_MANAGEMENTTEAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="PICTURE_ID" Type="int" />
+          <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="ORDER" Type="int" Nullable="false" />
+          <Property Name="ISPUBLISHED" Type="bit" Nullable="false" />
+          <Property Name="ISDELETED" Type="bit" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EDRIVE_NEWS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="CONTENT_BRIEF" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="CONTENT" Type="varchar" Nullable="false" MaxLength="6500" />
+          <Property Name="ISPUBLISHED" Type="bit" Nullable="false" />
+          <Property Name="ISCOMMENTABLE" Type="bit" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDRIVE_PARTNERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_FIRST" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="NAME_LAST" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="COMPANY" Type="varchar" MaxLength="50" />
+          <Property Name="WEBSITE" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="COMMENTS" Type="varchar" MaxLength="2000" />
+          <Property Name="PICTURE_ID" Type="int" Nullable="false" />
+          <Property Name="ISAPPROVED" Type="bit" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EDRIVE_PICTURE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BINARY" Type="varbinary(max)" Nullable="false" />
+          <Property Name="EXTENSION" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ISNEW" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDRIVE_TESTIMONIALS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CONTENT" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ADDRESS" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PICTURE_ID" Type="int" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EMAIL_TEMPLATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" MaxLength="200" />
+          <Property Name="BCC" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="SUBJECT" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="BODY" Type="varchar" Nullable="false" MaxLength="2500" />
+          <Property Name="ISACTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="LST_BUYERTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LST_COUNTRY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ISOCODE_2L" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="ISOCODE_3L" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="ISOCODE" Type="int" Nullable="false" />
+          <Property Name="DISPLAYORDER" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LST_DEALERTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LST_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTRY_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ABBREVIATION" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="DISPLAYORDER" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEBODY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEMAKE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEMAKE_ALIAS">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="MAKE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEMODEL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" MaxLength="200" />
+          <Property Name="MAKE_ID" Type="int" Nullable="false" />
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEOPTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLETYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LST_ZIP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CODE" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="LAT" Type="float" Nullable="false" />
+          <Property Name="LONG" Type="float" Nullable="false" />
+          <Property Name="CITY" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="STATE" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="CLASS" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SITE_SETTINGS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="varchar" MaxLength="100" />
+          <Property Name="VALUE" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="SITE_STATISTICS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLES_TOTAL" Type="int" />
+          <Property Name="VEHICLES_DELETED" Type="int" />
+          <Property Name="VEHICLES_QUALIFIED" Type="int" />
+        </EntityType>
+        <EntityType Name="VEHICLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ISDELETED" Type="bit" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="datetime" Nullable="false" />
+          <Property Name="DATE_NADACHECKED" Type="datetime" />
+          <Property Name="DATE_INSTOCK" Type="datetime" />
+          <Property Name="SALESPERSON_ID" Type="int" />
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="STOCKNUMBER" Type="varchar" MaxLength="50" />
+          <Property Name="VIN" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="YEAR" Type="int" />
+          <Property Name="MAKE_ID" Type="int" Nullable="false" />
+          <Property Name="MODEL_ID" Type="int" Nullable="false" />
+          <Property Name="TRIM" Type="varchar" MaxLength="50" />
+          <Property Name="BODY_ID" Type="int" Nullable="false" />
+          <Property Name="MILEAGE" Type="int" />
+          <Property Name="CONDITION" Type="varchar" MaxLength="300" />
+          <Property Name="COLOR_EXTERIOR" Type="varchar" MaxLength="50" />
+          <Property Name="COLOR_INTERIOR" Type="varchar" MaxLength="50" />
+          <Property Name="DOORS" Type="int" />
+          <Property Name="ENGINE" Type="varchar" MaxLength="50" />
+          <Property Name="TRANSMISSION" Type="varchar" MaxLength="50" />
+          <Property Name="FUEL_TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="DRIVE_TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="varchar(max)" />
+          <Property Name="FILENAME" Type="varchar" MaxLength="2000" />
+          <Property Name="PRICE" Type="money" />
+          <Property Name="PRICE_QUALIFY" Type="money" />
+          <Property Name="PRICE_AVERAGERETAIL" Type="money" />
+          <Property Name="PRICE_AVERAGETRADEIN" Type="money" />
+          <Property Name="PRICE_COST" Type="money" />
+          <Property Name="PRICE_WHOLESALE" Type="money" />
+          <Property Name="RESERVED" Type="money" />
+          <Property Name="SAVINGS" Type="money" />
+          <Property Name="FUEL_CITY" Type="int" />
+          <Property Name="FUEL_HIGHWAY" Type="int" />
+          <Property Name="TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="PICS" Type="varchar(max)" />
+          <Property Name="OWNERDETAIL" Type="varchar" MaxLength="20" />
+          <Property Name="ISFEATURE" Type="bit" />
+          <Property Name="ISNEW" Type="bit" />
+          <Property Name="ISOFFER" Type="bit" />
+          <Property Name="ISONDEALERPROFILE" Type="bit" />
+          <Property Name="ISQUALIFIED" Type="bit" Nullable="false" />
+          <Property Name="ISWARRANTY" Type="bit" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="VEHICLE_IMAGES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLE_ID" Type="int" Nullable="false" />
+          <Property Name="DISPLAY_ORDER" Type="int" Nullable="false" />
+          <Property Name="URL" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="VEHICLE_OPTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OPTION_ID" Type="int" Nullable="false" />
+          <Property Name="VEHICLE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VEHICLE_RATING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLE_ID" Type="int" Nullable="false" />
+          <Property Name="AVE_RATING" Type="float" Nullable="false" />
+          <Property Name="TOTAL_VOTES" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST">
+          <End Role="BUYER" Type="EdriveAutosModel.Store.BUYER" Multiplicity="1" />
+          <End Role="BUYER_FINANCEREQUEST" Type="EdriveAutosModel.Store.BUYER_FINANCEREQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_FINANCEREQUEST">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_INTERESTED_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.Store.BUYER" Multiplicity="1" />
+          <End Role="BUYER_INTERESTED" Type="EdriveAutosModel.Store.BUYER_INTERESTED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_INTERESTED">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_LST_BUYERTYPE">
+          <End Role="LST_BUYERTYPE" Type="EdriveAutosModel.Store.LST_BUYERTYPE" Multiplicity="0..1" />
+          <End Role="BUYER" Type="EdriveAutosModel.Store.BUYER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_BUYERTYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER">
+              <PropertyRef Name="TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_PASSWORDRECOVERY_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.Store.BUYER" Multiplicity="1" />
+          <End Role="BUYER_PASSWORDRECOVERY" Type="EdriveAutosModel.Store.BUYER_PASSWORDRECOVERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_PASSWORDRECOVERY">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_QUERY_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.Store.BUYER" Multiplicity="1" />
+          <End Role="BUYER_QUERY" Type="EdriveAutosModel.Store.BUYER_QUERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_QUERY">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_WISHLIST_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.Store.BUYER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BUYER_WISHLIST" Type="EdriveAutosModel.Store.BUYER_WISHLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_WISHLIST">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_WISHLIST_VEHICLE1">
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="0..1" />
+          <End Role="BUYER_WISHLIST" Type="EdriveAutosModel.Store.BUYER_WISHLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_WISHLIST">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_ATTRIBUTE_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.Store.DEALER" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_ATTRIBUTE" Type="EdriveAutosModel.Store.DEALER_ATTRIBUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_ATTRIBUTE">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_FTPDIRECTORIES_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.Store.DEALER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_FTPDIRECTORIES" Type="EdriveAutosModel.Store.DEALER_FTPDIRECTORIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_FTPDIRECTORIES">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_PROFILE_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.Store.DEALER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_PROFILE" Type="EdriveAutosModel.Store.DEALER_PROFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_PROFILE">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_SALESPERSON_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.Store.DEALER" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_SALESPERSON" Type="EdriveAutosModel.Store.DEALER_SALESPERSON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_SALESPERSON">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_EGEAR_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.Store.EDRIVE_PICTURE" Multiplicity="0..1" />
+          <End Role="EDRIVE_EGEAR" Type="EdriveAutosModel.Store.EDRIVE_EGEAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_EGEAR">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.Store.EDRIVE_PICTURE" Multiplicity="0..1" />
+          <End Role="EDRIVE_MANAGEMENTTEAM" Type="EdriveAutosModel.Store.EDRIVE_MANAGEMENTTEAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_MANAGEMENTTEAM">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_PARTNERS_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.Store.EDRIVE_PICTURE" Multiplicity="1" />
+          <End Role="EDRIVE_PARTNERS" Type="EdriveAutosModel.Store.EDRIVE_PARTNERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_PARTNERS">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.Store.EDRIVE_PICTURE" Multiplicity="0..1" />
+          <End Role="EDRIVE_TESTIMONIALS" Type="EdriveAutosModel.Store.EDRIVE_TESTIMONIALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_TESTIMONIALS">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LST_VEHICLEMAKE_ALIAS_VEHICLE">
+          <End Role="LST_VEHICLEMAKE" Type="EdriveAutosModel.Store.LST_VEHICLEMAKE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LST_VEHICLEMAKE_ALIAS" Type="EdriveAutosModel.Store.LST_VEHICLEMAKE_ALIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMAKE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LST_VEHICLEMAKE_ALIAS">
+              <PropertyRef Name="MAKE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE">
+          <End Role="LST_VEHICLEMAKE" Type="EdriveAutosModel.Store.LST_VEHICLEMAKE" Multiplicity="1" />
+          <End Role="LST_VEHICLEMODEL" Type="EdriveAutosModel.Store.LST_VEHICLEMODEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMAKE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LST_VEHICLEMODEL">
+              <PropertyRef Name="MAKE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION">
+          <End Role="LST_VEHICLEOPTION" Type="EdriveAutosModel.Store.LST_VEHICLEOPTION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VEHICLE_OPTIONS" Type="EdriveAutosModel.Store.VEHICLE_OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEOPTION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_OPTIONS">
+              <PropertyRef Name="OPTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_OPTIONS_VEHICLE">
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VEHICLE_OPTIONS" Type="EdriveAutosModel.Store.VEHICLE_OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_OPTIONS">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_DEALER_SALESPERSON">
+          <End Role="DEALER_SALESPERSON" Type="EdriveAutosModel.Store.DEALER_SALESPERSON" Multiplicity="0..1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER_SALESPERSON">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="SALESPERSON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_IMAGES_VEHICLE">
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VEHICLE_IMAGES" Type="EdriveAutosModel.Store.VEHICLE_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_IMAGES">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLEBODY">
+          <End Role="LST_VEHICLEBODY" Type="EdriveAutosModel.Store.LST_VEHICLEBODY" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEBODY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="BODY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLEMAKE">
+          <End Role="LST_VEHICLEMAKE" Type="EdriveAutosModel.Store.LST_VEHICLEMAKE" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMAKE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MAKE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLEMODEL">
+          <End Role="LST_VEHICLEMODEL" Type="EdriveAutosModel.Store.LST_VEHICLEMODEL" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMODEL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MODEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLETYPE">
+          <End Role="LST_VEHICLETYPE" Type="EdriveAutosModel.Store.LST_VEHICLETYPE" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLETYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_RATING_VEHICLE">
+          <End Role="VEHICLE" Type="EdriveAutosModel.Store.VEHICLE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VEHICLE_RATING" Type="EdriveAutosModel.Store.VEHICLE_RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_RATING">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SPADMIN_LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+          <Parameter Name="IP" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPADMIN_UPDATEVEHICLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VEHICLE_ID" Type="int" Mode="In" />
+          <Parameter Name="ISDELETED" Type="int" Mode="In" />
+          <Parameter Name="DATEINSTOCK" Type="datetime" Mode="In" />
+          <Parameter Name="TYPE_ID" Type="int" Mode="In" />
+          <Parameter Name="STOCKNUMBER" Type="varchar" Mode="In" />
+          <Parameter Name="VIN" Type="varchar" Mode="In" />
+          <Parameter Name="YEAR" Type="int" Mode="In" />
+          <Parameter Name="MAKE_ID" Type="int" Mode="In" />
+          <Parameter Name="MODEL_ID" Type="int" Mode="In" />
+          <Parameter Name="TRIM" Type="varchar" Mode="In" />
+          <Parameter Name="BODY_ID" Type="int" Mode="In" />
+          <Parameter Name="MILEAGE" Type="int" Mode="In" />
+          <Parameter Name="CONDITION" Type="varchar" Mode="In" />
+          <Parameter Name="COLOR_EXTERIOR" Type="varchar" Mode="In" />
+          <Parameter Name="COLOR_INTERIOR" Type="varchar" Mode="In" />
+          <Parameter Name="DOORS" Type="int" Mode="In" />
+          <Parameter Name="ENGINE" Type="varchar" Mode="In" />
+          <Parameter Name="TRANSMISSION" Type="varchar" Mode="In" />
+          <Parameter Name="FUEL_TYPE" Type="varchar" Mode="In" />
+          <Parameter Name="DRIVE_TYPE" Type="varchar" Mode="In" />
+          <Parameter Name="DESCRITION" Type="varchar(max)" Mode="In" />
+          <Parameter Name="PRICE" Type="money" Mode="In" />
+          <Parameter Name="PRICE_WHOLESALE" Type="money" Mode="In" />
+          <Parameter Name="PRICE_COST" Type="money" Mode="In" />
+          <Parameter Name="RESERVED" Type="money" Mode="In" />
+          <Parameter Name="ISONDEALERPROFILE" Type="bit" Mode="In" />
+          <Parameter Name="ISWARRANTY" Type="bit" Mode="In" />
+          <Parameter Name="ISFEATURED" Type="bit" Mode="In" />
+          <Parameter Name="VEHICLE_OPTIONS" Type="varchar(max)" Mode="In" />
+          <Parameter Name="VEHICLE_IMAGES" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SPLOAD_CARFAXDEALERREFRESH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_CARFAXVEHICLEREFRESH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTCLEARVEHICLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTCOMPLETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTFROMCSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTFROMINTERMEDIATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTFROMSTAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTIMAGES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOG_ERRORINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOG_EVENTINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EVENT_TYPE" Type="char" Mode="In" />
+          <Parameter Name="CODE_BASE" Type="varchar" Mode="In" />
+          <Parameter Name="MESSAGE" Type="text" Mode="In" />
+        </Function>
+        <Function Name="SPRETRIEVE_SITESTATISTICS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_VEHICLEMAKES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_VEHICLEMODELS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MAKE_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPRETRIEVE_VEHICLESTOPROCESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPSEARCH_ADVANCED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MAKE" Type="int" Mode="In" />
+          <Parameter Name="MODEL" Type="int" Mode="In" />
+          <Parameter Name="MAXMILEAGE" Type="int" Mode="In" />
+          <Parameter Name="YEAR_FROM" Type="int" Mode="In" />
+          <Parameter Name="YEAR_TO" Type="int" Mode="In" />
+          <Parameter Name="PRICE_MIN" Type="money" Mode="In" />
+          <Parameter Name="PRICE_MAX" Type="money" Mode="In" />
+          <Parameter Name="BODY" Type="int" Mode="In" />
+          <Parameter Name="TRANSMISSION" Type="varchar" Mode="In" />
+          <Parameter Name="ENGINE" Type="varchar" Mode="In" />
+          <Parameter Name="DRIVETYPE" Type="varchar" Mode="In" />
+          <Parameter Name="VIN" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP" Type="varchar" Mode="In" />
+          <Parameter Name="VALIDATEDONLY" Type="bit" Mode="In" />
+          <Parameter Name="RADIUS" Type="int" Mode="In" />
+          <Parameter Name="SORTCOLUMN" Type="varchar" Mode="In" />
+          <Parameter Name="SORTORDER" Type="varchar" Mode="In" />
+          <Parameter Name="PAGESIZE" Type="int" Mode="In" />
+          <Parameter Name="PAGENUM" Type="int" Mode="In" />
+          <Parameter Name="TOTALRESULTS" Type="int" Mode="InOut" />
+          <Parameter Name="TOTALPAGES" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SPSEARCH_STANDARD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QUERY" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP" Type="varchar" Mode="In" />
+          <Parameter Name="RADIUS" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="varchar" Mode="In" />
+          <Parameter Name="YEAR" Type="varchar" Mode="In" />
+          <Parameter Name="MILEAGE" Type="varchar" Mode="In" />
+          <Parameter Name="MAKE" Type="varchar" Mode="In" />
+          <Parameter Name="MODEL" Type="varchar" Mode="In" />
+          <Parameter Name="WARRANTY" Type="bit" Mode="In" />
+          <Parameter Name="BODYTYPE" Type="varchar" Mode="In" />
+          <Parameter Name="VALIDATEDONLY" Type="bit" Mode="In" />
+          <Parameter Name="SORTCOLUMN" Type="varchar" Mode="In" />
+          <Parameter Name="SORTORDER" Type="varchar" Mode="In" />
+          <Parameter Name="PAGESIZE" Type="int" Mode="In" />
+          <Parameter Name="PAGENUM" Type="int" Mode="In" />
+          <Parameter Name="TOTALRESULTS" Type="int" Mode="InOut" />
+          <Parameter Name="TOTALPAGES" Type="int" Mode="InOut" />
+          <Parameter Name="EXACTMATCH" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="SPSITE_LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+          <Parameter Name="IP" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SPSITE_RETRIEVEFEATURED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPSITE_RETRIEVENEWS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPSITE_RETRIEVENEWS_HOME" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPSITE_RETRIEVETESTIMONIALS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPTOOL_REBUILDINDEXES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPUPDATE_SITESTATISTICS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UFN_REPLACEDOUBLEQUOTES" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_STRIPCHARACTERS" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_STRIPSPECIALCHARACTERS" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_TRIMQUOTES" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EdriveAutosModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EdriveAutosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BUYERs" EntityType="EdriveAutosModel.BUYER" />
+          <EntitySet Name="BUYER_FAQ" EntityType="EdriveAutosModel.BUYER_FAQ" />
+          <EntitySet Name="BUYER_FINANCEREQUEST" EntityType="EdriveAutosModel.BUYER_FINANCEREQUEST" />
+          <EntitySet Name="BUYER_INTERESTED" EntityType="EdriveAutosModel.BUYER_INTERESTED" />
+          <EntitySet Name="BUYER_PASSWORDRECOVERY" EntityType="EdriveAutosModel.BUYER_PASSWORDRECOVERY" />
+          <EntitySet Name="BUYER_QUERY" EntityType="EdriveAutosModel.BUYER_QUERY" />
+          <EntitySet Name="BUYER_WISHLIST" EntityType="EdriveAutosModel.BUYER_WISHLIST" />
+          <EntitySet Name="DEALERs" EntityType="EdriveAutosModel.DEALER" />
+          <EntitySet Name="DEALER_ATTRIBUTE" EntityType="EdriveAutosModel.DEALER_ATTRIBUTE" />
+          <EntitySet Name="DEALER_FAQ" EntityType="EdriveAutosModel.DEALER_FAQ" />
+          <EntitySet Name="DEALER_FTPDIRECTORIES" EntityType="EdriveAutosModel.DEALER_FTPDIRECTORIES" />
+          <EntitySet Name="DEALER_PROFILE" EntityType="EdriveAutosModel.DEALER_PROFILE" />
+          <EntitySet Name="DEALER_SALESPERSON" EntityType="EdriveAutosModel.DEALER_SALESPERSON" />
+          <EntitySet Name="EDRIVE_CAMPAIGN" EntityType="EdriveAutosModel.EDRIVE_CAMPAIGN" />
+          <EntitySet Name="EDRIVE_EGEAR" EntityType="EdriveAutosModel.EDRIVE_EGEAR" />
+          <EntitySet Name="EDRIVE_EMAILQUEUE" EntityType="EdriveAutosModel.EDRIVE_EMAILQUEUE" />
+          <EntitySet Name="EDRIVE_MANAGEMENTTEAM" EntityType="EdriveAutosModel.EDRIVE_MANAGEMENTTEAM" />
+          <EntitySet Name="EDRIVE_NEWS" EntityType="EdriveAutosModel.EDRIVE_NEWS" />
+          <EntitySet Name="EDRIVE_PARTNERS" EntityType="EdriveAutosModel.EDRIVE_PARTNERS" />
+          <EntitySet Name="EDRIVE_PICTURE" EntityType="EdriveAutosModel.EDRIVE_PICTURE" />
+          <EntitySet Name="EDRIVE_TESTIMONIALS" EntityType="EdriveAutosModel.EDRIVE_TESTIMONIALS" />
+          <EntitySet Name="EMAIL_TEMPLATE" EntityType="EdriveAutosModel.EMAIL_TEMPLATE" />
+          <EntitySet Name="LST_BUYERTYPE" EntityType="EdriveAutosModel.LST_BUYERTYPE" />
+          <EntitySet Name="LST_COUNTRY" EntityType="EdriveAutosModel.LST_COUNTRY" />
+          <EntitySet Name="LST_DEALERTYPE" EntityType="EdriveAutosModel.LST_DEALERTYPE" />
+          <EntitySet Name="LST_STATE" EntityType="EdriveAutosModel.LST_STATE" />
+          <EntitySet Name="LST_VEHICLEBODY" EntityType="EdriveAutosModel.LST_VEHICLEBODY" />
+          <EntitySet Name="LST_VEHICLEMAKE" EntityType="EdriveAutosModel.LST_VEHICLEMAKE" />
+          <EntitySet Name="LST_VEHICLEMODEL" EntityType="EdriveAutosModel.LST_VEHICLEMODEL" />
+          <EntitySet Name="LST_VEHICLEOPTION" EntityType="EdriveAutosModel.LST_VEHICLEOPTION" />
+          <EntitySet Name="LST_VEHICLETYPE" EntityType="EdriveAutosModel.LST_VEHICLETYPE" />
+          <EntitySet Name="LST_ZIP" EntityType="EdriveAutosModel.LST_ZIP" />
+          <EntitySet Name="SITE_SETTINGS" EntityType="EdriveAutosModel.SITE_SETTINGS" />
+          <EntitySet Name="SITE_STATISTICS" EntityType="EdriveAutosModel.SITE_STATISTICS" />
+          <EntitySet Name="VEHICLEs" EntityType="EdriveAutosModel.VEHICLE" />
+          <AssociationSet Name="FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST" Association="EdriveAutosModel.FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST">
+            <End Role="BUYER" EntitySet="BUYERs" />
+            <End Role="BUYER_FINANCEREQUEST" EntitySet="BUYER_FINANCEREQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_INTERESTED_BUYER" Association="EdriveAutosModel.FK_BUYER_INTERESTED_BUYER">
+            <End Role="BUYER" EntitySet="BUYERs" />
+            <End Role="BUYER_INTERESTED" EntitySet="BUYER_INTERESTED" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_LST_BUYERTYPE" Association="EdriveAutosModel.FK_BUYER_LST_BUYERTYPE">
+            <End Role="LST_BUYERTYPE" EntitySet="LST_BUYERTYPE" />
+            <End Role="BUYER" EntitySet="BUYERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_PASSWORDRECOVERY_BUYER" Association="EdriveAutosModel.FK_BUYER_PASSWORDRECOVERY_BUYER">
+            <End Role="BUYER" EntitySet="BUYERs" />
+            <End Role="BUYER_PASSWORDRECOVERY" EntitySet="BUYER_PASSWORDRECOVERY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_QUERY_BUYER" Association="EdriveAutosModel.FK_BUYER_QUERY_BUYER">
+            <End Role="BUYER" EntitySet="BUYERs" />
+            <End Role="BUYER_QUERY" EntitySet="BUYER_QUERY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_WISHLIST_BUYER" Association="EdriveAutosModel.FK_BUYER_WISHLIST_BUYER">
+            <End Role="BUYER" EntitySet="BUYERs" />
+            <End Role="BUYER_WISHLIST" EntitySet="BUYER_WISHLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BUYER_WISHLIST_VEHICLE1" Association="EdriveAutosModel.FK_BUYER_WISHLIST_VEHICLE1">
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+            <End Role="BUYER_WISHLIST" EntitySet="BUYER_WISHLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_ATTRIBUTE_DEALER" Association="EdriveAutosModel.FK_DEALER_ATTRIBUTE_DEALER">
+            <End Role="DEALER" EntitySet="DEALERs" />
+            <End Role="DEALER_ATTRIBUTE" EntitySet="DEALER_ATTRIBUTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_FTPDIRECTORIES_DEALER" Association="EdriveAutosModel.FK_DEALER_FTPDIRECTORIES_DEALER">
+            <End Role="DEALER" EntitySet="DEALERs" />
+            <End Role="DEALER_FTPDIRECTORIES" EntitySet="DEALER_FTPDIRECTORIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_PROFILE_DEALER" Association="EdriveAutosModel.FK_DEALER_PROFILE_DEALER">
+            <End Role="DEALER" EntitySet="DEALERs" />
+            <End Role="DEALER_PROFILE" EntitySet="DEALER_PROFILE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEALER_SALESPERSON_DEALER" Association="EdriveAutosModel.FK_DEALER_SALESPERSON_DEALER">
+            <End Role="DEALER" EntitySet="DEALERs" />
+            <End Role="DEALER_SALESPERSON" EntitySet="DEALER_SALESPERSON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_DEALER_SALESPERSON" Association="EdriveAutosModel.FK_VEHICLE_DEALER_SALESPERSON">
+            <End Role="DEALER_SALESPERSON" EntitySet="DEALER_SALESPERSON" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_EGEAR_EDRIVE_PICTURE" Association="EdriveAutosModel.FK_EDRIVE_EGEAR_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_EGEAR" EntitySet="EDRIVE_EGEAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE" Association="EdriveAutosModel.FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_MANAGEMENTTEAM" EntitySet="EDRIVE_MANAGEMENTTEAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_PARTNERS_EDRIVE_PICTURE" Association="EdriveAutosModel.FK_EDRIVE_PARTNERS_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_PARTNERS" EntitySet="EDRIVE_PARTNERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE" Association="EdriveAutosModel.FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE">
+            <End Role="EDRIVE_PICTURE" EntitySet="EDRIVE_PICTURE" />
+            <End Role="EDRIVE_TESTIMONIALS" EntitySet="EDRIVE_TESTIMONIALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLEBODY" Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEBODY">
+            <End Role="LST_VEHICLEBODY" EntitySet="LST_VEHICLEBODY" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLEMAKE" Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE">
+            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLEMODEL" Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL">
+            <End Role="LST_VEHICLEMODEL" EntitySet="LST_VEHICLEMODEL" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_LST_VEHICLETYPE" Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLETYPE">
+            <End Role="LST_VEHICLETYPE" EntitySet="LST_VEHICLETYPE" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <EntitySet Name="LST_VEHICLEMAKE_ALIAS" EntityType="EdriveAutosModel.LST_VEHICLEMAKE_ALIAS" />
+          <EntitySet Name="VEHICLE_IMAGES" EntityType="EdriveAutosModel.VEHICLE_IMAGES" />
+          <EntitySet Name="VEHICLE_OPTIONS" EntityType="EdriveAutosModel.VEHICLE_OPTIONS" />
+          <EntitySet Name="VEHICLE_RATING" EntityType="EdriveAutosModel.VEHICLE_RATING" />
+          <AssociationSet Name="FK_LST_VEHICLEMAKE_ALIAS_VEHICLE" Association="EdriveAutosModel.FK_LST_VEHICLEMAKE_ALIAS_VEHICLE">
+            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
+            <End Role="LST_VEHICLEMAKE_ALIAS" EntitySet="LST_VEHICLEMAKE_ALIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION" Association="EdriveAutosModel.FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION">
+            <End Role="LST_VEHICLEOPTION" EntitySet="LST_VEHICLEOPTION" />
+            <End Role="VEHICLE_OPTIONS" EntitySet="VEHICLE_OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_OPTIONS_VEHICLE" Association="EdriveAutosModel.FK_VEHICLE_OPTIONS_VEHICLE">
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+            <End Role="VEHICLE_OPTIONS" EntitySet="VEHICLE_OPTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_IMAGES_VEHICLE" Association="EdriveAutosModel.FK_VEHICLE_IMAGES_VEHICLE">
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+            <End Role="VEHICLE_IMAGES" EntitySet="VEHICLE_IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_RATING_VEHICLE" Association="EdriveAutosModel.FK_VEHICLE_RATING_VEHICLE">
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+            <End Role="VEHICLE_RATING" EntitySet="VEHICLE_RATING" />
+          </AssociationSet>
+          <FunctionImport Name="SearchStandard" EntitySet="VEHICLEs" ReturnType="Collection(EdriveAutosModel.VEHICLE)">
+            <Parameter Name="QUERY" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="RADIUS" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="String" />
+            <Parameter Name="YEAR" Mode="In" Type="String" />
+            <Parameter Name="MILEAGE" Mode="In" Type="String" />
+            <Parameter Name="MAKE" Mode="In" Type="String" />
+            <Parameter Name="MODEL" Mode="In" Type="String" />
+            <Parameter Name="WARRANTY" Mode="In" Type="Boolean" />
+            <Parameter Name="BODYTYPE" Mode="In" Type="String" />
+            <Parameter Name="VALIDATEDONLY" Mode="In" Type="Boolean" />
+            <Parameter Name="SORTCOLUMN" Mode="In" Type="String" />
+            <Parameter Name="SORTORDER" Mode="In" Type="String" />
+            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
+            <Parameter Name="PAGENUM" Mode="In" Type="Int32" />
+            <Parameter Name="TOTALRESULTS" Mode="InOut" Type="Int32" />
+            <Parameter Name="TOTALPAGES" Mode="InOut" Type="Int32" />
+            <Parameter Name="EXACTMATCH" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SearchAdvanced" EntitySet="VEHICLEs" ReturnType="Collection(EdriveAutosModel.VEHICLE)">
+            <Parameter Name="MAKE" Mode="In" Type="Int32" />
+            <Parameter Name="MODEL" Mode="In" Type="Int32" />
+            <Parameter Name="MAXMILEAGE" Mode="In" Type="Int32" />
+            <Parameter Name="YEAR_FROM" Mode="In" Type="Int32" />
+            <Parameter Name="YEAR_TO" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE_MIN" Mode="In" Type="Decimal" />
+            <Parameter Name="PRICE_MAX" Mode="In" Type="Decimal" />
+            <Parameter Name="BODY" Mode="In" Type="Int32" />
+            <Parameter Name="TRANSMISSION" Mode="In" Type="String" />
+            <Parameter Name="ENGINE" Mode="In" Type="String" />
+            <Parameter Name="DRIVETYPE" Mode="In" Type="String" />
+            <Parameter Name="VIN" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="VALIDATEDONLY" Mode="In" Type="Boolean" />
+            <Parameter Name="RADIUS" Mode="In" Type="Int32" />
+            <Parameter Name="SORTCOLUMN" Mode="In" Type="String" />
+            <Parameter Name="SORTORDER" Mode="In" Type="String" />
+            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
+            <Parameter Name="PAGENUM" Mode="In" Type="Int32" />
+            <Parameter Name="TOTALRESULTS" Mode="InOut" Type="Int32" />
+            <Parameter Name="TOTALPAGES" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE" Association="EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE">
+            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
+            <End Role="LST_VEHICLEMODEL" EntitySet="LST_VEHICLEMODEL" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BUYER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_FIRST" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_LAST" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TYPE_ID" Type="Int32" />
+          <Property Name="IPADDRESS" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DATE_REGISTERED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_EXPIRED" Type="DateTime" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+          <Property Name="ISNEWSLETTER" Type="Boolean" Nullable="false" />
+          <Property Name="ISTRIAL" Type="Boolean" />
+          <Property Name="ADDRESS" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CITY" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="STATE" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="ZIP" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="BUYER_FINANCEREQUEST" Relationship="EdriveAutosModel.FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST" FromRole="BUYER" ToRole="BUYER_FINANCEREQUEST" />
+          <NavigationProperty Name="BUYER_INTERESTED" Relationship="EdriveAutosModel.FK_BUYER_INTERESTED_BUYER" FromRole="BUYER" ToRole="BUYER_INTERESTED" />
+          <NavigationProperty Name="LST_BUYERTYPE" Relationship="EdriveAutosModel.FK_BUYER_LST_BUYERTYPE" FromRole="BUYER" ToRole="LST_BUYERTYPE" />
+          <NavigationProperty Name="BUYER_PASSWORDRECOVERY" Relationship="EdriveAutosModel.FK_BUYER_PASSWORDRECOVERY_BUYER" FromRole="BUYER" ToRole="BUYER_PASSWORDRECOVERY" />
+          <NavigationProperty Name="BUYER_QUERY" Relationship="EdriveAutosModel.FK_BUYER_QUERY_BUYER" FromRole="BUYER" ToRole="BUYER_QUERY" />
+          <NavigationProperty Name="BUYER_WISHLIST" Relationship="EdriveAutosModel.FK_BUYER_WISHLIST_BUYER" FromRole="BUYER" ToRole="BUYER_WISHLIST" />
+        </EntityType>
+        <EntityType Name="BUYER_FAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER" Type="Int64" Nullable="false" />
+          <Property Name="QUESTION" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="ANSWER" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="BUYER_FINANCEREQUEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BUYER_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME_EMPLOYER" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_FIRST" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_LAST" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="CITY" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="STATE" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="ZIP" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="EMIAL" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE_HOME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE_CELL" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RESIDENCE_TYPE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LENGTHOFTIME_ATADDRESS" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LENGTHOFTIME_ATJOB" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MONTHRENT_MORTGAGE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="JOB_TITLE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE_WORK" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GROSSINCOME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DOWNPAYMENT" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ISBANKRUPT" Type="Boolean" />
+          <Property Name="CREDITSCORE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ISCOSIGNER" Type="Boolean" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="BUYER" Relationship="EdriveAutosModel.FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST" FromRole="BUYER_FINANCEREQUEST" ToRole="BUYER" />
+        </EntityType>
+        <EntityType Name="BUYER_INTERESTED">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BUYER_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME_FIRST" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_LAST" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VEHICLE_ID" Type="Int32" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ZIPCODE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CONTACT_TYPE" Type="Int32" />
+          <Property Name="INTEREST_TYPE" Type="Int32" />
+          <Property Name="COMMENTS" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" />
+          <Property Name="DATE_UPDATED" Type="DateTime" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="ISFINANCE" Type="Boolean" />
+          <Property Name="ISPRICELOCK" Type="Boolean" />
+          <Property Name="ISTRADEIN" Type="Boolean" />
+          <Property Name="DEALER_ID" Type="Int32" />
+          <NavigationProperty Name="BUYER" Relationship="EdriveAutosModel.FK_BUYER_INTERESTED_BUYER" FromRole="BUYER_INTERESTED" ToRole="BUYER" />
+        </EntityType>
+        <EntityType Name="BUYER_PASSWORDRECOVERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BUYER_ID" Type="Int32" Nullable="false" />
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ISEXPIRED" Type="Boolean" />
+          <NavigationProperty Name="BUYER" Relationship="EdriveAutosModel.FK_BUYER_PASSWORDRECOVERY_BUYER" FromRole="BUYER_PASSWORDRECOVERY" ToRole="BUYER" />
+        </EntityType>
+        <EntityType Name="BUYER_QUERY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BUYER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_FIRST" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_LAST" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ZIP" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ISACTIVE" Type="Int32" Nullable="false" />
+          <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+          <Property Name="IPADDRESS" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DATE_EXPIRED" Type="DateTime" />
+          <Property Name="DATE_REGISTERED" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="BUYER" Relationship="EdriveAutosModel.FK_BUYER_QUERY_BUYER" FromRole="BUYER_QUERY" ToRole="BUYER" />
+        </EntityType>
+        <EntityType Name="BUYER_WISHLIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLE_ID" Type="Int32" />
+          <Property Name="BUYER_ID" Type="Int32" />
+          <Property Name="TYPE_ID" Type="Int32" />
+          <NavigationProperty Name="BUYER" Relationship="EdriveAutosModel.FK_BUYER_WISHLIST_BUYER" FromRole="BUYER_WISHLIST" ToRole="BUYER" />
+          <NavigationProperty Name="VEHICLE" Relationship="EdriveAutosModel.FK_BUYER_WISHLIST_VEHICLE1" FromRole="BUYER_WISHLIST" ToRole="VEHICLE" />
+        </EntityType>
+        <EntityType Name="DEALER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="CITY" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="STATE" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="ZIP" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="DEALER_ATTRIBUTE" Relationship="EdriveAutosModel.FK_DEALER_ATTRIBUTE_DEALER" FromRole="DEALER" ToRole="DEALER_ATTRIBUTE" />
+          <NavigationProperty Name="DEALER_FTPDIRECTORIES" Relationship="EdriveAutosModel.FK_DEALER_FTPDIRECTORIES_DEALER" FromRole="DEALER" ToRole="DEALER_FTPDIRECTORIES" />
+          <NavigationProperty Name="DEALER_PROFILE" Relationship="EdriveAutosModel.FK_DEALER_PROFILE_DEALER" FromRole="DEALER" ToRole="DEALER_PROFILE" />
+          <NavigationProperty Name="DEALER_SALESPERSON" Relationship="EdriveAutosModel.FK_DEALER_SALESPERSON_DEALER" FromRole="DEALER" ToRole="DEALER_SALESPERSON" />
+        </EntityType>
+        <EntityType Name="DEALER_ATTRIBUTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEALER_ID" Type="Int32" Nullable="false" />
+          <Property Name="KEY" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="VALUE" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="DEALER" Relationship="EdriveAutosModel.FK_DEALER_ATTRIBUTE_DEALER" FromRole="DEALER_ATTRIBUTE" ToRole="DEALER" />
+        </EntityType>
+        <EntityType Name="DEALER_FAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER" Type="Int32" Nullable="false" />
+          <Property Name="QUESTION" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="ANSWER" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="DEALER_FTPDIRECTORIES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEALER_ID" Type="Int32" />
+          <Property Name="PATH" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="USE" Type="Boolean" />
+          <NavigationProperty Name="DEALER" Relationship="EdriveAutosModel.FK_DEALER_FTPDIRECTORIES_DEALER" FromRole="DEALER_FTPDIRECTORIES" ToRole="DEALER" />
+        </EntityType>
+        <EntityType Name="DEALER_PROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEALER_ID" Type="Int32" />
+          <Property Name="LOGO" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="APPLICATION_URL" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="WARRANTY_URL" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="SERVICE_URL" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="PAGE_IMAGE" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="DEALER" Relationship="EdriveAutosModel.FK_DEALER_PROFILE_DEALER" FromRole="DEALER_PROFILE" ToRole="DEALER" />
+        </EntityType>
+        <EntityType Name="DEALER_SALESPERSON">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEALERTYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_REGISTRATION" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_EXPIRES" Type="DateTime" />
+          <Property Name="PASSWORD" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="IPADDRESS" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ISTRIAL" Type="Boolean" />
+          <Property Name="NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DEALER_ID" Type="Int32" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FAX" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="NEWSLETTER" Type="Boolean" />
+          <Property Name="ISFEATURED" Type="Boolean" />
+          <NavigationProperty Name="DEALER" Relationship="EdriveAutosModel.FK_DEALER_SALESPERSON_DEALER" FromRole="DEALER_SALESPERSON" ToRole="DEALER" />
+          <NavigationProperty Name="VEHICLEs" Relationship="EdriveAutosModel.FK_VEHICLE_DEALER_SALESPERSON" FromRole="DEALER_SALESPERSON" ToRole="VEHICLE" />
+        </EntityType>
+        <EntityType Name="EDRIVE_CAMPAIGN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="SUBJECT" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="BODY" Type="String" Nullable="false" MaxLength="2500" Unicode="false" FixedLength="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDRIVE_EGEAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="QUATITY" Type="Int32" Nullable="false" />
+          <Property Name="PICTURE_ID" Type="Int32" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="DISPLAYORDER" Type="Int32" Nullable="false" />
+          <Property Name="ISPUBLISHED" Type="Boolean" />
+          <Property Name="ISDELETED" Type="Boolean" />
+          <Property Name="DATE_CREATED" Type="DateTime" />
+          <Property Name="DATE_UPDATED" Type="DateTime" />
+          <NavigationProperty Name="EDRIVE_PICTURE" Relationship="EdriveAutosModel.FK_EDRIVE_EGEAR_EDRIVE_PICTURE" FromRole="EDRIVE_EGEAR" ToRole="EDRIVE_PICTURE" />
+        </EntityType>
+        <EntityType Name="EDRIVE_EMAILQUEUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRIORITY" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL_FROM" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="EMAIL_TO" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_FROM" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_TO" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="CC" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="BCC" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="SUBJECT" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="BODY" Type="String" Nullable="false" MaxLength="3000" Unicode="false" FixedLength="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_SENT" Type="DateTime" />
+          <Property Name="SEND_ATTEMPTS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDRIVE_MANAGEMENTTEAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="PICTURE_ID" Type="Int32" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="ORDER" Type="Int32" Nullable="false" />
+          <Property Name="ISPUBLISHED" Type="Boolean" Nullable="false" />
+          <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="DateTime" />
+          <NavigationProperty Name="EDRIVE_PICTURE" Relationship="EdriveAutosModel.FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE" FromRole="EDRIVE_MANAGEMENTTEAM" ToRole="EDRIVE_PICTURE" />
+        </EntityType>
+        <EntityType Name="EDRIVE_NEWS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="CONTENT_BRIEF" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CONTENT" Type="String" Nullable="false" MaxLength="6500" Unicode="false" FixedLength="false" />
+          <Property Name="ISPUBLISHED" Type="Boolean" Nullable="false" />
+          <Property Name="ISCOMMENTABLE" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDRIVE_PARTNERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_FIRST" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NAME_LAST" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="COMPANY" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="WEBSITE" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="COMMENTS" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="PICTURE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ISAPPROVED" Type="Boolean" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="DateTime" />
+          <NavigationProperty Name="EDRIVE_PICTURE" Relationship="EdriveAutosModel.FK_EDRIVE_PARTNERS_EDRIVE_PICTURE" FromRole="EDRIVE_PARTNERS" ToRole="EDRIVE_PICTURE" />
+        </EntityType>
+        <EntityType Name="EDRIVE_PICTURE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BINARY" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="EXTENSION" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ISNEW" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EDRIVE_EGEAR" Relationship="EdriveAutosModel.FK_EDRIVE_EGEAR_EDRIVE_PICTURE" FromRole="EDRIVE_PICTURE" ToRole="EDRIVE_EGEAR" />
+          <NavigationProperty Name="EDRIVE_MANAGEMENTTEAM" Relationship="EdriveAutosModel.FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE" FromRole="EDRIVE_PICTURE" ToRole="EDRIVE_MANAGEMENTTEAM" />
+          <NavigationProperty Name="EDRIVE_PARTNERS" Relationship="EdriveAutosModel.FK_EDRIVE_PARTNERS_EDRIVE_PICTURE" FromRole="EDRIVE_PICTURE" ToRole="EDRIVE_PARTNERS" />
+          <NavigationProperty Name="EDRIVE_TESTIMONIALS" Relationship="EdriveAutosModel.FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE" FromRole="EDRIVE_PICTURE" ToRole="EDRIVE_TESTIMONIALS" />
+        </EntityType>
+        <EntityType Name="EDRIVE_TESTIMONIALS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTENT" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ADDRESS" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PICTURE_ID" Type="Int32" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="DateTime" />
+          <NavigationProperty Name="EDRIVE_PICTURE" Relationship="EdriveAutosModel.FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE" FromRole="EDRIVE_TESTIMONIALS" ToRole="EDRIVE_PICTURE" />
+        </EntityType>
+        <EntityType Name="EMAIL_TEMPLATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="BCC" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="SUBJECT" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="BODY" Type="String" Nullable="false" MaxLength="2500" Unicode="false" FixedLength="false" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="LST_BUYERTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="BUYERs" Relationship="EdriveAutosModel.FK_BUYER_LST_BUYERTYPE" FromRole="LST_BUYERTYPE" ToRole="BUYER" />
+        </EntityType>
+        <EntityType Name="LST_COUNTRY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ISOCODE_2L" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="ISOCODE_3L" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="ISOCODE" Type="Int32" Nullable="false" />
+          <Property Name="DISPLAYORDER" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LST_DEALERTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="LST_STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTRY_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ABBREVIATION" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="DISPLAYORDER" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEBODY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="VEHICLEs" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEBODY" FromRole="LST_VEHICLEBODY" ToRole="VEHICLE" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEMAKE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="VEHICLEs" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE" FromRole="LST_VEHICLEMAKE" ToRole="VEHICLE" />
+          <NavigationProperty Name="LST_VEHICLEMAKE_ALIAS" Relationship="EdriveAutosModel.FK_LST_VEHICLEMAKE_ALIAS_VEHICLE" FromRole="LST_VEHICLEMAKE" ToRole="LST_VEHICLEMAKE_ALIAS" />
+          <NavigationProperty Name="LST_VEHICLEMODEL" Relationship="EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE" FromRole="LST_VEHICLEMAKE" ToRole="LST_VEHICLEMODEL" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEMODEL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="MAKE_ID" Type="Int32" Nullable="false" />
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VEHICLEs" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL" FromRole="LST_VEHICLEMODEL" ToRole="VEHICLE" />
+          <NavigationProperty Name="LST_VEHICLEMAKE" Relationship="EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE" FromRole="LST_VEHICLEMODEL" ToRole="LST_VEHICLEMAKE" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLEOPTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="VEHICLE_OPTIONS" Relationship="EdriveAutosModel.FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION" FromRole="LST_VEHICLEOPTION" ToRole="VEHICLE_OPTIONS" />
+        </EntityType>
+        <EntityType Name="LST_VEHICLETYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="VEHICLEs" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLETYPE" FromRole="LST_VEHICLETYPE" ToRole="VEHICLE" />
+        </EntityType>
+        <EntityType Name="LST_ZIP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODE" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="LAT" Type="Double" Nullable="false" />
+          <Property Name="LONG" Type="Double" Nullable="false" />
+          <Property Name="CITY" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="STATE" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="CLASS" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SITE_SETTINGS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="VALUE" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SITE_STATISTICS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLES_TOTAL" Type="Int32" />
+          <Property Name="VEHICLES_DELETED" Type="Int32" />
+          <Property Name="VEHICLES_QUALIFIED" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VEHICLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISDELETED" Type="Boolean" Nullable="false" />
+          <Property Name="DATE_CREATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_UPDATED" Type="DateTime" Nullable="false" />
+          <Property Name="DATE_NADACHECKED" Type="DateTime" />
+          <Property Name="DATE_INSTOCK" Type="DateTime" />
+          <Property Name="SALESPERSON_ID" Type="Int32" />
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="STOCKNUMBER" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VIN" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="YEAR" Type="Int32" />
+          <Property Name="MAKE_ID" Type="Int32" Nullable="false" />
+          <Property Name="MODEL_ID" Type="Int32" Nullable="false" />
+          <Property Name="TRIM" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BODY_ID" Type="Int32" Nullable="false" />
+          <Property Name="MILEAGE" Type="Int32" />
+          <Property Name="CONDITION" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="COLOR_EXTERIOR" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="COLOR_INTERIOR" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DOORS" Type="Int32" />
+          <Property Name="ENGINE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TRANSMISSION" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FUEL_TYPE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DRIVE_TYPE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="FILENAME" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PRICE_QUALIFY" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PRICE_AVERAGERETAIL" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PRICE_AVERAGETRADEIN" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PRICE_COST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PRICE_WHOLESALE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RESERVED" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SAVINGS" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FUEL_CITY" Type="Int32" />
+          <Property Name="FUEL_HIGHWAY" Type="Int32" />
+          <Property Name="TITLE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PICS" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="OWNERDETAIL" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ISFEATURE" Type="Boolean" />
+          <Property Name="ISNEW" Type="Boolean" />
+          <Property Name="ISOFFER" Type="Boolean" />
+          <Property Name="ISONDEALERPROFILE" Type="Boolean" />
+          <Property Name="ISQUALIFIED" Type="Boolean" Nullable="false" />
+          <Property Name="ISWARRANTY" Type="Boolean" />
+          <Property Name="ZIP" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="BUYER_WISHLIST" Relationship="EdriveAutosModel.FK_BUYER_WISHLIST_VEHICLE1" FromRole="VEHICLE" ToRole="BUYER_WISHLIST" />
+          <NavigationProperty Name="DEALER_SALESPERSON" Relationship="EdriveAutosModel.FK_VEHICLE_DEALER_SALESPERSON" FromRole="VEHICLE" ToRole="DEALER_SALESPERSON" />
+          <NavigationProperty Name="LST_VEHICLEBODY" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEBODY" FromRole="VEHICLE" ToRole="LST_VEHICLEBODY" />
+          <NavigationProperty Name="LST_VEHICLEMAKE" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE" FromRole="VEHICLE" ToRole="LST_VEHICLEMAKE" />
+          <NavigationProperty Name="LST_VEHICLEMODEL" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL" FromRole="VEHICLE" ToRole="LST_VEHICLEMODEL" />
+          <NavigationProperty Name="LST_VEHICLETYPE" Relationship="EdriveAutosModel.FK_VEHICLE_LST_VEHICLETYPE" FromRole="VEHICLE" ToRole="LST_VEHICLETYPE" />
+          <NavigationProperty Name="VEHICLE_OPTIONS" Relationship="EdriveAutosModel.FK_VEHICLE_OPTIONS_VEHICLE" FromRole="VEHICLE" ToRole="VEHICLE_OPTIONS" />
+          <NavigationProperty Name="VEHICLE_IMAGES" Relationship="EdriveAutosModel.FK_VEHICLE_IMAGES_VEHICLE" FromRole="VEHICLE" ToRole="VEHICLE_IMAGES" />
+          <NavigationProperty Name="VEHICLE_RATING" Relationship="EdriveAutosModel.FK_VEHICLE_RATING_VEHICLE" FromRole="VEHICLE" ToRole="VEHICLE_RATING" />
+        </EntityType>
+        <Association Name="FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST">
+          <End Role="BUYER" Type="EdriveAutosModel.BUYER" Multiplicity="1" />
+          <End Role="BUYER_FINANCEREQUEST" Type="EdriveAutosModel.BUYER_FINANCEREQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_FINANCEREQUEST">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_INTERESTED_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.BUYER" Multiplicity="1" />
+          <End Role="BUYER_INTERESTED" Type="EdriveAutosModel.BUYER_INTERESTED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_INTERESTED">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_LST_BUYERTYPE">
+          <End Role="LST_BUYERTYPE" Type="EdriveAutosModel.LST_BUYERTYPE" Multiplicity="0..1" />
+          <End Role="BUYER" Type="EdriveAutosModel.BUYER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_BUYERTYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER">
+              <PropertyRef Name="TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_PASSWORDRECOVERY_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.BUYER" Multiplicity="1" />
+          <End Role="BUYER_PASSWORDRECOVERY" Type="EdriveAutosModel.BUYER_PASSWORDRECOVERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_PASSWORDRECOVERY">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_QUERY_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.BUYER" Multiplicity="1" />
+          <End Role="BUYER_QUERY" Type="EdriveAutosModel.BUYER_QUERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_QUERY">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_WISHLIST_BUYER">
+          <End Role="BUYER" Type="EdriveAutosModel.BUYER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BUYER_WISHLIST" Type="EdriveAutosModel.BUYER_WISHLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUYER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_WISHLIST">
+              <PropertyRef Name="BUYER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BUYER_WISHLIST_VEHICLE1">
+          <End Role="VEHICLE" Type="EdriveAutosModel.VEHICLE" Multiplicity="0..1" />
+          <End Role="BUYER_WISHLIST" Type="EdriveAutosModel.BUYER_WISHLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BUYER_WISHLIST">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_ATTRIBUTE_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.DEALER" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_ATTRIBUTE" Type="EdriveAutosModel.DEALER_ATTRIBUTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_ATTRIBUTE">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_FTPDIRECTORIES_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.DEALER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_FTPDIRECTORIES" Type="EdriveAutosModel.DEALER_FTPDIRECTORIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_FTPDIRECTORIES">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_PROFILE_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.DEALER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_PROFILE" Type="EdriveAutosModel.DEALER_PROFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_PROFILE">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEALER_SALESPERSON_DEALER">
+          <End Role="DEALER" Type="EdriveAutosModel.DEALER" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEALER_SALESPERSON" Type="EdriveAutosModel.DEALER_SALESPERSON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEALER_SALESPERSON">
+              <PropertyRef Name="DEALER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_DEALER_SALESPERSON">
+          <End Role="DEALER_SALESPERSON" Type="EdriveAutosModel.DEALER_SALESPERSON" Multiplicity="0..1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEALER_SALESPERSON">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="SALESPERSON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_EGEAR_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.EDRIVE_PICTURE" Multiplicity="0..1" />
+          <End Role="EDRIVE_EGEAR" Type="EdriveAutosModel.EDRIVE_EGEAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_EGEAR">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.EDRIVE_PICTURE" Multiplicity="0..1" />
+          <End Role="EDRIVE_MANAGEMENTTEAM" Type="EdriveAutosModel.EDRIVE_MANAGEMENTTEAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_MANAGEMENTTEAM">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_PARTNERS_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.EDRIVE_PICTURE" Multiplicity="1" />
+          <End Role="EDRIVE_PARTNERS" Type="EdriveAutosModel.EDRIVE_PARTNERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_PARTNERS">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE">
+          <End Role="EDRIVE_PICTURE" Type="EdriveAutosModel.EDRIVE_PICTURE" Multiplicity="0..1" />
+          <End Role="EDRIVE_TESTIMONIALS" Type="EdriveAutosModel.EDRIVE_TESTIMONIALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDRIVE_PICTURE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EDRIVE_TESTIMONIALS">
+              <PropertyRef Name="PICTURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLEBODY">
+          <End Role="LST_VEHICLEBODY" Type="EdriveAutosModel.LST_VEHICLEBODY" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEBODY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="BODY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLEMAKE">
+          <End Role="LST_VEHICLEMAKE" Type="EdriveAutosModel.LST_VEHICLEMAKE" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMAKE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MAKE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLEMODEL">
+          <End Role="LST_VEHICLEMODEL" Type="EdriveAutosModel.LST_VEHICLEMODEL" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMODEL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MODEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_LST_VEHICLETYPE">
+          <End Role="LST_VEHICLETYPE" Type="EdriveAutosModel.LST_VEHICLETYPE" Multiplicity="1" />
+          <End Role="VEHICLE" Type="EdriveAutosModel.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLETYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LST_VEHICLEMAKE_ALIAS">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="MAKE_ID" Nullable="false" />
+          <NavigationProperty Name="LST_VEHICLEMAKE" Relationship="EdriveAutosModel.FK_LST_VEHICLEMAKE_ALIAS_VEHICLE" FromRole="LST_VEHICLEMAKE_ALIAS" ToRole="LST_VEHICLEMAKE" />
+        </EntityType>
+        <EntityType Name="VEHICLE_IMAGES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VEHICLE_ID" Nullable="false" />
+          <Property Type="Int32" Name="DISPLAY_ORDER" Nullable="false" />
+          <Property Type="String" Name="URL" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VEHICLE" Relationship="EdriveAutosModel.FK_VEHICLE_IMAGES_VEHICLE" FromRole="VEHICLE_IMAGES" ToRole="VEHICLE" />
+        </EntityType>
+        <EntityType Name="VEHICLE_OPTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OPTION_ID" Nullable="false" />
+          <Property Type="Int32" Name="VEHICLE_ID" Nullable="false" />
+          <NavigationProperty Name="LST_VEHICLEOPTION" Relationship="EdriveAutosModel.FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION" FromRole="VEHICLE_OPTIONS" ToRole="LST_VEHICLEOPTION" />
+          <NavigationProperty Name="VEHICLE" Relationship="EdriveAutosModel.FK_VEHICLE_OPTIONS_VEHICLE" FromRole="VEHICLE_OPTIONS" ToRole="VEHICLE" />
+        </EntityType>
+        <EntityType Name="VEHICLE_RATING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VEHICLE_ID" Nullable="false" />
+          <Property Type="Double" Name="AVE_RATING" Nullable="false" />
+          <Property Type="Int32" Name="TOTAL_VOTES" Nullable="false" />
+          <NavigationProperty Name="VEHICLE" Relationship="EdriveAutosModel.FK_VEHICLE_RATING_VEHICLE" FromRole="VEHICLE_RATING" ToRole="VEHICLE" />
+        </EntityType>
+        <Association Name="FK_LST_VEHICLEMAKE_ALIAS_VEHICLE">
+          <End Type="EdriveAutosModel.LST_VEHICLEMAKE" Role="LST_VEHICLEMAKE" Multiplicity="1" />
+          <End Type="EdriveAutosModel.LST_VEHICLEMAKE_ALIAS" Role="LST_VEHICLEMAKE_ALIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMAKE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LST_VEHICLEMAKE_ALIAS">
+              <PropertyRef Name="MAKE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION">
+          <End Type="EdriveAutosModel.LST_VEHICLEOPTION" Role="LST_VEHICLEOPTION" Multiplicity="1" />
+          <End Type="EdriveAutosModel.VEHICLE_OPTIONS" Role="VEHICLE_OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEOPTION">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_OPTIONS">
+              <PropertyRef Name="OPTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_OPTIONS_VEHICLE">
+          <End Type="EdriveAutosModel.VEHICLE" Role="VEHICLE" Multiplicity="1" />
+          <End Type="EdriveAutosModel.VEHICLE_OPTIONS" Role="VEHICLE_OPTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_OPTIONS">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_IMAGES_VEHICLE">
+          <End Type="EdriveAutosModel.VEHICLE" Role="VEHICLE" Multiplicity="1" />
+          <End Type="EdriveAutosModel.VEHICLE_IMAGES" Role="VEHICLE_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_IMAGES">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_RATING_VEHICLE">
+          <End Type="EdriveAutosModel.VEHICLE" Role="VEHICLE" Multiplicity="1" />
+          <End Type="EdriveAutosModel.VEHICLE_RATING" Role="VEHICLE_RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_RATING">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE">
+          <End Type="EdriveAutosModel.LST_VEHICLEMAKE" Role="LST_VEHICLEMAKE" Multiplicity="1" />
+          <End Type="EdriveAutosModel.LST_VEHICLEMODEL" Role="LST_VEHICLEMODEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LST_VEHICLEMAKE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LST_VEHICLEMODEL">
+              <PropertyRef Name="MAKE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EdriveAutosModelStoreContainer" CdmEntityContainer="EdriveAutosEntities">
+          <EntitySetMapping Name="BUYERs"><EntityTypeMapping TypeName="EdriveAutosModel.BUYER"><MappingFragment StoreEntitySet="BUYER">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME_FIRST" ColumnName="NAME_FIRST" />
+            <ScalarProperty Name="NAME_LAST" ColumnName="NAME_LAST" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+            <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+            <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+            <ScalarProperty Name="IPADDRESS" ColumnName="IPADDRESS" />
+            <ScalarProperty Name="DATE_REGISTERED" ColumnName="DATE_REGISTERED" />
+            <ScalarProperty Name="DATE_EXPIRED" ColumnName="DATE_EXPIRED" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+            <ScalarProperty Name="ISNEWSLETTER" ColumnName="ISNEWSLETTER" />
+            <ScalarProperty Name="ISTRIAL" ColumnName="ISTRIAL" />
+            <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+            <ScalarProperty Name="CITY" ColumnName="CITY" />
+            <ScalarProperty Name="STATE" ColumnName="STATE" />
+            <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BUYER_FAQ"><EntityTypeMapping TypeName="EdriveAutosModel.BUYER_FAQ"><MappingFragment StoreEntitySet="BUYER_FAQ">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+            <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+            <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BUYER_FINANCEREQUEST"><EntityTypeMapping TypeName="EdriveAutosModel.BUYER_FINANCEREQUEST"><MappingFragment StoreEntitySet="BUYER_FINANCEREQUEST">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="BUYER_ID" ColumnName="BUYER_ID" />
+            <ScalarProperty Name="NAME_EMPLOYER" ColumnName="NAME_EMPLOYER" />
+            <ScalarProperty Name="NAME_FIRST" ColumnName="NAME_FIRST" />
+            <ScalarProperty Name="NAME_LAST" ColumnName="NAME_LAST" />
+            <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+            <ScalarProperty Name="CITY" ColumnName="CITY" />
+            <ScalarProperty Name="STATE" ColumnName="STATE" />
+            <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+            <ScalarProperty Name="EMIAL" ColumnName="EMIAL" />
+            <ScalarProperty Name="PHONE_HOME" ColumnName="PHONE_HOME" />
+            <ScalarProperty Name="PHONE_CELL" ColumnName="PHONE_CELL" />
+            <ScalarProperty Name="RESIDENCE_TYPE" ColumnName="RESIDENCE_TYPE" />
+            <ScalarProperty Name="LENGTHOFTIME_ATADDRESS" ColumnName="LENGTHOFTIME_ATADDRESS" />
+            <ScalarProperty Name="LENGTHOFTIME_ATJOB" ColumnName="LENGTHOFTIME_ATJOB" />
+            <ScalarProperty Name="MONTHRENT_MORTGAGE" ColumnName="MONTHRENT_MORTGAGE" />
+            <ScalarProperty Name="JOB_TITLE" ColumnName="JOB_TITLE" />
+            <ScalarProperty Name="PHONE_WORK" ColumnName="PHONE_WORK" />
+            <ScalarProperty Name="GROSSINCOME" ColumnName="GROSSINCOME" />
+            <ScalarProperty Name="DOWNPAYMENT" ColumnName="DOWNPAYMENT" />
+            <ScalarProperty Name="ISBANKRUPT" ColumnName="ISBANKRUPT" />
+            <ScalarProperty Name="CREDITSCORE" ColumnName="CREDITSCORE" />
+            <ScalarProperty Name="ISCOSIGNER" ColumnName="ISCOSIGNER" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BUYER_INTERESTED"><EntityTypeMapping TypeName="EdriveAutosModel.BUYER_INTERESTED"><MappingFragment StoreEntitySet="BUYER_INTERESTED">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="BUYER_ID" ColumnName="BUYER_ID" />
+            <ScalarProperty Name="NAME_FIRST" ColumnName="NAME_FIRST" />
+            <ScalarProperty Name="NAME_LAST" ColumnName="NAME_LAST" />
+            <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+            <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+            <ScalarProperty Name="CONTACT_TYPE" ColumnName="CONTACT_TYPE" />
+            <ScalarProperty Name="INTEREST_TYPE" ColumnName="INTEREST_TYPE" />
+            <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="ISFINANCE" ColumnName="ISFINANCE" />
+            <ScalarProperty Name="ISPRICELOCK" ColumnName="ISPRICELOCK" />
+            <ScalarProperty Name="ISTRADEIN" ColumnName="ISTRADEIN" />
+            <ScalarProperty Name="DEALER_ID" ColumnName="DEALER_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BUYER_PASSWORDRECOVERY"><EntityTypeMapping TypeName="EdriveAutosModel.BUYER_PASSWORDRECOVERY"><MappingFragment StoreEntitySet="BUYER_PASSWORDRECOVERY">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="BUYER_ID" ColumnName="BUYER_ID" />
+            <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+            <ScalarProperty Name="ISEXPIRED" ColumnName="ISEXPIRED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BUYER_QUERY"><EntityTypeMapping TypeName="EdriveAutosModel.BUYER_QUERY"><MappingFragment StoreEntitySet="BUYER_QUERY">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="BUYER_ID" ColumnName="BUYER_ID" />
+            <ScalarProperty Name="NAME_FIRST" ColumnName="NAME_FIRST" />
+            <ScalarProperty Name="NAME_LAST" ColumnName="NAME_LAST" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+            <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+            <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+            <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+            <ScalarProperty Name="IPADDRESS" ColumnName="IPADDRESS" />
+            <ScalarProperty Name="DATE_EXPIRED" ColumnName="DATE_EXPIRED" />
+            <ScalarProperty Name="DATE_REGISTERED" ColumnName="DATE_REGISTERED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BUYER_WISHLIST"><EntityTypeMapping TypeName="EdriveAutosModel.BUYER_WISHLIST"><MappingFragment StoreEntitySet="BUYER_WISHLIST">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+            <ScalarProperty Name="BUYER_ID" ColumnName="BUYER_ID" />
+            <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DEALERs"><EntityTypeMapping TypeName="EdriveAutosModel.DEALER"><MappingFragment StoreEntitySet="DEALER">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+            <ScalarProperty Name="CITY" ColumnName="CITY" />
+            <ScalarProperty Name="STATE" ColumnName="STATE" />
+            <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+            <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DEALER_ATTRIBUTE"><EntityTypeMapping TypeName="EdriveAutosModel.DEALER_ATTRIBUTE"><MappingFragment StoreEntitySet="DEALER_ATTRIBUTE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="DEALER_ID" ColumnName="DEALER_ID" />
+            <ScalarProperty Name="KEY" ColumnName="KEY" />
+            <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DEALER_FAQ"><EntityTypeMapping TypeName="EdriveAutosModel.DEALER_FAQ"><MappingFragment StoreEntitySet="DEALER_FAQ">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+            <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+            <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DEALER_FTPDIRECTORIES"><EntityTypeMapping TypeName="EdriveAutosModel.DEALER_FTPDIRECTORIES"><MappingFragment StoreEntitySet="DEALER_FTPDIRECTORIES">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="DEALER_ID" ColumnName="DEALER_ID" />
+            <ScalarProperty Name="PATH" ColumnName="PATH" />
+            <ScalarProperty Name="USE" ColumnName="USE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DEALER_PROFILE"><EntityTypeMapping TypeName="EdriveAutosModel.DEALER_PROFILE"><MappingFragment StoreEntitySet="DEALER_PROFILE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="DEALER_ID" ColumnName="DEALER_ID" />
+            <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+            <ScalarProperty Name="APPLICATION_URL" ColumnName="APPLICATION_URL" />
+            <ScalarProperty Name="WARRANTY_URL" ColumnName="WARRANTY_URL" />
+            <ScalarProperty Name="SERVICE_URL" ColumnName="SERVICE_URL" />
+            <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+            <ScalarProperty Name="PAGE_IMAGE" ColumnName="PAGE_IMAGE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DEALER_SALESPERSON"><EntityTypeMapping TypeName="EdriveAutosModel.DEALER_SALESPERSON"><MappingFragment StoreEntitySet="DEALER_SALESPERSON">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="DEALERTYPE_ID" ColumnName="DEALERTYPE_ID" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+            <ScalarProperty Name="DATE_REGISTRATION" ColumnName="DATE_REGISTRATION" />
+            <ScalarProperty Name="DATE_EXPIRES" ColumnName="DATE_EXPIRES" />
+            <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+            <ScalarProperty Name="IPADDRESS" ColumnName="IPADDRESS" />
+            <ScalarProperty Name="ISTRIAL" ColumnName="ISTRIAL" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="DEALER_ID" ColumnName="DEALER_ID" />
+            <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+            <ScalarProperty Name="FAX" ColumnName="FAX" />
+            <ScalarProperty Name="NEWSLETTER" ColumnName="NEWSLETTER" />
+            <ScalarProperty Name="ISFEATURED" ColumnName="ISFEATURED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_CAMPAIGN"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_CAMPAIGN"><MappingFragment StoreEntitySet="EDRIVE_CAMPAIGN">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+            <ScalarProperty Name="BODY" ColumnName="BODY" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_EGEAR"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_EGEAR"><MappingFragment StoreEntitySet="EDRIVE_EGEAR">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+            <ScalarProperty Name="QUATITY" ColumnName="QUATITY" />
+            <ScalarProperty Name="PICTURE_ID" ColumnName="PICTURE_ID" />
+            <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+            <ScalarProperty Name="DISPLAYORDER" ColumnName="DISPLAYORDER" />
+            <ScalarProperty Name="ISPUBLISHED" ColumnName="ISPUBLISHED" />
+            <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_EMAILQUEUE"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_EMAILQUEUE"><MappingFragment StoreEntitySet="EDRIVE_EMAILQUEUE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+            <ScalarProperty Name="EMAIL_FROM" ColumnName="EMAIL_FROM" />
+            <ScalarProperty Name="EMAIL_TO" ColumnName="EMAIL_TO" />
+            <ScalarProperty Name="NAME_FROM" ColumnName="NAME_FROM" />
+            <ScalarProperty Name="NAME_TO" ColumnName="NAME_TO" />
+            <ScalarProperty Name="CC" ColumnName="CC" />
+            <ScalarProperty Name="BCC" ColumnName="BCC" />
+            <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+            <ScalarProperty Name="BODY" ColumnName="BODY" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_SENT" ColumnName="DATE_SENT" />
+            <ScalarProperty Name="SEND_ATTEMPTS" ColumnName="SEND_ATTEMPTS" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_MANAGEMENTTEAM"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_MANAGEMENTTEAM"><MappingFragment StoreEntitySet="EDRIVE_MANAGEMENTTEAM">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+            <ScalarProperty Name="PICTURE_ID" ColumnName="PICTURE_ID" />
+            <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+            <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+            <ScalarProperty Name="ISPUBLISHED" ColumnName="ISPUBLISHED" />
+            <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_NEWS"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_NEWS"><MappingFragment StoreEntitySet="EDRIVE_NEWS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+            <ScalarProperty Name="CONTENT_BRIEF" ColumnName="CONTENT_BRIEF" />
+            <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+            <ScalarProperty Name="ISPUBLISHED" ColumnName="ISPUBLISHED" />
+            <ScalarProperty Name="ISCOMMENTABLE" ColumnName="ISCOMMENTABLE" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_PARTNERS"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_PARTNERS"><MappingFragment StoreEntitySet="EDRIVE_PARTNERS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME_FIRST" ColumnName="NAME_FIRST" />
+            <ScalarProperty Name="NAME_LAST" ColumnName="NAME_LAST" />
+            <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+            <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+            <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+            <ScalarProperty Name="PICTURE_ID" ColumnName="PICTURE_ID" />
+            <ScalarProperty Name="ISAPPROVED" ColumnName="ISAPPROVED" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_PICTURE"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_PICTURE"><MappingFragment StoreEntitySet="EDRIVE_PICTURE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="BINARY" ColumnName="BINARY" />
+            <ScalarProperty Name="EXTENSION" ColumnName="EXTENSION" />
+            <ScalarProperty Name="ISNEW" ColumnName="ISNEW" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EDRIVE_TESTIMONIALS"><EntityTypeMapping TypeName="EdriveAutosModel.EDRIVE_TESTIMONIALS"><MappingFragment StoreEntitySet="EDRIVE_TESTIMONIALS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+            <ScalarProperty Name="PICTURE_ID" ColumnName="PICTURE_ID" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EMAIL_TEMPLATE"><EntityTypeMapping TypeName="EdriveAutosModel.EMAIL_TEMPLATE"><MappingFragment StoreEntitySet="EMAIL_TEMPLATE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="BCC" ColumnName="BCC" />
+            <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+            <ScalarProperty Name="BODY" ColumnName="BODY" />
+            <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_BUYERTYPE"><EntityTypeMapping TypeName="EdriveAutosModel.LST_BUYERTYPE"><MappingFragment StoreEntitySet="LST_BUYERTYPE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_COUNTRY"><EntityTypeMapping TypeName="EdriveAutosModel.LST_COUNTRY"><MappingFragment StoreEntitySet="LST_COUNTRY">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="ISOCODE_2L" ColumnName="ISOCODE_2L" />
+            <ScalarProperty Name="ISOCODE_3L" ColumnName="ISOCODE_3L" />
+            <ScalarProperty Name="ISOCODE" ColumnName="ISOCODE" />
+            <ScalarProperty Name="DISPLAYORDER" ColumnName="DISPLAYORDER" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_DEALERTYPE"><EntityTypeMapping TypeName="EdriveAutosModel.LST_DEALERTYPE"><MappingFragment StoreEntitySet="LST_DEALERTYPE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_STATE"><EntityTypeMapping TypeName="EdriveAutosModel.LST_STATE"><MappingFragment StoreEntitySet="LST_STATE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="COUNTRY_ID" ColumnName="COUNTRY_ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+            <ScalarProperty Name="DISPLAYORDER" ColumnName="DISPLAYORDER" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_VEHICLEBODY"><EntityTypeMapping TypeName="EdriveAutosModel.LST_VEHICLEBODY"><MappingFragment StoreEntitySet="LST_VEHICLEBODY">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_VEHICLEMAKE"><EntityTypeMapping TypeName="EdriveAutosModel.LST_VEHICLEMAKE"><MappingFragment StoreEntitySet="LST_VEHICLEMAKE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_VEHICLEMODEL"><EntityTypeMapping TypeName="EdriveAutosModel.LST_VEHICLEMODEL"><MappingFragment StoreEntitySet="LST_VEHICLEMODEL">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="MAKE_ID" ColumnName="MAKE_ID" />
+            <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_VEHICLEOPTION"><EntityTypeMapping TypeName="EdriveAutosModel.LST_VEHICLEOPTION"><MappingFragment StoreEntitySet="LST_VEHICLEOPTION">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_VEHICLETYPE"><EntityTypeMapping TypeName="EdriveAutosModel.LST_VEHICLETYPE"><MappingFragment StoreEntitySet="LST_VEHICLETYPE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_ZIP"><EntityTypeMapping TypeName="EdriveAutosModel.LST_ZIP"><MappingFragment StoreEntitySet="LST_ZIP">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CODE" ColumnName="CODE" />
+            <ScalarProperty Name="LAT" ColumnName="LAT" />
+            <ScalarProperty Name="LONG" ColumnName="LONG" />
+            <ScalarProperty Name="CITY" ColumnName="CITY" />
+            <ScalarProperty Name="STATE" ColumnName="STATE" />
+            <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SITE_SETTINGS"><EntityTypeMapping TypeName="EdriveAutosModel.SITE_SETTINGS"><MappingFragment StoreEntitySet="SITE_SETTINGS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SITE_STATISTICS"><EntityTypeMapping TypeName="EdriveAutosModel.SITE_STATISTICS"><MappingFragment StoreEntitySet="SITE_STATISTICS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="VEHICLES_TOTAL" ColumnName="VEHICLES_TOTAL" />
+            <ScalarProperty Name="VEHICLES_DELETED" ColumnName="VEHICLES_DELETED" />
+            <ScalarProperty Name="VEHICLES_QUALIFIED" ColumnName="VEHICLES_QUALIFIED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="VEHICLEs"><EntityTypeMapping TypeName="EdriveAutosModel.VEHICLE"><MappingFragment StoreEntitySet="VEHICLE">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+            <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+            <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+            <ScalarProperty Name="DATE_NADACHECKED" ColumnName="DATE_NADACHECKED" />
+            <ScalarProperty Name="DATE_INSTOCK" ColumnName="DATE_INSTOCK" />
+            <ScalarProperty Name="SALESPERSON_ID" ColumnName="SALESPERSON_ID" />
+            <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+            <ScalarProperty Name="STOCKNUMBER" ColumnName="STOCKNUMBER" />
+            <ScalarProperty Name="VIN" ColumnName="VIN" />
+            <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+            <ScalarProperty Name="MAKE_ID" ColumnName="MAKE_ID" />
+            <ScalarProperty Name="MODEL_ID" ColumnName="MODEL_ID" />
+            <ScalarProperty Name="TRIM" ColumnName="TRIM" />
+            <ScalarProperty Name="BODY_ID" ColumnName="BODY_ID" />
+            <ScalarProperty Name="MILEAGE" ColumnName="MILEAGE" />
+            <ScalarProperty Name="CONDITION" ColumnName="CONDITION" />
+            <ScalarProperty Name="COLOR_EXTERIOR" ColumnName="COLOR_EXTERIOR" />
+            <ScalarProperty Name="COLOR_INTERIOR" ColumnName="COLOR_INTERIOR" />
+            <ScalarProperty Name="DOORS" ColumnName="DOORS" />
+            <ScalarProperty Name="ENGINE" ColumnName="ENGINE" />
+            <ScalarProperty Name="TRANSMISSION" ColumnName="TRANSMISSION" />
+            <ScalarProperty Name="FUEL_TYPE" ColumnName="FUEL_TYPE" />
+            <ScalarProperty Name="DRIVE_TYPE" ColumnName="DRIVE_TYPE" />
+            <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+            <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+            <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+            <ScalarProperty Name="PRICE_QUALIFY" ColumnName="PRICE_QUALIFY" />
+            <ScalarProperty Name="PRICE_AVERAGERETAIL" ColumnName="PRICE_AVERAGERETAIL" />
+            <ScalarProperty Name="PRICE_AVERAGETRADEIN" ColumnName="PRICE_AVERAGETRADEIN" />
+            <ScalarProperty Name="PRICE_COST" ColumnName="PRICE_COST" />
+            <ScalarProperty Name="PRICE_WHOLESALE" ColumnName="PRICE_WHOLESALE" />
+            <ScalarProperty Name="RESERVED" ColumnName="RESERVED" />
+            <ScalarProperty Name="SAVINGS" ColumnName="SAVINGS" />
+            <ScalarProperty Name="FUEL_CITY" ColumnName="FUEL_CITY" />
+            <ScalarProperty Name="FUEL_HIGHWAY" ColumnName="FUEL_HIGHWAY" />
+            <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+            <ScalarProperty Name="PICS" ColumnName="PICS" />
+            <ScalarProperty Name="OWNERDETAIL" ColumnName="OWNERDETAIL" />
+            <ScalarProperty Name="ISFEATURE" ColumnName="ISFEATURE" />
+            <ScalarProperty Name="ISNEW" ColumnName="ISNEW" />
+            <ScalarProperty Name="ISOFFER" ColumnName="ISOFFER" />
+            <ScalarProperty Name="ISONDEALERPROFILE" ColumnName="ISONDEALERPROFILE" />
+            <ScalarProperty Name="ISQUALIFIED" ColumnName="ISQUALIFIED" />
+            <ScalarProperty Name="ISWARRANTY" ColumnName="ISWARRANTY" />
+            <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LST_VEHICLEMAKE_ALIAS">
+            <EntityTypeMapping TypeName="EdriveAutosModel.LST_VEHICLEMAKE_ALIAS">
+              <MappingFragment StoreEntitySet="LST_VEHICLEMAKE_ALIAS">
+                <ScalarProperty Name="MAKE_ID" ColumnName="MAKE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICLE_IMAGES">
+            <EntityTypeMapping TypeName="EdriveAutosModel.VEHICLE_IMAGES">
+              <MappingFragment StoreEntitySet="VEHICLE_IMAGES">
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="DISPLAY_ORDER" ColumnName="DISPLAY_ORDER" />
+                <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICLE_OPTIONS">
+            <EntityTypeMapping TypeName="EdriveAutosModel.VEHICLE_OPTIONS">
+              <MappingFragment StoreEntitySet="VEHICLE_OPTIONS">
+                <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+                <ScalarProperty Name="OPTION_ID" ColumnName="OPTION_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICLE_RATING">
+            <EntityTypeMapping TypeName="EdriveAutosModel.VEHICLE_RATING">
+              <MappingFragment StoreEntitySet="VEHICLE_RATING">
+                <ScalarProperty Name="TOTAL_VOTES" ColumnName="TOTAL_VOTES" />
+                <ScalarProperty Name="AVE_RATING" ColumnName="AVE_RATING" />
+                <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SearchStandard" FunctionName="EdriveAutosModel.Store.SPSEARCH_STANDARD" />
+          <FunctionImportMapping FunctionImportName="SearchAdvanced" FunctionName="EdriveAutosModel.Store.SPSEARCH_ADVANCED" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EdriveAutoModel">
+        <EntityTypeShape EntityType="EdriveAutosModel.BUYER" Width="1.5" PointX="5.25" PointY="0.75" Height="5.634013671875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.BUYER_FAQ" Width="1.5" PointX="7.75" PointY="14" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.BUYER_FINANCEREQUEST" Width="1.5" PointX="7.5" PointY="3.125" Height="5.8263151041666648" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.BUYER_INTERESTED" Width="1.5" PointX="7.5" PointY="20.75" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.BUYER_PASSWORDRECOVERY" Width="1.5" PointX="7.5" PointY="26.125" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.BUYER_QUERY" Width="1.5" PointX="7.5" PointY="28.875" Height="3.903300781249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.BUYER_WISHLIST" Width="1.5" PointX="7.5" PointY="17.5" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.DEALER" Width="1.5" PointX="0.75" PointY="12.375" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.DEALER_ATTRIBUTE" Width="1.5" PointX="3" PointY="7.375" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.DEALER_FAQ" Width="1.5" PointX="14.75" PointY="3" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.DEALER_FTPDIRECTORIES" Width="1.5" PointX="3" PointY="10.125" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.DEALER_PROFILE" Width="1.5" PointX="3" PointY="12.875" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.DEALER_SALESPERSON" Width="1.5" PointX="3" PointY="16.375" Height="4.4802050781250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_CAMPAIGN" Width="1.5" PointX="5.75" PointY="10" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_EGEAR" Width="1.5" PointX="12" PointY="3.875" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_EMAILQUEUE" Width="1.5" PointX="14.75" PointY="7" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_MANAGEMENTTEAM" Width="1.5" PointX="12" PointY="7.875" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_NEWS" Width="1.5" PointX="14.75" PointY="12" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_PARTNERS" Width="1.5" PointX="12" PointY="11.625" Height="3.7109993489583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_PICTURE" Width="1.5" PointX="9.75" PointY="10" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EDRIVE_TESTIMONIALS" Width="1.5" PointX="12" PointY="16.125" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.EMAIL_TEMPLATE" Width="1.5" PointX="14.75" PointY="16" Height="2.1725878906250102" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_BUYERTYPE" Width="1.5" PointX="3" PointY="4.875" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_COUNTRY" Width="1.5" PointX="16.75" PointY="3" Height="2.1725878906250102" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_DEALERTYPE" Width="1.5" PointX="16.75" PointY="6" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_STATE" Width="1.5" PointX="16.75" PointY="9" Height="1.9802864583333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_VEHICLEBODY" Width="1.5" PointX="3" PointY="22" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_VEHICLEMAKE" Width="1.5" PointX="3" PointY="24.375" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_VEHICLEMODEL" Width="1.5" PointX="3" PointY="26.75" Height="1.9802864583333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_VEHICLEOPTION" Width="1.5" PointX="16.75" PointY="12" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_VEHICLETYPE" Width="1.5" PointX="3" PointY="29.5" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_ZIP" Width="1.5" PointX="16.75" PointY="15" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.SITE_SETTINGS" Width="1.5" PointX="14.75" PointY="19" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.SITE_STATISTICS" Width="1.5" PointX="16.75" PointY="19" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EdriveAutosModel.VEHICLE" Width="1.5" PointX="5.25" PointY="13" Height="11.018453776041666" IsExpanded="true" />
+        <AssociationConnector Association="EdriveAutosModel.FK_BUYER_FINANCEREQUEST_BUYER_FINANCEREQUEST" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="4.7545068359375" />
+          <ConnectorPoint PointX="6.916666666666667" PointY="4.7545068359374989" />
+          <ConnectorPoint PointX="7.083333333333333" PointY="4.7545068359375" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="4.7545068359374989" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="4.7545068359375" />
+          <ConnectorPoint PointX="7.5" PointY="4.7545068359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_BUYER_INTERESTED_BUYER" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="3.5670068359375" />
+          <ConnectorPoint PointX="6.916666666666667" PointY="3.5670068359374993" />
+          <ConnectorPoint PointX="7.083333333333333" PointY="3.5670068359375" />
+          <ConnectorPoint PointX="7.25" PointY="3.5670068359375" />
+          <ConnectorPoint PointX="7.25" PointY="9.2013151041666656" />
+          <ConnectorPoint PointX="7.5" PointY="9.2013151041666656" />
+          <ConnectorPoint PointX="7.5" PointY="17.25" />
+          <ConnectorPoint PointX="7.25" PointY="17.25" />
+          <ConnectorPoint PointX="7.25" PointY="20.375" />
+          <ConnectorPoint PointX="8.25" PointY="20.375" />
+          <ConnectorPoint PointX="8.25" PointY="20.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_BUYER_LST_BUYERTYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.6295068359375" />
+          <ConnectorPoint PointX="5.25" PointY="5.6295068359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_BUYER_PASSWORDRECOVERY_BUYER" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.406252" PointY="6.384013671875" />
+          <ConnectorPoint PointX="6.406252" PointY="9.75" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="9.7499999999999982" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="9.75" />
+          <ConnectorPoint PointX="7.75" PointY="9.75" />
+          <ConnectorPoint PointX="7.75" PointY="12.75" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="12.749999999999998" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="12.75" />
+          <ConnectorPoint PointX="7" PointY="12.75" />
+          <ConnectorPoint PointX="7" PointY="27.115143229166666" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="27.115143229166666" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="27.115143229166666" />
+          <ConnectorPoint PointX="7.5" PointY="27.115143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_BUYER_QUERY_BUYER" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.7968740000000007" PointY="6.384013671875" />
+          <ConnectorPoint PointX="5.7968740000000007" PointY="9.5" />
+          <ConnectorPoint PointX="6.3229186666666672" PointY="9.5" />
+          <ConnectorPoint PointX="6.4895853333333333" PointY="9.5" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="9.5" />
+          <ConnectorPoint PointX="7.583333333333333" PointY="9.5" />
+          <ConnectorPoint PointX="7.625" PointY="9.5" />
+          <ConnectorPoint PointX="7.625" PointY="13" />
+          <ConnectorPoint PointX="7.583333333333333" PointY="13" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="13" />
+          <ConnectorPoint PointX="7.270833333333333" PointY="13" />
+          <ConnectorPoint PointX="7.104166666666667" PointY="13" />
+          <ConnectorPoint PointX="7" PointY="13" />
+          <ConnectorPoint PointX="7" PointY="30.826650390624998" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="30.826650390624998" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="30.826650390624998" />
+          <ConnectorPoint PointX="7.5" PointY="30.826650390624998" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_BUYER_WISHLIST_BUYER" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.7968740000000007" PointY="6.384013671875" />
+          <ConnectorPoint PointX="5.7968740000000007" PointY="9.875" />
+          <ConnectorPoint PointX="7.375" PointY="9.875" />
+          <ConnectorPoint PointX="7.375" PointY="12.5" />
+          <ConnectorPoint PointX="6.916666666666667" PointY="12.5" />
+          <ConnectorPoint PointX="6.916666666666667" PointY="18.586293945312498" />
+          <ConnectorPoint PointX="7.104166666666667" PointY="18.586293945312498" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="18.586293945312498" />
+          <ConnectorPoint PointX="7.5" PointY="18.586293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_BUYER_WISHLIST_VEHICLE1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="17.980646972656249" />
+          <ConnectorPoint PointX="6.8333333333333339" PointY="17.980646972656249" />
+          <ConnectorPoint PointX="7.0833333333333339" PointY="17.980646972656249" />
+          <ConnectorPoint PointX="7.104166666666667" PointY="17.980646972656249" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="17.980646972656249" />
+          <ConnectorPoint PointX="7.5" PointY="17.980646972656249" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_DEALER_ATTRIBUTE_DEALER" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="12.375" />
+          <ConnectorPoint PointX="1.5" PointY="8.3651432291666659" />
+          <ConnectorPoint PointX="3" PointY="8.3651432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_DEALER_FTPDIRECTORIES_DEALER" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="12.375" />
+          <ConnectorPoint PointX="1.9062525" PointY="11.115143229166668" />
+          <ConnectorPoint PointX="3" PointY="11.115143229166668" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_DEALER_PROFILE_DEALER" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="14.249746093750002" />
+          <ConnectorPoint PointX="3" PointY="14.249746093750002" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_DEALER_SALESPERSON_DEALER" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="15.701396484375" />
+          <ConnectorPoint PointX="1.5" PointY="18.6151025390625" />
+          <ConnectorPoint PointX="3" PointY="18.6151025390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_DEALER_SALESPERSON" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="18.567005277547466" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.567005277547466" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="18.567005277547466" />
+          <ConnectorPoint PointX="5.25" PointY="18.567005277547466" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_EDRIVE_EGEAR_EDRIVE_PICTURE" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.5" PointY="10" />
+          <ConnectorPoint PointX="10.5" PointY="5.5381982421875016" />
+          <ConnectorPoint PointX="12" PointY="5.5381982421875016" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_EDRIVE_MANAGEMENTTEAM_EDRIVE_PICTURE" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="10.408396809895834" />
+          <ConnectorPoint PointX="12" PointY="10.408396809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_EDRIVE_PARTNERS_EDRIVE_PICTURE" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="12.091095377604169" />
+          <ConnectorPoint PointX="12" PointY="12.091095377604169" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.5" PointY="12.557190755208339" />
+          <ConnectorPoint PointX="10.5" PointY="17.499746093749998" />
+          <ConnectorPoint PointX="12" PointY="17.499746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEBODY" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="22.797841796874998" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="22.797841796874998" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="22.797841796874998" />
+          <ConnectorPoint PointX="5.25" PointY="22.797841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="25.409994100886721" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="25.409994100886721" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="25.409994100886721" />
+          <ConnectorPoint PointX="5.9687475" PointY="25.409994100886721" />
+          <ConnectorPoint PointX="5.9687475" PointY="24.595358072916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="26.751152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="26.376152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="15.752250638773681" />
+          <ConnectorPoint PointX="5.25" PointY="15.752250638773681" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_LST_VEHICLETYPE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="29.563460538461534" />
+          <ConnectorPoint PointX="4.9375" PointY="29.125960538461534" />
+          <ConnectorPoint PointX="4.9375" PointY="20.682423537211232" />
+          <ConnectorPoint PointX="5.25" PointY="20.682423537211232" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="EdriveAutosModel.LST_VEHICLEMAKE_ALIAS" Width="1.5" PointX="5.25" PointY="26.625" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="EdriveAutosModel.VEHICLE_IMAGES" Width="1.5" PointX="7.5" PointY="0.75" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="EdriveAutosModel.VEHICLE_OPTIONS" Width="1.5" PointX="19" PointY="18.625" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="EdriveAutosModel.VEHICLE_RATING" Width="1.5" PointX="7.5" PointY="35.25" Height="1.980286458333353" />
+        <AssociationConnector Association="EdriveAutosModel.FK_LST_VEHICLEMAKE_ALIAS_VEHICLE" >
+          <ConnectorPoint PointX="4.5" PointY="26.324131612179492" />
+          <ConnectorPoint PointX="4.8785744349011217" PointY="26.702706047080614" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="26.820557177278371" />
+          <ConnectorPoint PointX="5.03125" PointY="26.855381612179492" />
+          <ConnectorPoint PointX="5.03125" PointY="26.405097153846153" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="26.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION" >
+          <ConnectorPoint PointX="18.25" PointY="12.797841796875" />
+          <ConnectorPoint PointX="19.75" PointY="12.797841796875" />
+          <ConnectorPoint PointX="19.75" PointY="18.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_OPTIONS_VEHICLE" >
+          <ConnectorPoint PointX="6" PointY="13" />
+          <ConnectorPoint PointX="6" PointY="12.875" />
+          <ConnectorPoint PointX="6.3229186666666672" PointY="12.875" />
+          <ConnectorPoint PointX="6.4895853333333333" PointY="12.875" />
+          <ConnectorPoint PointX="6.8333333333333339" PointY="12.875" />
+          <ConnectorPoint PointX="7.0833333333333339" PointY="12.875" />
+          <ConnectorPoint PointX="7.1875" PointY="12.875" />
+          <ConnectorPoint PointX="7.1875" PointY="19.922587890624996" />
+          <ConnectorPoint PointX="14.5" PointY="19.922587890624996" />
+          <ConnectorPoint PointX="14.5" PointY="18.75" />
+          <ConnectorPoint PointX="18.625" PointY="18.75" />
+          <ConnectorPoint PointX="18.625" PointY="19.615143229166662" />
+          <ConnectorPoint PointX="19" PointY="19.615143229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_IMAGES_VEHICLE" >
+          <ConnectorPoint PointX="6.406252" PointY="13" />
+          <ConnectorPoint PointX="6.406252" PointY="12.230286458333339" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="12.230286458333337" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="12.230286458333339" />
+          <ConnectorPoint PointX="7.875" PointY="12.230286458333339" />
+          <ConnectorPoint PointX="7.875" PointY="9.3263151041666656" />
+          <ConnectorPoint PointX="7.583333333333333" PointY="9.3263151041666656" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="9.3263151041666656" />
+          <ConnectorPoint PointX="7" PointY="9.3263151041666656" />
+          <ConnectorPoint PointX="7" PointY="1.7401432291666765" />
+          <ConnectorPoint PointX="7.5" PointY="1.7401432291666765" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_VEHICLE_RATING_VEHICLE" >
+          <ConnectorPoint PointX="6.75" PointY="24.595358072916667" />
+          <ConnectorPoint PointX="6.9410744349011217" PointY="24.786432507817789" />
+          <ConnectorPoint PointX="7.0589255650988791" PointY="24.904283638015546" />
+          <ConnectorPoint PointX="7.125" PointY="24.970358072916667" />
+          <ConnectorPoint PointX="7.125" PointY="36.240143229166677" />
+          <ConnectorPoint PointX="7.5" PointY="36.240143229166677" />
+        </AssociationConnector>
+        <AssociationConnector Association="EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE" >
+          <ConnectorPoint PointX="3.75" PointY="26.355286458333335" />
+          <ConnectorPoint PointX="3.75" PointY="26.75" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

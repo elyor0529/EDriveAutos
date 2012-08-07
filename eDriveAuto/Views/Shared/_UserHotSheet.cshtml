@@ -1,0 +1,189 @@
+﻿@model Edrive.Models._HotSheetFilter
+<div>
+<div style="overflow:hidden">
+<div style="float:left;width:473px;margin-bottom:12px;padding-left:5px;padding-right:5px;">
+<h2>UserHotSheet</h2>
+</div>
+
+ <div style="float:left;text-align:right;color:White;padding-left:0px;padding-right:0px;">
+<span style="height: 37px;
+width: 234px;
+background-color: #8F520C;
+float: left;
+margin-right: 10px;
+padding-top: 24px;
+padding-right: 30px;">
+  @ViewData["DealerCount"] Dealer Vehicles in your area
+  </span>
+ <span style="height: 36px;width: 193px;background-color: #950706;float: left;
+padding-top: 25px;padding-right: 21px;">
+    @ViewData["SellerCount"] Seller Trade in your area
+    </span>
+ 
+  </div>
+
+  </div>
+
+ <div style="border:1px solid #AFDFFD;background:#F3FBFE;margin-right:13px;padding-left:5px;padding-right:5px;">
+
+ 
+
+
+@using (Html.BeginForm("HotSheet", "ManageVehicle", FormMethod.Post, new { id = "form1" }))
+{
+   <div style="color: red;font-weight: bold;text-align:center">
+   @(ViewData["Msg"]??"")
+
+   </div>
+    <br />
+    <table id="tblHotsheet">
+    <tr>
+    <td style="width:160px"> Search By Make
+    </td>
+    <td>
+    @Html.DropDownListFor(m => m.MakeID, (SelectList)(ViewData["Makes"]))
+    </td>
+    </tr>
+    <tr>
+    <td style="width:160px"> Search vehicles within</td>
+    <td>
+    <select id="Miles" name="Miles" style="width:150px;">
+    <option value="select">[select]</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+<option value="30">30</option>
+<option value="50">50</option>
+<option value="75">75</option>
+<option selected="selected"  value="100">100</option>
+<option value="200">200</option>
+<option value="1000">All Miles</option>
+
+    
+    </select>
+    @(ViewData["Zipcode"]!=null? ("of "+ViewData["Zipcode"].ToString()):"" )
+    </td>
+    </tr>
+    <tr>
+    <td style="width:160px"></td><td>
+
+    @Html.TextBoxFor(Model => Model.ZipValue, new { id = "txtZip" })
+      @*  <input id="txtZip" type="text" name="ZipValue"  />*@
+
+
+        <input type="hidden" value="@ViewData["Zipcode"]" name="Zip" id="Zip" />
+    @*   @Html.Hidden("Zip", ViewData["Zipcode"], new { id="Zip" })*@
+
+    <input id="ChaneZip" type="submit" value="Change Zip" name="ChaneZip" />
+      @Html.ValidationMessageFor(Model => Model.ZipValue)
+     </td>
+    </tr>
+
+    <tr>
+    <td style="width:160px">  </td><td> <input id="btnSearch" type="submit" value="Search" name="Search" />
+     <input id="Submit3" type="submit" value="Qualify" name="Qualify" />
+     </td>
+    </tr>
+    
+    </table>
+   
+    
+    
+
+
+<div>
+<div class="manageproduct" style="margin-top:25px;">
+@if (ViewData["Products"] != null)
+{
+	var lstProducts = ViewData["Products"] as List<Edrive.Edrivie_Service_Ref.Products>;
+     <div class="SearchDealer"> 
+      <table>
+      
+      <thead>
+    <th style="">    @Html.CheckBox("SelectAll") </th>
+    <th style="width:463px">Vehicle Make, Model, Year</th>
+    <th  style="  width:30px"> Details
+    </th>
+    <th  style="width:30px">
+    Seller Type
+    </th>
+    <th> Avg Trade Values
+    </th>
+    <th>Avg Retail Values
+    </th>
+    <th>Vehicle Price
+    </th>
+    <th style="width:30px">
+    Fixed/ Offer
+    </th>
+    <th>
+    CarFax
+    </th>
+    <th>
+    Contact
+    </th>
+
+    </thead>
+    <tbody>
+  
+    @foreach (var item in lstProducts)
+    {
+        var clsName = lstProducts.IndexOf(item) % 2 == 0 ? "alter" : "";
+            
+  
+   <tr class="@clsName" >
+    <td> 
+    <input type="checkbox"  name="chkProduct"  value="@item.productId" id="chkProduct@(lstProducts.IndexOf(item).ToString())"/>
+    </td>
+    <td>
+    @item.Year @item.MakeName @item.ModelName
+    </td>
+    <td  style="  width:30px">
+    <a href="#" onclick="SellerInfo(@item.productId)">View
+    
+    </a>
+    </td>
+    <td style="width:30px">
+   @((item.customerId == 0 || item.customerId == null) ? "P" : "D")
+
+    </td>
+    <td>
+    @item.averageTradeinPrice
+    </td>
+    <td>@item.averageRetailPrice
+    </td>
+    <td>@(String.Format("{0:0.00}", item.price_Current))
+    </td>
+    <td style="width:30px">F
+    </td>
+    <td>  <a href="#">View</a>
+    </td>
+    <td>  <a href="#" onclick="DealerInfo(@item.productId)">View</a>
+    </td>
+        </tr>
+        
+        
+    } 
+     </tbody>
+    </table>
+     </div>          
+}
+</div>
+
+<div>
+<br />
+     <!-- paging begin here-->   @Html.Partial("_Paging") <br />
+   
+             <!-- paging ends here-->
+
+</div>
+</div>
+
+    }
+
+ </div>
+    <div id="Modalpopup" style="display:none">
+    </div>
+    <div id="Modalpopup2" style="display:none">
+    </div>
+
+</div>

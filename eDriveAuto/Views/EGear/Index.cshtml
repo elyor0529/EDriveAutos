@@ -1,0 +1,380 @@
+﻿@model List<Edrive.Models.ED_EGear>
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Head
+{
+    <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+     <title>
+	EGear
+</title><meta name="metatitle" /><meta name="description" /><meta name="keywords" />
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //select all the a tag with name equal to modal
+            $('a[name=modal]').click(function (e) {
+                try {
+
+
+                    //Cancel the link behavior
+                    e.preventDefault();
+
+                    //Get the A tag
+                    var id = $(this).attr('href');
+
+                    //Get the screen height and width
+                    var maskHeight = $(document).height();
+                    var maskWidth = $(window).width();
+
+                    //Set heigth and width to mask to fill up the whole screen
+                    $('#mask').css({ 'width': maskWidth, 'height': maskHeight });
+
+                    //transition effect		
+                    $('#mask').fadeIn(1000);
+                    $('#mask').fadeTo("slow", 0.8);
+
+                    //Get the window height and width
+                    var winH = $(window).height();
+                    var winW = $(window).width();
+
+                    //Set the popup window to center
+                    $(id).css('top', winH / 2 - $(id).height() / 2);
+                    $(id).css('left', winW / 2 - $(id).width() / 2);
+
+                    //transition effect
+                    $(id).fadeIn(2000);
+                } catch (e) {
+                    alert(e.Message);
+                }
+
+            });
+
+
+            //if close button is clicked
+            $('.window .close').click(function (e) {
+                //Cancel the link behavior
+                e.preventDefault();
+
+                $('#mask').hide();
+                $('.window').hide();
+            });
+
+            $('#lnkClose').click(function () {
+                $('#mask').hide();
+                $('.window').hide();
+            });
+
+            //if mask is clicked
+            $('#mask').click(function () {
+                //$(this).hide();
+                //$('.window').hide();
+            });
+
+            $(window).resize(function () {
+
+                var box = $('#boxes .window');
+
+                //Get the screen height and width
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+
+                //Set height and width to mask to fill up the whole screen
+                $('#mask').css({ 'width': maskWidth, 'height': maskHeight });
+
+                //Get the window height and width
+                var winH = $(window).height();
+                var winW = $(window).width();
+
+                //Set the popup window to center
+                box.css('top', winH / 2 - box.height() / 2);
+                box.css('left', winW / 2 - box.width() / 2);
+
+            });
+
+        });
+
+</script>
+<style>
+ .tblEgear{width: 175px;
+padding: 45px;}
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+  
+#boxes .window {
+  position:fixed;
+  left:0;
+  top:0;
+ 
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+
+#boxes #dialog {
+  width:375px; 
+  height:203px;
+  padding:10px;
+  background-color:#ffffff;
+}
+
+#boxes #dialog1 {
+ 
+}
+
+#dialog1 .d-header {
+  background:url(images/login-header.png) no-repeat 0 0 transparent; 
+  
+}
+
+#dialog1 .d-header input {
+  position:relative;
+  top:60px;
+  left:100px;
+  border:3px solid #cccccc;
+  height:22px;
+  width:200px;
+  font-size:15px;
+  padding:5px;
+  margin-top:4px;
+}
+
+#dialog1 .d-blank {
+  float:left;
+  background:url(images/login-blank.png) no-repeat 0 0 transparent; 
+  width:267px; 
+  height:53px;
+}
+
+#dialog1 .d-login {
+  float:left;
+  width:108px; 
+  height:53px;
+}
+
+#boxes #dialog2 {
+  background:url(images/notice.png) no-repeat 0 0 transparent; 
+  width:326px; 
+  height:229px;
+  padding:50px 0 20px 25px;
+}
+</style>
+
+
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $("#formContact").submit(function () {
+
+                if ($(this).valid()) {
+                    SubmitForm();
+                }
+
+                return false;
+            });
+
+        })
+
+
+        function SubmitForm() { 
+            var Name = $("#Name").val();
+            var Email = $("#Email").val();
+            var CustomerType = ""; //$("#CustomerType").val();
+            var Address = $("#Address").val();
+            var HearAboutUsBy = $("#HearAboutUsBy").val(); ;
+
+            $("input:checkbox[name='CustomerType']:checked").each(function () {
+                CustomerType = $(this).val() + ",";
+           }); 
+            var City = $("#City").val();
+            var Country = $("#Country").val();
+            var State = $("#State").val();
+            var Zip = $("#Zip").val();
+            var Telephone = $("#Telephone").val();
+            var TelephoneExt = $("#TelephoneExt").val();
+            var Fax = $("#Fax").val();
+            var UserRequest_Question = $("#UserRequest_Question").val();
+            
+
+
+                                    var saveData = {
+                                        Name: Name,
+                                    Email : Email,
+                                    CustomerType: CustomerType,
+                                    Address: Address,
+                                    HearAboutUsBy: HearAboutUsBy,
+                                    City: City,
+                                    Country: Country,
+                                    State: State,
+                                    Zip: Zip,
+                                    Telephone: Telephone,
+                                    TelephoneExt: TelephoneExt,
+                                    Fax: Fax,
+                                    UserRequest_Question: UserRequest_Question
+                                };
+
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/ContactUs/ContactUsSubmit",
+                                    data: saveData,
+                                    dataType: "json",
+                                    contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                                    success: function (data) {
+
+
+                                        if (data != null) {
+                                            $("#Msg").html(data.Msg.toString());
+
+
+                                        }
+                                    },
+                                    error: function (req, status, error) {
+                                        $("#Msg").html("There was a problem registering your email, please try again.");
+                                    }
+                                });
+
+        }
+    </script> 
+}
+<div class="product-inner-page">
+    <div class="divdetail-inner">
+        <div class="clear">
+        </div>
+    </div>
+    <div class="tab-new">
+        <div class="teb-left">
+        </div>
+        <div class="tab-line">
+            <div class="tab-tital">
+                EGear
+            </div>
+        </div>
+        <div class="tab-right">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="clear1">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new-top">
+        </div>
+        <div class="divbottommiddetail-new-line-top-inner">
+        </div>
+        <div class="divbottomright-new-top">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="divinnercontent-home-new-one">
+         
+        <div class="overviewdetaillogowarAboutus">
+            <div style="margin-bottom: 15px;margin-left:41px;">
+                <img src="Content/Themes/App_Themes/EDrive/images/e-gear.jpg" alt="Emanagement" />
+            </div>
+       
+                <div  id="ddlEGear"  style="overflow:hidden">
+                   
+                   @{
+                       if (Model != null)
+                       {
+                       <table>
+                           @foreach (var item in Model)
+                           {
+                               if (Model.IndexOf(item) % 3 == 0)
+                               {
+                                   @:<tr>
+                               }
+                              <td class="tblEgear">
+                                  
+                       
+                            <table  align="center">
+                            <tr>
+                           <td>   <img src="@Url.Action("ShowCustomSizeImage", "Partners", new { id = @item.ImageID, width = 175 })" alt="Products" />
+                        
+                           </td>
+                            </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                   
+                                   <table align="left" style="margin-top:25px;margin-left:25px;">
+                                   <tr><td><input type="checkbox" />
+                                   </td><td style="color: #666;font-size: 14px;font-weight: bold;padding-left:5px;">@item.ProductName
+                                   </td>
+                                   </tr>
+                                   <tr>
+                                   <td></td>
+                                   <td colspan="1" style="color: #666;font-size: 14px;padding-left:5px">$@String.Format("{0:n2}", item.Price)  </td>
+                                   </tr>
+                                   </table>
+                                            
+                                                
+                                          
+                                                
+                                    </td>
+                                </tr>
+                                 
+                            </table>
+                         
+                              </td> 
+                               if ((Model.IndexOf(item)+1) % 3 == 0)
+                               {
+                                   @:</tr>
+                               }
+                           }
+                           </table>
+                       }
+                       }
+                  
+              </div>
+       
+                    
+                    <div align="center">
+                   
+                   
+                    <a id="lnkaddnew"    href="#dialog1" name="modal">
+                        <img src="/Content/Themes/App_Themes/EDrive/images/go-button01.jpg" />
+                        </a>
+                      
+                        <br />
+                        <span>Choose one or more items above</span>
+                    </div>
+                   
+              
+        </div>
+       
+    </div>
+    <div class="clear">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new">
+        </div>
+        <div class="divbottommiddetail-new-line-inner">
+        </div>
+        <div class="divbottomright-new">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+   </div>
+    @section Footer{
+   <div id="boxes">
+            <div id="dialog1" class="window" style="display:none">
+            <div style="float:right;position: relative;top: -37px;right: -7px;z-index: 150;cursor:pointer">
+            <img  src="@Url.Content("~/Content/Images/close.png")" alt="close" class="close"/> 
+            </div>
+
+    @Html.Partial("_ContactUs",new _ContactUsForm())
+    </div>
+
+          </div>
+ <div id="mask"></div>
+ }

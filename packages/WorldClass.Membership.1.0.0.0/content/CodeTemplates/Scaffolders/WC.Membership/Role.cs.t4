@@ -1,0 +1,28 @@
+﻿<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+
+namespace <#= Model.Namespace #>
+{
+    [DataContract]
+    [DisplayColumn("RoleName")]
+    public partial class Role : PersistentEntity
+    {
+        [DataMember]
+        public virtual Guid RoleId { get; set; }
+
+        [Required]
+        [DataMember]
+        public virtual string RoleName { get; set; }
+
+        [DataMember]
+        public virtual string Description { get; set; }
+
+        [DataMember]
+        public virtual ICollection<User> Users { get; set; }
+    }
+}

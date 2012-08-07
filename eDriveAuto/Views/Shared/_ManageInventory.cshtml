@@ -1,0 +1,147 @@
+﻿@model List<Edrive.Edrivie_Service_Ref.Products>
+
+<div>
+        <div class="divBack" style="">
+            <table id="Searchmanage">
+                <tr>
+                    <td>
+                        <b>Search by VIN</b>
+                    </td>
+                    <td>
+                        @Html.TextBox("Vin", "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Search by Stock #</b>
+                    </td>
+                    <td>@Html.TextBox("Stock", "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Search by Make</b>
+                    </td>
+                    <td>@Html.DropDownList("Make", (SelectList)ViewData["Make"], "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Dealer Name</b>
+                    </td>
+                    <td>
+                        @Html.DropDownList("DealerName", ViewData["DealerName"] as SelectList, "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Load only Featured Vehicles </b>
+                    </td>
+                    <td>
+                        @Html.CheckBox("Featured", false)
+                        <input type="submit" value="go" name="btnSubmit" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div style="height:15px;text-align:center;color:Red">@(ViewData["Msg"])</div>
+            <table id="Result">
+                <tr>
+                    <td>
+                        <br />
+                        <input type="submit" value="Search" name="btnSubmit" />
+                        <input type="submit" value="Add New" name="btnSubmit" />
+                        <input type="submit" value="Approve" name="btnSubmit" />
+                        <input type="submit" value="Qualify" name="btnSubmit" />
+                        <input type="submit" value="Delete Selected" name="btnSubmit" />
+                    </td>
+                </tr>
+            </table>
+            <div>
+            
+                <table class="tableGrid">
+                    <thead>
+                        <th>
+                            @Html.CheckBox("SelectAll") @Html.Label("SelectAll")
+                        </th>
+                        <th>
+                            Vehicle
+                        </th>
+                        <th>
+                            Featured
+                        </th>
+                        <th>
+                            Dealer Price
+                        </th>
+                        <th>
+                            Over/Under
+                        </th>
+                        <th>
+                            Expiry Date
+                        </th>
+                        <th>
+                            Edit
+                        </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            var clsname = Model.IndexOf(item) % 2 == 0 ? "alter" : "";
+                            <tr class="@clsname">
+                                <td style="text-align: center">
+                                    <input type="checkbox" name="chkProduct" value="@item.productId" id="chkProduct@(Model.IndexOf(item).ToString())"/>
+                                    @*@Html.CheckBox("Select" + Model.IndexOf(item).ToString(), new { name="chkProduct"})*@
+                                </td>
+                                <td style="text-align:left;padding-left:5px;">
+                                    @item.MakeName @item.ModelName
+                                </td>
+                                <td style="text-align: center">
+                                    @{
+                                              if (!(item.isfeature))
+                                              {
+                                        @: <img src="@Url.Content("~/Content/Images/unchecked.gif")" alt="@item.isfeature"/>
+                                    }
+                                              else
+                                              {
+                                        @: <img src="@Url.Content("~/Content/Images/checked.gif")" alt="@item.isfeature"/>
+                                    }
+                                    }
+                                </td>
+                                <td style="text-align:right;padding-right:40px;width:150px">
+                                    @String.Format("{0:n0}", item.price_Current)
+                                </td>
+                                <td style="text-align: center">
+                                    @item.qualifyPrice
+                                </td>
+                                <td>@item.updatedOn.AddDays(45).ToString("M/d/yyyy")
+                                </td>
+                                <td>
+                                    @Html.ActionLink("edit", "edit", new { id = item.productId.ToString() })
+                                </td>
+                            </tr>                            
+    
+                        }
+                    </tbody>
+                </table>
+                @if ((Model).Count == 0)
+                {
+                    <text><div style="text-align: center; padding-top: 15px;">
+                        <span style="color: Red">No records found.</span>
+                    </div></text> 
+                }
+           </div>
+           <!-- paging starts here-->
+             
+               @Html.Partial("_Paging")
+
+          
+             <!-- paging ends here-->
+             
+        </div>
+    </div>

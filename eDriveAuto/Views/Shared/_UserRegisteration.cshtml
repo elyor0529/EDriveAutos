@@ -1,0 +1,168 @@
+﻿@model Edrive.Models.CustomerModel
+           
+ 
+
+
+@using (Html.BeginForm())
+{
+                                             Html.EnableClientValidation(true);
+    
+    Html.EnableUnobtrusiveJavaScript(true);
+  
+ 
+
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+        <div>
+            <span id="lblMsg" style="font-weight: bold; color: Red"></span><a href="#" onclick="javascript:closePopUp()">
+                <img src="@Url.Content("~/Images/sm_glossy_cross_button.gif")" alt="closepopup" style="float:right"/>
+            </a>
+        </div>
+        <div>
+            <span style="color: #5B8442; font-size: 19px;">A FREE eDriveAutos.com Membership is
+                Required to View Vehicle Listings</span></div>
+        <table width="100%" align="center">
+            <tr>
+                <td colspan="1" style="color: #373946; font-size: 13px; font-weight: bold;">
+                    Complete This Form to Become a FREE Member
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" style="height: 3px;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1">
+                    <span style="color: Red">*</span>= Required Field.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" style="height: 10px;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" style="padding-left: 30px;">
+                    <table width="100%">
+                        <tr>
+                            <td align="right" width="148px" style="color: #193448; font-weight: bold; text-align: right">
+                                <span style="color: Red;">*</span>@Html.Label("FirstName"):
+                            </td>
+                            <td>
+                               @Html.TextBoxFor(Model => Model.FirstName)@Html.ValidationMessageFor(Model => Model.FirstName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="148px" style="color: #193448; font-weight: bold; text-align: right">
+                                <span style="color: Red;">*</span>Last Name:
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(Model => Model.LastName)   @Html.ValidationMessageFor(Model => Model.LastName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="color: #193448; font-weight: bold; text-align: right">
+                                <span style="color: Red;">*</span>Your Email:
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(Model => Model.Email)@Html.ValidationMessage("Email")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="color: #193448; font-weight: bold;">
+                                <span style="color: Red;">*</span>Zip/Postal code:
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(Model => Model.zip) @Html.ValidationMessageFor(Model => Model.zip)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="color: #193448; font-weight: bold">
+                                <span style="color: Red;">*</span> Day Phone:
+                            </td>
+                                  <td>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                         @Html.TextBoxFor(model => model.Phone)
+                                                    </td>
+                                                    <td>
+                                                        <div style="border-top: solid 1px black; width: 7px;">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                            @Html.TextBoxFor(model => model.Phone)
+                                                    </td>
+                                                    <td>
+                                                           @Html.TextBoxFor(model => model.Phone)
+                                                    </td>
+                                                    <td>
+                                                          @Html.TextBoxFor(model => model.Phone)
+                                                    </td>
+                                                    <td>
+                                                        Ext.
+                                                    </td>
+                                                    <td>
+                                                         @Html.TextBoxFor(m => m.Phone)
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="color: #193448; font-weight: bold">
+                                <span style="color: Red;">*</span> Password
+                            </td>
+                            <td>
+                                @Html.TextBox("Password")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="color: #193448; font-weight: bold">
+                                <span style="color: Red;">*</span> Confirmation Password
+                            </td>
+                            <td>
+                                @Html.TextBox("ConfirmPassword", "")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 6px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="padding-left: 31px;">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="width: 80px">
+                                            <input type="image" id="imgRegister" src="@Url.Content("~/Content/Themes/App_Themes/EDrive/images/register-popup.jpg")"
+                                                             onclick="imgRegister_Click" />
+                                        </td>
+                                        <td align="left">
+                                            <a id="lnkNoThanks" onclick="lnkNoThanks_Click" href="#" class="lnkNoThanks">No Thanks</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 10px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="right">
+                                We will NOT share your email address.<br />
+                                View Our <a href="Privacy-statement.aspx" class="ankViewPrivacy">Privacy Policy.</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" style="height: 2px;">
+                </td>
+            </tr>
+        </table>
+       
+    </div>
+      
+}

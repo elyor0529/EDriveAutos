@@ -1,0 +1,45 @@
+﻿@{
+	ViewBag.Title = "Featured Seller";
+}
+
+@section  Head{
+
+}
+
+<h2>Featured Seller</h2>
+
+@using(Html.BeginForm("FeaturedSeller", "ManageContent", FormMethod.Post, new { id = "createFileForm", enctype = "multipart/form-data" }))
+{
+	<table class="submit-form">
+		@if(ViewBag.ImagePath != null)
+		{
+			<tr>
+				<td class="input-title">
+					Currrent Featured Seller
+				</td>
+				<td>
+					<img src="@Url.Content(@ViewBag.ImagePath)" alt="" />
+				</td>
+			</tr>
+		}
+		<tr>
+			<td class="input-title">
+				Choose Featured Seller Image
+			</td>
+			<td>
+				<input type="file" name="filePath" id="filePath" />          
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<input type="submit" value="Save"/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				@Html.Raw(ViewBag.Message)
+			</td>
+		</tr>
+	</table>
+}

@@ -1,0 +1,158 @@
+﻿@model Edrive.Models._Nop_TopicLocalized
+@{
+    ViewBag.Title = "Edit Topic";
+}
+@section Head{
+    <link href="@Url.Content("~/Content/sample.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/fckEditor/fckeditor.js")"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var sBasePath = '@Url.Content("~/fckeditor/")';
+            var oFCKeditor = new FCKeditor('content');
+            oFCKeditor.BasePath = sBasePath;
+            oFCKeditor.Height = 450;
+            oFCKeditor.ReplaceTextarea();
+        }
+
+        $(document).ready(function () {
+            $("#topicEdit").tabs();
+        });
+
+        function ShowDelete()
+        {
+
+            if (confirm("-------Are you sure you want to Delete this Topic----")) {
+            
+            $("#form1").attr("action",'@Url.Action("Delete","ManageContent",new{area="Admin"})');
+
+            //document.forms[0].submit();
+        }
+        else {
+            return false;
+        }
+
+        }
+    </script>
+
+    <style>
+        div#topicEdit ul li a {background-color:white}
+        .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited{color:#EB8F00;}
+              #topicDiv  tr td {padding-bottom:6px;}
+ #topicDiv {width:965px;}
+    </style>
+}
+<h2>
+    Edit Topic</h2>
+    
+<div>
+    @Html.ActionLink("Back to List", "Topic")
+</div>
+<div style="color: Red;">
+    @(ViewData["Msg"] ?? "")
+</div>
+
+@using (Html.BeginForm("EditTopic", "ManageContent", FormMethod.Post, new {id="form1" }))
+{
+    
+    @Html.ValidationSummary(true)
+    <div id="topicDiv">
+ 
+    <div style="text-align: right">
+        <input type="submit" value="Save" />
+        <input type="submit" value="Delete" id="Delete" onclick="return ShowDelete()"/>
+        <br />
+<br />
+
+    </div>
+    
+    
+        <div id="topicEdit" class="topicEdit">
+            <ul>
+                <li><a href="#tab-1"><span>Topic Info</span></a></li>
+                <li><a href="#tab-2"><span>SEO</span></a></li>
+            </ul>
+            <div id="tab-1" style="overflow: hidden">
+                <div id="Topicpanel1">
+                    <table style="width:100%">
+                        @Html.HiddenFor(model => model.TopicLocalizedID)
+                        @Html.HiddenFor(model => model.TopicID)
+                        <tr>
+                            <td class="editor-label">
+                                @Html.LabelFor(model => model.TopicName)
+                            </td>
+                            <td class="editor-field">
+                                @Html.DisplayFor(model => model.TopicName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="editor-label">
+                                @Html.LabelFor(model => model.Title)
+                            </td>
+                            <td class="editor-field">
+                                @Html.TextBox("Title", Model.Title)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="editor-label" style="vertical-align:top;">
+                                @Html.LabelFor(model => model.Body)
+                            </td>
+                            <td class="editor-field">
+                                @Html.TextAreaFor(model => model.Body, new { id = "content" })
+                                @Html.ValidationMessageFor(model => model.Body)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="editor-label">
+                                @Html.LabelFor(model => model.CreatedOn)
+                            </td>
+                            <td class="editor-field">
+                                @(Model.CreatedOn)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="editor-label">
+                                @Html.LabelFor(model => model.UpdatedOn)
+                            </td>
+                            <td class="editor-field">
+                                @(Model.UpdatedOn)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="tab-2" style="overflow: hidden">
+                <div id="Topicpanel2">
+                    <table>
+                        <tr>
+                            <td class="editor-label">
+                                @Html.LabelFor(model => model.MetaKeywords)
+                            </td>
+                            <td class="editor-field">
+                                @Html.TextBoxFor(model => model.MetaKeywords)
+                                @Html.ValidationMessageFor(model => model.MetaKeywords)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="editor-label">
+                                @Html.LabelFor(model => model.MetaDescription)
+                            </td>
+                            <td class="editor-field">
+                                @Html.TextAreaFor(model => model.MetaDescription, new { style = "width:208px" })
+                                @Html.ValidationMessageFor(model => model.MetaDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="editor-label">
+                                @Html.LabelFor(model => model.MetaTitle)
+                            </td>
+                            <td class="editor-field">
+                                @Html.TextBoxFor(model => model.MetaTitle)
+                                @Html.ValidationMessageFor(model => model.MetaTitle)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+}

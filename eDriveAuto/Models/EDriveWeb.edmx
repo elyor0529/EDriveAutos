@@ -1,0 +1,1234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="edriveautowebModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="edriveautowebModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="edriveautowebModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer_Type" EntityType="edriveautowebModel.Store.Customer_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerVehicleRequests" EntityType="edriveautowebModel.Store.CustomerVehicleRequests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_DealersFaq" EntityType="edriveautowebModel.Store.ED_DealersFaq" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_EGear" EntityType="edriveautowebModel.Store.ED_EGear" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_EManagement" EntityType="edriveautowebModel.Store.ED_EManagement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_Faq" EntityType="edriveautowebModel.Store.ED_Faq" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_Partners" EntityType="edriveautowebModel.Store.ED_Partners" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_Testimonials" EntityType="edriveautowebModel.Store.ED_Testimonials" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FinanceRequest" EntityType="edriveautowebModel.Store.FinanceRequest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageTemplate" EntityType="edriveautowebModel.Store.MessageTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageTemplateLocalized" EntityType="edriveautowebModel.Store.MessageTemplateLocalized" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nop_Campaign" EntityType="edriveautowebModel.Store.Nop_Campaign" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nop_News" EntityType="edriveautowebModel.Store.Nop_News" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nop_Picture" EntityType="edriveautowebModel.Store.Nop_Picture" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nop_QueuedEmail" EntityType="edriveautowebModel.Store.Nop_QueuedEmail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nop_Topic" EntityType="edriveautowebModel.Store.Nop_Topic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nop_TopicLocalized" EntityType="edriveautowebModel.Store.Nop_TopicLocalized" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PasswordRecovery" EntityType="edriveautowebModel.Store.PasswordRecovery" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Query" EntityType="edriveautowebModel.Store.Query" store:Type="Tables" store:Schema="dbo" store:Name="Query">
+            <DefiningQuery>SELECT 
+      [Query].[customerid] AS [customerid], 
+      [Query].[FirstName] AS [FirstName], 
+      [Query].[lastname] AS [lastname], 
+      [Query].[Email] AS [Email], 
+      [Query].[zip] AS [zip], 
+      [Query].[Phone] AS [Phone], 
+      [Query].[Password] AS [Password], 
+      [Query].[CustomerType] AS [CustomerType], 
+      [Query].[Active] AS [Active], 
+      [Query].[RegistrationDate] AS [RegistrationDate], 
+      [Query].[Name] AS [Name], 
+      [Query].[Deleted] AS [Deleted], 
+      [Query].[IPAddress] AS [IPAddress], 
+      [Query].[ExpiryDate] AS [ExpiryDate], 
+      [Query].[guid] AS [guid]
+      FROM [dbo].[Query] AS [Query]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Settings" EntityType="edriveautowebModel.Store.Settings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WishList" EntityType="edriveautowebModel.Store.WishList" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__MessageTe__Messa__1A14E395" Association="edriveautowebModel.Store.FK__MessageTe__Messa__1A14E395">
+            <End Role="MessageTemplate" EntitySet="MessageTemplate" />
+            <End Role="MessageTemplateLocalized" EntitySet="MessageTemplateLocalized" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerVehicleRequests_Customer" Association="edriveautowebModel.Store.FK_CustomerVehicleRequests_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerVehicleRequests" EntitySet="CustomerVehicleRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nop_TopicLocalized_Nop_Topic" Association="edriveautowebModel.Store.FK_Nop_TopicLocalized_Nop_Topic">
+            <End Role="Nop_Topic" EntitySet="Nop_Topic" />
+            <End Role="Nop_TopicLocalized" EntitySet="Nop_TopicLocalized" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="zip" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomerType" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="RegisterationDate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="IsNewsLetter" Type="bit" Nullable="false" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="IsTrial" Type="bit" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="200" />
+          <Property Name="CITY" Type="varchar" MaxLength="100" />
+          <Property Name="STATE" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Customer_Type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerVehicleRequests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="Make" Type="varchar" MaxLength="80" />
+          <Property Name="Model" Type="varchar" MaxLength="80" />
+          <Property Name="MaximumMileage" Type="varchar" MaxLength="50" />
+          <Property Name="YearFrom" Type="varchar" MaxLength="50" />
+          <Property Name="YearTo" Type="varchar" MaxLength="50" />
+          <Property Name="MinPrice" Type="varchar" MaxLength="50" />
+          <Property Name="MaxPrice" Type="varchar" MaxLength="50" />
+          <Property Name="Body" Type="varchar" MaxLength="80" />
+          <Property Name="Transmission" Type="varchar" MaxLength="80" />
+          <Property Name="Engine" Type="varchar" MaxLength="80" />
+          <Property Name="DriverType" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="ED_DealersFaq">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="bigint" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ED_EGear">
+          <Key>
+            <PropertyRef Name="eGearID" />
+          </Key>
+          <Property Name="eGearID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="ShortDesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="Published" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ED_EManagement">
+          <Key>
+            <PropertyRef Name="ManagementID" />
+          </Key>
+          <Property Name="ManagementID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="ShortDesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ED_Faq">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="bigint" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ED_Partners">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+          </Key>
+          <Property Name="PartnerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Company" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="PictureId" Type="int" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ED_Testimonials">
+          <Key>
+            <PropertyRef Name="TId" />
+          </Key>
+          <Property Name="TId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PictureId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FinanceRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="150" />
+          <Property Name="ZipCode" Type="int" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="50" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="50" />
+          <Property Name="ResidenceType" Type="varchar" MaxLength="50" />
+          <Property Name="HowLongAtAddress" Type="varchar" MaxLength="50" />
+          <Property Name="MonthRent_Mortage" Type="varchar" MaxLength="50" />
+          <Property Name="EmployerName" Type="varchar" MaxLength="50" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" />
+          <Property Name="WorkPhone" Type="varchar" MaxLength="50" />
+          <Property Name="HowLongWorking" Type="varchar" MaxLength="50" />
+          <Property Name="MonthlyIncomeBeforeTaxes" Type="varchar" MaxLength="50" />
+          <Property Name="DownPayment" Type="varchar" MaxLength="50" />
+          <Property Name="IsBankrupt" Type="bit" />
+          <Property Name="CreditScore" Type="varchar" MaxLength="50" />
+          <Property Name="IsCosignerAvailable" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageTemplate">
+          <Key>
+            <PropertyRef Name="MessageTemplateID" />
+          </Key>
+          <Property Name="MessageTemplateID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="MessageTemplateLocalized">
+          <Key>
+            <PropertyRef Name="MessageTemplateLocalizedID" />
+          </Key>
+          <Property Name="MessageTemplateLocalizedID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MessageTemplateID" Type="int" Nullable="false" />
+          <Property Name="BCCEmailAddresses" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Subject" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Nop_Campaign">
+          <Key>
+            <PropertyRef Name="CampaignID" />
+          </Key>
+          <Property Name="CampaignID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Subject" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nop_News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="Short" Type="nvarchar" Nullable="false" />
+          <Property Name="Full" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="AllowComments" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nop_Picture">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Name="PictureID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PictureBinary" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Extension" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nop_QueuedEmail">
+          <Key>
+            <PropertyRef Name="QueuedEmailID" />
+          </Key>
+          <Property Name="QueuedEmailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="From" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="FromName" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="To" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ToName" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Cc" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Bcc" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Subject" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="SendTries" Type="int" Nullable="false" />
+          <Property Name="SentOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Nop_Topic">
+          <Key>
+            <PropertyRef Name="TopicID" />
+          </Key>
+          <Property Name="TopicID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Nop_TopicLocalized">
+          <Key>
+            <PropertyRef Name="TopicLocalizedID" />
+          </Key>
+          <Property Name="TopicLocalizedID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TopicID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="MetaTitle" Type="nvarchar" Nullable="false" MaxLength="400" />
+          <Property Name="MetaKeywords" Type="nvarchar" Nullable="false" MaxLength="400" />
+          <Property Name="MetaDescription" Type="nvarchar" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PasswordRecovery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="CustomerType" Type="int" Nullable="false" />
+          <Property Name="GUID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsLinkExpired" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'EDriveAutosDevWeb.dbo.Query' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Query">
+          <Key>
+            <PropertyRef Name="customerid" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="CustomerType" />
+            <PropertyRef Name="Active" />
+            <PropertyRef Name="RegistrationDate" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="customerid" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="zip" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="CustomerType" Type="int" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="guid" Type="varchar" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Value" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="CustomerType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__MessageTe__Messa__1A14E395">
+          <End Role="MessageTemplate" Type="edriveautowebModel.Store.MessageTemplate" Multiplicity="1" />
+          <End Role="MessageTemplateLocalized" Type="edriveautowebModel.Store.MessageTemplateLocalized" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageTemplate">
+              <PropertyRef Name="MessageTemplateID" />
+            </Principal>
+            <Dependent Role="MessageTemplateLocalized">
+              <PropertyRef Name="MessageTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerVehicleRequests_Customer">
+          <End Role="Customer" Type="edriveautowebModel.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomerVehicleRequests" Type="edriveautowebModel.Store.CustomerVehicleRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerVehicleRequests">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nop_TopicLocalized_Nop_Topic">
+          <End Role="Nop_Topic" Type="edriveautowebModel.Store.Nop_Topic" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Nop_TopicLocalized" Type="edriveautowebModel.Store.Nop_TopicLocalized" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nop_Topic">
+              <PropertyRef Name="TopicID" />
+            </Principal>
+            <Dependent Role="Nop_TopicLocalized">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eDriveAutoModels" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="eDriveAutoWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer_Type" EntityType="eDriveAutoModels.Customer_Type" />
+          <EntitySet Name="MessageTemplate" EntityType="eDriveAutoModels.MessageTemplate" />
+          <EntitySet Name="MessageTemplateLocalized" EntityType="eDriveAutoModels.MessageTemplateLocalized" />
+          <EntitySet Name="Settings" EntityType="eDriveAutoModels.Settings" />
+          <AssociationSet Name="FK__MessageTe__Messa__1A14E395" Association="eDriveAutoModels.FK__MessageTe__Messa__1A14E395">
+            <End Role="MessageTemplate" EntitySet="MessageTemplate" />
+            <End Role="MessageTemplateLocalized" EntitySet="MessageTemplateLocalized" />
+          </AssociationSet>
+          <EntitySet Name="Nop_Picture" EntityType="eDriveAutoModels.Nop_Picture" />
+          <EntitySet Name="Nop_Topic" EntityType="eDriveAutoModels.Nop_Topic" />
+          <EntitySet Name="Nop_TopicLocalized" EntityType="eDriveAutoModels.Nop_TopicLocalized" />
+          <AssociationSet Name="FK_Nop_TopicLocalized_Nop_Topic" Association="eDriveAutoModels.FK_Nop_TopicLocalized_Nop_Topic">
+            <End Role="Nop_Topic" EntitySet="Nop_Topic" />
+            <End Role="Nop_TopicLocalized" EntitySet="Nop_TopicLocalized" />
+          </AssociationSet>
+          <EntitySet Name="Nop_Campaign" EntityType="eDriveAutoModels.Nop_Campaign" />
+          <EntitySet Name="ED_Partners" EntityType="eDriveAutoModels.ED_Partners" />
+          <EntitySet Name="Nop_QueuedEmail" EntityType="eDriveAutoModels.Nop_QueuedEmail" />
+          <EntitySet Name="ED_EManagement" EntityType="eDriveAutoModels.ED_EManagement" />
+          <EntitySet Name="Nop_News" EntityType="eDriveAutoModels.Nop_News" />
+          <EntitySet Name="ED_Faq" EntityType="eDriveAutoModels.ED_Faq" />
+          <EntitySet Name="ED_DealersFaq" EntityType="eDriveAutoModels.ED_DealersFaq" />
+          <EntitySet Name="ED_Testimonials" EntityType="eDriveAutoModels.ED_Testimonials" />
+          <EntitySet Name="ED_EGear" EntityType="eDriveAutoModels.ED_EGear" />
+          <EntitySet Name="Customer" EntityType="eDriveAutoModels.Customer" />
+          <AssociationSet Name="FK__Customer__Role__060DEAE8" Association="eDriveAutoModels.FK__Customer__Role__060DEAE8">
+            <End Role="Customer_Type" EntitySet="Customer_Type" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <EntitySet Name="PasswordRecovery" EntityType="eDriveAutoModels.PasswordRecovery" />
+          <EntitySet Name="Query" EntityType="eDriveAutoModels.Query" />
+          <AssociationSet Name="FK_PasswordRecovery_Customer_Type" Association="eDriveAutoModels.FK_PasswordRecovery_Customer_Type">
+            <End Role="Customer_Type" EntitySet="Customer_Type" />
+            <End Role="PasswordRecovery" EntitySet="PasswordRecovery" />
+          </AssociationSet>
+          <EntitySet Name="WishList" EntityType="eDriveAutoModels.WishList" />
+          <EntitySet Name="FinanceRequest" EntityType="eDriveAutoModels.FinanceRequest" />
+          <EntitySet Name="CustomerVehicleRequests" EntityType="eDriveAutoModels.CustomerVehicleRequests" />
+          <AssociationSet Name="FK_CustomerVehicleRequests_Customer" Association="eDriveAutoModels.FK_CustomerVehicleRequests_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerVehicleRequests" EntitySet="CustomerVehicleRequests" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer_Type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="eDriveAutoModels.FK__Customer__Role__060DEAE8" FromRole="Customer_Type" ToRole="Customer" />
+          <NavigationProperty Name="PasswordRecovery" Relationship="eDriveAutoModels.FK_PasswordRecovery_Customer_Type" FromRole="Customer_Type" ToRole="PasswordRecovery" />
+        </EntityType>
+        <EntityType Name="MessageTemplate">
+          <Key>
+            <PropertyRef Name="MessageTemplateID" />
+          </Key>
+          <Property Type="Int32" Name="MessageTemplateID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MessageTemplateLocalized" Relationship="eDriveAutoModels.FK__MessageTe__Messa__1A14E395" FromRole="MessageTemplate" ToRole="MessageTemplateLocalized" />
+          <Property Type="Boolean" Name="Deleted" />
+        </EntityType>
+        <EntityType Name="MessageTemplateLocalized">
+          <Key>
+            <PropertyRef Name="MessageTemplateLocalizedID" />
+          </Key>
+          <Property Type="Int32" Name="MessageTemplateLocalizedID" Nullable="false" />
+          <Property Type="Int32" Name="MessageTemplateID" Nullable="false" />
+          <Property Type="String" Name="BCCEmailAddresses" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Subject" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" />
+          <NavigationProperty Name="MessageTemplate" Relationship="eDriveAutoModels.FK__MessageTe__Messa__1A14E395" FromRole="MessageTemplateLocalized" ToRole="MessageTemplate" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Value" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__MessageTe__Messa__1A14E395">
+          <End Type="eDriveAutoModels.MessageTemplate" Role="MessageTemplate" Multiplicity="1" />
+          <End Type="eDriveAutoModels.MessageTemplateLocalized" Role="MessageTemplateLocalized" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageTemplate">
+              <PropertyRef Name="MessageTemplateID" />
+            </Principal>
+            <Dependent Role="MessageTemplateLocalized">
+              <PropertyRef Name="MessageTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Nop_Picture">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Type="Int32" Name="PictureID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Binary" Name="PictureBinary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Extension" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsNew" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nop_Topic">
+          <Key>
+            <PropertyRef Name="TopicID" />
+          </Key>
+          <Property Type="Int32" Name="TopicID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nop_TopicLocalized" Relationship="eDriveAutoModels.FK_Nop_TopicLocalized_Nop_Topic" FromRole="Nop_Topic" ToRole="Nop_TopicLocalized" />
+        </EntityType>
+        <EntityType Name="Nop_TopicLocalized">
+          <Key>
+            <PropertyRef Name="TopicLocalizedID" />
+          </Key>
+          <Property Type="Int32" Name="TopicLocalizedID" Nullable="false" />
+          <Property Type="Int32" Name="TopicID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" />
+          <Property Type="String" Name="MetaTitle" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MetaKeywords" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MetaDescription" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nop_Topic" Relationship="eDriveAutoModels.FK_Nop_TopicLocalized_Nop_Topic" FromRole="Nop_TopicLocalized" ToRole="Nop_Topic" />
+        </EntityType>
+        <Association Name="FK_Nop_TopicLocalized_Nop_Topic">
+          <End Type="eDriveAutoModels.Nop_Topic" Role="Nop_Topic" Multiplicity="1" />
+          <End Type="eDriveAutoModels.Nop_TopicLocalized" Role="Nop_TopicLocalized" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nop_Topic">
+              <PropertyRef Name="TopicID" />
+            </Principal>
+            <Dependent Role="Nop_TopicLocalized">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Nop_Campaign">
+          <Key>
+            <PropertyRef Name="CampaignID" />
+          </Key>
+          <Property Type="Int32" Name="CampaignID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Subject" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ED_Partners">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+          </Key>
+          <Property Type="Int32" Name="PartnerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Company" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Website" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PictureId" Nullable="false" />
+          <Property Type="Boolean" Name="IsApproved" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" />
+        </EntityType>
+        <EntityType Name="Nop_QueuedEmail">
+          <Key>
+            <PropertyRef Name="QueuedEmailID" />
+          </Key>
+          <Property Type="Int32" Name="QueuedEmailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Priority" Nullable="false" />
+          <Property Type="String" Name="From" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="To" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Cc" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Bcc" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Subject" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="Int32" Name="SendTries" Nullable="false" />
+          <Property Type="DateTime" Name="SentOn" />
+        </EntityType>
+        <EntityType Name="ED_EManagement">
+          <Key>
+            <PropertyRef Name="ManagementID" />
+          </Key>
+          <Property Type="Int32" Name="ManagementID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ImageID" />
+          <Property Type="String" Name="ShortDesc" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
+          <Property Type="Boolean" Name="Published" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" />
+        </EntityType>
+        <EntityType Name="Nop_News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Type="Int32" Name="NewsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LanguageID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Short" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Full" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Published" Nullable="false" />
+          <Property Type="Boolean" Name="AllowComments" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ED_Faq">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Type="Int64" Name="FaqId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="OrderId" Nullable="false" />
+          <Property Type="String" Name="Question" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" />
+        </EntityType>
+        <EntityType Name="ED_DealersFaq">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Type="Int64" Name="FaqId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="OrderId" Nullable="false" />
+          <Property Type="String" Name="Question" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" />
+        </EntityType>
+        <EntityType Name="ED_Testimonials">
+          <Key>
+            <PropertyRef Name="TId" />
+          </Key>
+          <Property Type="Int32" Name="TId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PictureId" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="UpdatedOn" />
+        </EntityType>
+        <EntityType Name="ED_EGear">
+          <Key>
+            <PropertyRef Name="eGearID" />
+          </Key>
+          <Property Type="Int32" Name="eGearID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="Qty" Nullable="false" />
+          <Property Type="Int32" Name="ImageID" />
+          <Property Type="String" Name="ShortDesc" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
+          <Property Type="Boolean" Name="Published" />
+          <Property Type="Boolean" Name="Deleted" />
+          <Property Type="DateTime" Name="CreatedOn" />
+          <Property Type="DateTime" Name="UpdatedOn" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="zip" />
+          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CustomerType" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="DateTime" Name="RegisterationDate" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="Boolean" Name="IsNewsLetter" Nullable="false" />
+          <Property Type="String" Name="IPAddress" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ExpirationDate" />
+          <NavigationProperty Name="Customer_Type" Relationship="eDriveAutoModels.FK__Customer__Role__060DEAE8" FromRole="Customer" ToRole="Customer_Type" />
+          <Property Type="Boolean" Name="IsTrial" />
+          <Property Type="String" Name="GUID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ADDRESS" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CITY" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STATE" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CustomerVehicleRequests" Relationship="eDriveAutoModels.FK_CustomerVehicleRequests_Customer" FromRole="Customer" ToRole="CustomerVehicleRequests" />
+        </EntityType>
+        <Association Name="FK__Customer__Role__060DEAE8">
+          <End Type="eDriveAutoModels.Customer_Type" Role="Customer_Type" Multiplicity="0..1" />
+          <End Type="eDriveAutoModels.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PasswordRecovery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerType" Nullable="false" />
+          <Property Type="String" Name="GUID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsLinkExpired" />
+          <NavigationProperty Name="Customer_Type" Relationship="eDriveAutoModels.FK_PasswordRecovery_Customer_Type" FromRole="PasswordRecovery" ToRole="Customer_Type" />
+        </EntityType>
+        <EntityType Name="Query">
+          <Key>
+            <PropertyRef Name="customerid" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="CustomerType" />
+            <PropertyRef Name="Active" />
+            <PropertyRef Name="RegistrationDate" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Type="Int32" Name="customerid" Nullable="false" />
+          <Property Type="String" Name="FirstName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="lastname" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="zip" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CustomerType" Nullable="false" />
+          <Property Type="Int32" Name="Active" Nullable="false" />
+          <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="String" Name="IPAddress" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ExpiryDate" />
+          <Property Type="String" Name="guid" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_PasswordRecovery_Customer_Type">
+          <End Type="eDriveAutoModels.Customer_Type" Role="Customer_Type" Multiplicity="1" />
+          <End Type="eDriveAutoModels.PasswordRecovery" Role="PasswordRecovery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PasswordRecovery">
+              <PropertyRef Name="CustomerType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProductID" />
+          <Property Type="Int32" Name="CustomerID" />
+          <Property Type="String" Name="CustomerType" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FinanceRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StreetAddress" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ZipCode" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HomePhone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MobilePhone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ResidenceType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HowLongAtAddress" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MonthRent_Mortage" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployerName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JobTitle" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WorkPhone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HowLongWorking" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MonthlyIncomeBeforeTaxes" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DownPayment" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsBankrupt" />
+          <Property Type="String" Name="CreditScore" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsCosignerAvailable" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerVehicleRequests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+          <Property Type="String" Name="Make" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Model" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MaximumMileage" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YearFrom" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YearTo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MinPrice" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MaxPrice" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Body" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Transmission" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Engine" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DriverType" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="eDriveAutoModels.FK_CustomerVehicleRequests_Customer" FromRole="CustomerVehicleRequests" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_CustomerVehicleRequests_Customer">
+          <End Type="eDriveAutoModels.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="eDriveAutoModels.CustomerVehicleRequests" Role="CustomerVehicleRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerVehicleRequests">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="edriveautowebModelStoreContainer" CdmEntityContainer="eDriveAutoWebEntities">
+          <EntitySetMapping Name="Customer_Type">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Customer_Type">
+              <MappingFragment StoreEntitySet="Customer_Type">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageTemplate">
+            <EntityTypeMapping TypeName="eDriveAutoModels.MessageTemplate">
+              <MappingFragment StoreEntitySet="MessageTemplate">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MessageTemplateID" ColumnName="MessageTemplateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageTemplateLocalized">
+            <EntityTypeMapping TypeName="eDriveAutoModels.MessageTemplateLocalized">
+              <MappingFragment StoreEntitySet="MessageTemplateLocalized">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="BCCEmailAddresses" ColumnName="BCCEmailAddresses" />
+                <ScalarProperty Name="MessageTemplateID" ColumnName="MessageTemplateID" />
+                <ScalarProperty Name="MessageTemplateLocalizedID" ColumnName="MessageTemplateLocalizedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nop_Picture">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Nop_Picture">
+              <MappingFragment StoreEntitySet="Nop_Picture">
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="PictureBinary" ColumnName="PictureBinary" />
+                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nop_Topic">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Nop_Topic">
+              <MappingFragment StoreEntitySet="Nop_Topic">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nop_TopicLocalized">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Nop_TopicLocalized">
+              <MappingFragment StoreEntitySet="Nop_TopicLocalized">
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+                <ScalarProperty Name="TopicLocalizedID" ColumnName="TopicLocalizedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nop_Campaign">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Nop_Campaign">
+              <MappingFragment StoreEntitySet="Nop_Campaign">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ED_Partners">
+            <EntityTypeMapping TypeName="eDriveAutoModels.ED_Partners">
+              <MappingFragment StoreEntitySet="ED_Partners">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nop_QueuedEmail">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Nop_QueuedEmail">
+              <MappingFragment StoreEntitySet="Nop_QueuedEmail">
+                <ScalarProperty Name="SentOn" ColumnName="SentOn" />
+                <ScalarProperty Name="SendTries" ColumnName="SendTries" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Bcc" ColumnName="Bcc" />
+                <ScalarProperty Name="Cc" ColumnName="Cc" />
+                <ScalarProperty Name="ToName" ColumnName="ToName" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="FromName" ColumnName="FromName" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="QueuedEmailID" ColumnName="QueuedEmailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ED_EManagement">
+            <EntityTypeMapping TypeName="eDriveAutoModels.ED_EManagement">
+              <MappingFragment StoreEntitySet="ED_EManagement">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ManagementID" ColumnName="ManagementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nop_News">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Nop_News">
+              <MappingFragment StoreEntitySet="Nop_News">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="AllowComments" ColumnName="AllowComments" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="Full" ColumnName="Full" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ED_Faq">
+            <EntityTypeMapping TypeName="eDriveAutoModels.ED_Faq">
+              <MappingFragment StoreEntitySet="ED_Faq">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="FaqId" ColumnName="FaqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ED_DealersFaq">
+            <EntityTypeMapping TypeName="eDriveAutoModels.ED_DealersFaq">
+              <MappingFragment StoreEntitySet="ED_DealersFaq">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="FaqId" ColumnName="FaqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ED_Testimonials">
+            <EntityTypeMapping TypeName="eDriveAutoModels.ED_Testimonials">
+              <MappingFragment StoreEntitySet="ED_Testimonials">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TContent" ColumnName="TContent" />
+                <ScalarProperty Name="TId" ColumnName="TId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ED_EGear">
+            <EntityTypeMapping TypeName="eDriveAutoModels.ED_EGear">
+              <MappingFragment StoreEntitySet="ED_EGear">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="eGearID" ColumnName="eGearID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IsTrial" ColumnName="IsTrial" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="IsNewsLetter" ColumnName="IsNewsLetter" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegisterationDate" ColumnName="RegisterationDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordRecovery">
+            <EntityTypeMapping TypeName="eDriveAutoModels.PasswordRecovery">
+              <MappingFragment StoreEntitySet="PasswordRecovery">
+                <ScalarProperty Name="IsLinkExpired" ColumnName="IsLinkExpired" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Query">
+            <EntityTypeMapping TypeName="eDriveAutoModels.Query">
+              <MappingFragment StoreEntitySet="Query">
+                <ScalarProperty Name="guid" ColumnName="guid" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishList">
+            <EntityTypeMapping TypeName="eDriveAutoModels.WishList">
+              <MappingFragment StoreEntitySet="WishList">
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinanceRequest">
+            <EntityTypeMapping TypeName="eDriveAutoModels.FinanceRequest">
+              <MappingFragment StoreEntitySet="FinanceRequest">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsCosignerAvailable" ColumnName="IsCosignerAvailable" />
+                <ScalarProperty Name="CreditScore" ColumnName="CreditScore" />
+                <ScalarProperty Name="IsBankrupt" ColumnName="IsBankrupt" />
+                <ScalarProperty Name="DownPayment" ColumnName="DownPayment" />
+                <ScalarProperty Name="MonthlyIncomeBeforeTaxes" ColumnName="MonthlyIncomeBeforeTaxes" />
+                <ScalarProperty Name="HowLongWorking" ColumnName="HowLongWorking" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="MonthRent_Mortage" ColumnName="MonthRent_Mortage" />
+                <ScalarProperty Name="HowLongAtAddress" ColumnName="HowLongAtAddress" />
+                <ScalarProperty Name="ResidenceType" ColumnName="ResidenceType" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerVehicleRequests">
+            <EntityTypeMapping TypeName="eDriveAutoModels.CustomerVehicleRequests">
+              <MappingFragment StoreEntitySet="CustomerVehicleRequests">
+                <ScalarProperty Name="DriverType" ColumnName="DriverType" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="YearTo" ColumnName="YearTo" />
+                <ScalarProperty Name="YearFrom" ColumnName="YearFrom" />
+                <ScalarProperty Name="MaximumMileage" ColumnName="MaximumMileage" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EDriveWeb" ZoomLevel="86">
+        <EntityTypeShape EntityType="eDriveAutoModels.Customer_Type" Width="1.5" PointX="0.75" PointY="5.625" Height="1.5788378906249996" />
+        <EntityTypeShape EntityType="eDriveAutoModels.MessageTemplate" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5788378906249996" />
+        <EntityTypeShape EntityType="eDriveAutoModels.MessageTemplateLocalized" Width="1.5" PointX="3" PointY="1" Height="2.3368131510416674" />
+        <EntityTypeShape EntityType="eDriveAutoModels.Settings" Width="1.5" PointX="5.75" PointY="0.75" Height="1.5788378906249996" />
+        <AssociationConnector Association="eDriveAutoModels.FK__MessageTe__Messa__1A14E395" >
+          <ConnectorPoint PointX="2.25" PointY="2.1644189453125" />
+          <ConnectorPoint PointX="3" PointY="2.1644189453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="eDriveAutoModels.Nop_Picture" Width="1.5" PointX="7.375" PointY="3.75" Height="1.7683317057291674" />
+        <EntityTypeShape EntityType="eDriveAutoModels.Nop_Topic" Width="1.5" PointX="7.375" PointY="7.625" Height="1.5788378906249996" />
+        <EntityTypeShape EntityType="eDriveAutoModels.Nop_TopicLocalized" Width="1.5" PointX="9.625" PointY="7" Height="2.9052945963541674" />
+        <AssociationConnector Association="eDriveAutoModels.FK_Nop_TopicLocalized_Nop_Topic" >
+          <ConnectorPoint PointX="8.875" PointY="8.4144189453125" />
+          <ConnectorPoint PointX="9.625" PointY="8.4144189453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="eDriveAutoModels.Nop_Campaign" Width="1.5" PointX="8.375" PointY="0.75" Height="1.9578255208333317" />
+        <EntityTypeShape EntityType="eDriveAutoModels.ED_Partners" Width="1.5" PointX="0.75" PointY="9.75" Height="3.4737760416666674" />
+        <EntityTypeShape EntityType="eDriveAutoModels.Nop_QueuedEmail" Width="1.5" PointX="3.375" PointY="9.75" Height="3.4737760416666674" />
+        <EntityTypeShape EntityType="eDriveAutoModels.ED_EManagement" Width="1.5" PointX="10.375" PointY="0.75" Height="2.7158007812500031" />
+        <EntityTypeShape EntityType="eDriveAutoModels.Nop_News" Width="1.5" PointX="5.375" PointY="10.75" Height="2.5263069661458388" />
+        <EntityTypeShape EntityType="eDriveAutoModels.ED_Faq" Width="1.5" PointX="7.375" PointY="10.75" Height="2.3368131510416674" />
+        <EntityTypeShape EntityType="eDriveAutoModels.ED_DealersFaq" Width="1.5" PointX="9.375" PointY="10.75" Height="2.3368131510416674" />
+        <EntityTypeShape EntityType="eDriveAutoModels.ED_Testimonials" Width="1.5" PointX="11.375" PointY="10.75" Height="2.5263069661458388" />
+        <EntityTypeShape EntityType="eDriveAutoModels.ED_EGear" Width="1.5" PointX="12.375" PointY="0.75" Height="3.0947884114583388" />
+        <EntityTypeShape EntityType="eDriveAutoModels.Customer" Width="1.5" PointX="3" PointY="4.375" Height="4.0422574869791674" />
+        <AssociationConnector Association="eDriveAutoModels.FK__Customer__Role__060DEAE8" >
+          <ConnectorPoint PointX="2.25" PointY="6.4392475813802079" />
+          <ConnectorPoint PointX="3" PointY="6.4392475813802079" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="eDriveAutoModels.PasswordRecovery" Width="1.5" PointX="3" PointY="14.375" Height="2.1473193359375031" />
+        <EntityTypeShape EntityType="eDriveAutoModels.Query" Width="1.5" PointX="12.375" PointY="4.75" Height="3.8527636718750031" />
+        <AssociationConnector Association="eDriveAutoModels.FK_PasswordRecovery_Customer_Type" >
+          <ConnectorPoint PointX="2.25" PointY="7.3933317057291656" />
+          <ConnectorPoint PointX="2.625" PointY="7.7683317057291656" />
+          <ConnectorPoint PointX="2.625" PointY="15.448659667968752" />
+          <ConnectorPoint PointX="3" PointY="15.448659667968752" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="eDriveAutoModels.WishList" Width="1.5" PointX="13.375" PointY="9.75" Height="1.7683317057291674" />
+        <EntityTypeShape EntityType="eDriveAutoModels.FinanceRequest" Width="1.5" PointX="13.375" PointY="12.75" Height="5.3687141927083282" />
+        <EntityTypeShape EntityType="eDriveAutoModels.CustomerVehicleRequests" Width="2" PointX="4.75" PointY="4.375" Height="3.653911132812496" />
+        <AssociationConnector Association="eDriveAutoModels.FK_CustomerVehicleRequests_Customer" >
+          <ConnectorPoint PointX="4.5" PointY="6.201955566406248" />
+          <ConnectorPoint PointX="4.75" PointY="6.201955566406248" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

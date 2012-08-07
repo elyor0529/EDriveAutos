@@ -1,0 +1,167 @@
+﻿@model Edrive.Models.DealerInfo
+@{
+	ViewBag.Title = "Dealer Profile";
+}
+<div>
+	<table width="100%">
+		<tr>
+			<td>
+				@if(String.IsNullOrEmpty(Model.Logo))
+				{
+					<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/photo-comming-soon.jpg")" alt="" />
+				}
+				else
+				{
+					<img src="@Model.Logo"  width="350" height="289" alt="" />
+    
+				}
+			</td>
+			<td style="text-align: right">
+				@{
+					string pattern = @"^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*[^\.\,\)\(\s]$";
+					Regex reg = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+					string ApplicationURL = "#", ServiceURL = "#", WarrantyURL = "#";
+
+					if(String.IsNullOrEmpty(Model.ApplicationURL) == false)
+					{
+						if(reg.IsMatch(Model.ApplicationURL))
+						{
+							ApplicationURL = Model.ApplicationURL;
+						}
+					}
+					if(String.IsNullOrEmpty(Model.ServiceURL) == false)
+					{
+						if(reg.IsMatch(Model.ServiceURL))
+						{
+							ServiceURL = Model.ServiceURL;
+						}
+
+					}
+
+					if(String.IsNullOrEmpty(Model.WarrantyURL) == false)
+					{
+						if(reg.IsMatch(Model.WarrantyURL))
+						{
+							WarrantyURL = Model.WarrantyURL;
+						}
+
+					}
+       
+       
+					<a href="@ApplicationURL"><img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/credit-a.png")" alt="" /></a>
+					<a href="@WarrantyURL"><img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/get.png")" alt="" /></a>
+					<a href="@ServiceURL"><img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/service.png")" alt="" /></a>
+				}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div style="border: solid 1px #BDCFFF; overflow: hidden; height: 1px; float: right;
+					border-image: initial; width: 100%; background-color: #BDCFFF; margin-bottom: 25px;
+					margin-top: 33px;">
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<p style="float: right">
+					<span style="font-weight: bold">
+						@Model.FirstName @Model.LastName
+						<br />
+						@Model.StreetAddress1
+						<br />
+						@Model.City @(ViewData["StateNameAbr"] ?? "")
+						@Common_Methods.GetZip(Model.Zip)
+						<br>
+						@Model.Phone</span>
+					<br />
+					<a href="mailto:@Model.Email" style="color:#0051FF">Email this dealer</a>
+					<br />
+					@Html.ActionLink("View map and get distance", "GoogleMap", "Home", new { DealerID = @Model.CustomerID }, new { style = "color:#0051FF" })
+					<br />
+					<span style="color: Black; font-size: 10px; font-weight: bold;">NO HASSLES WITH GREAT
+						PRICES</span>
+					<br />
+					<br />
+					@if(String.IsNullOrEmpty(Model.PageImage))
+					{
+						<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/photo-comming-soon.jpg")" alt="" />
+					}
+					else
+					{
+						<img src="@Model.PageImage"  width="275" height="227" alt="" />
+					}
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="height: 20px;">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div style="padding: 2px 3px; text-align: center; width: 969px; float: left;">
+					<div>
+						<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/DealerLendingTitle.jpg")" alt="" />
+					</div>
+					<div class="navigation thumbbg" style="left: 0; margin-top: 0px; margin-left: 0px;
+						margin-left: 28px;">
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="height: 20px;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+			</td>
+			<td style="margin-top: 25px; margin-bottom: 25px; padding-right: 63px" align="right">
+				<a id="ctl00_ctl00_cph1_cph1_ctrlDealerLendingPage_lnkViewAll" class="LnkViewDealer" 
+            href="@Url.Action("Index", "Search", new { area = "", SearchByDealer = "true", DealerID = Model.CustomerID })"
+            >View All Pre-Auction Inventory</a>
+			</td>
+		</tr>
+	</table>
+	<div>
+		<div class="PrdDetials" style="padding-left: 33px;">
+			<ul>
+				@{
+					var dealerDetails = ViewData["DealerDetails"] as List<Edrive.Core.Model.Products>;
+
+					foreach(var item in dealerDetails)
+					{
+						if(dealerDetails.IndexOf(item) == 4)
+						{
+							break;
+						}
+						var productImage = item.pics.Split(';');
+						if(String.IsNullOrEmpty(productImage[0]))
+						{
+							productImage[0] = Url.Content("~/Content/Images/photo-comming-soon.jpg");
+						}
+                        
+					<li>
+						<div class="name">
+							<a href="@Url.Action("ProductDetail", "Product", new { id = @item.productId }, null)">
+								@item.Year @item.Make @item.model @item.body
+							</a>
+						</div>
+						<div class="thumb_110x70">
+							<a href="@Url.Action("ProductDetail", "Product", new { id = @item.productId }, null)">
+								<img src="@productImage[0]" alt="" />
+							</a>
+						</div>
+						<div class="price">
+							$@string.Format("{0:n0}", item.price_Current)</div>
+					</li>
+					}
+				}
+			</ul>
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+</div>

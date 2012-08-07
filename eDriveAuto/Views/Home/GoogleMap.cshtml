@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "GoogleMap";
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body class="PriceGuarantee">
+    <form id="form1" runat="server">
+    <div>
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&sensor=false&key=AIzaSyCadk0L8nwNdFQ-6NAlO85lTYWKds_YF_4">
+</script>
+
+<script type="text/javascript" src="http://maps.gstatic.com/intl/en_ALL/mapfiles/340c/maps2.api/main.js">
+</script>
+
+<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/340c/maps2.api/%7Bmod_drag,mod_ctrapi,mod_api_gc%7D.js">
+</script>
+
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js"></script>
+
+<script type="text/javascript">
+    var map = null;
+    var geocoder = null;
+
+    function initialize() {
+
+        if (GBrowserIsCompatible()) {
+            map = new GMap2(document.getElementById("map_canvas"));
+            map.setCenter(new GLatLng(37.09024, -95.712891), 13);
+         
+
+            geocoder = new GClientGeocoder();
+            
+        }
+    }
+
+    function showAddress(address) {
+
+        if (geocoder) {
+            geocoder.getLatLng(
+      address,
+      function (point) {
+          if (!point) {
+              alert(address + " not found");
+          } else {
+              map.setCenter(point, 13);
+              var marker = new GMarker(point);
+              map.addOverlay(marker);
+              marker.openInfoWindowHtml(address);
+              map.setUIToDefault();
+          }
+      }
+    );
+        }
+
+    }
+            
+</script>
+
+
+<div id="map_canvas" style="border:solid 3px #EFF9FA; width: 97%; height: 540px; margin-left: 14px; margin-top: 19px;">
+</div>
+<div id="alertScriptKey" runat="server">
+@{
+    @:@Html.Raw((ViewData["alertScriptKey"]??"").ToString())
+      }
+</div>
+</div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,124 @@
+﻿ @model Edrive.Models._DealerRegisteration
+              <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+            @using (Html.BeginForm("Register","Dealers"))
+            {
+                @Html.ValidationSummary(true)
+     <table id="DealerRegisForm" width="100%">
+                                        <tbody><tr>
+                                            <td>
+                                                First Name:
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Firstname)
+
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Last Name:
+                                            </td>
+                                            <td>
+                                                  @Html.TextBoxFor(m => m.Lastname)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Your Title:
+                                            </td>
+                                            <td>
+                                                  @Html.TextBoxFor(m => m.Title)  </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Dealership Name:
+                                            </td>
+                                            <td>
+                                                 @Html.TextBoxFor(m => m.Dealership)  </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                State:
+                                            </td>
+                                            <td>
+                                            @Html.DropDownListFor(m => m.StateID, (ViewData["States"] as SelectList))
+                                           
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Zip:
+                                            </td>
+                                            <td>
+                                                 @Html.TextBox("Zip","") </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Telephone:
+                                            </td>
+                                            <td>
+                                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                    <tbody><tr>
+                                                        <td style="width: 98px;">
+                                                                  @Html.TextBoxFor(m => m.Telephone, new { style = "width:100px;" })  </td>
+                                                        <td>
+                                                            ext
+                                                        </td>
+                                                        <td>
+                                                                 @Html.TextBoxFor(m => m.TelephoneExtenstion, new { style = "width:50px;" })
+                                                        </td>
+                                                    </tr>
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Email:
+                                            </td>
+                                            <td>
+                                                   @Html.TextBoxFor(m => m.Email)   </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                DMS Provider:<br />
+                                                (ex DMSTrack)
+                                            </td>
+                                            <td>
+                                                   @Html.TextBoxFor(m => m.DMSProvider)   </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="height: 13px;" colspan="2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <i>All fields required.</i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <input type="image" src="/Content/Images/submit-form.png" style="display:inline-block;height:32px;width:159px;" 
+                                                  id="Dealers1_lnkSubmit" />
+                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 32px;" colspan="2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" colspan="2">
+                                                <span>* Subject to location and technical evaluation.</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 22px;" colspan="2">
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+            }

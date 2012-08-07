@@ -1,0 +1,69 @@
+﻿@model List<Edrive.Models.Nop_Campaign>
+@{
+    ViewBag.Title = "Newsletters";
+}
+
+@section Head{
+<style>
+    table#newslettertbl  tr td{ text-align:center;border: solid 1px #AFDFFD;height:18px;}
+
+ .HeaderRow_newslettertbl{background: #189EF7;
+color: white;
+padding: 2x 10px 1px 6px;
+text-align: center;
+vertical-align: middle;
+font-weight: normal;
+border: solid 1px #28ACFD;}
+
+ 
+</style>
+
+}
+<h2>Manage Newsletters</h2>
+
+@using (Html.BeginForm())
+ {
+    <div style="text-align:center;color:Red">
+    @(ViewData["Msg"] ?? "")
+    </div>
+    
+    <div style="text-align:right;padding-right:15px;">
+         <input type="submit" name="AddNew" value="Add new" id="AddNew" />
+         <input type="submit" value="Export Emails to CSV" name="Export" id="Export" />
+      
+
+    </div>
+    <table id="newslettertbl" style="width:966px;margin-top:5px;">
+    <tr>
+    <td class="HeaderRow_newslettertbl">
+    Name
+    </td>
+    <td class="HeaderRow_newslettertbl" style="width:250px;">
+    Created on
+    </td>
+<td class="HeaderRow_newslettertbl" style="width:200px;">
+    Edit
+    </td>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        var clsName = Model.IndexOf(item) % 2 == 0 ? "alter" : "";
+    <tr class="@clsName">
+    <td style="text-align:left;padding-left:15px;">
+    @item.Name
+    </td>
+    <td style="text-align:left;padding-left:52px">
+    @item.CreatedOn
+    </td>
+    <td>
+    @Html.ActionLink("edit", "EditNewsLetter", new { id = @item.CampaignID })
+    </td>
+
+    </tr>
+    }
+
+
+    
+    </table> 
+}

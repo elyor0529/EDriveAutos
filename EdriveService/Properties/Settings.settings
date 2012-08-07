@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EdriveService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EdriveService_NADA_UsedCars_UsedCars" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.nadaguides.com/nagservice/usedcars.asmx</Value>
+    </Setting>
+    <Setting Name="EdriveService_Nada_UsedCarPrices_UsedCarPrices" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.nadaguides.com/nagservice/UsedCarPrices.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

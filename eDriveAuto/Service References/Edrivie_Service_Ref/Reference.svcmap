@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="81f81aba-49b6-444a-b761-5577e1108fd6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/EdriveService/EdriveDataService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EdriveDataService9.xsd" MetadataType="Schema" ID="ba2268c9-fdce-4708-8f03-d9c78edf2d45" SourceId="1" SourceUrl="http://localhost/EdriveService/EdriveDataService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EdriveDataService10.xsd" MetadataType="Schema" ID="d7d73476-9913-4970-bf86-ff05a9439cb3" SourceId="1" SourceUrl="http://localhost/EdriveService/EdriveDataService.svc?xsd=xsd3" />
+    <MetadataFile FileName="EdriveDataService11.xsd" MetadataType="Schema" ID="1c09738a-333a-41d8-bd5c-cdb16b7f05c3" SourceId="1" SourceUrl="http://localhost/EdriveService/EdriveDataService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EdriveDataService12.xsd" MetadataType="Schema" ID="46090249-e3dc-46ff-b205-0a3bd39d7480" SourceId="1" SourceUrl="http://localhost/EdriveService/EdriveDataService.svc?xsd=xsd1" />
+    <MetadataFile FileName="Edrive_Service3.wsdl" MetadataType="Wsdl" ID="db027933-677d-410c-8a2f-852f56a3fdc7" SourceId="1" SourceUrl="http://localhost/EdriveService/EdriveDataService.svc?wsdl" />
+    <MetadataFile FileName="EdriveDataService3.disco" MetadataType="Disco" ID="bcf4b179-750b-4760-ba62-a094b601add5" SourceId="1" SourceUrl="http://localhost/EdriveService/EdriveDataService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

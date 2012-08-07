@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "TestService";
+}
+
+<h2>TestService</h2>
+
+   <form id="form1" action="@Url.Action("TestService", "Home", new { area=""})" method="post">
+     
+    <div>
+    
+    </div>
+   
+    <input type="submit" name="GetData" id="Button1" value="GetDataFromAULtec"/> 
+    <br />
+<input type="submit" name="GetData" id="Button2" value="GetDataFromAutoBase"   /> 
+    <br />
+<input type="submit" name="GetData" id="Button3" value="GetDataFromGetAuto"   /> 
+    <br />
+<input type="submit" name="GetData" id="Button4" value="GetDataFromSchumacher"   /> 
+        
+ <br />
+
+<input type="submit" name="GetData" id="Button5" value="DeleteUsingPriceValidation"   /> 
+
+ <br />
+
+<input type="submit" name="GetData" id="Button6" value="RecoverDeletedProducts"   /> 
+
+        
+    </form>

@@ -1,0 +1,83 @@
+﻿@model List<CustomerVehicleRequests>
+
+@{
+	ViewBag.Title = "Customer Vehicle Requests";
+}
+
+<script type="text/javascript">
+	function postPage(obj) {
+		$("#PageIndex").val($(obj).attr("id"));
+		document.forms["form1"].submit();
+	}
+</script>
+
+@if(Model == null || Model.Count == 0)
+{
+	<table>
+		<tr>
+			<td>
+				No records found.
+			</td>
+		</tr>
+	</table>
+}
+else
+{
+<div class="contentTable">
+	<table>
+		<thead>
+			<tr>
+				<th>Email</th>
+				<th>Name</th>
+				<th>Phone No</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Max Mileage</th>
+				<th>Year From</th>
+				<th>Year To</th>
+				<th>Min Price</th>
+				<th>Max Price</th>
+				<th>Body</th>
+				<th>Transmission</th>
+				<th>Engine</th>
+				<th>Driver Type</th>
+				<th>Request Date</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (var request in Model)
+		{
+			var className = (Model.IndexOf(request)%2 == 0) ? "alterRow" : "";
+
+			<tr class="@className">
+				<td>@request.Customer.Email</td>
+				<td>@request.Customer.FirstName @request.Customer.LastName</td>
+				<td>@request.Customer.Phone</td>
+				<td>@request.Make</td>
+				<td>@request.Model</td>
+				<td>@request.MaximumMileage</td>
+				<td>@request.YearFrom</td>
+				<td>@request.YearTo</td>
+				<td>@request.MinPrice</td>
+				<td>@request.MaxPrice</td>
+				<td>@request.Body</td>
+				<td>@request.Transmission</td>
+				<td>@request.Engine</td>
+				<td>@request.DriverType</td>
+				<td>@request.CreationDate</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+	<table>
+		<tr>
+			<td>
+				@using (Html.BeginForm("CustomerVehicleRequests", "ManageLeads", FormMethod.Post, new {id = "form1"}))
+				{
+					@Html.Partial("_Paging")
+				}
+			</td>
+		</tr>
+	</table>
+</div>
+}

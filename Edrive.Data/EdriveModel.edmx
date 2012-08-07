@@ -1,0 +1,1795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EDriveModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EDriveModelStoreContainer">
+          <EntitySet Name="ContactType" EntityType="EDriveModel.Store.ContactType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="EDriveModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="EDriveModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer_Type" EntityType="EDriveModel.Store.Customer_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerAttribute" EntityType="EDriveModel.Store.CustomerAttribute" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerProfile" EntityType="EDriveModel.Store.CustomerProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DUPLICATE_ProductOption" EntityType="EDriveModel.Store.DUPLICATE_ProductOption" store:Type="Tables" store:Schema="dbo" store:Name="DUPLICATE_ProductOption">
+            <DefiningQuery>SELECT 
+      [DUPLICATE_ProductOption].[id] AS [id], 
+      [DUPLICATE_ProductOption].[OptionName] AS [OptionName]
+      FROM [dbo].[DUPLICATE_ProductOption] AS [DUPLICATE_ProductOption]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ED_CarfaxLogDetail" EntityType="EDriveModel.Store.ED_CarfaxLogDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_DataImportLog" EntityType="EDriveModel.Store.ED_DataImportLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_InterestedCustomer" EntityType="EDriveModel.Store.ED_InterestedCustomer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ED_Zipcodes" EntityType="EDriveModel.Store.ED_Zipcodes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EVENT_LOG" EntityType="EDriveModel.Store.EVENT_LOG" store:Type="Tables" store:Schema="dbo" store:Name="EVENT.LOG">
+            <DefiningQuery>SELECT 
+      [EVENT_LOG].[ID] AS [ID], 
+      [EVENT_LOG].[DATE_LOGGED] AS [DATE_LOGGED], 
+      [EVENT_LOG].[EVENT_TYPE] AS [EVENT_TYPE], 
+      [EVENT_LOG].[CODE_BASE] AS [CODE_BASE], 
+      [EVENT_LOG].[MESSAGE] AS [MESSAGE]
+      FROM [dbo].[EVENT.LOG] AS [EVENT_LOG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FTP_DIRECTORIES" EntityType="EDriveModel.Store.FTP_DIRECTORIES" store:Type="Tables" store:Schema="dbo" store:Name="FTP_DIRECTORIES">
+            <DefiningQuery>SELECT 
+      [FTP_DIRECTORIES].[ID] AS [ID], 
+      [FTP_DIRECTORIES].[CUSTOMERID] AS [CUSTOMERID], 
+      [FTP_DIRECTORIES].[PATH] AS [PATH], 
+      [FTP_DIRECTORIES].[USE] AS [USE]
+      FROM [dbo].[FTP_DIRECTORIES] AS [FTP_DIRECTORIES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Product" EntityType="EDriveModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product_Body" EntityType="EDriveModel.Store.Product_Body" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product_Make" EntityType="EDriveModel.Store.Product_Make" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product_Model" EntityType="EDriveModel.Store.Product_Model" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product_Rating" EntityType="EDriveModel.Store.Product_Rating" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product_Type" EntityType="EDriveModel.Store.Product_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductOption" EntityType="EDriveModel.Store.ProductOption" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductOptionMapping" EntityType="EDriveModel.Store.ProductOptionMapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductPicture" EntityType="EDriveModel.Store.ProductPicture" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SITE_STATISTICS" EntityType="EDriveModel.Store.SITE_STATISTICS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StateProvince" EntityType="EDriveModel.Store.StateProvince" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="zip_code" EntityType="EDriveModel.Store.zip_code" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="customer_customerType_customerType_id" Association="EDriveModel.Store.customer_customerType_customerType_id">
+            <End Role="Customer_Type" EntitySet="Customer_Type" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_M__MakeI__45F365D3" Association="EDriveModel.Store.FK__Product_M__MakeI__45F365D3">
+            <End Role="Product_Make" EntitySet="Product_Make" />
+            <End Role="Product_Model" EntitySet="Product_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_M__MakeI__46E78A0C" Association="EDriveModel.Store.FK__Product_M__MakeI__46E78A0C">
+            <End Role="Product_Make" EntitySet="Product_Make" />
+            <End Role="Product_Model" EntitySet="Product_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_StateProvince_StatieId_StateProvinceId" Association="EDriveModel.Store.FK_Customer_StateProvince_StatieId_StateProvinceId">
+            <End Role="StateProvince" EntitySet="StateProvince" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerProfile_Customer" Association="EDriveModel.Store.FK_CustomerProfile_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerProfile" EntitySet="CustomerProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nop_StateProvince_Nop_Country" Association="EDriveModel.Store.FK_Nop_StateProvince_Nop_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="StateProvince" EntitySet="StateProvince" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Product" Association="EDriveModel.Store.FK_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product1" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Product_dealeriD" Association="EDriveModel.Store.Product_dealeriD">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Product_MOdel_body" Association="EDriveModel.Store.Product_MOdel_body">
+            <End Role="Product_Body" EntitySet="Product_Body" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Product_MOdel_Producttype" Association="EDriveModel.Store.Product_MOdel_Producttype">
+            <End Role="Product_Type" EntitySet="Product_Type" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Product_MOdel_Type" Association="EDriveModel.Store.Product_MOdel_Type">
+            <End Role="Product_Model" EntitySet="Product_Model" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContactType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="TwoLetterISOCode" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="ThreeLetterISOCode" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="NumericISOCode" Type="int" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CustomerType" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="IsTrial" Type="bit" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="Company" Type="varchar" MaxLength="150" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="250" />
+          <Property Name="City" Type="varchar" MaxLength="150" />
+          <Property Name="ZipPostalCode" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="StreetAddress2" Type="varchar" MaxLength="400" />
+          <Property Name="Fax" Type="varchar" MaxLength="200" />
+          <Property Name="newsletter" Type="bit" />
+          <Property Name="Stateid" Type="int" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" />
+          <Property Name="IsFeatured" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customer_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerAttribute">
+          <Key>
+            <PropertyRef Name="CustomerAttributeId" />
+          </Key>
+          <Property Name="CustomerAttributeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Value" Type="nvarchar" Nullable="false" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="CustomerProfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Logo" Type="varchar" MaxLength="500" />
+          <Property Name="ApplicationURL" Type="varchar" MaxLength="500" />
+          <Property Name="WarrantyURL" Type="varchar" MaxLength="500" />
+          <Property Name="ServiceURL" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="PageImage" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'EDriveAutosDev.dbo.DUPLICATE_ProductOption' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DUPLICATE_ProductOption">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="OptionName" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="OptionName" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ED_CarfaxLogDetail">
+          <Key>
+            <PropertyRef Name="CarFax_logID" />
+          </Key>
+          <Property Name="CarFax_logID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LogMsg" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Success" Type="int" />
+          <Property Name="CreateBy" Type="int" Nullable="false" />
+          <Property Name="CreateOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ED_DataImportLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VIN" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FileName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="1000" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ED_InterestedCustomer">
+          <Key>
+            <PropertyRef Name="InterestedCustomerID" />
+          </Key>
+          <Property Name="InterestedCustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactType" Type="int" />
+          <Property Name="InterestType" Type="int" />
+          <Property Name="AdditionalComment" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Financing" Type="bit" />
+          <Property Name="Price_Lock" Type="bit" />
+          <Property Name="Trade_in" Type="bit" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="ED_Zipcodes">
+          <Key>
+            <PropertyRef Name="ZipID" />
+          </Key>
+          <Property Name="ZipID" Type="int" Nullable="false" />
+          <Property Name="zip_code" Type="varchar" MaxLength="50" />
+          <Property Name="latitude" Type="float" Nullable="false" />
+          <Property Name="longitude" Type="float" Nullable="false" />
+          <Property Name="city" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="state" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="country" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="zip_class" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'EDriveAutosDev.dbo.EVENT.LOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="EVENT_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="DATE_LOGGED" />
+            <PropertyRef Name="EVENT_TYPE" />
+            <PropertyRef Name="CODE_BASE" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DATE_LOGGED" Type="datetime" Nullable="false" />
+          <Property Name="EVENT_TYPE" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="CODE_BASE" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="MESSAGE" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'EDriveAutosDev.dbo.FTP_DIRECTORIES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="FTP_DIRECTORIES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMERID" Type="int" />
+          <Property Name="PATH" Type="varchar" MaxLength="250" />
+          <Property Name="USE" Type="bit" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="400" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="VIN" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Model" Type="int" Nullable="false" />
+          <Property Name="Trim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Free_Text" Type="nvarchar(max)" />
+          <Property Name="Body" Type="int" Nullable="false" />
+          <Property Name="Mileage" Type="int" />
+          <Property Name="Price_Current" Type="money" />
+          <Property Name="Condition" Type="varchar" MaxLength="300" />
+          <Property Name="Exterior_Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Interior_Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Doors" Type="int" />
+          <Property Name="Engine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Transmission" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fuel_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Drive_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Warranty" Type="bit" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date_in_Stock" Type="datetime" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="IsNew" Type="bit" />
+          <Property Name="IsFeature" Type="bit" />
+          <Property Name="SavingAmount" Type="money" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="QualifyPrice" Type="money" />
+          <Property Name="AverageRetailPrice" Type="money" />
+          <Property Name="AverageTradeinPrice" Type="money" />
+          <Property Name="City_Fuel" Type="int" />
+          <Property Name="Highway_Fuel" Type="int" />
+          <Property Name="zip" Type="int" />
+          <Property Name="Reserved" Type="varchar" MaxLength="50" />
+          <Property Name="Price_Cost" Type="float" />
+          <Property Name="Price_WholeSale" Type="float" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Pics" Type="varchar(max)" />
+          <Property Name="OwnerDetail" Type="varchar" MaxLength="50" />
+          <Property Name="ShowOnDealerProfile" Type="bit" />
+          <Property Name="SellerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="SellerName" Type="varchar" MaxLength="50" />
+          <Property Name="Offer" Type="bit" />
+          <Property Name="ISQUALIFIED" Type="bit" Nullable="false" />
+          <Property Name="NADACheckedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product_Body">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Product_Make">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Make" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Product_Model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ModeLName" Type="varchar" MaxLength="200" />
+          <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Rating">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="AvgRating" Type="float" />
+          <Property Name="TotaVotes" Type="int" />
+        </EntityType>
+        <EntityType Name="Product_Type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ProductOption">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OptionName" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProductOptionMapping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OptionID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductPicture">
+          <Key>
+            <PropertyRef Name="ProductPictureID" />
+          </Key>
+          <Property Name="ProductPictureID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="PictureURL" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SITE_STATISTICS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLES_TOTAL" Type="int" />
+          <Property Name="VEHICLES_DELETED" Type="int" />
+          <Property Name="VEHICLES_QUALIFIED" Type="int" />
+        </EntityType>
+        <EntityType Name="StateProvince">
+          <Key>
+            <PropertyRef Name="StateProvinceID" />
+          </Key>
+          <Property Name="StateProvinceID" Type="int" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Abbreviation" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zip_code">
+          <Key>
+            <PropertyRef Name="zip_code" />
+          </Key>
+          <Property Name="zip_code" Type="int" Nullable="false" />
+          <Property Name="lattitude" Type="float" Nullable="false" />
+          <Property Name="longitude" Type="float" Nullable="false" />
+          <Property Name="city" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="state_prefix" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="zip_class" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <Association Name="customer_customerType_customerType_id">
+          <End Role="Customer_Type" Type="EDriveModel.Store.Customer_Type" Multiplicity="1" />
+          <End Role="Customer" Type="EDriveModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_M__MakeI__45F365D3">
+          <End Role="Product_Make" Type="EDriveModel.Store.Product_Make" Multiplicity="1" />
+          <End Role="Product_Model" Type="EDriveModel.Store.Product_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Make">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Model">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_M__MakeI__46E78A0C">
+          <End Role="Product_Make" Type="EDriveModel.Store.Product_Make" Multiplicity="1" />
+          <End Role="Product_Model" Type="EDriveModel.Store.Product_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Make">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Model">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_StateProvince_StatieId_StateProvinceId">
+          <End Role="StateProvince" Type="EDriveModel.Store.StateProvince" Multiplicity="0..1" />
+          <End Role="Customer" Type="EDriveModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateProvince">
+              <PropertyRef Name="StateProvinceID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Stateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerProfile_Customer">
+          <End Role="Customer" Type="EDriveModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="CustomerProfile" Type="EDriveModel.Store.CustomerProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerProfile">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nop_StateProvince_Nop_Country">
+          <End Role="Country" Type="EDriveModel.Store.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StateProvince" Type="EDriveModel.Store.StateProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="StateProvince">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Product">
+          <End Role="Product" Type="EDriveModel.Store.Product" Multiplicity="1" />
+          <End Role="Product1" Type="EDriveModel.Store.Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product1">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_dealeriD">
+          <End Role="Customer" Type="EDriveModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="Product" Type="EDriveModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_MOdel_body">
+          <End Role="Product_Body" Type="EDriveModel.Store.Product_Body" Multiplicity="1" />
+          <End Role="Product" Type="EDriveModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Body">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Body" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_MOdel_Producttype">
+          <End Role="Product_Type" Type="EDriveModel.Store.Product_Type" Multiplicity="1" />
+          <End Role="Product" Type="EDriveModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_MOdel_Type">
+          <End Role="Product_Model" Type="EDriveModel.Store.Product_Model" Multiplicity="1" />
+          <End Role="Product" Type="EDriveModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Model">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ED_GetModelByMake_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ED_NewGetSpecificationAttrOptByAttrID_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SpecificationAttributeName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ED_ProductCarfaxReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="File" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllDealerIDAndVIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllDealerInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStateProvinceID" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Abbreviation" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="NOP_getcustomerattributevalue" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <Parameter Name="AttributeKey" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NOP_getnotnullnotempty" ReturnType="nvarchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p2" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Nop_ProductLoadAllForHotsheetNew_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Make" Type="int" Mode="In" />
+          <Parameter Name="Lat1" Type="float" Mode="In" />
+          <Parameter Name="Lat2" Type="float" Mode="In" />
+          <Parameter Name="Long1" Type="float" Mode="In" />
+          <Parameter Name="Long2" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Nop_SellerCnt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Make" Type="int" Mode="In" />
+          <Parameter Name="Lat1" Type="float" Mode="In" />
+          <Parameter Name="Lat2" Type="float" Mode="In" />
+          <Parameter Name="Long1" Type="float" Mode="In" />
+          <Parameter Name="Long2" Type="float" Mode="In" />
+        </Function>
+        <Function Name="SearchHomepage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchString" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchHomepage_OLD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchString" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_AUTOLOOPMANUALIMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TIMESTOLOOP" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPLOAD_CARFAXDEALERREFRESH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_CARFAXVEHICLEREFRESH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_CLEARPRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_CLEARPRODUCTSTAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_CSVNIGHTLYBATCH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMAGES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTFROMCSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTFROMINTERMEDIATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_IMPORTTABLECLEANUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_REFRESHSTAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_VEHICLESMANUALLY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOG_ERRORINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOG_EVENTINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EVENT_TYPE" Type="char" Mode="In" />
+          <Parameter Name="CODE_BASE" Type="varchar" Mode="In" />
+          <Parameter Name="MESSAGE" Type="text" Mode="In" />
+        </Function>
+        <Function Name="SPRETRIEVE_CARFAXDEALERLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_CARFAXVEHICLELIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_DEALERSFORMANAGEPRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_ERRORINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_FEATUREDVEHICLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_FTPDIRECTORIES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_QUALIFIEDVEHICLECOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_SITESTATISTICS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_VEHICLESTOPROCESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPSEARCH_ADVANCED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MAKE" Type="int" Mode="In" />
+          <Parameter Name="MODEL" Type="int" Mode="In" />
+          <Parameter Name="MAXMILEAGE" Type="int" Mode="In" />
+          <Parameter Name="YEAR_FROM" Type="int" Mode="In" />
+          <Parameter Name="YEAR_TO" Type="int" Mode="In" />
+          <Parameter Name="PRICE_MIN" Type="money" Mode="In" />
+          <Parameter Name="PRICE_MAX" Type="money" Mode="In" />
+          <Parameter Name="BODY" Type="int" Mode="In" />
+          <Parameter Name="TRANSMISSION" Type="varchar" Mode="In" />
+          <Parameter Name="ENGINE" Type="varchar" Mode="In" />
+          <Parameter Name="DRIVETYPE" Type="varchar" Mode="In" />
+          <Parameter Name="VIN" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP" Type="varchar" Mode="In" />
+          <Parameter Name="VALIDATEDONLY" Type="bit" Mode="In" />
+          <Parameter Name="RADIUS" Type="int" Mode="In" />
+          <Parameter Name="SORTCOLUMN" Type="varchar" Mode="In" />
+          <Parameter Name="SORTORDER" Type="varchar" Mode="In" />
+          <Parameter Name="PAGESIZE" Type="int" Mode="In" />
+          <Parameter Name="PAGENUM" Type="int" Mode="In" />
+          <Parameter Name="TOTALRESULTS" Type="int" Mode="InOut" />
+          <Parameter Name="TOTALPAGES" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SPSEARCH_STANDARD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QUERY" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP" Type="varchar" Mode="In" />
+          <Parameter Name="RADIUS" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="varchar" Mode="In" />
+          <Parameter Name="YEAR" Type="varchar" Mode="In" />
+          <Parameter Name="MILEAGE" Type="varchar" Mode="In" />
+          <Parameter Name="MAKE" Type="varchar" Mode="In" />
+          <Parameter Name="MODEL" Type="varchar" Mode="In" />
+          <Parameter Name="WARRANTY" Type="bit" Mode="In" />
+          <Parameter Name="BODYTYPE" Type="varchar" Mode="In" />
+          <Parameter Name="VALIDATEDONLY" Type="bit" Mode="In" />
+          <Parameter Name="SORTCOLUMN" Type="varchar" Mode="In" />
+          <Parameter Name="SORTORDER" Type="varchar" Mode="In" />
+          <Parameter Name="PAGESIZE" Type="int" Mode="In" />
+          <Parameter Name="PAGENUM" Type="int" Mode="In" />
+          <Parameter Name="TOTALRESULTS" Type="int" Mode="InOut" />
+          <Parameter Name="TOTALPAGES" Type="int" Mode="InOut" />
+          <Parameter Name="EXACTMATCH" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="SPTOOL_REBUILDINDEXES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPTOOL_STAGINGCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPTOOOL_CHECKINDEXES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPUPDATE_SITESTATISTICS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UFN_REPLACEDOUBLEQUOTES" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_STRIPCHARACTERS" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_STRIPSPECIALCHARACTERS" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_TRIMQUOTES" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EDriveModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EDriveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ContactType" EntityType="EDriveModel.ContactType" />
+          <EntitySet Name="Country" EntityType="EDriveModel.Country" />
+          <EntitySet Name="Customer" EntityType="EDriveModel.Customer" />
+          <EntitySet Name="Customer_Type" EntityType="EDriveModel.Customer_Type" />
+          <EntitySet Name="CustomerAttribute" EntityType="EDriveModel.CustomerAttribute" />
+          <EntitySet Name="CustomerProfile" EntityType="EDriveModel.CustomerProfile" />
+          <EntitySet Name="DUPLICATE_ProductOption" EntityType="EDriveModel.DUPLICATE_ProductOption" />
+          <EntitySet Name="ED_CarfaxLogDetail" EntityType="EDriveModel.ED_CarfaxLogDetail" />
+          <EntitySet Name="ED_DataImportLog" EntityType="EDriveModel.ED_DataImportLog" />
+          <EntitySet Name="ED_InterestedCustomer" EntityType="EDriveModel.ED_InterestedCustomer" />
+          <EntitySet Name="ED_Zipcodes" EntityType="EDriveModel.ED_Zipcodes" />
+          <EntitySet Name="EVENT_LOG" EntityType="EDriveModel.EVENT_LOG" />
+          <EntitySet Name="FTP_DIRECTORIES" EntityType="EDriveModel.FTP_DIRECTORIES" />
+          <EntitySet Name="Product" EntityType="EDriveModel.Product" />
+          <EntitySet Name="Product_Body" EntityType="EDriveModel.Product_Body" />
+          <EntitySet Name="Product_Make" EntityType="EDriveModel.Product_Make" />
+          <EntitySet Name="Product_Model" EntityType="EDriveModel.Product_Model" />
+          <EntitySet Name="Product_Rating" EntityType="EDriveModel.Product_Rating" />
+          <EntitySet Name="Product_Type" EntityType="EDriveModel.Product_Type" />
+          <EntitySet Name="ProductOption" EntityType="EDriveModel.ProductOption" />
+          <EntitySet Name="ProductOptionMapping" EntityType="EDriveModel.ProductOptionMapping" />
+          <EntitySet Name="ProductPicture" EntityType="EDriveModel.ProductPicture" />
+          <EntitySet Name="SITESTATISTICS" EntityType="EDriveModel.SITESTATISTICS" />
+          <EntitySet Name="StateProvince" EntityType="EDriveModel.StateProvince" />
+          <EntitySet Name="zip_code" EntityType="EDriveModel.zip_code" />
+          <AssociationSet Name="FK_Nop_StateProvince_Nop_Country" Association="EDriveModel.FK_Nop_StateProvince_Nop_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="StateProvince" EntitySet="StateProvince" />
+          </AssociationSet>
+          <AssociationSet Name="customer_customerType_customerType_id" Association="EDriveModel.customer_customerType_customerType_id">
+            <End Role="Customer_Type" EntitySet="Customer_Type" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_StateProvince_StatieId_StateProvinceId" Association="EDriveModel.FK_Customer_StateProvince_StatieId_StateProvinceId">
+            <End Role="StateProvince" EntitySet="StateProvince" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerProfile_Customer" Association="EDriveModel.FK_CustomerProfile_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerProfile" EntitySet="CustomerProfile" />
+          </AssociationSet>
+          <AssociationSet Name="Product_dealeriD" Association="EDriveModel.Product_dealeriD">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Product" Association="EDriveModel.FK_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product1" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Product_MOdel_body" Association="EDriveModel.Product_MOdel_body">
+            <End Role="Product_Body" EntitySet="Product_Body" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Product_MOdel_Producttype" Association="EDriveModel.Product_MOdel_Producttype">
+            <End Role="Product_Type" EntitySet="Product_Type" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="Product_MOdel_Type" Association="EDriveModel.Product_MOdel_Type">
+            <End Role="Product_Model" EntitySet="Product_Model" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_M__MakeI__45F365D3" Association="EDriveModel.FK__Product_M__MakeI__45F365D3">
+            <End Role="Product_Make" EntitySet="Product_Make" />
+            <End Role="Product_Model" EntitySet="Product_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_M__MakeI__46E78A0C" Association="EDriveModel.FK__Product_M__MakeI__46E78A0C">
+            <End Role="Product_Make" EntitySet="Product_Make" />
+            <End Role="Product_Model" EntitySet="Product_Model" />
+          </AssociationSet>
+          <FunctionImport Name="SearchAdvanced" EntitySet="Product" ReturnType="Collection(EDriveModel.Product)">
+            <Parameter Name="MAKE" Mode="In" Type="Int32" />
+            <Parameter Name="MODEL" Mode="In" Type="Int32" />
+            <Parameter Name="MAXMILEAGE" Mode="In" Type="Int32" />
+            <Parameter Name="YEAR_FROM" Mode="In" Type="Int32" />
+            <Parameter Name="YEAR_TO" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE_MIN" Mode="In" Type="Decimal" />
+            <Parameter Name="PRICE_MAX" Mode="In" Type="Decimal" />
+            <Parameter Name="BODY" Mode="In" Type="Int32" />
+            <Parameter Name="TRANSMISSION" Mode="In" Type="String" />
+            <Parameter Name="ENGINE" Mode="In" Type="String" />
+            <Parameter Name="DRIVETYPE" Mode="In" Type="String" />
+            <Parameter Name="VIN" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="VALIDATEDONLY" Mode="In" Type="Boolean" />
+            <Parameter Name="RADIUS" Mode="In" Type="Int32" />
+            <Parameter Name="SORTCOLUMN" Mode="In" Type="String" />
+            <Parameter Name="SORTORDER" Mode="In" Type="String" />
+            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
+            <Parameter Name="PAGENUM" Mode="In" Type="Int32" />
+            <Parameter Name="TOTALRESULTS" Mode="InOut" Type="Int32" />
+            <Parameter Name="TOTALPAGES" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SearchStandard" EntitySet="Product" ReturnType="Collection(EDriveModel.Product)">
+            <Parameter Name="QUERY" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="RADIUS" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="String" />
+            <Parameter Name="YEAR" Mode="In" Type="String" />
+            <Parameter Name="MILEAGE" Mode="In" Type="String" />
+            <Parameter Name="MAKE" Mode="In" Type="String" />
+            <Parameter Name="MODEL" Mode="In" Type="String" />
+            <Parameter Name="WARRANTY" Mode="In" Type="Boolean" />
+            <Parameter Name="BODYTYPE" Mode="In" Type="String" />
+            <Parameter Name="VALIDATEDONLY" Mode="In" Type="Boolean" />
+            <Parameter Name="SORTCOLUMN" Mode="In" Type="String" />
+            <Parameter Name="SORTORDER" Mode="In" Type="String" />
+            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
+            <Parameter Name="PAGENUM" Mode="In" Type="Int32" />
+            <Parameter Name="TOTALRESULTS" Mode="InOut" Type="Int32" />
+            <Parameter Name="TOTALPAGES" Mode="InOut" Type="Int32" />
+            <Parameter Name="EXACTMATCH" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="DealersForManagerProduct" EntitySet="Customer" ReturnType="Collection(EDriveModel.Customer)" />
+          <FunctionImport Name="QualifiedVehiclesCount" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="FeaturedVehicles" ReturnType="Collection(EDriveModel.FeaturedVehiclesItem)" />
+        </EntityContainer>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactType1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TwoLetterISOCode" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeLetterISOCode" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="NumericISOCode" Type="Int32" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StateProvince" Relationship="EDriveModel.FK_Nop_StateProvince_Nop_Country" FromRole="Country" ToRole="StateProvince" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerGUID" Type="Guid" Nullable="false" />
+          <Property Name="CustomerType" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ExpiryDate" Type="DateTime" />
+          <Property Name="IsTrial" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Company" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="StreetAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="ZipPostalCode" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" />
+          <Property Name="StreetAddress2" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="newsletter" Type="Boolean" />
+          <Property Name="Stateid" Type="Int32" />
+          <Property Name="GUID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsFeatured" Type="Boolean" />
+          <NavigationProperty Name="Customer_Type" Relationship="EDriveModel.customer_customerType_customerType_id" FromRole="Customer" ToRole="Customer_Type" />
+          <NavigationProperty Name="StateProvince" Relationship="EDriveModel.FK_Customer_StateProvince_StatieId_StateProvinceId" FromRole="Customer" ToRole="StateProvince" />
+          <NavigationProperty Name="CustomerProfile" Relationship="EDriveModel.FK_CustomerProfile_Customer" FromRole="Customer" ToRole="CustomerProfile" />
+          <NavigationProperty Name="Product" Relationship="EDriveModel.Product_dealeriD" FromRole="Customer" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="EDriveModel.customer_customerType_customerType_id" FromRole="Customer_Type" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="CustomerAttribute">
+          <Key>
+            <PropertyRef Name="CustomerAttributeId" />
+          </Key>
+          <Property Name="CustomerAttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CustomerProfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Logo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ApplicationURL" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="WarrantyURL" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceURL" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PageImage" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="EDriveModel.FK_CustomerProfile_Customer" FromRole="CustomerProfile" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="DUPLICATE_ProductOption">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="OptionName" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="OptionName" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ED_CarfaxLogDetail">
+          <Key>
+            <PropertyRef Name="CarFax_logID" />
+          </Key>
+          <Property Name="CarFax_logID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogMsg" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Success" Type="Int32" />
+          <Property Name="CreateBy" Type="Int32" Nullable="false" />
+          <Property Name="CreateOn" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ED_DataImportLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIN" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ED_InterestedCustomer">
+          <Key>
+            <PropertyRef Name="InterestedCustomerID" />
+          </Key>
+          <Property Name="InterestedCustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ContactType" Type="Int32" />
+          <Property Name="InterestType" Type="Int32" />
+          <Property Name="AdditionalComment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="Financing" Type="Boolean" />
+          <Property Name="Price_Lock" Type="Boolean" />
+          <Property Name="Trade_in" Type="Boolean" />
+          <Property Name="CustomerId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ED_Zipcodes">
+          <Key>
+            <PropertyRef Name="ZipID" />
+          </Key>
+          <Property Name="ZipID" Type="Int32" Nullable="false" />
+          <Property Name="zip_code" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="latitude" Type="Double" Nullable="false" />
+          <Property Name="longitude" Type="Double" Nullable="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="state" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="country" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="zip_class" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="EVENT_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="DATE_LOGGED" />
+            <PropertyRef Name="EVENT_TYPE" />
+            <PropertyRef Name="CODE_BASE" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATE_LOGGED" Type="DateTime" Nullable="false" />
+          <Property Name="EVENT_TYPE" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="CODE_BASE" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="MESSAGE" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="FTP_DIRECTORIES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMERID" Type="Int32" />
+          <Property Name="PATH" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="USE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="VIN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Model" Type="Int32" Nullable="false" />
+          <Property Name="Trim" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Free_Text" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Body" Type="Int32" Nullable="false" />
+          <Property Name="Mileage" Type="Int32" />
+          <Property Name="Price_Current" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Condition" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="Exterior_Color" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Interior_Color" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Doors" Type="Int32" />
+          <Property Name="Engine" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Transmission" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Fuel_Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Drive_Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Warranty" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date_in_Stock" Type="DateTime" />
+          <Property Name="FileName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="IsFeature" Type="Boolean" />
+          <Property Name="SavingAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="QualifyPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AverageRetailPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AverageTradeinPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="City_Fuel" Type="Int32" />
+          <Property Name="Highway_Fuel" Type="Int32" />
+          <Property Name="zip" Type="Int32" />
+          <Property Name="Reserved" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Price_Cost" Type="Double" />
+          <Property Name="Price_WholeSale" Type="Double" />
+          <Property Name="Title" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Pics" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="OwnerDetail" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShowOnDealerProfile" Type="Boolean" />
+          <Property Name="SellerEmail" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SellerName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Offer" Type="Boolean" />
+          <Property Name="ISQUALIFIED" Type="Boolean" Nullable="false" />
+          <Property Name="NADACheckedOn" Type="DateTime" />
+          <NavigationProperty Name="Customer" Relationship="EDriveModel.Product_dealeriD" FromRole="Product" ToRole="Customer" />
+          <NavigationProperty Name="Product1" Relationship="EDriveModel.FK_Product_Product" FromRole="Product" ToRole="Product1" />
+          <NavigationProperty Name="Product2" Relationship="EDriveModel.FK_Product_Product" FromRole="Product1" ToRole="Product" />
+          <NavigationProperty Name="Product_Body" Relationship="EDriveModel.Product_MOdel_body" FromRole="Product" ToRole="Product_Body" />
+          <NavigationProperty Name="Product_Type" Relationship="EDriveModel.Product_MOdel_Producttype" FromRole="Product" ToRole="Product_Type" />
+          <NavigationProperty Name="Product_Model" Relationship="EDriveModel.Product_MOdel_Type" FromRole="Product" ToRole="Product_Model" />
+        </EntityType>
+        <EntityType Name="Product_Body">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="EDriveModel.Product_MOdel_body" FromRole="Product_Body" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product_Make">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Make" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Product_Model" Relationship="EDriveModel.FK__Product_M__MakeI__45F365D3" FromRole="Product_Make" ToRole="Product_Model" />
+          <NavigationProperty Name="Product_Model1" Relationship="EDriveModel.FK__Product_M__MakeI__46E78A0C" FromRole="Product_Make" ToRole="Product_Model" />
+        </EntityType>
+        <EntityType Name="Product_Model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModeLName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="MakeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="EDriveModel.Product_MOdel_Type" FromRole="Product_Model" ToRole="Product" />
+          <NavigationProperty Name="Product_Make" Relationship="EDriveModel.FK__Product_M__MakeI__45F365D3" FromRole="Product_Model" ToRole="Product_Make" />
+          <NavigationProperty Name="Product_Make1" Relationship="EDriveModel.FK__Product_M__MakeI__46E78A0C" FromRole="Product_Model" ToRole="Product_Make" />
+          <Property Type="Int32" Name="TypeID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Rating">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="AvgRating" Type="Double" />
+          <Property Name="TotaVotes" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Product_Type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="EDriveModel.Product_MOdel_Producttype" FromRole="Product_Type" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductOption">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionName" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ProductOptionMapping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProductPicture">
+          <Key>
+            <PropertyRef Name="ProductPictureID" />
+          </Key>
+          <Property Name="ProductPictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="PictureURL" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SITESTATISTICS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLES_TOTAL" Type="Int32" />
+          <Property Name="VEHICLES_DELETED" Type="Int32" />
+          <Property Name="VEHICLES_QUALIFIED" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StateProvince">
+          <Key>
+            <PropertyRef Name="StateProvinceID" />
+          </Key>
+          <Property Name="StateProvinceID" Type="Int32" Nullable="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Abbreviation" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="EDriveModel.FK_Nop_StateProvince_Nop_Country" FromRole="StateProvince" ToRole="Country" />
+          <NavigationProperty Name="Customer" Relationship="EDriveModel.FK_Customer_StateProvince_StatieId_StateProvinceId" FromRole="StateProvince" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="zip_code">
+          <Key>
+            <PropertyRef Name="zip_code1" />
+          </Key>
+          <Property Name="zip_code1" Type="Int32" Nullable="false" />
+          <Property Name="lattitude" Type="Double" Nullable="false" />
+          <Property Name="longitude" Type="Double" Nullable="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="state_prefix" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="zip_class" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Nop_StateProvince_Nop_Country">
+          <End Role="Country" Type="EDriveModel.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StateProvince" Type="EDriveModel.StateProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="StateProvince">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_customerType_customerType_id">
+          <End Role="Customer_Type" Type="EDriveModel.Customer_Type" Multiplicity="1" />
+          <End Role="Customer" Type="EDriveModel.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_StateProvince_StatieId_StateProvinceId">
+          <End Role="StateProvince" Type="EDriveModel.StateProvince" Multiplicity="0..1" />
+          <End Role="Customer" Type="EDriveModel.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateProvince">
+              <PropertyRef Name="StateProvinceID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Stateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerProfile_Customer">
+          <End Role="Customer" Type="EDriveModel.Customer" Multiplicity="0..1" />
+          <End Role="CustomerProfile" Type="EDriveModel.CustomerProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerProfile">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_dealeriD">
+          <End Role="Customer" Type="EDriveModel.Customer" Multiplicity="0..1" />
+          <End Role="Product" Type="EDriveModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Product">
+          <End Role="Product" Type="EDriveModel.Product" Multiplicity="1" />
+          <End Role="Product1" Type="EDriveModel.Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product1">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_MOdel_body">
+          <End Role="Product_Body" Type="EDriveModel.Product_Body" Multiplicity="1" />
+          <End Role="Product" Type="EDriveModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Body">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Body" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_MOdel_Producttype">
+          <End Role="Product_Type" Type="EDriveModel.Product_Type" Multiplicity="1" />
+          <End Role="Product" Type="EDriveModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_MOdel_Type">
+          <End Role="Product_Model" Type="EDriveModel.Product_Model" Multiplicity="1" />
+          <End Role="Product" Type="EDriveModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Model">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_M__MakeI__45F365D3">
+          <End Role="Product_Make" Type="EDriveModel.Product_Make" Multiplicity="1" />
+          <End Role="Product_Model" Type="EDriveModel.Product_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Make">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Model">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_M__MakeI__46E78A0C">
+          <End Role="Product_Make" Type="EDriveModel.Product_Make" Multiplicity="1" />
+          <End Role="Product_Model" Type="EDriveModel.Product_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Make">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Model">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="FeaturedVehiclesItem">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="400" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="VIN" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Stock" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Year" Nullable="true" />
+          <Property Type="Int32" Name="Model" Nullable="false" />
+          <Property Type="String" Name="Trim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Free_Text" Nullable="true" />
+          <Property Type="Int32" Name="Body" Nullable="false" />
+          <Property Type="Int32" Name="Mileage" Nullable="true" />
+          <Property Type="Decimal" Name="Price_Current" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Condition" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Exterior_Color" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Interior_Color" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Doors" Nullable="true" />
+          <Property Type="String" Name="Engine" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Transmission" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fuel_Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Drive_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Warranty" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="Date_in_Stock" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FileName" Nullable="true" />
+          <Property Type="Boolean" Name="IsNew" Nullable="true" />
+          <Property Type="Boolean" Name="IsFeature" Nullable="true" />
+          <Property Type="Decimal" Name="SavingAmount" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="StateID" Nullable="true" />
+          <Property Type="Decimal" Name="QualifyPrice" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AverageRetailPrice" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AverageTradeinPrice" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="City_Fuel" Nullable="true" />
+          <Property Type="Int32" Name="Highway_Fuel" Nullable="true" />
+          <Property Type="Int32" Name="zip" Nullable="true" />
+          <Property Type="String" Name="Reserved" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Price_Cost" Nullable="true" />
+          <Property Type="Double" Name="Price_WholeSale" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pics" Nullable="true" />
+          <Property Type="String" Name="OwnerDetail" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="ShowOnDealerProfile" Nullable="true" />
+          <Property Type="String" Name="SellerEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SellerName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Offer" Nullable="true" />
+          <Property Type="Boolean" Name="ISQUALIFIED" Nullable="false" />
+          <Property Type="DateTime" Name="NADACheckedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Abbreviation" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="StateProvince" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="ZipPostalCode" Nullable="true" />
+          <Property Type="String" Name="ProductBodyName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="MakeName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ModelName" Nullable="true" MaxLength="200" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EDriveModelStoreContainer" CdmEntityContainer="EDriveEntities">
+          <EntitySetMapping Name="ContactType"><EntityTypeMapping TypeName="EDriveModel.ContactType"><MappingFragment StoreEntitySet="ContactType">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="ContactType1" ColumnName="ContactType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Country"><EntityTypeMapping TypeName="EDriveModel.Country"><MappingFragment StoreEntitySet="Country">
+            <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="TwoLetterISOCode" ColumnName="TwoLetterISOCode" />
+            <ScalarProperty Name="ThreeLetterISOCode" ColumnName="ThreeLetterISOCode" />
+            <ScalarProperty Name="NumericISOCode" ColumnName="NumericISOCode" />
+            <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Customer"><EntityTypeMapping TypeName="EDriveModel.Customer"><MappingFragment StoreEntitySet="Customer">
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="CustomerGUID" ColumnName="CustomerGUID" />
+            <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+            <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+            <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+            <ScalarProperty Name="IsTrial" ColumnName="IsTrial" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Company" ColumnName="Company" />
+            <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="ZipPostalCode" ColumnName="ZipPostalCode" />
+            <ScalarProperty Name="Phone" ColumnName="Phone" />
+            <ScalarProperty Name="Gender" ColumnName="Gender" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+            <ScalarProperty Name="StreetAddress2" ColumnName="StreetAddress2" />
+            <ScalarProperty Name="Fax" ColumnName="Fax" />
+            <ScalarProperty Name="newsletter" ColumnName="newsletter" />
+            <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+            <ScalarProperty Name="GUID" ColumnName="GUID" />
+            <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Customer_Type"><EntityTypeMapping TypeName="EDriveModel.Customer_Type"><MappingFragment StoreEntitySet="Customer_Type">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Role" ColumnName="Role" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CustomerAttribute"><EntityTypeMapping TypeName="EDriveModel.CustomerAttribute"><MappingFragment StoreEntitySet="CustomerAttribute">
+            <ScalarProperty Name="CustomerAttributeId" ColumnName="CustomerAttributeId" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="Key" ColumnName="Key" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CustomerProfile"><EntityTypeMapping TypeName="EDriveModel.CustomerProfile"><MappingFragment StoreEntitySet="CustomerProfile">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="Logo" ColumnName="Logo" />
+            <ScalarProperty Name="ApplicationURL" ColumnName="ApplicationURL" />
+            <ScalarProperty Name="WarrantyURL" ColumnName="WarrantyURL" />
+            <ScalarProperty Name="ServiceURL" ColumnName="ServiceURL" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="PageImage" ColumnName="PageImage" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DUPLICATE_ProductOption"><EntityTypeMapping TypeName="EDriveModel.DUPLICATE_ProductOption"><MappingFragment StoreEntitySet="DUPLICATE_ProductOption">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ED_CarfaxLogDetail"><EntityTypeMapping TypeName="EDriveModel.ED_CarfaxLogDetail"><MappingFragment StoreEntitySet="ED_CarfaxLogDetail">
+            <ScalarProperty Name="CarFax_logID" ColumnName="CarFax_logID" />
+            <ScalarProperty Name="LogMsg" ColumnName="LogMsg" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Success" ColumnName="Success" />
+            <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+            <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ED_DataImportLog"><EntityTypeMapping TypeName="EDriveModel.ED_DataImportLog"><MappingFragment StoreEntitySet="ED_DataImportLog">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="VIN" ColumnName="VIN" />
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ED_InterestedCustomer"><EntityTypeMapping TypeName="EDriveModel.ED_InterestedCustomer"><MappingFragment StoreEntitySet="ED_InterestedCustomer">
+            <ScalarProperty Name="InterestedCustomerID" ColumnName="InterestedCustomerID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+            <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+            <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+            <ScalarProperty Name="InterestType" ColumnName="InterestType" />
+            <ScalarProperty Name="AdditionalComment" ColumnName="AdditionalComment" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+            <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+            <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+            <ScalarProperty Name="Financing" ColumnName="Financing" />
+            <ScalarProperty Name="Price_Lock" ColumnName="Price_Lock" />
+            <ScalarProperty Name="Trade_in" ColumnName="Trade_in" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ED_Zipcodes"><EntityTypeMapping TypeName="EDriveModel.ED_Zipcodes"><MappingFragment StoreEntitySet="ED_Zipcodes">
+            <ScalarProperty Name="ZipID" ColumnName="ZipID" />
+            <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+            <ScalarProperty Name="latitude" ColumnName="latitude" />
+            <ScalarProperty Name="longitude" ColumnName="longitude" />
+            <ScalarProperty Name="city" ColumnName="city" />
+            <ScalarProperty Name="state" ColumnName="state" />
+            <ScalarProperty Name="country" ColumnName="country" />
+            <ScalarProperty Name="zip_class" ColumnName="zip_class" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EVENT_LOG"><EntityTypeMapping TypeName="EDriveModel.EVENT_LOG"><MappingFragment StoreEntitySet="EVENT_LOG">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="DATE_LOGGED" ColumnName="DATE_LOGGED" />
+            <ScalarProperty Name="EVENT_TYPE" ColumnName="EVENT_TYPE" />
+            <ScalarProperty Name="CODE_BASE" ColumnName="CODE_BASE" />
+            <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FTP_DIRECTORIES"><EntityTypeMapping TypeName="EDriveModel.FTP_DIRECTORIES"><MappingFragment StoreEntitySet="FTP_DIRECTORIES">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+            <ScalarProperty Name="PATH" ColumnName="PATH" />
+            <ScalarProperty Name="USE" ColumnName="USE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Product"><EntityTypeMapping TypeName="EDriveModel.Product"><MappingFragment StoreEntitySet="Product">
+            <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+            <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+            <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+            <ScalarProperty Name="VIN" ColumnName="VIN" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="Stock" ColumnName="Stock" />
+            <ScalarProperty Name="Year" ColumnName="Year" />
+            <ScalarProperty Name="Model" ColumnName="Model" />
+            <ScalarProperty Name="Trim" ColumnName="Trim" />
+            <ScalarProperty Name="Free_Text" ColumnName="Free_Text" />
+            <ScalarProperty Name="Body" ColumnName="Body" />
+            <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+            <ScalarProperty Name="Price_Current" ColumnName="Price_Current" />
+            <ScalarProperty Name="Condition" ColumnName="Condition" />
+            <ScalarProperty Name="Exterior_Color" ColumnName="Exterior_Color" />
+            <ScalarProperty Name="Interior_Color" ColumnName="Interior_Color" />
+            <ScalarProperty Name="Doors" ColumnName="Doors" />
+            <ScalarProperty Name="Engine" ColumnName="Engine" />
+            <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+            <ScalarProperty Name="Fuel_Type" ColumnName="Fuel_Type" />
+            <ScalarProperty Name="Drive_Type" ColumnName="Drive_Type" />
+            <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Date_in_Stock" ColumnName="Date_in_Stock" />
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+            <ScalarProperty Name="IsFeature" ColumnName="IsFeature" />
+            <ScalarProperty Name="SavingAmount" ColumnName="SavingAmount" />
+            <ScalarProperty Name="StateID" ColumnName="StateID" />
+            <ScalarProperty Name="QualifyPrice" ColumnName="QualifyPrice" />
+            <ScalarProperty Name="AverageRetailPrice" ColumnName="AverageRetailPrice" />
+            <ScalarProperty Name="AverageTradeinPrice" ColumnName="AverageTradeinPrice" />
+            <ScalarProperty Name="City_Fuel" ColumnName="City_Fuel" />
+            <ScalarProperty Name="Highway_Fuel" ColumnName="Highway_Fuel" />
+            <ScalarProperty Name="zip" ColumnName="zip" />
+            <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+            <ScalarProperty Name="Price_Cost" ColumnName="Price_Cost" />
+            <ScalarProperty Name="Price_WholeSale" ColumnName="Price_WholeSale" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Pics" ColumnName="Pics" />
+            <ScalarProperty Name="OwnerDetail" ColumnName="OwnerDetail" />
+            <ScalarProperty Name="ShowOnDealerProfile" ColumnName="ShowOnDealerProfile" />
+            <ScalarProperty Name="SellerEmail" ColumnName="SellerEmail" />
+            <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+            <ScalarProperty Name="Offer" ColumnName="Offer" />
+            <ScalarProperty Name="ISQUALIFIED" ColumnName="ISQUALIFIED" />
+            <ScalarProperty Name="NADACheckedOn" ColumnName="NADACheckedOn" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Product_Body"><EntityTypeMapping TypeName="EDriveModel.Product_Body"><MappingFragment StoreEntitySet="Product_Body">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="Body" ColumnName="Body" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Product_Make"><EntityTypeMapping TypeName="EDriveModel.Product_Make"><MappingFragment StoreEntitySet="Product_Make">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="Make" ColumnName="Make" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Product_Model"><EntityTypeMapping TypeName="EDriveModel.Product_Model"><MappingFragment StoreEntitySet="Product_Model">
+            <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="ModeLName" ColumnName="ModeLName" />
+            <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Product_Rating"><EntityTypeMapping TypeName="EDriveModel.Product_Rating"><MappingFragment StoreEntitySet="Product_Rating">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            <ScalarProperty Name="AvgRating" ColumnName="AvgRating" />
+            <ScalarProperty Name="TotaVotes" ColumnName="TotaVotes" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Product_Type"><EntityTypeMapping TypeName="EDriveModel.Product_Type"><MappingFragment StoreEntitySet="Product_Type">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ProductOption"><EntityTypeMapping TypeName="EDriveModel.ProductOption"><MappingFragment StoreEntitySet="ProductOption">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ProductOptionMapping"><EntityTypeMapping TypeName="EDriveModel.ProductOptionMapping"><MappingFragment StoreEntitySet="ProductOptionMapping">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ProductPicture"><EntityTypeMapping TypeName="EDriveModel.ProductPicture"><MappingFragment StoreEntitySet="ProductPicture">
+            <ScalarProperty Name="ProductPictureID" ColumnName="ProductPictureID" />
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+            <ScalarProperty Name="PictureURL" ColumnName="PictureURL" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SITESTATISTICS"><EntityTypeMapping TypeName="EDriveModel.SITESTATISTICS"><MappingFragment StoreEntitySet="SITE_STATISTICS">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="VEHICLES_TOTAL" ColumnName="VEHICLES_TOTAL" />
+            <ScalarProperty Name="VEHICLES_DELETED" ColumnName="VEHICLES_DELETED" />
+            <ScalarProperty Name="VEHICLES_QUALIFIED" ColumnName="VEHICLES_QUALIFIED" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StateProvince"><EntityTypeMapping TypeName="EDriveModel.StateProvince"><MappingFragment StoreEntitySet="StateProvince">
+            <ScalarProperty Name="StateProvinceID" ColumnName="StateProvinceID" />
+            <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+            <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="zip_code"><EntityTypeMapping TypeName="EDriveModel.zip_code"><MappingFragment StoreEntitySet="zip_code">
+            <ScalarProperty Name="zip_code1" ColumnName="zip_code" />
+            <ScalarProperty Name="lattitude" ColumnName="lattitude" />
+            <ScalarProperty Name="longitude" ColumnName="longitude" />
+            <ScalarProperty Name="city" ColumnName="city" />
+            <ScalarProperty Name="state_prefix" ColumnName="state_prefix" />
+            <ScalarProperty Name="zip_class" ColumnName="zip_class" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SearchAdvanced" FunctionName="EDriveModel.Store.SPSEARCH_ADVANCED" />
+          <FunctionImportMapping FunctionImportName="SearchStandard" FunctionName="EDriveModel.Store.SPSEARCH_STANDARD" />
+          <FunctionImportMapping FunctionImportName="DealersForManagerProduct" FunctionName="EDriveModel.Store.SPRETRIEVE_DEALERSFORMANAGEPRODUCT" />
+          <FunctionImportMapping FunctionImportName="QualifiedVehiclesCount" FunctionName="EDriveModel.Store.SPRETRIEVE_QUALIFIEDVEHICLECOUNT" />
+          <FunctionImportMapping FunctionImportName="FeaturedVehicles" FunctionName="EDriveModel.Store.SPRETRIEVE_FEATUREDVEHICLES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EDriveModel.FeaturedVehiclesItem">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Trim" ColumnName="Trim" />
+                <ScalarProperty Name="Free_Text" ColumnName="Free_Text" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="Price_Current" ColumnName="Price_Current" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Exterior_Color" ColumnName="Exterior_Color" />
+                <ScalarProperty Name="Interior_Color" ColumnName="Interior_Color" />
+                <ScalarProperty Name="Doors" ColumnName="Doors" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+                <ScalarProperty Name="Fuel_Type" ColumnName="Fuel_Type" />
+                <ScalarProperty Name="Drive_Type" ColumnName="Drive_Type" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date_in_Stock" ColumnName="Date_in_Stock" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="IsFeature" ColumnName="IsFeature" />
+                <ScalarProperty Name="SavingAmount" ColumnName="SavingAmount" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="QualifyPrice" ColumnName="QualifyPrice" />
+                <ScalarProperty Name="AverageRetailPrice" ColumnName="AverageRetailPrice" />
+                <ScalarProperty Name="AverageTradeinPrice" ColumnName="AverageTradeinPrice" />
+                <ScalarProperty Name="City_Fuel" ColumnName="City_Fuel" />
+                <ScalarProperty Name="Highway_Fuel" ColumnName="Highway_Fuel" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+                <ScalarProperty Name="Price_Cost" ColumnName="Price_Cost" />
+                <ScalarProperty Name="Price_WholeSale" ColumnName="Price_WholeSale" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Pics" ColumnName="Pics" />
+                <ScalarProperty Name="OwnerDetail" ColumnName="OwnerDetail" />
+                <ScalarProperty Name="ShowOnDealerProfile" ColumnName="ShowOnDealerProfile" />
+                <ScalarProperty Name="SellerEmail" ColumnName="SellerEmail" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+                <ScalarProperty Name="Offer" ColumnName="Offer" />
+                <ScalarProperty Name="ISQUALIFIED" ColumnName="ISQUALIFIED" />
+                <ScalarProperty Name="NADACheckedOn" ColumnName="NADACheckedOn" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="ZipPostalCode" ColumnName="ZipPostalCode" />
+                <ScalarProperty Name="ProductBodyName" ColumnName="ProductBodyName" />
+                <ScalarProperty Name="MakeName" ColumnName="MakeName" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EdriveModel">
+        <EntityTypeShape EntityType="EDriveModel.ContactType" Width="1.5" PointX="7.75" PointY="3.125" Height="1.3341072591145835" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Country" Width="1.5" PointX="1.5" PointY="14.5" Height="2.2263395182291674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Customer" Width="1.5" PointX="3" PointY="0.75" Height="6.5090543619791656" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Customer_Type" Width="1.5" PointX="0.75" PointY="5.25" Height="1.5125537109374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.CustomerAttribute" Width="1.5" PointX="7.75" PointY="6.125" Height="1.6910001627604174" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.CustomerProfile" Width="1.5" PointX="5.25" PointY="16.375" Height="2.5832324218749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.DUPLICATE_ProductOption" Width="1.5" PointX="7.75" PointY="9.125" Height="1.3341072591145817" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.ED_CarfaxLogDetail" Width="1.5" PointX="9.75" PointY="3.125" Height="2.0478930664062496" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.ED_DataImportLog" Width="1.5" PointX="9.75" PointY="6.125" Height="2.0478930664062505" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.ED_InterestedCustomer" Width="1.5" PointX="9.75" PointY="9.125" Height="4.0108040364583353" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.ED_Zipcodes" Width="1.5" PointX="11.75" PointY="3.125" Height="2.4047859700520817" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.EVENT_LOG" Width="1.5" PointX="11.75" PointY="7.125" Height="1.8694466145833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.FTP_DIRECTORIES" Width="1.5" PointX="11.75" PointY="10.125" Height="1.6910001627604174" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Product" Width="1.5" PointX="5.25" PointY="3.75" Height="10.970215657552084" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Product_Body" Width="1.5" PointX="3" PointY="12" Height="1.5125537109375031" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Product_Make" Width="1.5" PointX="0.75" PointY="8.375" Height="1.6910001627604174" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Product_Model" Width="1.5" PointX="3" PointY="8.25" Height="2.0478930664062531" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Product_Rating" Width="1.5" PointX="7.75" PointY="14.125" Height="1.6910001627604174" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.Product_Type" Width="1.5" PointX="3" PointY="18.25" Height="1.5125537109375031" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.ProductOption" Width="1.5" PointX="9.75" PointY="14.125" Height="1.3341072591145888" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.ProductOptionMapping" Width="1.5" PointX="11.75" PointY="13.125" Height="1.5125537109375031" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.ProductPicture" Width="1.5" PointX="13.75" PointY="3.125" Height="1.6910001627604174" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.SITESTATISTICS" Width="1.5" PointX="13.75" PointY="6.125" Height="1.6910001627604174" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.StateProvince" Width="1.5" PointX="0.75" PointY="11.5" Height="2.2263395182291674" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveModel.zip_code" Width="1.5" PointX="13.75" PointY="9.125" Height="2.0478930664062602" IsExpanded="true" />
+        <AssociationConnector Association="EDriveModel.FK_Nop_StateProvince_Nop_Country" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.875" PointY="14.5" />
+          <ConnectorPoint PointX="1.875" PointY="13.726339518229167" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.customer_customerType_customerType_id" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.00627685546875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="6.0062768554687489" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="6.00627685546875" />
+          <ConnectorPoint PointX="3" PointY="6.00627685546875" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.FK_Customer_StateProvince_StatieId_StateProvinceId" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="11.501152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="11.126152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="3.3468864277343742" />
+          <ConnectorPoint PointX="3" PointY="3.3468864277343742" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.FK_CustomerProfile_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.2590543619791656" />
+          <ConnectorPoint PointX="4.875" PointY="7.6340543619791656" />
+          <ConnectorPoint PointX="4.875" PointY="17.666616210937498" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="17.666616210937498" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="17.666616210937498" />
+          <ConnectorPoint PointX="5.25" PointY="17.666616210937498" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.Product_dealeriD" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.473274680989582" />
+          <ConnectorPoint PointX="5.25" PointY="5.473274680989582" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.FK_Product_Product" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.7819230769230767" PointY="14.720215657552084" />
+          <ConnectorPoint PointX="5.7819230769230767" PointY="14.970215657552082" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="14.970215657552082" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="14.720215657552084" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.Product_MOdel_body" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.756276855468752" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.756276855468752" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="12.756276855468752" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="12.756276855468752" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="12.756276855468752" />
+          <ConnectorPoint PointX="5.25" PointY="12.756276855468752" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.Product_MOdel_Producttype" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="18.313460538461534" />
+          <ConnectorPoint PointX="5.0625" PointY="17.750960538461534" />
+          <ConnectorPoint PointX="5.0625" PointY="9.1147757682291672" />
+          <ConnectorPoint PointX="5.25" PointY="9.1147757682291672" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.Product_MOdel_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.76883441731771" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="9.76883441731771" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="9.76883441731771" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="9.76883441731771" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="9.76883441731771" />
+          <ConnectorPoint PointX="5.25" PointY="9.76883441731771" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.FK__Product_M__MakeI__45F365D3" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.2205000813802087" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="9.2205000813802087" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="9.2205000813802087" />
+          <ConnectorPoint PointX="3" PointY="9.2205000813802087" />
+        </AssociationConnector>
+        <AssociationConnector Association="EDriveModel.FK__Product_M__MakeI__46E78A0C" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.7352500406901044" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="8.7352500406901044" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="8.7352500406901044" />
+          <ConnectorPoint PointX="3" PointY="8.7352500406901044" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

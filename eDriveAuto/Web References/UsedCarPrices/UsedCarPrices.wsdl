@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://UsedCar.NADAguides.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://UsedCar.NADAguides.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://UsedCar.NADAguides.com">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetUsedCarOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UsedStyleID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsedCarOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsedCarOptionsResult" type="tns:DataObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DataObject">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReturnObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="GetData">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReturnObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HasError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:ErrorProfile" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionID" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErrorProfile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GenericObject">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReturnObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="GetData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OptionsWrapper">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReturnObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OptionMaps" type="tns:ArrayOfOptionMap" />
+              <s:element minOccurs="0" maxOccurs="1" name="SerializedOptionState" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MakeID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ModelID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOptionMap">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OptionMap" nillable="true" type="tns:OptionMap" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OptionMap">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="checkedBox" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageNew" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Header" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Invoice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSRP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OnlyOneinGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InCheckList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OptionKindId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocOption" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsShowOptionCode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOptionChecked" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="OptionHeaderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OEMOptionCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsShowCheckBox" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RgbHexCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsDisplay" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUsedCarValues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UsedStyleID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UsedCarValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HasError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message">
+            <s:complexType mixed="true">
+              <s:sequence>
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="UsedValueTotal" type="tns:ArrayOfPriceTypeTotal" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsedValueOptions" type="tns:ArrayOfOption" />
+          <s:element minOccurs="0" maxOccurs="1" name="BasePrice" type="tns:ArrayOfPricing" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsedValueMileage" type="tns:MileageAdjustment" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MakeDisplay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModelDisplay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrimDisplay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:ErrorProfile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPriceTypeTotal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PriceTypeTotal" nillable="true" type="tns:PriceTypeTotal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PriceTypeTotal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PriceTypeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceTypeDisplay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalValue" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalOption" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Option" nillable="true" type="tns:Option" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Option">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsPercent" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriceTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceTypeDisplay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OptionID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OptionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OptionDisplay" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPricing">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="pricing" nillable="true" type="tns:pricing" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="pricing">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PriceTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceTypeDisplay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceTypeExplanation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MileageAdjustment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ActualMileage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdjustmentAmount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcceptableRange" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUsedCarValuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsedCarValuesResult" type="tns:UsedCarValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsedCarValuesWithMileage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UsedStyleID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mileage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsedCarValuesWithMileageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsedCarValuesWithMileageResult" type="tns:UsedCarValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMakes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMakesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMakesResult" type="tns:DataObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetModels">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MakeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetModelsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetModelsResult" type="tns:DataObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetYearsForMake">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MakeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetYearsForMakeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetYearsForMakeResult" type="tns:DataObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStylesForModel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ModelID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStylesForModelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStylesForModelResult" type="tns:DataObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStyleInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="StyleID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStyleInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStyleInfoResult" type="tns:DataObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUsedCarOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsedCarOptions" />
+  </wsdl:message>
+  <wsdl:message name="GetUsedCarOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsedCarOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsedCarValuesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsedCarValues" />
+  </wsdl:message>
+  <wsdl:message name="GetUsedCarValuesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsedCarValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsedCarValuesWithMileageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsedCarValuesWithMileage" />
+  </wsdl:message>
+  <wsdl:message name="GetUsedCarValuesWithMileageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsedCarValuesWithMileageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMakesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMakes" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMakesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMakesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetModelsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetModels" />
+  </wsdl:message>
+  <wsdl:message name="GetModelsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetModelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetYearsForMakeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetYearsForMake" />
+  </wsdl:message>
+  <wsdl:message name="GetYearsForMakeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetYearsForMakeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStylesForModelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStylesForModel" />
+  </wsdl:message>
+  <wsdl:message name="GetStylesForModelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStylesForModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStyleInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStyleInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetStyleInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStyleInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UsedCarPricesSoap">
+    <wsdl:operation name="GetUsedCarOptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns available used car options for a style.</wsdl:documentation>
+      <wsdl:input message="tns:GetUsedCarOptionsSoapIn" />
+      <wsdl:output message="tns:GetUsedCarOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsedCarValues">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns available used car options for a style.</wsdl:documentation>
+      <wsdl:input message="tns:GetUsedCarValuesSoapIn" />
+      <wsdl:output message="tns:GetUsedCarValuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsedCarValuesWithMileage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns available used car options for a style.</wsdl:documentation>
+      <wsdl:input message="tns:GetUsedCarValuesWithMileageSoapIn" />
+      <wsdl:output message="tns:GetUsedCarValuesWithMileageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMakes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of all makes in the database.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllMakesSoapIn" />
+      <wsdl:output message="tns:GetAllMakesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetModels">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of models associated with a given MakeID and year.</wsdl:documentation>
+      <wsdl:input message="tns:GetModelsSoapIn" />
+      <wsdl:output message="tns:GetModelsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetYearsForMake">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of years associated with a given MakeID.</wsdl:documentation>
+      <wsdl:input message="tns:GetYearsForMakeSoapIn" />
+      <wsdl:output message="tns:GetYearsForMakeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStylesForModel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of styles associated with a given ModelID.</wsdl:documentation>
+      <wsdl:input message="tns:GetStylesForModelSoapIn" />
+      <wsdl:output message="tns:GetStylesForModelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStyleInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns data describing a style.</wsdl:documentation>
+      <wsdl:input message="tns:GetStyleInfoSoapIn" />
+      <wsdl:output message="tns:GetStyleInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UsedCarPricesSoap" type="tns:UsedCarPricesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUsedCarOptions">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetUsedCarOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsedCarValues">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetUsedCarValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsedCarValuesWithMileage">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetUsedCarValuesWithMileage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMakes">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetAllMakes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetModels">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetModels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetYearsForMake">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetYearsForMake" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStylesForModel">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetStylesForModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStyleInfo">
+      <soap:operation soapAction="http://UsedCar.NADAguides.com/GetStyleInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UsedCarPricesSoap12" type="tns:UsedCarPricesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUsedCarOptions">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetUsedCarOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsedCarValues">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetUsedCarValues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsedCarValuesWithMileage">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetUsedCarValuesWithMileage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMakes">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetAllMakes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetModels">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetModels" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetYearsForMake">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetYearsForMake" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStylesForModel">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetStylesForModel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStyleInfo">
+      <soap12:operation soapAction="http://UsedCar.NADAguides.com/GetStyleInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UsedCarPrices">
+    <wsdl:port name="UsedCarPricesSoap" binding="tns:UsedCarPricesSoap">
+      <soap:address location="http://www.nadaguides.com/nagservice/UsedCarPrices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UsedCarPricesSoap12" binding="tns:UsedCarPricesSoap12">
+      <soap12:address location="http://www.nadaguides.com/nagservice/UsedCarPrices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

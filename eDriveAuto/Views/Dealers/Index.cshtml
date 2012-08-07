@@ -1,0 +1,140 @@
+﻿@model Edrive.Models.Nop_TopicLocalized
+
+@section Head
+{
+	<link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+	@{
+		if(Model != null)
+		{
+		<title>@Model.Title</title>
+		<meta name="metatitle" content="@Model.MetaTitle" />
+		<meta name="description" content="@Model.MetaDescription" />
+		<meta name="keywords" content="@Model.MetaKeywords" />
+		}
+	}
+}
+<div class="master-wrapper-center-1">
+	<div class="master-wrapper-cph-1">
+		<div id="Dealers1_UpdatePanel1">
+			<div class="master-wrapper-center-1">
+				<div>
+					<img border="0" usemap="#Map" alt="banner" src="@Url.Content("/Content/themes/App_Themes/EDrive/images/banner01.jpg")" class="quote" />
+					<map id="Map" name="Map">
+						<area title="Add my Inventory" alt="Add my Inventory" href="#registration" coords="2,220,225,263" shape="rect" />
+					</map>
+				</div>
+				<div class="master-wrapper-cph-1-Dealer">
+					<div class="product-details">
+						<div class="divinnercontent-new">
+							<div id="Request-a-free-quote-form" class="overviewdetaillogowar-new">
+								<div class="register-box">
+									<div class="register-form">
+										<div class="htmlcontent">
+											<div class="htmlcontent-body">
+												<div class="htmlcontent">
+													<div class="htmlcontent-body">
+														@if(ViewData["BecomeADealer"] != null)
+														{
+															@Html.Raw(ViewData["BecomeADealer"].ToString())
+														}
+													</div>
+												</div>
+											</div>
+											<div class="height-separator">
+											</div>
+										</div>
+										<div class="message-error">
+											<div>
+											</div>
+											<div class="clear">
+											</div>
+											<div>
+												<div class="dealers-value-sum" id="Dealers1_valSum">
+												</div>
+											</div>
+										</div>
+										<div class="clear">
+										</div>
+										<div class="register-message">
+											@(ViewData["Msg"] ?? "")
+										</div>
+										@Html.Partial("_DealerRegisteration", new _DealerRegisteration())
+									</div>
+									<div class="hint-box">
+										<div class="htmlcontent">
+											<div class="htmlcontent-body">
+												@if(ViewData["DealerTextThree"] != null)
+												{
+													@Html.Raw(ViewData["DealerTextThree"].ToString())
+												}
+											</div>
+										</div>
+										<div class="live-chat-box">
+											<div class="live-chat" id="LiveChat_1313154987">
+											</div>
+										</div>
+									</div>
+									<div class="clear">
+									</div>
+								</div>
+								<div class="ad-partners">
+									<table cellspacing="5" cellpadding="5">
+										<tbody>
+											<tr>
+												<td class="dealer-table-title" colspan="6">
+													<b>Some of our advertising partners</b>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/google.jpg")" alt="" />
+												</td>
+												<td>
+													<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/military01.jpg")" alt="" />
+												</td>
+												<td>
+													<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/cbs.jpg")" alt="" />
+												</td>
+												<td>
+													<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/groupon.jpg")" alt="" />
+												</td>
+												<td>
+													<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/live.jpg")" alt="" />
+												</td>
+												<td>
+													<img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/facebook01.jpg")" alt="" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="clear">
+								</div>
+							</div>
+						</div>
+						<div class="divbottom">
+							<div class="divbottomleft">
+							</div>
+							<div class="divbottommiddetail">
+							</div>
+							<div class="divbottomright">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="display: none;" id="Dealers1_UpdateProgress1" role="status" aria-hidden="true">
+			<center>
+            <div id="UpdtProcess" style="position: fixed; left: 0px; z-index: 1000; width: 100%; height: 1172px;
+                top: 0px; vertical-align: middle; padding-top: 3px; background-color: silver;
+                filter: Alpha(Opacity=50); opacity: 0.70; -moz-opacity: 0.70;">
+                <div style="padding: 5px 7px 5px 3px; background-color: Black; text-align: center;
+                    font-weight: bold; width: 80px; color: white; font-size: 12px;">
+                    Loading...
+                </div>
+            </div>
+        </center>
+		</div>
+	</div>
+</div>

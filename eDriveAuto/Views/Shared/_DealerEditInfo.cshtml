@@ -1,0 +1,151 @@
+﻿@model Edrive.Models.DealerInfo
+<table style="width: 100%">
+                    <tr>
+                        <td class="firstCol">
+                            <input id="CustomerID" name="CustomerID" type="hidden" value="@(Model.CustomerID)" />
+                            @Html.LabelFor(model => model.Email)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Email)
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Password)
+                        </td>
+                        <td>
+                            @Html.TextBox("txtPassword", "")
+                            @Html.HiddenFor(m => m.Password)
+                            <input type="submit" value="Change Password" onclick="ChangeCustomerPassword();" name="changepasssword" id="changepasssword" />
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Gender)
+                        </td>
+                        <td>
+                            <label>
+                                <input type="radio" name="Gender" checked="checked" value="Male" />Male</label>
+                            <label>
+                                <input type="radio" name="Gender" value="Female" />Female
+                            </label>
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.FirstName)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.FirstName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.LastName)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.LastName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.DateofBirth)
+                        </td>
+                        <td>
+                            @Html.TextBox("DateofBirth", (Model.DateofBirth == null ? "" : Model.DateofBirth.Value.ToString("MM/dd/yyyy")), new { @readonly = "readonly" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Company)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Company)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.StreetAddress1)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.StreetAddress1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.StreetAddress2)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.StreetAddress2)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Zip)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Zip)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            Country
+                        </td>
+                        <td>
+                            @Html.DropDownList("Country", (List<SelectListItem>)ViewData["Country"])
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.City)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.City)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.StateID)
+                        </td>
+                        <td>
+                            @Html.DropDownList("StateID", (List<SelectListItem>)ViewData["State"], new { id = "State" })
+                            @* <select id="State" name="StateID">
+                    </select>*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Phone)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Phone)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Fax)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Fax)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Newsletter)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Newsletter)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            Registration Date
+                        </td>
+                        <td>
+                            @Model.RegisterationDate
+                        </td>
+                    </tr>
+                </table>

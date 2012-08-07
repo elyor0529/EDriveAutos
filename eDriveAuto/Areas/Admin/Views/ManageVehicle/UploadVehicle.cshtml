@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "UploadVehicle";
+}
+<div class="back">
+@Html.ActionLink("Back To DashBoard", "Index", "Dashboard")
+</div>
+<div>
+<h2>Upload Vehicle</h2>
+<div class="divBack">
+@using (Html.BeginForm("UploadVehicle", "ManageVehicle",FormMethod.Post , new { enctype = "multipart/form-data" }))
+{
+     <table style="border:solid 0px silver">
+     <tr>
+     <td colspan="2" style="color:Red">
+     @(ViewData["Msg"]??"")
+     <br />
+     </td>
+     </tr>
+     <tr>
+     <td style="width:200px;text-align:left">
+     <b>Select File</b>
+     </td>
+     <td>
+     <input type="file" name="csvFile" />
+     </td>
+     </tr>
+     <tr>
+     <td colspan="2">
+     <input type="submit" value="Upload" />
+     </td>
+     </tr>
+     </table>
+}
+</div>
+
+</div>

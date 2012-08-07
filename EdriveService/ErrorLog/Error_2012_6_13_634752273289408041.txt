@@ -1,0 +1,9 @@
+-----------Error-------------
+
+-----------Exception-------------
+
+The process cannot access the file 'c:\GetAuto\VEHICLES.CSV' because it is being used by another process.
+
+-----------Inner Exception-------------
+
+

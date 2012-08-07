@@ -1,0 +1,123 @@
+﻿@model Edrive.Models._HotSheetFilter
+@{
+    ViewBag.Title = "UserHotSheet";
+}
+
+@section Head{
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#SelectAll").click(function () {
+            var s=$(this).attr("checked");
+            $("input[name='chkProduct'][type='checkbox']").attr("checked", s);
+        });
+
+    });
+
+    $(document).ready(function () {
+        $("#ChaneZip").click(function () {
+            /* ----------update the hidden Zip value with value of zip textbox  */
+                    if ($('#form1').valid()) {
+                $("#Zip").val($("#txtZip").val());
+                $("#txtZip").val("");
+                $("#PageIndex").val("0");
+            }
+
+        });
+        $("#btnSearch").click(function () {
+            $("#PageIndex").val("0");
+            $("#Zip").val("");
+
+        });
+    });
+
+    function DealerInfo(_productid) {
+
+        $.get("DealerInfo/" + _productid, null, function (data) {
+            $("#Modalpopup").dialog("destroy");
+            $("#Modalpopup").html(data);
+            $("#Modalpopup").dialog({ width: 570 });
+
+        });
+    }
+    function SellerInfo(_productid) {
+        $.get("SellerInfo/" + _productid, null, function (data) {
+            $("#Modalpopup").html(data);
+            $("#Modalpopup").dialog({ width: 570 });
+
+        });
+    }
+ function postPage(obj) {
+
+        //alert($(obj).attr("id"));
+
+        $("#PageIndex").val($(obj).attr("id"));
+        document.forms["form1"].submit();
+    }
+    </script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+<style>
+    th{width:200px;background:#189ef7;color:White;font-weight:bold;text-align:center;padding-top:3px;padding-bottom:3px;}
+ td{padding-left:5px;color:#245D75;background:white;height:21px;text-align:center; }
+tr.alter td{background:#eff7ff; text-align:center}
+tr {}
+table#tblHotsheet{margin-left:0px;}
+#Modalpopup table td {text-align:left;padding-left:3px;background:transparent;}
+#tblHotsheet td{text-align:left;background:#f7fbff;border:0px;padding-bottom:5px;}
+div.SearchDealer td{border:solid 1px #AFDFFD;}
+
+    div.RoundedCornerContact table td {text-align:left;background-color:transparent;}
+    
+    div.RoundedCornerContactNew table td  {text-align:left;padding-left:13px;background-color:transparent;}
+    div.RoundedCornerContact table {}
+    div.RoundedCornerContactNew table  {margin-bottom:9px;}
+     div.RoundedCornerContactNew{
+	width: 456px;
+	min-height: 158px;
+	font-family: Arial, Helvetica, sans-serif;
+	display: inline-block;
+	font-size: 14px;
+	color: #FFFFFF;
+	padding: 10px 11px;
+	background-color: #EFF9FA;
+	-pie-background: linear-gradient(#11b3fc, #0097e2);
+	background-image: -o-linear-gradient(#11b3fc, #0097e2);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-decoration: none;
+	text-align: center;
+	border: 1px solid #548DD4;
+	behavior: url(PIE.htc);
+}
+    div.RoundedCornerContact
+{
+	min-width: 183px;
+	min-height: 58px;
+	font-family: Arial, Helvetica, sans-serif;
+	display: inline-block;
+	font-size: 14px;
+	color: #FFFFFF;
+	padding: 10px 11px;
+	background-color: #EFF9FA;
+	-pie-background: linear-gradient(#11b3fc, #0097e2);
+	background-image: -o-linear-gradient(#11b3fc, #0097e2);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-decoration: none;
+	text-align: center;
+	border: 1px solid #548DD4;
+	behavior: url(PIE.htc);
+}
+
+</style>
+
+}
+
+@Html.Partial("_UserHotSheet")
+
+
+

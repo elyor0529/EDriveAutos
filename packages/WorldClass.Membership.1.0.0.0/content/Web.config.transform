@@ -1,0 +1,24 @@
+﻿<configuration>
+  <system.web>
+    <machineKey validationKey="3E6C3F5B1A2FCD268BA971B4DB9EE9768000B6C7E22A7C0FD679857E3E799DEC68042E520E7B3A13B785C785D7B7B1C9103F4074720C547B94A1F47A92262279" decryptionKey="61D3A8A5897D60D56EE70F3A6D5DE8C8474E82177AFC980262EF983DBE46FE01" validation="SHA1" decryption="AES" />
+    <membership defaultProvider="$rootnamespace$MembershipProvider">
+      <providers>
+        <clear />
+        <add name="$rootnamespace$MembershipProvider" type="$rootnamespace$.Membership.Providers.CodeFirstMembershipProvider, $rootnamespace$.Membership" connectionStringName="DataContext" passwordFormat="Encrypted" enablePasswordRetrieval="false" enablePasswordReset="false" requiresQuestionAndAnswer="false" requiresUniqueEmail="true" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="$rootnamespace$" />
+      </providers>
+    </membership>
+    <roleManager enabled="true" cacheRolesInCookie="true" cookieName=".ROLES" cookieTimeout="120" cookiePath="/" cookieRequireSSL="false" cookieSlidingExpiration="true" cookieProtection="All" defaultProvider="$rootnamespace$RoleProvider" createPersistentCookie="false" maxCachedResults="25">
+      <providers>
+        <clear />
+        <add applicationName="$rootnamespace$" name="$rootnamespace$RoleProvider" connectionStringName="DataContext" type="$rootnamespace$.Membership.Providers.CodeFirstRoleProvider, $rootnamespace$.Membership" />
+      </providers>
+    </roleManager>
+  </system.web>
+  <system.net>
+    <mailSettings>
+      <!--<smtp from="webmaster@$rootnamespace$" deliveryMethod="Network">
+        <network enableSsl="true" host="smtp.gmail.com" port="587" userName="webmaster@$rootnamespace$" password="1scool!!"  />
+      </smtp>-->
+    </mailSettings>
+  </system.net>
+</configuration>

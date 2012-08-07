@@ -1,0 +1,14 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System.Configuration;
+
+namespace <#= Model.Namespace #>.Security
+{
+    public enum DevLevel
+    {
+        Local,
+        Development,
+        Staging,
+        Production
+    }
+}

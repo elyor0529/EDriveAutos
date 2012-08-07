@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfProducts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Products" nillable="true" type="tns:Products" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProducts" nillable="true" type="tns:ArrayOfProducts" />
+  <xs:complexType name="Products">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MakeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnerDetail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reserved" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShowOnDealerProfile" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+      <xs:element minOccurs="0" name="averageRetailPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="averageTradeinPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="body" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="city_Fuel" type="xs:int" />
+      <xs:element minOccurs="0" name="condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="createdOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="customerId" type="xs:int" />
+      <xs:element minOccurs="0" name="date_in_Stock" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="descriptiont" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="doors" type="xs:int" />
+      <xs:element minOccurs="0" name="drive_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="engine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="exterior" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="free_Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fuel_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="highWay_Fuel" type="xs:int" />
+      <xs:element minOccurs="0" name="interior" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isNew" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isfeature" type="xs:boolean" />
+      <xs:element minOccurs="0" name="mileage" type="xs:int" />
+      <xs:element minOccurs="0" name="model" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="options" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pics" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="price_Cost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="price_Current" type="xs:decimal" />
+      <xs:element minOccurs="0" name="price_WholeSale" type="xs:decimal" />
+      <xs:element minOccurs="0" name="productId" type="xs:int" />
+      <xs:element minOccurs="0" name="published" type="xs:boolean" />
+      <xs:element minOccurs="0" name="qualifyPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="savingAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="stateID" type="xs:int" />
+      <xs:element minOccurs="0" name="stock" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="transmission" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="trim" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="xs:int" />
+      <xs:element minOccurs="0" name="updatedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="vehicleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="warranty" type="xs:boolean" />
+      <xs:element minOccurs="0" name="zip" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Products" nillable="true" type="tns:Products" />
+</xs:schema>
