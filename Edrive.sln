@@ -15,27 +15,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edrive.Logic", "Edrive.Logic\Edrive.Logic.csproj", "{025CA8C0-32B9-4D2C-935D-7469B46A4AF5}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://64.72.103.245:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = EdriveService\\EdriveService.csproj
-		SccProjectName1 = EdriveService
-		SccLocalPath1 = EdriveService
-		SccProjectUniqueName2 = eDriveAuto\\Edrive.csproj
-		SccProjectName2 = eDriveAuto
-		SccLocalPath2 = eDriveAuto
-		SccProjectUniqueName3 = Edrive.Core\\Edrive.Core.csproj
-		SccProjectName3 = Edrive.Core
-		SccLocalPath3 = Edrive.Core
-		SccProjectUniqueName4 = Edrive.Data\\Edrive.Data.csproj
-		SccProjectName4 = Edrive.Data
-		SccLocalPath4 = Edrive.Data
-		SccProjectUniqueName5 = Edrive.Logic\\Edrive.Logic.csproj
-		SccProjectName5 = Edrive.Logic
-		SccLocalPath5 = Edrive.Logic
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms

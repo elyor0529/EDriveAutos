@@ -11,10 +11,10 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var result = Context.Product_Type.Select(c => new Product_Type
+				var result = Context.LST_VEHICLETYPE.Select(c => new Product_Type
 				                                               	{
-				                                               		id = c.id,
-																	type = c.Type
+				                                               		id = c.ID,
+																	type = c.NAME
 				                                               	}).ToList();
 
 				return result;
@@ -25,12 +25,12 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var productType = Context.Product_Type
-					.Where(m => m.Type.ToLower() == type.ToLower())
+				var productType = Context.LST_VEHICLETYPE
+					.Where(m => m.NAME.ToLower() == type.ToLower())
 					.Select(c => new Product_Type
 					{
-						id = c.id,
-						type = c.Type
+						id = c.ID,
+						type = c.NAME
 					}).FirstOrDefault();
 
 				return productType;

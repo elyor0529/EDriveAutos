@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Objects;
 using System.Linq;
+using Edrive.Core.Enums;
 using Edrive.Core.Model;
 using Edrive.Data;
 using Edrive.Logic.Interfaces;
@@ -27,41 +28,37 @@ namespace Edrive.Logic
 					TRIM = product.trim,
 					TRANSMISSION = product.transmission,
 					ISWARRANTY = product.warranty,
-					RESERVED = product.Reserved,
-					Title = product.Title,
-					Date_in_Stock = DateTime.Now,
-					Deleted = product.deleted,
-					Model = product.model,
-					Offer = product.Offer,
-					Description = product.descriptiont,
-					Drive_Type = product.drive_Type,
-					Engine = product.engine,
-					Exterior_Color = product.exterior,
-					FileName = product.fileName,
-					Free_Text = product.free_Text,
-					Fuel_Type = product.fuel_Type,
-					Highway_Fuel = product.highWay_Fuel,
-					Interior_Color = product.interior,
-					IsFeature = product.isfeature,
-					IsNew = product.isNew,
-					Mileage = product.mileage,
-					Name = string.Format("{0} {1} {2} {3} {4}", product.Make, product.ModelName, product.vin, product.Year, product.SellerZip.ToString().PadLeft(5)),
-					OwnerDetail = product.OwnerDetail,
-					Pics = product.pics,
-					UpdatedOn = DateTime.Now,
-					Price_Current = product.price_Current,
+					RESERVED = product.ReservedStr,
+					TITLE = product.Title,
+					DATE_INSTOCK = DateTime.Now,
+					ISDELETED = product.deleted,
+					MODEL_ID = product.model,
+					ISOFFER = product.Offer,
+					DESCRIPTION = product.descriptiont,
+					DRIVE_TYPE = product.drive_Type,
+					ENGINE = product.engine,
+					COLOR_EXTERIOR = product.exterior,
+					FILENAME = product.fileName,
+					FUEL_TYPE = product.fuel_Type,
+					FUEL_HIGHWAY = product.highWay_Fuel,
+					COLOR_INTERIOR = product.interior,
+					ISFEATURE = product.isfeature,
+					ISNEW = product.isNew,
+					MILEAGE = product.mileage,
+					OWNERDETAIL = product.OwnerDetail,
+					PICS = product.pics,
+					DATE_UPDATED = DateTime.Now,
+					PRICE = product.price_Current,
 					VIN = product.vin,
-					Year = product.Year,
-					Type = product.type,
-					SellerEmail = product.SellerEmail,
-					SellerName = product.SellerName,
-					zip = product.SellerZip
+					YEAR = product.Year,
+					TYPE_ID = product.type,
+					ZIP = product.ZipCode
 				};
 
-				Context.Product.AddObject(newProduct);
+				Context.VEHICLEs.AddObject(newProduct);
 				Context.SaveChanges();
 
-				return newProduct.ProductId;
+				return newProduct.ID;
 			}
 		}
 
@@ -71,7 +68,7 @@ namespace Edrive.Logic
 
 			using(Context = GetDataContext())
 			{
-				Product product = Context.Product.FirstOrDefault(m => m.ProductId == productID);
+				var product = Context.VEHICLEs.FirstOrDefault(m => m.ID == productID);
 
 				string pictureUrl = string.Empty;
 
@@ -86,64 +83,64 @@ namespace Edrive.Logic
 					pictureUrl = pictureUrl.Substring(0, pictureUrl.LastIndexOf(';'));
 				}
 
-				product.Pics = pictureUrl;
+				product.PICS = pictureUrl;
 				var lst = new Products
 				          	{
-				          		bodyID = product.Body,
-				          		productId = product.ProductId,
-				          		pics = product.Pics,
-				          		mileage = product.Mileage ?? 0,
-				          		body = product.Product_Body.Body,
-				          		price_Current = product.Price_Current ?? 0,
-				          		price_WholeSale = Convert.ToDecimal(product.Price_WholeSale ?? 0),
-				          		price_Cost = Convert.ToDecimal(product.Price_Cost ?? 0),
-				          		VehicleType = product.Product_Type.Type,
-				          		transmission = product.Transmission,
-				          		exterior = product.Exterior_Color,
-				          		OwnerDetail = product.OwnerDetail,
-				          		drive_Type = product.Drive_Type,
+				          		bodyID = product.BODY_ID,
+				          		productId = product.ID,
+				          		pics = product.PICS,
+				          		mileage = product.MILEAGE ?? 0,
+				          		body = product.LST_VEHICLEBODY.NAME,
+				          		price_Current = product.PRICE ?? 0,
+				          		price_WholeSale = Convert.ToDecimal(product.PRICE_WHOLESALE ?? 0),
+				          		price_Cost = Convert.ToDecimal(product.PRICE_COST ?? 0),
+				          		VehicleType = product.LST_VEHICLETYPE.NAME,
+				          		transmission = product.TRANSMISSION,
+				          		exterior = product.COLOR_EXTERIOR,
+				          		OwnerDetail = product.OWNERDETAIL,
+				          		drive_Type = product.DRIVE_TYPE,
 				          		vin = product.VIN,
 				          		//zip = prd.zip??0,
-				          		zip = product.Customer.ZipPostalCode ?? 0,
-				          		Year = product.Year ?? 0,
-				          		type = product.Type,
-				          		Make = product.Product_Model.Product_Make.Make,
-				          		MakeName = product.Product_Model.Product_Make.Make,
-				          		ModelName = product.Product_Model.ModeLName,
-				          		model = product.Model,
-				          		descriptiont = product.Description ?? "",
-				          		updatedOn = product.UpdatedOn,
-				          		stock = product.Stock,
-				          		doors = product.Doors ?? 0,
-				          		Reserved = product.Reserved,
-				          		fuel_Type = product.Fuel_Type,
-				          		Title = product.Title,
-				          		condition = product.Condition,
-				          		free_Text = product.Free_Text,
-				          		isfeature = product.IsFeature ?? false,
-				          		customerId = product.CustomerID ?? 0,
-				          		ShowOnDealerProfile = product.ShowOnDealerProfile ?? false,
-				          		engine = product.Engine,
-				          		date_in_Stock = product.Date_in_Stock ?? DateTime.Now,
-				          		interior = product.Interior_Color,
-				          		trim = product.Trim,
-				          		savingAmount = product.SavingAmount ?? 0,
-				          		averageRetailPrice = product.AverageRetailPrice ?? 0,
-				          		averageTradeinPrice = product.AverageTradeinPrice ?? 0,
-				          		qualifyPrice = product.QualifyPrice ?? 0,
-				          		city_Fuel = product.City_Fuel ?? 0,
-				          		highWay_Fuel = product.Highway_Fuel ?? 0,
-				          		name = product.Name,
-				          		fileName = product.FileName,
-				          		warranty = product.Warranty ?? false
+				          		ZipCode = product.ZIP,
+				          		Year = product.YEAR ?? 0,
+				          		type = product.TYPE_ID,
+				          		Make = product.LST_VEHICLEMODEL.LST_VEHICLEMAKE.NAME,
+				          		MakeName = product.LST_VEHICLEMODEL.LST_VEHICLEMAKE.NAME,
+				          		ModelName = product.LST_VEHICLEMODEL.NAME,
+				          		model = product.MODEL_ID,
+				          		descriptiont = product.DESCRIPTION ?? "",
+				          		updatedOn = product.DATE_UPDATED,
+				          		stock = product.STOCKNUMBER,
+				          		doors = product.DOORS ?? 0,
+				          		ReservedStr = product.RESERVED,
+				          		fuel_Type = product.FUEL_TYPE,
+				          		Title = product.TITLE,
+				          		condition = product.CONDITION,
+				          		isfeature = product.ISFEATURE ?? false,
+				          		customerId = product.SALESPERSON_ID ?? 0,
+				          		ShowOnDealerProfile = product.ISONDEALERPROFILE ?? false,
+				          		engine = product.ENGINE,
+				          		date_in_Stock = product.DATE_INSTOCK ?? DateTime.Now,
+				          		interior = product.COLOR_INTERIOR,
+				          		trim = product.TRIM,
+				          		savingAmount = product.SAVINGS ?? 0,
+				          		averageRetailPrice = product.PRICE_AVERAGERETAIL ?? 0,
+				          		averageTradeinPrice = product.PRICE_AVERAGETRADEIN ?? 0,
+				          		qualifyPrice = product.PRICE_QUALIFY ?? 0,
+				          		city_Fuel = product.FUEL_CITY ?? 0,
+				          		highWay_Fuel = product.FUEL_HIGHWAY ?? 0,
+				          		fileName = product.FILENAME,
+				          		warranty = product.ISWARRANTY ?? false
 				          	};
+
 				if (lst.customerId == 0) //then add admin id
 				{
-					var admin = Context.Customer.FirstOrDefault(m => m.Deleted == false && m.Customer_Type.Role == "Admin");
+					int userType = (int)UserType.Admin;
+					var admin = Context.DEALER_SALESPERSON.FirstOrDefault(m => m.ISDELETED == false && m.DEALERTYPE_ID == userType);
 
 					if (admin != null)
 					{
-						lst.customerId = admin.CustomerID;
+						lst.customerId = admin.ID;
 					}
 				}
 
@@ -157,48 +154,47 @@ namespace Edrive.Logic
 
 			using(Context = GetDataContext())
 			{
-				var lst = Context.Product.Where(m => productIDs.Contains(m.ProductId));
+				var lst = Context.VEHICLEs.Where(m => productIDs.Contains(m.ID));
 				if (lst.Any())
 				{
 					lstProducts = lst.Select(prd => new Products
 					                                	{
-					                                		productId = prd.ProductId,
-					                                		pics = prd.Pics,
-					                                		mileage = prd.Mileage ?? 0,
-					                                		body = prd.Product_Body.Body,
-					                                		price_Current = prd.Price_Current ?? 0,
-					                                		WholeSalePrice = prd.Price_WholeSale,
-															PriceCost = prd.Price_Cost,
-					                                		VehicleType = prd.Product_Type.Type,
-					                                		transmission = prd.Transmission,
-					                                		exterior = prd.Exterior_Color,
-					                                		OwnerDetail = prd.OwnerDetail,
-					                                		drive_Type = prd.Drive_Type,
+					                                		productId = prd.ID,
+					                                		pics = prd.PICS,
+					                                		mileage = prd.MILEAGE ?? 0,
+					                                		body = prd.LST_VEHICLEBODY.NAME,
+					                                		price_Current = prd.PRICE ?? 0,
+															price_WholeSale = prd.PRICE_WHOLESALE ?? 0,
+															price_Cost = prd.PRICE_COST ?? 0,
+					                                		VehicleType = prd.LST_VEHICLETYPE.NAME,
+					                                		transmission = prd.TRANSMISSION,
+					                                		exterior = prd.COLOR_EXTERIOR,
+					                                		OwnerDetail = prd.OWNERDETAIL,
+					                                		drive_Type = prd.DRIVE_TYPE,
 					                                		vin = prd.VIN,
 					                                		//zip = prd.zip??0,
-					                                		zip = prd.Customer.ZipPostalCode ?? 0,
-					                                		Year = prd.Year ?? 0,
-					                                		type = prd.Type,
-					                                		Make = prd.Product_Model.Product_Make.Make,
-					                                		MakeName = prd.Product_Model.Product_Make.Make,
-					                                		ModelName = prd.Product_Model.ModeLName,
-					                                		model = prd.Model,
-					                                		descriptiont = prd.Description ?? "",
-					                                		updatedOn = prd.UpdatedOn,
-					                                		stock = prd.Stock,
-					                                		doors = prd.Doors ?? 0,
-					                                		Reserved = prd.Reserved,
-					                                		fuel_Type = prd.Fuel_Type,
-					                                		Title = prd.Title,
-					                                		condition = prd.Condition,
-					                                		free_Text = prd.Free_Text,
-					                                		isfeature = prd.IsFeature ?? false,
-					                                		customerId = prd.CustomerID ?? 0,
-					                                		ShowOnDealerProfile = prd.ShowOnDealerProfile ?? false,
-					                                		engine = prd.Engine,
-					                                		date_in_Stock = prd.Date_in_Stock ?? DateTime.Now,
-					                                		interior = prd.Interior_Color,
-					                                		trim = prd.Trim
+					                                		ZipCode = prd.ZIP,
+					                                		Year = prd.YEAR ?? 0,
+					                                		type = prd.TYPE_ID,
+					                                		Make = prd.LST_VEHICLEMODEL.LST_VEHICLEMAKE.NAME,
+					                                		MakeName = prd.LST_VEHICLEMODEL.LST_VEHICLEMAKE.NAME,
+					                                		ModelName = prd.LST_VEHICLEMODEL.NAME,
+					                                		model = prd.MODEL_ID,
+					                                		descriptiont = prd.DESCRIPTION ?? "",
+					                                		updatedOn = prd.DATE_UPDATED,
+					                                		stock = prd.STOCKNUMBER,
+					                                		doors = prd.DOORS ?? 0,
+					                                		ReservedStr = prd.RESERVED,
+					                                		fuel_Type = prd.FUEL_TYPE,
+					                                		Title = prd.TITLE,
+					                                		condition = prd.CONDITION,
+					                                		isfeature = prd.ISFEATURE ?? false,
+					                                		customerId = prd.SALESPERSON_ID ?? 0,
+					                                		ShowOnDealerProfile = prd.ISONDEALERPROFILE ?? false,
+					                                		engine = prd.ENGINE,
+					                                		date_in_Stock = prd.DATE_INSTOCK ?? DateTime.Now,
+					                                		interior = prd.COLOR_INTERIOR,
+					                                		trim = prd.TRIM
 					                                	}).ToList();
 				}
 			}
@@ -210,31 +206,31 @@ namespace Edrive.Logic
 		
 		public List<Products> GetProductsByDealerID(int dealerID)
 		{
-			List<Products> lstModel = null;
+			List<Products> lstModel;
 
 			using(Context = GetDataContext())
 			{
-				lstModel = Context.Product.Where(m => m.CustomerID == dealerID && m.Deleted == false)
-					.OrderByDescending(m => m.CreatedOn)
-					.ThenByDescending(m => m.ProductId)
+				lstModel = Context.VEHICLEs.Where(m => m.SALESPERSON_ID == dealerID && m.ISDELETED == false)
+					.OrderByDescending(m => m.DATE_CREATED)
+					.ThenByDescending(m => m.ID)
 					.Take(8).Select(m => new Products
 					                     	{
-					                     		productId = m.ProductId,
-					                     		pics = m.Pics,
-					                     		mileage = m.Mileage ?? 0,
-					                     		ModelName = m.Product_Model.ModeLName,
-					                     		Year = m.Year ?? 0,
-					                     		model = m.Model,
-					                     		descriptiont = m.Description ?? "",
-					                     		updatedOn = m.UpdatedOn,
-					                     		stock = m.Stock,
-					                     		engine = m.Engine,
-					                     		Make = m.Product_Model.Product_Make.Make,
-					                     		price_Current = m.Price_Current ?? 0,
-					                     		interior = m.Interior_Color,
-					                     		trim = m.Trim,
-					                     		body = m.Product_Body.Body,
-					                     		bodyID = m.Body
+					                     		productId = m.ID,
+					                     		pics = m.PICS,
+					                     		mileage = m.MILEAGE ?? 0,
+					                     		ModelName = m.LST_VEHICLEMODEL.NAME,
+					                     		Year = m.YEAR ?? 0,
+					                     		model = m.MODEL_ID,
+					                     		descriptiont = m.DESCRIPTION ?? "",
+					                     		updatedOn = m.DATE_UPDATED,
+					                     		stock = m.STOCKNUMBER,
+					                     		engine = m.ENGINE,
+					                     		Make = m.LST_VEHICLEMODEL.LST_VEHICLEMAKE.NAME,
+					                     		price_Current = m.PRICE ?? 0,
+					                     		interior = m.COLOR_INTERIOR,
+					                     		trim = m.TRIM,
+					                     		body = m.LST_VEHICLEBODY.NAME,
+					                     		bodyID = m.BODY_ID
 					                     	}
 					).ToList();
 			}
@@ -327,7 +323,7 @@ namespace Edrive.Logic
 
 			ObjectParameter totalCount = new ObjectParameter("tOTALRESULTS", 0);
 			ObjectParameter totalPages = new ObjectParameter("tOTALPAGES", 0);
-			List<Products> result = new List<Products>();
+			List<Products> result;
 
 			using(Context = GetDataContext())
 			{
@@ -359,25 +355,25 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var rating = Context.Product_Rating.FirstOrDefault(m => m.ProductID == productID);
+				var rating = Context.VEHICLE_RATING.FirstOrDefault(m => m.VEHICLE_ID == productID);
 				
 				if (rating != null)
 				{
-					var averageRating = rating.AvgRating ?? 0;
-					var totalVotes = rating.TotaVotes ?? 0;
-					rating.AvgRating = ((averageRating * totalVotes) + score) / (totalVotes + 1);
-					rating.TotaVotes = totalVotes + 1;
+					var averageRating = rating.AVE_RATING;
+					var totalVotes = rating.TOTAL_VOTES;
+					rating.AVE_RATING = ((averageRating * totalVotes) + score) / (totalVotes + 1);
+					rating.TOTAL_VOTES = totalVotes + 1;
 				}
 				else
 				{
-					rating = new Product_Rating
+					rating = new VEHICLE_RATING
 					         	{
-					         		AvgRating = score,
-					         		TotaVotes = 1,
-					         		ProductID = productID
+					         		AVE_RATING = score,
+					         		TOTAL_VOTES = 1,
+					         		VEHICLE_ID = productID
 					         	};
 
-					Context.Product_Rating.AddObject(rating);
+					Context.VEHICLE_RATING.AddObject(rating);
 				}
 
 				Context.SaveChanges();
@@ -392,7 +388,7 @@ namespace Edrive.Logic
 			{
 				vin = vin.Trim();
 
-				return Context.Product.Any(m => m.VIN == vin && m.Deleted == false);
+				return Context.VEHICLEs.Any(m => m.VIN == vin && m.ISDELETED == false);
 			}
 		}
 
@@ -400,7 +396,7 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				int totalCount = Context.QualifiedVehiclesCount().FirstOrDefault().GetValueOrDefault(0);
+				int totalCount = Context.VEHICLEs.Count(c => c.ISQUALIFIED && c.ISDELETED == false);
 
 				return totalCount;
 			}
@@ -411,32 +407,28 @@ namespace Edrive.Logic
 			using(Context = GetDataContext())
 			{
 				List<Products> result = new List<Products>();
-				var customer = Context.Customer.FirstOrDefault(m => m.IsFeatured == true);
+				var customer = Context.DEALER_SALESPERSON.FirstOrDefault(m => m.ISFEATURED == true);
 
 				if(customer == null)
 					return result;
 				
-				string cityName = "";
-
-				if (customer.Stateid != null)
-					cityName = customer.StateProvince.Abbreviation;
+				string cityName = customer.DEALER.STATE;
+				var ownerDet = customer.NAME + ", " + cityName;
 				
-				var ownerDet = customer.FirstName + ", " + cityName;
-				
-					result = Context.Product.Where(m => m.CustomerID == customer.CustomerID).Take(pageSize).
+					result = Context.VEHICLEs.Where(m => m.SALESPERSON_ID == customer.ID).Take(pageSize).
 						Select(m => new Products
 							            {
-							            	productId = m.ProductId,
-							            	Year = m.Year ?? 0,
-							            	MakeName = m.Product_Model.Product_Make.Make,
-							            	ModelName = m.Product_Model.ModeLName,
-							            	body = m.Product_Body.Body,
-							            	mileage = m.Mileage ?? 0,
-							            	exterior = m.Exterior_Color,
-							            	customerId = m.CustomerID ?? 0,
+							            	productId = m.ID,
+							            	Year = m.YEAR ?? 0,
+							            	MakeName = m.LST_VEHICLEMODEL.LST_VEHICLEMAKE.NAME,
+							            	ModelName = m.LST_VEHICLEMODEL.NAME,
+							            	body = m.LST_VEHICLEBODY.NAME,
+							            	mileage = m.MILEAGE ?? 0,
+							            	exterior = m.COLOR_EXTERIOR,
+							            	customerId = m.SALESPERSON_ID ?? 0,
 							            	OwnerDetail = ownerDet,
-							            	price_Current = m.Price_Current ?? 0,
-											savingAmount = m.SavingAmount ?? 0
+							            	price_Current = m.PRICE ?? 0,
+											savingAmount = m.SAVINGS ?? 0
 							            }).ToList();
 
 					foreach (var item in result)
@@ -459,27 +451,26 @@ namespace Edrive.Logic
 			{
 				vehicles = Context.FeaturedVehicles().Select(c => new Products
 				{
-					productId = c.ProductId,
-					pics = c.Pics,
-					mileage = c.Mileage ?? 0,
-					body = c.ProductBodyName,
-					price_Current = c.Price_Current ?? 0,
-					transmission = c.Transmission ?? "",
-					exterior = c.Exterior_Color ?? "",
-					OwnerDetail = c.OwnerDetail,
-					drive_Type = c.Drive_Type,
+					productId = c.ID,
+					pics = c.PICS,
+					mileage = c.MILEAGE ?? 0,
+					body = c.BODY_NAME,
+					price_Current = c.PRICE ?? 0,
+					transmission = c.TRANSMISSION ?? "",
+					exterior = c.COLOR_EXTERIOR ?? "",
+					OwnerDetail = c.OWNERDETAIL,
+					drive_Type = c.DRIVE_TYPE,
 					vin = c.VIN,
-					MakeName = c.MakeName,
-					ModelName = c.ModelName,
-					//zip = c.zip??0,
-					zip = c.ZipPostalCode ?? 0,
-					Year = c.Year ?? 0,
-					model = c.Model,
-					updatedOn = c.UpdatedOn,
-					customerId = c.CustomerID ?? 0,
-					savingAmount = c.SavingAmount ?? 0,
-					CustomerCity = c.City ?? "",
-					CustomerState = c.StateProvince ?? ""
+					MakeName = c.MAKE,
+					ModelName = c.MODEL,
+					ZipCode = c.ZIP,
+					Year = c.YEAR ?? 0,
+					model = c.MODEL_ID,
+					updatedOn = c.DATE_UPDATED,
+					customerId = c.SALESPERSON_ID ?? 0,
+					savingAmount = c.SAVINGS ?? 0,
+					CustomerCity = c.CITY ?? "",
+					CustomerState = c.STATE ?? ""
 				}).ToList();
 			}
 
@@ -503,8 +494,8 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var query = Context.Product.Where(c => c.Transmission != null && c.Transmission.Trim() != "")
-					.Select(c => c.Transmission).Distinct().ToList();
+				var query = Context.VEHICLEs.Where(c => c.TRANSMISSION != null && c.TRANSMISSION.Trim() != "")
+					.Select(c => c.TRANSMISSION).Distinct().ToList();
 
 				return query;
 			}
@@ -514,8 +505,8 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var query = Context.Product.Where(c => c.Engine != null && c.Engine.Trim() != "")
-					.Select(c => c.Engine).Distinct().ToList();
+				var query = Context.VEHICLEs.Where(c => c.ENGINE != null && c.ENGINE.Trim() != "")
+					.Select(c => c.ENGINE).Distinct().ToList();
 
 				return query;
 			}
@@ -525,8 +516,8 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var query = Context.Product.Where(c => c.Drive_Type != null && c.Drive_Type.Trim() != "")
-					.Select(c => c.Drive_Type).OrderBy(c => c).Distinct().ToList();
+				var query = Context.VEHICLEs.Where(c => c.DRIVE_TYPE != null && c.DRIVE_TYPE.Trim() != "")
+					.Select(c => c.DRIVE_TYPE).OrderBy(c => c).Distinct().ToList();
 
 				return query;
 			}
@@ -541,12 +532,12 @@ namespace Edrive.Logic
 
 				var searcharray = searchKey.Trim().Split(' ');
 
-				var query = Context.Product_Model.Select(m => new
+				var query = Context.LST_VEHICLEMODEL.Select(m => new
 				                                               	{
-				                                               		name = m.Product_Make.Make + " " + m.ModeLName,
-				                                               		model = m.id,
-				                                               		modelName = m.ModeLName,
-				                                               		makeName = m.Product_Make.Make
+				                                               		name = m.LST_VEHICLEMAKE.NAME + " " + m.NAME,
+				                                               		model = m.ID,
+				                                               		modelName = m.NAME,
+				                                               		makeName = m.LST_VEHICLEMAKE.NAME
 				                                               	});
 
 				query = searcharray.Select(q => q.Trim()).Aggregate(query, (current, key) => current.Where(m => m.name.Contains(key.Trim())));
@@ -574,14 +565,12 @@ namespace Edrive.Logic
 				vin = entity.VIN,
 				MakeName = entity.LST_VEHICLEMODEL.LST_VEHICLEMAKE.NAME,
 				ModelName = entity.LST_VEHICLEMODEL.NAME,
-				//zip 		  = entity.zip??0,
-				ZipCode = entity.DEALER_SALESPERSON.DEALER.ZIP,
+				ZipCode = entity.ZIP,
 				Year = entity.YEAR ?? 0,
 				model = entity.MODEL_ID,
 				interior = entity.COLOR_INTERIOR,
 				updatedOn = entity.DATE_UPDATED,
-				descriptiont = entity.DESCRIPTION,
-				CustomerCity = entity.DEALER_SALESPERSON.DEALER.CITY
+				descriptiont = entity.DESCRIPTION
 			};
 
 			return item;

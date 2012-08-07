@@ -13,10 +13,14 @@
     <RootNamespace>EdriveService</RootNamespace>
     <AssemblyName>EdriveService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
     <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -105,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EdriveDataService.svc" />
-    <Content Include="EdriveDataCsv\GetAuto\120517.zip" />
     <Content Include="packages.config" />
     <EntityDeploy Include="EdriveModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -206,9 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="EdriveDataCsv\AULtec\" />
-    <Folder Include="EdriveDataCsv\Autobase\" />
-    <Folder Include="EdriveDataCsv\Schumacher\" />
     <Folder Include="ErrorLog\" />
   </ItemGroup>
   <ItemGroup>

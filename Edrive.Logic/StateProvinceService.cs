@@ -11,14 +11,14 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var state = Context.StateProvince.Where(m => m.StateProvinceID == stateID)
+				var state = Context.LST_STATE.Where(m => m.ID == stateID)
 					.Select(m => new State
 					{
-						StateProvinceID = m.StateProvinceID,
-						Abbreviation = m.Abbreviation,
-						CountryID = m.CountryID,
-						DisplayOrder = m.DisplayOrder,
-						Name = m.Name
+						StateProvinceID = m.ID,
+						Abbreviation = m.ABBREVIATION,
+						CountryID = m.COUNTRY_ID,
+						DisplayOrder = m.DISPLAYORDER,
+						Name = m.NAME
 					}).FirstOrDefault();
 
 				return state;
@@ -31,16 +31,16 @@ namespace Edrive.Logic
 			{
 				countryCode = countryCode.ToLower();
 
-				var query = from s in Context.StateProvince
-				            join c in Context.Country on s.CountryID equals c.CountryID
-				            where c.TwoLetterISOCode.ToLower() == countryCode || c.ThreeLetterISOCode.ToLower() == countryCode
+				var query = from s in Context.LST_STATE
+				            join c in Context.LST_COUNTRY on s.COUNTRY_ID equals c.ID
+				            where c.ISOCODE_2L.ToLower() == countryCode || c.ISOCODE_3L.ToLower() == countryCode
 				            select new State
 				                   	{
-				                   		StateProvinceID = s.StateProvinceID,
-										CountryID = s.CountryID,
-										Abbreviation = s.Abbreviation,
-										Name = s.Name,
-										DisplayOrder = s.DisplayOrder
+				                   		StateProvinceID = s.ID,
+										CountryID = s.COUNTRY_ID,
+										Abbreviation = s.ABBREVIATION,
+										Name = s.NAME,
+										DisplayOrder = s.DISPLAYORDER
 				                   	};
 
 				return query.ToList();
@@ -51,16 +51,16 @@ namespace Edrive.Logic
 		{
 			using(Context = GetDataContext())
 			{
-				var state = Context.StateProvince.Where(m => m.CountryID == countryID).OrderBy(m => m.DisplayOrder)
+				var state = Context.LST_STATE.Where(m => m.COUNTRY_ID == countryID).OrderBy(m => m.DISPLAYORDER)
 					.Select(
 						m =>
 						new State
 							{
-								Abbreviation = m.Abbreviation,
-								CountryID = m.CountryID,
-								DisplayOrder = m.DisplayOrder,
-								Name = m.Name,
-								StateProvinceID = m.StateProvinceID
+								Abbreviation = m.ABBREVIATION,
+								CountryID = m.COUNTRY_ID,
+								DisplayOrder = m.DISPLAYORDER,
+								Name = m.NAME,
+								StateProvinceID = m.ID
 							}).ToList();
 
 				return state;

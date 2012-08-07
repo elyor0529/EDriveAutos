@@ -14,8 +14,11 @@ namespace Edrive.Core.Model
 		{ _UpdatedOn = _CreatedOn = DateTime.UtcNow; }
 		[DataMember]
 		public string Reserved { get; set; }
-		[DataMember]
 
+		[DataMember]
+		public decimal? ReservedStr { get; set; }
+
+		[DataMember]
 		public int productId { get; set; }
 		[DataMember]
 		public string name { get; set; }
@@ -150,7 +153,7 @@ namespace Edrive.Core.Model
 		public string ZipCode { get; set; }
 
 		[DataMember]
-		public int SellerZip { get; set; }
+		public string SellerZip { get; set; }
 
 		[DataMember]
 		public string SellerName { get; set; }
