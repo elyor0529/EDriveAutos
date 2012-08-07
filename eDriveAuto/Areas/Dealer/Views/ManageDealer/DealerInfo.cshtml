@@ -1,0 +1,269 @@
+﻿@model Edrive.Models.DealerInfo
+@{
+    ViewBag.Title = "Edit Dealer Info";
+}
+
+@section Head{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ckeditor.js")" type="text/javascript"></script>	<link href="@Url.Content("~/Content/sample.css")" rel="stylesheet" type="text/css" />    
+
+ 
+    <style>
+        .section-body
+{
+	border: 1px solid #afdffd;
+	background-color: #F3FBFE;
+	padding: 15px;
+	width:95%;
+}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                $("#Country").change(function () {
+
+                    $("#State").html("");
+                    if ($(this).val() == "-1") {
+                        $("#State").attr("disabled", "disabled");
+                        return;
+                    };
+
+
+                    var flag = true;
+                    $.post(serverurl + "/Dealer/ManageDealer/GetState?CountryID=" + $(this).val(), null, function (data) {
+
+
+                        $.each(data, function () {
+                            flag = false
+                            $("#State").append("<option value='" + this.StateProvinceID + "'>" + this.Name + "</option>")
+                         .removeAttr("disabled");
+                        });
+
+                        if (flag) {
+                            $("#State").append("<option value='-1'>Other (Non us)</option>");
+                        }
+                    }, "json");
+
+
+
+                });
+
+
+            } catch (e) {
+                alert(e.Message);
+            }
+        });
+
+        $(document).ready(function () {
+            $("#DateofBirth").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+
+
+        });
+           </script>
+        <script type="text/javascript">
+
+        function ChangeCustomerPassword() {
+
+            $("#form1").attr("action", '@Url.Action("ChangePassword", "ManageDealer", new { area = "Dealer" }, null)')
+
+
+
+        }
+           </script>           <script type="text/javascript">
+        function deleteDealer() {
+            if (confirm('Are you sure you want to delete.') == false) {
+                return false;
+            }
+            else {
+                $("#form1").attr("action", '@Url.Action("Delete", "ManageDealer", null, null)');
+
+            }
+        }
+    </script>}
+ 
+ <h2>Dealer Info</h2>
+
+<div id="CustomerAdd" style=" ">
+@using (Html.BeginForm("DealerInfo", "ManageDealer", FormMethod.Post, new { id = "form1" }))
+{@Html.ValidationSummary(false)
+    
+     <div style="color:Red;text-align:center;margin-bottom:5px;">
+        @(ViewData["Msg"] ?? "")
+        <br />
+
+        </div>
+    <div class="section-body">
+    <div class="section-info">
+         
+             <table style="width: 100%">
+                    <tr>
+                        <td class="firstCol">
+                            <input id="CustomerID" name="CustomerID" type="hidden" value="@(Model.CustomerID)" />
+                            @Html.LabelFor(model => model.Email)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Email)
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Password)
+                        </td>
+                        <td>
+                            
+                            @Html.TextBoxFor(m => m.Password)
+                            <input type="submit" value="Change Password" onclick="ChangeCustomerPassword();" name="changepasssword" id="changepasssword" />
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Gender)
+                        </td>
+                        <td>
+                            <label>
+                                <input type="radio" name="Gender" checked="checked" value="Male" />Male</label>
+                            <label>
+                                <input type="radio" name="Gender" value="Female" />Female
+                            </label>
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.FirstName)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.FirstName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.LastName)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.LastName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.DateofBirth)
+                        </td>
+                        <td>
+                            @Html.TextBox("DateofBirth", (Model.DateofBirth == null ? "" : Model.DateofBirth.Value.ToString("MM/dd/yyyy")), new { @readonly = "readonly" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Company)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Company)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.StreetAddress1)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.StreetAddress1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.StreetAddress2)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.StreetAddress2)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Zip)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Zip)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            Country
+                        </td>
+                        <td>
+                            @Html.DropDownList("Country", (List<SelectListItem>)ViewData["Country"])
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.City)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.City)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.StateID)
+                        </td>
+                        <td>
+                            @Html.DropDownList("StateID", (List<SelectListItem>)ViewData["State"], new { id = "State" })
+                            @* <select id="State" name="StateID">
+                    </select>*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Phone)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Phone)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Fax)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Fax)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            @Html.LabelFor(model => model.Newsletter)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Newsletter)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstCol">
+                            Registeration Date
+                        </td>
+                        <td>
+                            @Model.RegisterationDate
+                        </td>
+                    </tr>
+                </table>
+                @Html.Hidden("ApplicationURL","")
+                @Html.Hidden("Logo","")
+@Html.Hidden("PageImage","")
+@Html.Hidden("ServiceURL","")
+@Html.Hidden("WarrantyURL","")
+@Html.Hidden("Description","")
+
+
+     
+     <div style="margin-left: 217px;margin-top: 15px;">
+            <input type="submit" value="Save" id="Save" />
+        </div>
+      </div>
+
+      </div>
+
+}
+</div>

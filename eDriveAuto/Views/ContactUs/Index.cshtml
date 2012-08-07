@@ -1,0 +1,128 @@
+﻿@model Edrive.Models.Nop_TopicLocalized
+
+@section  Head{
+	@if(Model != null)
+	{
+		<title>@Model.Title</title>
+		<meta name="metatitle" content="@Model.MetaTitle" />
+		<meta name="description" content="@Model.MetaDescription" />
+		<meta name="keywords" content="@Model.MetaKeywords" />
+
+	}
+	<link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		$(function() {
+			$("#formContact").submit(function() {
+				if ($(this).valid()) {
+					SubmitForm();
+				}
+				return false;
+			});
+		});
+		
+		function SubmitForm() {
+			var Name = $("#Name").val();
+			var Email = $("#Email").val();
+			var CustomerType = ""; //$("#CustomerType").val();
+			var Address = $("#Address").val();
+			var HearAboutUsBy = $("#HearAboutUsBy").val(); ;
+
+			$("input:checkbox[name='CustomerType']:checked").each(function () {
+				CustomerType = $(this).val() + ",";
+			});
+			var City = $("#City").val();
+			var Country = $("#Country").val();
+			var State = $("#State").val();
+			var Zip = $("#Zip").val();
+			var Telephone = $("#Telephone").val();
+			var TelephoneExt = $("#TelephoneExt").val();
+			var Fax = $("#Fax").val();
+			var UserRequest_Question = $("#UserRequest_Question").val();
+			
+			var saveData = {
+				Name: Name,
+				Email: Email,
+				CustomerType: CustomerType,
+				Address: Address,
+				HearAboutUsBy: HearAboutUsBy,
+				City: City,
+				Country: Country,
+				State: State,
+				Zip: Zip,
+				Telephone: Telephone,
+				TelephoneExt: TelephoneExt,
+				Fax: Fax,
+				UserRequest_Question: UserRequest_Question
+			};
+			
+			$.ajax({
+				type: "POST",
+				url: "@Url.Action("ContactUsSubmit", "ContactUs")",
+				data: saveData,
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				success: function (data) {
+					if (data != null) {
+						$("#Msg").html(data.Msg.toString());
+					}
+				},
+				error: function (req, status, error) {
+					$("#Msg").html("There was a problem registering your email, please try again.");
+				}
+			});
+		}
+	</script>
+}
+<div class="master-wrapper-center-1">
+	<div class="master-wrapper-cph-1">
+		<div class="product-inner-page">
+			<div class="divdetail-inner">
+				<div class="clear">
+				</div>
+			</div>
+			<div class="tab-new">
+				<div class="teb-left">
+				</div>
+				<div class="tab-line">
+					<div class="tab-tital">
+						Contact Us</div>
+				</div>
+				<div class="tab-right">
+				</div>
+				<div class="clear">
+				</div>
+			</div>
+			<div class="clear1">
+			</div>
+			<div class="divbottom-home">
+				<div class="divbottomleft-new-top">
+				</div>
+				<div class="divbottommiddetail-new-line-top-inner">
+				</div>
+				<div class="divbottomright-new-top">
+				</div>
+				<div class="clear">
+				</div>
+			</div>
+			<div class="divinnercontent-home-new-one">
+				<div class="divinnercontent">
+					<div class="diviconwar">
+					</div>
+					@Html.Partial("_ContactUs", new _ContactUsForm())
+				</div>
+			</div>
+			<div class="clear">
+			</div>
+			<div class="divbottom-home">
+				<div class="divbottomleft-new">
+				</div>
+				<div class="divbottommiddetail-new-line-inner">
+				</div>
+				<div class="divbottomright-new">
+				</div>
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model List<Edrive.Models.Nop_News>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+
+        var title = System.Text.RegularExpressions.Regex.Replace(item.Title, @"[^\w\.@-]", "_");
+        var newsDetailUrl = Url.Action("Index", "News") + "/" + item.NewsID.ToString() + "_" + title;
+    <div class="TestArt">
+        <p>
+            "@(item.Short).  </p>
+        <div align="right">
+        <span class="newsHOmePage">@item.CreatedOn.ToShortDateString()</span>
+                    
+            <a class="Blue" href="@newsDetailUrl">more...
+           </a></div>
+    </div> 
+    }
+}
+else
+{
+    <div class="TestArt">
+        <p>
+            "I am very much impressed by the marketing tools available for affilates : probably
+            the best and most comprehensive i have seen so far.</p>
+        <div align="right">
+            <a class="Blue" href="#">More</a></div>
+    </div>
+    <div class="TestArt">
+        <p>
+            "I am very much impressed by the marketing tools available for affilates : probably
+            the best and most comprehensive i have seen so far.</p>
+        <div align="right">
+            <a class="Blue" href="#">Casey</a></div>
+    </div>
+}

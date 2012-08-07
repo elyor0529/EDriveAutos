@@ -1,0 +1,13 @@
+﻿@if(User.Identity.IsAuthenticated) {
+    <text><span style="font-weight:bold;color:Black">Logged in as: <b>@Context.User.Identity.Name, </b>
+              @Html.ActionLink("logout?", "LogOff", "Account", new { area = "" }, new { }) </span> </text>
+}
+else {
+  
+    @*@:[ @Html.ActionLink("Log On", "Login", "Administration",null,new { style="color:white"}) ]
+*@
+
+
+}
+
+ 

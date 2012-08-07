@@ -1,0 +1,10 @@
+﻿
+
+CREATE PROCEDURE [dbo].[Nop_LogClear]
+
+AS
+BEGIN
+	SET NOCOUNT ON
+	DELETE
+	FROM [Nop_Log]
+END

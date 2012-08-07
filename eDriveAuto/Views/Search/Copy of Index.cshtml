@@ -1,0 +1,417 @@
+﻿@model List<Edrive.Edrivie_Service_Ref.Products>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section Head{
+    <script language="javascript" type="text/javascript">
+
+        function GetCarsForNewPage(obj) {
+            try {
+                //alert($(obj).val() );
+                var Prices = GetFiltersValues("Price");
+                if ($("#AdvSearchPriceRange").val() != "")//---Add Advance Search Price
+                    Prices += $("#AdvSearchPriceRange").val() + ",";
+                else {
+                    if (Prices == "")
+                        Prices = "-1,";
+                }
+                var Mileage = GetFiltersValues("Mileage");
+                if ($("#AdvSearchMileageRange").val() != "")//---Add Advance Search Price
+                    Mileage += $("#AdvSearchMileageRange").val() + ",";
+                else {
+                    if (Mileage == "")
+                        Mileage = "-1,";
+                }
+                var Make = GetFiltersValues("Make");
+                var Model = "";
+                if (Make == "-1," || Make == "")
+                    Model = "-1,";
+                else //Model is selected
+                    Model = GetFiltersValues("Model");
+                //var Model = $("#Model").val();
+                var Year = GetFiltersValues("Year");
+                var Body = GetFiltersValues("Body");
+                var Type = GetFiltersValues("Type");
+                var CarsCount = $("#CarsCount").val();
+                var Warranty = $('input:radio[name=Warranty]:checked').val();
+                var Vin = $("#Vin").val();
+                var DriveType = $("#DriveType").val();
+                var Zip = $('#Zip').val();
+                var Transmission = $("#Transmission").val();
+                var Engine = $("#Engine").val();
+                var sortByColumn = $("#sortByColumn").val();
+                var pageSize = $("#PageSize").val();
+                var pageIndex = $(obj).val(); //$("#CurrentPageIndex").val();
+                var hiddenSearchKey = $("#hiddenSearchKey").val();
+                var datastr = { "Price": Prices, "Mileage": Mileage, "Vin": Vin, "Transmission": Transmission, "Engine": Engine, "DriveType": DriveType, "Make": Make, "Model": Model, "Year": Year, "Body": Body
+        , "Type": Type, "Warranty": Warranty, "Zip": Zip, "pageSize": pageSize, "PageIndex": pageIndex, "sortByColumn": sortByColumn, "hiddenSearchKey": hiddenSearchKey
+                };
+                $.post(serverurl + "/Search/SearchOnSearchPage", datastr, function (result) {
+                    //alert(result);
+                    $("#ShowCars").html(result);
+                    $("#CurrentPage").html(parseInt(pageIndex) + 1);
+                    $("#lblPageMsg").html(pageIndex + 1);
+                }, "html");
+            } catch (e) {
+                alert(e.Message);
+            }
+        }
+        function GetCars(evt) {
+            if (evt.preventDefault) { evt.preventDefault(); }
+            else
+            { evt.returnValue = false; }
+            SearchyourCars();
+        }
+        function SearchyourCars() {
+            var Prices = GetFiltersValues("Price");
+            if ($("#AdvSearchPriceRange").val() != "")//---Add Advance Search Price
+                Prices += $("#AdvSearchPriceRange").val() + ",";
+            else {
+                if (Prices == "")
+                    Prices = "-1,";
+            }
+            var Mileage = GetFiltersValues("Mileage");
+            if ($("#AdvSearchMileageRange").val() != "")//---Add Advance Search Price
+                Mileage += $("#AdvSearchMileageRange").val() + ",";
+            else {
+                if (Mileage == "")
+                    Mileage = "-1,";
+            }
+            var Make = GetFiltersValues("Make");
+            var Model = "";
+            if (Make == "-1," || Make == "")
+                Model = "-1,";
+            else //Model is selected
+                Model = GetFiltersValues("Model");
+            //var Model = $("#Model").val();
+            var Year = GetFiltersValues("Year");
+            var Body = GetFiltersValues("Body");
+            var Type = GetFiltersValues("Type");
+            var CarsCount = $("#CarsCount").val();
+            var Vin = $("#Vin").val();
+            var DriveType = $("#DriveType").val();
+            var Vin = $("#Vin").val();
+            var sortByColumn = $("#sortByColumn").val();
+            var Warranty = $('input:radio[name=Warranty]:checked').val();
+            var Zip = $('#Zip').val();
+            var Transmission = $("#Transmission").val();
+            var Engine = $("#Engine").val();
+            var pageSize = $("#PageSize").val();
+            var hiddenSearchKey = $("#hiddenSearchKey").val();
+            var pageIndex = 0;
+            var datastr = { "Price": Prices, "Mileage": Mileage, "Vin": Vin, "Transmission": Transmission, "Engine": Engine
+        , "DriveType": DriveType, "Make": Make, "Model": Model, "Year": Year, "Body": Body
+        , "Type": Type, "Warranty": Warranty, "Zip": Zip, "pageSize": pageSize, "PageIndex": pageIndex, "sortByColumn": sortByColumn, "hiddenSearchKey": hiddenSearchKey
+            };
+            $.post(serverurl + "/Search/SearchOnSearchPage", datastr, function (result) {
+
+                $("#ShowCars").html(result);
+            }, "html");
+            $.post(serverurl + "/Search/SearchOnSearchPage_CarsCount", datastr, function (totalRecords) {
+
+                var totalPages = Math.ceil(totalRecords / pageSize);
+                $("#TotalPages").html(totalPages);
+                $("#CurrentPage").html(parseInt(pageIndex) + 1);
+                $("#pageIndex option").remove();
+
+                for (var i = 0; i < totalPages; i++) {
+                    $("#pageIndex").append("<option value='" + i + "'>" + (i + 1) + "</option>");
+
+                }
+                $("#pageIndex").val(pageIndex);
+                //alert(result);
+
+            }, "text");
+            return true;
+        }
+        function sort(FieldName, linkObj) {
+            $("#sortByColumn").val(FieldName);
+            SearchyourCars();
+            $(".lnkSort").each(function () {
+                $(this).css("text-decoration", "underline");
+            });
+            $(linkObj).css("text-decoration", "none");
+        }
+        function GetFiltersValues(FilterName) {
+            var Values = "";
+            $("#" + FilterName).find("input[type='checkbox']").each(function () {
+                if ($(this).is(":checked")) {
+                    Values += $(this).val() + ",";
+                }
+            });
+
+            //        if (Values == "")
+            //            Values = "-1,";
+            return Values;
+        }
+        function removefilter(evt) {
+            try {
+
+                if (evt.preventDefault) { evt.preventDefault(); }
+                else {
+                    evt.returnValue = false;
+                }
+                //  $("#Model").val("-1");
+                $("#ModelDiv").html("<div class='filterHeader'>Model</div>"); //-remove models
+                //--reset Makes--
+                $("#Make input[name=Make][type=checkbox]").attr("checked", "");
+                $("#Make input[name=Make][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Price input[name=Price][type=checkbox]").attr("checked", "");
+                $("#Price input[name=Price][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Mileage input[name=Mileage][type=checkbox]").attr("checked", "");
+                $("#Mileage input[name=Mileage][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Year input[name=Year][type=checkbox]").attr("checked", "");
+                $("#Year input[name=Year][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Type input[name=Type][type=checkbox]").attr("checked", "");
+                $("#Type input[name=Type][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Warranty input[name=Warranty][type=radio][value=-1]").attr("checked", "checked");
+                //------resetPrices
+                //-------
+                $("#Radius").val("-1");
+                $("#Transmission").val("-1");
+                $("#Engine").val("-1");
+                $("#DriveType").val("-1");
+                showMessage("Filters Removed now");
+                $("#AdvSearchPriceRange").val("");
+                $("#AdvSearchMileageRange").val("");
+                SearchyourCars();
+                $("#hiddenSearchKey").val("");
+            } catch (e) {
+                alert("removefilter() errorMsg=" + e.Message);
+
+            }
+        }
+        function showMessage(msg) {
+            $("#StatusMsg").html(msg).fadeIn("slow");
+            setTimeout("HideStatusMsg()", 3000);
+        }
+        function HideStatusMsg() {
+            $("#StatusMsg").fadeOut("200");
+        }
+        $(document).ready(function () {
+            //--when make is changed get modal using json
+            $("#Make input[name=Make][type=checkbox]").click(function () {
+                $("#Make input[name=Make][type=checkbox]").attr("checked", "");
+                $(this).attr("checked", "checked");
+                $.post(serverurl + "/Home/GetModel?MakeID=" + $(this).val(), null, function (data) {
+                    //</div>
+                    $("#ModelDiv").html("<div class='filterHeader'>Model");
+                    //alert(data);
+                    var i = 0;
+                    $.each(data, function () {
+                        ++i;
+                        if (i == 1)
+                            $("#ModelDiv").append("<div><label><input type='checkbox' checked='checked' name='Model' id='Model" + this.id + "' value='" + this.id + "'>" + this.modelName + "</label></div>");
+                        else {
+                            $("#ModelDiv").append("<div><label><input type='checkbox' name='Model'  id='Model" + this.id + "' value='" + this.id + "'>" + this.modelName + "</label></div>");
+                        }
+
+                    });
+                    if (i == 1)
+                        $("#ModelDiv").html("<div class='filterHeader'>Model</div>");
+                    else $("#ModelDiv").append("</div>");
+
+                }, "json");
+            });
+            CheckIsAllSelected("Price");
+            CheckIsAllSelected("Mileage");
+            CheckIsAllSelected("Year");
+            CheckIsAllSelected("Body");
+            CheckIsAllSelected("Type");
+        });
+
+        function CheckIsAllSelected(FilterName) {
+            try {
+                var i = 0;
+                $("#" + FilterName + " input[type=checkbox]").click(
+     function (evt) {
+         if ($(this).val() == "-1" && $(this).is(":checked")) {//if selected item is all and all is checked, uncheck other
+             $("#" + FilterName + " input[type=checkbox]").attr("checked", "");
+             $(this).attr("checked", "checked");
+         }
+         else { //if selected item is other than all and it is selected then uncheck the all
+             if ($(this).is(":checked")) {
+                 $("#" + FilterName + " input[type=checkbox][value='-1']").attr("checked", "");
+             }
+         }
+     });
+            } catch (e) {
+                alert(e);
+            }
+        }
+ 
+    </script>
+}
+<h2>
+    Refine Your Search</h2>
+@{
+    <form id='form1' action="@Url.Content("~")Search/SearchOnSearchPage" method="post">
+    <div style="width: 990px">
+        <div style="float: left; width: 284px; color: #555">
+            <div>
+                <input type="hidden" id="hiddenSearchKey" name="hiddenSearchKey" value="@(ViewData["searchKey"] ?? "")" />
+                @Html.ActionLink("Advance Search", "AdvanceSearch", "Search")<br />
+                <br />
+                <input type="image" id="btnSearch" src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/search01.jpg")" 
+                onclick="GetCars(event)" />
+                <input id="btnRemove" onclick="removefilter(event)" type="image" src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/remove01.jpg")" />
+                <br />
+            </div>
+            <div class="">
+                <div class="filterHeader">
+                    Price
+                </div>
+                <div class="filterList">
+                    @Html.CheckBoxList((SelectList)(ViewData["Price"]), "Price", new { @class = "clsPrice" })
+                    @Html.Hidden("AdvSearchPriceRange", @ViewData["AdvSearchPriceRange"] == null ? "" : @ViewData["AdvSearchPriceRange"])
+
+                </div>
+            </div>
+            <div class="">
+                <div class="filterHeader">
+                    Mileage
+                </div>
+                <div class="filterList">
+                    @Html.CheckBoxList((SelectList)(ViewData["Mileage"]), "Mileage", new { @class = "clsPrice" })
+                    <input type="hidden" id="AdvSearchMileageRange" name="AdvSearchMileageRange" value="@(ViewData["AdvSearchMileageRange"] ?? "")" />
+                </div>
+            </div>
+            <div class="">
+                <div class="filterHeader">
+                    Make
+                </div>
+                <div class="filterList">
+                    @Html.CheckBoxList((SelectList)(ViewData["Make"]), "Make", new { @class = "clsPrice" })
+                    @*   @Html.CheckBoxList((SelectList)(ViewData["Model"]), "Model", new { @class = "clsPrice" })
+*@ @*  @Html.Hidden("Model")*@
+                </div>
+            </div>
+            <div class="" id="ModelDiv">
+                @if (ViewData["MakeSelected"] != null)
+                {
+                
+            
+                    <div class="filterHeader">
+                        Model
+                    </div>
+
+                    <div class="filterList">
+                        @Html.CheckBoxList((SelectList)(ViewData["Model"]), "Model", new { @class = "clsPrice" })
+                    </div>
+               
+            
+                }
+                else
+                {
+
+                }
+            </div>
+            <div class="">
+                <div class="filterHeader">
+                    Year
+                </div>
+                <div class="filterList">
+                    @Html.CheckBoxList((List<SelectListItem>)(ViewData["Year"]), "Year", new { @class = "clsPrice" })
+                </div>
+            </div>
+            <div class="">
+                <div class="filterHeader">
+                    Body
+                </div>
+                <div class="filterList">
+                    @Html.CheckBoxList((SelectList)(ViewData["Body"]), "Body", new { @class = "clsPrice" })
+                </div>
+                <div class="">
+                    <div class="filterHeader">
+                        Type
+                    </div>
+                    <div class="filterList">
+                        @Html.CheckBoxList((SelectList)(ViewData["Type"]), "Type", new { @class = "clsPrice" })
+                    </div>
+                </div>
+                <div class="">
+                    <div class="filterHeader">
+                        Warranty
+                    </div>
+                    <div class="filterList">
+                        @Html.RadioButtonList((SelectList)(ViewData["Warranty"]), "Warranty", new { @class = "clsPrice" })
+                    </div>
+                </div>
+            </div>
+            <div style="float: left; width: 400px">
+            </div>
+        </div>
+        <div style="float: left; width: 700px">
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <p style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px; color: Black; background: Yellow;
+                                font-weight: bold" id="StatusMsg">
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <table width="720">
+                    <tr>
+                        <td style="font-size: 10pt; font-weight: bold; color: #0E67F5;">
+                        </td>
+                        <td style="text-align: right">
+                            @*<spane id="page" name="pageIndex" value='@ViewData["pageIndex"]' />*@ <b>Page <span
+                                id="CurrentPage">
+                                @{ var cnt = ViewBag.PageCounts > 0 ? "1" : "0"; <text>@cnt</text>}
+                            </span>of <span id="TotalPages">@ViewBag.PageCounts</span></b>
+                            <select id="pageIndex" name="pageIndex" onchange="GetCarsForNewPage(this)">
+                                <option value="0">1</option>
+                                @for (int i = 1; i < ViewBag.PageCounts; i++)
+                                {
+                                    <option value="@(i)">@(i + 1)</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <table width="720">
+                    <tr>
+                        <td style="padding-left: 5px; text-align: right">
+                            <b>Page Size </b>
+                            <select id="PageSize" name="PageSize" onchange="GetCars(event)">
+                                <option value="25" selected="selected">25</option>
+                                <option value="50">50</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select>
+                        </td>
+                        <td>
+                            @Html.TextBox("Zip", @ViewData["Zip"] == null ? "" : ViewData["Zip"], new { style = "position:relative;top:-4px;" })
+                            <input id="btnZip" type="image" onclick="return GetCars(event)" src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/changeZip.jpg")" style="position:relative;top:1px" />
+                            @Html.Hidden("Vin", @ViewData["Vin"] == null ? "-1" : ViewData["Vin"])
+                            @Html.Hidden("DriveType", @ViewData["DriveType"] == null ? "-1" : ViewData["DriveType"])
+                            @Html.Hidden("Radius", @ViewData["Radius"] == null ? "-1" : ViewData["Radius"])
+                            @Html.Hidden("Transmission", @ViewData["Transmission"] == null ? "-1" : ViewData["Transmission"])
+                            @Html.Hidden("Engine", @ViewData["Engine"] == null ? "-1" : ViewData["Engine"])
+                        </td>
+                        <td style="text-align: right">
+                            <span style="color: #29699c; font-weight: bold">Sort By</span> <span style="cursor: pointer;
+                                text-decoration: underline" class="lnkSort" onclick="sort('Year',this)" id="sortbyYear">
+                                Year</span> <span style="text-decoration: underline; cursor: pointer" class="lnkSort"
+                                    onclick="sort('Mileage',this)">Mileage</span> <span style="text-decoration: underline;
+                                        cursor: pointer" class="lnkSort" onclick="sort('Price_Current',this)">Price</span>
+                            @Html.Hidden("sortByColumn", "")
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <input type="hidden" id="CarsCount" />
+                <span id="CarsCountLabel"></span>
+            </div>
+            <div id="ShowCars">
+                @Html.Partial("_SearchResult", Model)
+            </div>
+        </div>
+    </div>
+    </form>
+}

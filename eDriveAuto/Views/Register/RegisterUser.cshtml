@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+@section Head
+{
+    <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		function showRegistrationPopup() {
+			$('.darken-modal-bg').show();
+			$.ajax({
+				url: '@Url.Action("RegistrationDetailsPopup", "Search")',
+				success: function (data) {
+					$('.registration-details-popup').html(data);
+					$('.registration-details-popup').show();
+				},
+				error: function () {
+					$('.darken-modal-bg').hide();
+				}
+			});
+		}
+
+		function hideRegistrationPopup() {
+			$('.registration-details-popup').hide();
+			$('.darken-modal-bg').hide();
+		}
+	</script>
+}
+<div class="product-inner-page">
+	<div style="color: Red; text-align: center">
+		@(ViewData["Msg"] ?? "")
+	</div>
+	<div class="divdetail-inner">
+		<div class="clear">
+		</div>
+	</div>
+	<div class="tab-new">
+		<div class="teb-left">
+		</div>
+		<div class="tab-line">
+			<div class="tab-tital">
+				Registration</div>
+		</div>
+		<div class="tab-right">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+	<div class="clear1">
+	</div>
+	<div class="divbottom-home">
+		<div class="divbottomleft-new-top">
+		</div>
+		<div class="divbottommiddetail-new-line-top-inner">
+		</div>
+		<div class="divbottomright-new-top">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+	<div class="divinnercontent-home-new-one">
+		<div class="divinnercontent">
+			<div class="diviconwar">
+			</div>
+			<div class="overviewdetaillogowar">
+				<div class="htmlcontent">
+					<div class="htmlcontent-body">
+						<div id="Registration">
+							<h2>
+								An E-Drive Pre-Auction Access Account is Required to View Vehicle Listings</h2>
+							<p class="font_14">
+								The most rewarding car buying experience awaits you. Choose free limited
+								access or full access.</p>
+							<div class="LimitedAccount OfferList">
+								<h2>
+									Create a Limited Access account</h2>
+								<ul>
+									<li>Free (no email required)</li>
+									<li>Login using facebook</li>
+									<li>No strings attached</li>
+								</ul>
+								<p>
+									No form to fill out. Sign up for E-Drive Autos using<br />
+									your Facebook account with just couple of clicks.</p>
+								<div>
+									<a href="@(ViewData["facebookLoginUrl"] ?? "#")">
+										<img src="@Url.Content("~/Content/images/facebook_connect.jpg")" alt="" />
+									</a>
+								</div>
+							</div>
+							<div class="FullAccount OfferList">
+								<h2>Create a Full Access account</h2>
+								<h4>Only $10 USD. No recurring billing. (<a href="#" onclick="return showRegistrationPopup();">Details</a>)</h4>
+								<ul>
+									<li>Unlimited access 24/7</li>
+									<li>Save and customize searches</li>
+									<li>Save vehicles to wish list</li>
+									<li>Price Lock Guarantee</li>
+									<li>Print vehicle brochures</li>
+								</ul>
+								<p>
+									Kick your vehicle search into high gear and experience all the best features of
+									E-Drive Autos.</p>
+								<div align="center" class="Register">
+									<a href="/Register">
+										<img src="@Url.Content("~/Content/images/register_btn.jpg")" alt="" /></a>
+								</div>
+							</div>
+							<div class="Clr">
+							</div>
+							<div class="ImpInfoTxt">
+								<p>
+									<strong>Important Information</strong></p>
+								@*<p>
+                                    If you don't mind paying RETAIL PRICES, there are many popular vehicles sites you
+                                    can search, but just try to find pre-auction vehicles listed at guaranteed wholesale
+                                    prices. Only E-Drive Autos gives you "first access" to the best vehicle deals anywhere...
+                                    even before the dealers!</p>*@
+								<p>
+									Every vehicle listed on the site has 16 filters that qualify or disqualify it. We
+									only accept the very best vehicles - free of frame damage and with clear titles.
+									Many of the vehicles listed herein are off-lease, fleet and repos that have never
+									hit the retail market. The ones that are not sold will be listed at a car lot at
+									considerable markup.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+	<div class="divbottom-home">
+		<div class="divbottomleft-new">
+		</div>
+		<div class="divbottommiddetail-new-line-inner">
+		</div>
+		<div class="divbottomright-new">
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>
+
+<div class="darken-modal-bg" style="display:none;"></div>
+<div class="registration-details-popup"></div>

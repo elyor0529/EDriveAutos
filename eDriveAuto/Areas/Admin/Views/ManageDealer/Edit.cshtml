@@ -1,0 +1,151 @@
+﻿@model Edrive.Models.DealerInfo
+@{
+    ViewBag.Title = "Edit Dealer";
+    
+}
+@section Head{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/sample.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/fckEditor/fckeditor.js")"></script>
+    <style  type="text/css">
+        div#ValidationMessage ul li{float:none;margin-left:-15px;}
+         div#tabcontainer ul li a {background-color:white}
+            div#tabcontainer  tr td{padding-bottom:5px;}
+        .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited{color:#EB8F00;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var sBasePath = '@Url.Content("~/fckeditor/")';
+            var oFCKeditor = new FCKeditor('content');
+            oFCKeditor.BasePath = sBasePath;
+            oFCKeditor.Height = 450;
+            oFCKeditor.ReplaceTextarea();
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                $("#Country").change(function () {
+
+                    $("#State").html("");
+                    if ($(this).val() == "-1") {
+                        $("#State").attr("disabled", "disabled");
+                        return;
+                    };
+
+
+                    var flag = true;
+                    $.post(serverurl + "/Admin/ManageDealer/GetState?CountryID=" + $(this).val(), null, function (data) {
+                        
+
+                        $.each(data, function () {
+                            flag=false
+                            $("#State").append("<option value='" + this.StateProvinceID + "'>" + this.Name + "</option>")
+                         .removeAttr("disabled");
+                        });
+
+                        if (flag) {
+                            $("#State").append("<option value='-1'>Other (Non us)</option>");
+                        }
+                    }, "json");
+                   
+                   
+
+                });
+
+
+            } catch (e) {
+                alert(e.Message);
+            }
+        });
+
+        $(document).ready(function () {
+            $("#DateofBirth").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+
+
+            $("#tabcontainer").tabs();
+            $("#deleteLogo").click(function () {
+
+                $("#form1").attr('action', '@Url.Action("DeleteLogo", "ManageDealer")');
+                $("#form1").submit();
+            });
+
+
+            $("#DeletePageImage").click(function () {
+
+                $("#form1").attr('action', '@Url.Action("DeletePageImage", "ManageDealer")');
+                $("#form1").submit();
+            });
+            
+
+        });
+        function ChangeCustomerPassword() {
+
+            $("#form1").attr("action", '@Url.Action("ChangePassword", "ManageDealer", new { area = "admin"}, null)')
+
+
+
+        }
+        function deleteDealer()
+        {
+            if (confirm('Are you sure you want to delete.') == false) {
+                return false;
+            }
+            else {
+                $("#form1").attr("action", '@Url.Action("Delete", "ManageDealer",null, null)');
+               
+            }
+        }
+    </script>
+
+ 
+
+}
+<h2>
+    Edit Dealer</h2>
+     <b> 
+    @Html.ActionLink("Back","Index")
+    
+    </b>
+<div style="color: Red;text-align:center">
+    @(ViewData["Msg"] ?? "")
+</div>
+@using (Html.BeginForm("Edit", "ManageDealer", FormMethod.Post, new { id = "form1", enctype = "multipart/form-data" }))
+{<div style="text-align: right">
+    <input type="submit" value="Save" id="Save" style="" />
+    <input type="submit" value="Delete" name="Delete" id="Delete" style="" onclick="return deleteDealer()" />
+    </div>
+    
+    <div id="tabcontainer" class="dealer_info">
+        <ul>
+            <li><a href="#tab-1"><span>Information</span></a></li>
+            <li><a href="#tab-2"><span>Edit Profile Page</span></a></li>
+        </ul>
+        <div id="tab-1" style="background-color: white">
+            <div class="MangeDealerdiv">
+                 @Html.Partial("_DealerEditInfo", Model)
+            </div>
+        </div>
+        <div id="tab-2" style="background-color: white">
+        @Html.Partial("_DealerProfile",Model)
+         
+        </div>
+        <div id="ValidationMessage">
+   
+        @Html.ValidationSummary(false)
+        </div>
+
+    </div>
+  
+}
+<div>
+<br />
+<b>
+    @*@Html.ActionLink("Back", "Index")
+*@
+    </b>
+</div>

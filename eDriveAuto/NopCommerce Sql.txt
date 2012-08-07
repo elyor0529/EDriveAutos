@@ -1,0 +1,55 @@
+﻿--- to imprte the customer Name of type=2 from nopcommerce use this query
+
+
+
+1-----------
+select  (case   when FirstName is null then '' else FirstName end)  FirstName,case   when LastName is null then '' else lastname  end lastname,tbCust.Email, case when ISNUMERIC(zip)=1 then zip else 0 end zip,Phone,Password,2 as CustomerType,1 as Active,tbCust.RegistrationDate,
+(case   when FirstName is null then '' else FirstName end )+(case   when LastName is null then '' else lastname end)  as Name,Deleted,news.Active isNewsLetter,tbCust.IPAddress,tbCust.ExpiryDate,tbcust.IsTrial,'' [guid] from
+  (select CustomerId,VAlue as FirstName  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='FirstName' ) as tbFName   full outer join 
+  (select CustomerId,VAlue as LastName  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='LastName') as tbLName on  tbFName.CustomerId=tbLName.CustomerId full outer join
+  
+   (select CustomerId,VAlue as Phone  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='PhoneNumber') as tbPhone on tbLName.CustomerId=tbPhone.CustomerId  full outer join
+   (   select CustomerId,VAlue as [zip]  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='ZipPostalCode'  ) as tbZip on tbZip.CustomerId=tbLName.CustomerId right outer join ( select * from  Nop_Customer where CustomerType=2) as tbCust on tbCust.CustomerID=tbFName.CustomerId left outer join Nop_NewsLetterSubscription as news on tbCust.Email=news.Email
+   
+   
+select (case   when FirstName is null then '' else FirstName end)  FirstName,case   when LastName is null then '' else lastname  end lastname,tbCust.Email,zip,Phone,Password,2 as CustomerType,1 as Active,tbCust.RegistrationDate,
+(case   when FirstName is null then '' else FirstName end )+(case   when LastName is null then '' else lastname end)  as Name,Deleted,tbCust.IPAddress,tbCust.ExpiryDate,tbFName.CustomerId from
+  (select CustomerId,VAlue as FirstName  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='FirstName' ) as tbFName   full outer join 
+  (select CustomerId,VAlue as LastName  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='LastName') as tbLName on  tbFName.CustomerId=tbLName.CustomerId full outer join
+  
+   (select CustomerId,VAlue as Phone  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='PhoneNumber') as tbPhone on tbLName.CustomerId=tbPhone.CustomerId  full outer join
+   (
+   select CustomerId,VAlue as [zip]  from dbo.Nop_CustomerAttribute group by CustomerId,value,[key] having [key]='ZipPostalCode') as tbZip on tbZip.CustomerId=tbLName.CustomerId right outer join ( select * from  Nop_Customer where CustomerType=2) as tbCust on tbCust.CustomerID=tbFName.CustomerId left outer join Nop_NewsLetterSubscription as news on tbCust.Email=news.Email
+
+   2--------
+   /****** Script for SelectTopNRows command from SSMS  ******/
+create view vw_Cust as 
+SELECT [FirstName]
+      ,[LastName]
+      ,[Email]
+      ,[zip]
+      ,[Phone]
+      ,[Password]
+      ,[CustomerType]
+      ,[Active]
+      ,[RegisterationDate]
+      ,[Name]
+      ,[Deleted]
+      ,[IsNewsLetter]
+      ,[IPAddress]
+      ,[ExpirationDate]
+      ,[IsTrial]
+      ,[GUID]
+  FROM [edriveautoweb].[dbo].[Customer]
+  3-------------
+  BULK
+INSERT vw_Cust
+FROM 'D:\Projects\edriveauto\customerCsvType2.csv'
+WITH
+(
+FIELDTERMINATOR = ',',
+ROWTERMINATOR = '\n'
+)
+--
+///////////////////--- end of customer--------
+   

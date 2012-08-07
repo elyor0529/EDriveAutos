@@ -1,0 +1,247 @@
+﻿@model Edrive.Models._LockPrice
+           @{Layout = null;}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Price Guarantee</title>
+    <link href="@Url.Content("~/Content/Themes/App_Themes/EDrive/styles.css")" type="text/css" rel="stylesheet" />
+</head>
+<body class="PriceGuarantee">
+    <form id="form1" runat="server">
+    <div class="wd">
+        <div class="master-page">
+            <div class="mtop">
+                <div class="mine-box">
+                    <div class="content">
+                        <div class="logo-text">
+                            <div class="logo">
+                                <a href="/">
+                                    <img class="quoteNew" src="@Url.Content("~/Content/Themes/App_Themes/EDrive/images/new-logo01.png")" alt="Edrive" /></a>
+                            </div>
+                            <div class="hader-text">
+                                Dealer Price Guarantee</div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div class="top">
+                        </div>
+                        <div class="bg-color">
+                            <div class="content-inner">
+                                <div class="inner-hader">
+                                    <div class="inner-hader-text">
+                                    @Model.Year
+                                        <br />
+                                        @Model.MakeName @Model.ModelName
+                                    </div>
+                                    <div class="inner-hader-right">
+                                        Guaranteed Low Price
+                                        <br />
+                                        <span>
+                                         @string.Format("${0:n0}", Model.price_Current)
+                                            </span>
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                    <div class="car-bg">
+                                        <div class="left">
+                                        </div>
+                                        <div class="tital-box">
+                                            <div class="tital-p">
+                                                <div class="vehicle-tital">
+                                                    Vehicle Details</div>
+                                                <div class="date">
+                                                    DATE:@DateTime.Now.ToShortDateString()</div>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                        </div>
+                                        <div class="clear">
+                                        </div>
+                                        <div class="vehicle-details">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td style="width: 100px;" class="vehicle-de-b">
+                                                        Stock #
+                                                    </td>
+                                                    <td style="width: 10px;">
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                        @Model.Stock
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="vehicle-de-b">
+                                                        Type
+                                                    </td>
+                                                    <td>
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                      @Model.Type
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="vehicle-de-b">
+                                                        Mileage
+                                                    </td>
+                                                    <td>
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                       @Model.Mileage
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="vehicle-de-b">
+                                                        Warranty
+                                                    </td>
+                                                    <td>
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                        @(Model.Warranty==false?"No":"Yes")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="vehicle-de-b">
+                                                        Engine
+                                                    </td>
+                                                    <td>
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                         @Model.Engine
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="vehicle-de-b">
+                                                        Transmission
+                                                    </td>
+                                                    <td>
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                       @Model.Transmission
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="vehicle-de-b">
+                                                        Exterior Color
+                                                    </td>
+                                                    <td>
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                             @Model.Exterior
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="vehicle-de-b">
+                                                        Interior Color
+                                                    </td>
+                                                    <td>
+                                                        <strong>:</strong>
+                                                    </td>
+                                                    <td align="left" style="padding-left: 15px">
+                                                        @Model.Interior
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="vin">
+                                            Vin #
+                                                 @Model.vin</div>
+                                        <div class="disclaimer">
+                                            <div class="left">
+                                            </div>
+                                            <div class="tital-box">
+                                                <div class="tital-p">
+                                                    <div class="vehicle-tital">
+                                                        Disclaimer</div>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                            </div>
+                                            <div class="clear">
+                                            </div>
+                                            <div class="text" style="text-align: left">
+                                                <p>
+                                                    EDRIVE AUTOS, LLC makes no representations, expressed or implied, to any actual
+                                                    or prospective purchaser or owner of this vehicle as to the existence, ownership,
+                                                    accuracy, description or condition of the listed vehicle's equipment, accessories,
+                                                    price, specials or any warranties. Any and all differences must be addressed prior
+                                                    to the sale of the vehicle. All vehicles are subject to prior sale. Please contact
+                                                    dealer to verify that the vehicle is still available.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="customer">
+                            <div class="customer-box">
+                                <div class="box-left">
+                                </div>
+                                <div class="bg-color-new">
+                                    <div class="customer-tital">
+                                        Customer:</div>
+                                    <div class="customer-text">
+                                        <strong>
+                                                 @Model.Name</strong><br />
+                                             @Model.Email</asp:Label><br />
+                                         @Model.Phone</div>
+                                </div>
+                                <div class="box-right">
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="dealerNew">
+                                <div class="box-left">
+                                </div>
+                                <div class="bg-color-new" style="width: 450px;">
+                                    <div class="customer-tital">
+                                        Dealer Information:</div>
+                                    <div class="customer-textprice fl">
+                                  
+                                        @Model.DealerName<br />
+                                        @Model.companyName <br />
+                                           @Model.streetAddress<br />
+                                         @Model.dealerCity <br />
+                                         @Model.DealerPhone 
+                                    </div>
+                                  
+                                </div>
+                                <div class="box-right">
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div style="font-weight: bold">
+                    Print this form and bring it to dealership. All Vehicles subject to prior sale and
+                    will be sold on first served basis.
+                </div>
+                <a  onclick="window.close();" href="/Product/PriceLock/@Model.ProductID" style="   color: black;    font-size: 14px;    font-weight: bold;    left: 262px;    margin-right: 25px;    position: relative;    right: 0;    top: 23px;" id="PriceLockClose">Close Window</a>
+                <a id="imgPrint"  class="img_print_New" style="Width:152px;Height:41px" onclick="window.print()">
+                </a>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

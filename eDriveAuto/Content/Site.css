@@ -1,0 +1,1064 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+ 
+     
+body
+{
+    background-color: #00388c;/*#5c87b2;*/
+    font-size: 12px;
+    font-family: Verdana, Tahoma, Arial, Helvetica Neue, Helvetica, Sans-Serif;
+    margin: auto;
+    
+    padding: 0;
+    color: #696969;
+    
+} 
+table{border-collapse:collapse;}
+table tr td{padding:0px;border:0px;}
+
+ a {color:#1EA9FF;text-decoration:none;}
+a:visited
+{text-decoration:none;
+    color: 
+    #1EA9FF;}
+a:hover
+{
+    color: #1EA9FF;
+    text-decoration: none;
+}
+a:active
+{text-decoration:none;
+    color:#1EA9FF;
+}
+
+  ul
+{
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h2
+{
+    padding: 0 0 10px 0;
+}
+h3
+{
+    font-size: 1.2em;
+}
+h4
+{
+    font-size: 1.1em;
+}
+h5, h6
+{
+    font-size: 1em;
+}
+
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page
+{
+    /*width:970px;*/
+    margin: auto;
+    width:999px;
+    background-color:White; 
+}
+
+#header
+{
+    position: relative;
+  
+    color: #000;
+    padding: 0;
+    width:999px;
+    margin:auto;
+      margin-bottom: 0px;
+}
+
+#header h1
+{
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-size: 32px !important;
+}
+
+#main
+{
+   padding: 27px 0px 50px 16px;
+    background-color: #fff;
+    overflow:hidden; width:1007px;
+    margin:auto;
+    margin-bottom: 0px;
+   width:983px;
+   /* _height: 1px;  only IE6 applies CSS properties starting with an underscore */
+}
+
+#footer
+{
+    color: #999;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0;
+    font-size: .9em;
+}
+
+.Users 
+{
+    display:none;
+}
+
+#copyright{padding: 5px 0 0 0;
+color: white;
+margin: 0 auto;
+width: 833px;}
+
+/* Foote Menu*/
+ul#menu1
+{
+    
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0 auto;
+    text-align: left;
+    width:854px;
+    -moz-width:862px;
+}
+
+ul#menu1 li
+{
+    display: inline;
+    list-style: none;
+    margin:6px;
+}
+
+
+ul#menu1 li a
+{
+   
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    color: #fff;
+    font-size:11px;
+}
+
+ul#menu1 li a:hover
+{
+  
+    text-decoration: none;
+}
+
+ul#menu1 li a:active
+{
+  
+    text-decoration: none;
+}
+
+ul#menu1 li.selected a
+{
+  
+    color: #fff;
+}
+
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+input[type="text"] 
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+input[type="password"] 
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+ 
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color:Red;
+}
+
+#menucontainer
+{
+    margin-top:15px;
+    background-color:#0896ef;
+    height:34px;
+    
+}
+
+div#title
+{
+    display:block;
+    float:left;
+    text-align:left;
+}
+
+#logindisplay
+{
+    font-size:1.1em;
+    display:block;
+    text-align:right;
+    margin:10px;
+    color:White;
+}
+
+#logindisplay a:link
+{
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:visited
+{
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:hover
+{
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+ 
+
+.text-box
+{
+    width: 30em;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+.filterHeader{background-color: #DEF7F7;font-weight: bold;margin-top:6px;
+color: blue;font-size: 14px;padding-bottom: 10px;padding-top: 10px;
+padding-left: 8px;}
+.clsPrice{border: 1px solid silver;
+margin-top: 5px;
+padding-top: 5px;
+padding-left: 6px;
+padding-bottom: 5px;
+border-image: initial;}
+.lnkSort{padding-left:10px;font-weight:bold;color:gray}
+#ShowCars table{width: 708px;margin-left: 22px;padding-right: 4px;}
+#ShowCars tr td .col1{padding-left:5px;}
+.modalbox
+{
+	min-height: 125px;	width: 320px;	margin-left: 485px;	margin-right: 100px;
+	margin-top: 5px;	padding: 2px;	font-size: 12px;	border: solid 3px #E7EFF2;
+	text-align: justify;	background-color: White;
+}
+.popup-close-details
+{
+	background-attachment: scroll;
+	background-color: transparent;
+	background-image: url("themes/App_Themes/EDrive/images/close.png");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	border: none;
+	float: right;
+	height: 31px;
+	outline-style: none;
+	position: relative;
+	
+}
+.emaildealer
+{
+	width: 270px;
+	float: left;
+	line-height: 22px;
+	margin-top: 7px;
+}
+.emaildealertop
+{
+	background: url("themes/App_Themes/EDrive/images/interested_box_top.png" ) left center no-repeat;
+	width: 270px;
+	height: 39px;
+}
+.emaildealermid
+{
+	/*width: 240px; 	float: left; 	background-color: #AAC8EC; 	padding: 5px 15px; 	color: #000000; 	min-height: 502px;*/
+	background-color: #b0c6dd;
+	border-right: 1px solid #E2E2E2;
+	border-left: 1px solid #E2E2E2;
+	border-top: 1px solid #E2E2E2;
+	color: #000000;
+	float: left;
+	min-height: 520px;
+	padding: 5px 15px;
+	width: 238px;
+}
+
+.emaildealermidNew
+{
+	background-color: #b0c6dd;
+	border: 1px solid #E2E2E2;
+	color: #000000;
+	float: left;
+	min-height: 525px;
+	padding: 5px 15px;
+	width: 238px;
+}
+.emaildealerbottom
+{
+	background: url("themes/App_Themes/EDrive/images/interested_box_buttom_one.png" ) left center no-repeat;
+	width: 270px;
+	height: 10px;
+}
+.emaildealer .divtitle
+{
+	color: #FFFFFF;
+	font-size: 11pt;
+	font-weight: bold;
+	padding: 9px;
+}
+.emaildealer .divcallseller
+{
+	color: #000;
+	font-size: 9pt;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+.emaildealer .divPhone
+{
+	color: red;
+	font-size: 14pt;
+	background: #D8EAEC url("themes/App_Themes/EDrive/images/phone01.jpg" ) left center no-repeat;
+	padding-left: 25px;
+	margin: 5px 5px 12px;
+	width: 150px;
+}
+.divhr
+{
+	background: url("themes/App_Themes/EDrive/images/dash.png" ) left center repeat-x;
+	margin: 5px 0px;
+	width: 100%;
+	height: 2px;
+}
+.emaildealer .divEmail
+{
+	margin: 10px 0px;
+	color: #0E67F5;
+	font-size: 13pt;
+	font-weight: bold;
+}
+.emaildealer .divmessage
+{
+	margin: 10px 0px;
+	color: #000000;
+}
+.divthanks
+{
+	color: #000000;
+	line-height: 22px;
+	margin: 8px 0px;
+}
+.collapsetitle
+{
+	cursor: pointer;
+	vertical-align: middle;
+	color: Blue;
+	font-size: 9pt;
+	font-weight: bold;
+	margin-bottom: 8px;
+	text-decoration: underline;
+}
+.emaildealerbottom
+{
+	background: url("themes/App_Themes/EDrive/images/interested_box_buttom_one.png" ) left center no-repeat;
+	width: 270px;
+	height: 10px;
+}
+.emaildealer .divtitle
+{
+	color: #FFFFFF;
+	font-size: 11pt;
+	font-weight: bold;
+	padding: 9px;
+}
+.emaildealertop
+{
+	background: url(  "images/interested_box_top.png" ) left center no-repeat;
+	width: 270px;
+	height: 39px;
+}
+ivtrust
+{
+	background: url("themes/App_Themes/EDrive/images/truste.jpg" ) left center no-repeat;
+	margin: 0px 25px 0px 0px;
+	float: left;
+	width: 95px;
+	height: 26px;
+}
+.divbutton
+{
+	float: left;
+	margin-top: -5px;
+}
+.lnksendbutton
+{
+	background: url("images/send-button.png") left center no-repeat;
+	width: 156px;
+	height: 37px;
+	margin-left: 40px;
+}
+.popup-close-details-new
+{
+	background-attachment: scroll;
+	background-color: transparent;
+	background-image: url("images/close.png");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	border: none;
+	float: right;
+	height: 31px;
+	outline-style: none;
+	position: relative;
+	right: 14px;
+	top: -1px;
+width:31px;
+}
+
+   
+        .modalBackground
+        {
+            background-color: Gray;
+            filter: alpha(opacity=70);
+            opacity: 0.7;
+        }
+        .ProductDetailsThree
+        {
+            background-color: #B0C6DD;
+            height: 25px;
+            padding-top: 8px;
+            padding-left: 15px;
+            font-weight: bold;
+        }
+        .divinnercontent-home-new-one
+        {
+            border-color: #C5CDD0;
+            border-style: solid;
+            border-width: 2px;
+        }
+        .ProductDetailsTwo
+        {
+            background-color: #D0FC81;
+            font-weight: bold;
+            text-align: center;
+        }
+        .ProductDetailsOne a
+        {
+            color: Blue;
+            font-weight: bold;
+        }
+        .ProductDetailsOne
+        {
+            color: black;
+            float: left;
+            font-weight: bold;
+            width: 492px;
+        }
+        .ProductDetailsFour
+        {
+            margin-left: 14px;
+        }
+        .MainContent_divScr
+        {
+            position: relative;
+            top: 65px;
+        }
+        #thumbs ul li
+        {
+            float: left;
+        }
+        #thumbs ul
+        {
+            list-style-type: none;
+        }
+        .divavg
+        {
+            background: url(themes/app_themes/edrive/Images/imgavg01.jpg) no-repeat center center; /*Nirav on 9th April,2011 to display highway fuel and city fuel*/
+            height: 33px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .divavg .divCfuel
+        {
+            margin-left: 180px;
+            text-align: left;
+            padding-top: 15px;
+            width: 25px;
+            float: left;
+            color: Black;
+            font-weight: bold;
+        }
+        .product-details-info .picturemain
+        {
+            border: 1px solid #A9D5D6;
+            background-color: #FFFFFF;
+            width: 385px;
+            height: 250px;
+            padding: 13px 3px 13px 13px;
+            margin: 7px 15px 10px 7px;
+        }
+        .divfeaturepictureNew
+        {
+            border: solid 1px #CDCDCD;
+            width: 133px;
+            margin-left: 15px;
+            padding-top: 9px;
+            padding-bottom: 6px;
+        }
+        .DivOtherVehicleInfoNew
+        {
+            margin-bottom: 7px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            width: 165px;
+            min-height: 18px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            display: inline-block;
+            color: #424242;
+            background-color: #E3E3E1;
+            -pie-background: linear-gradient(#11b3fc, #0097e2);
+            background-image: -o-linear-gradient(#11b3fc, #0097e2);
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            margin-left: 8px;
+            text-decoration: none;
+            text-align: center;
+            behavior: url(PIE.htc);
+        }
+        .divavg .divHfuel
+        {
+            margin-left: 32px;
+            text-align: left;
+            padding-top: 15px;
+            width: 25px;
+            float: left;
+            color: Black;
+            font-weight: bold;
+        }
+        #Div2 ul
+        {
+            list-style-type: none;
+        }
+        .divfeaturenameNew a
+        {
+            color: blue;
+            text-decoration: underline;
+            font-size: 11px;
+        }
+        .divfeaturename
+        {
+            margin: 5px 0px;
+        }
+        .divfeaturename a
+        {
+            color: #3F4752;
+            font-size: 11px;
+            font-weight: bold;
+        }
+   .lnkBackNew
+{
+	text-align: left;
+	margin-left: 8px;
+}
+.lnkBackNew a
+{
+	background: url("themes/app_themes/edrive/Images/print.jpg") no-repeat left center;
+	padding-left: 19px;
+	font-weight: bold;
+	color: #003BA7;
+	font-size: 12px;
+	cursor:pointer;
+	text-decoration: underline;
+}
+.lnkBackNew a:hover
+{
+	color: #0E67F5;
+}
+.newCarfax
+{
+	text-align: left;
+	margin-left: 1px;
+}
+.newCarfax a
+{
+	padding-left: 1px;
+	font-weight: bold;
+	color: #003BA7;
+	font-size: 12px;
+	text-decoration: underline;
+}
+.newCarfax a:hover
+{
+	color: #0E67F5;
+}
+.divDottedLine
+{
+	background: url("themes/app_themes/edrive/images/dotted-line.png") repeat-x;
+	float: left;
+	height: 3px;
+	width: 93%;
+}
+
+.lnkBack
+{
+	text-align: left;
+	margin-left: 15px;
+}
+.lnkBackpress
+{
+	text-align: right;
+	padding: 10px 0px;
+	float: left;
+	width: 5%;
+}
+.lnkBack a
+{
+	background: url("themes/app_themes/edrive/images/arrowback.png") white no-repeat left center;
+	padding-left: 10px;
+	font-weight: bold;
+	color: #003BA7;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+divpricetop
+{
+	background: url("themes/app_themes/edrive/images/box_top01.jpg") no-repeat left top;
+	width: 273px;
+	height: 10px;
+	float: left;
+}
+.divprice
+{
+	/*border-left: 1px solid #D8EAEC; 	border-right: 1px solid #D8EAEC; 	height: 47px; 	width: 271px; 	background-color: #FFFFFF; 	padding-top: 3px; 	color: #426A21 !important;*/
+	color: Black !important;
+	font-family: Verdana;
+	font-size: 14pt;
+	font-weight: bold;
+	margin-left:46px;
+	text-align: left;
+	float: left;
+}
+.divpricebottom
+{
+	background: url(themes/app_themes/edrive/images/box_bottom01.jpg) no-repeat left top;
+	width: 273px;
+	height: 10px;
+	float: left;
+}
+.divpricemain
+{
+	margin-bottom: 10px;
+	height: 22px;
+}
+.divpricenadamain
+{
+	margin-bottom: 10px;
+	height: 45px;
+}
+.divpricelook
+{
+	float: right;
+	font-size: 11px;
+	margin-top: 5px;
+}
+.divpricenada
+{
+	color: Blue !important;
+	float: left;
+	font-weight: bold;
+	width: 129px;
+}
+.divpricelive
+{
+	color: #666666 !important;
+	font-size: 11px;
+	font-weight: normal;
+	float: left;
+	width: 165px;
+}
+.divtimeleft
+{
+	color: White !important;
+	background-color: #548DD4 !important;
+	float: right; /*padding: 2px;*/
+}
+.divdealer
+{
+	border-left: 1px solid #D8EAEC;
+	border-right: 1px solid #D8EAEC;
+	height: 85px;
+	width: 241px;
+	background-color: #FFFFFF;
+	color: #F6A80A;
+	font-size: 20pt;
+	padding-top: 3px;
+	text-align: left;
+	padding-left: 30px;
+}
+.product-essential
+{
+	background-color: #FFF; /*border-left: 1px solid #ADD8DE; 	border-right: 1px solid #ADD8DE;*/
+	padding: 1px 28px;
+	margin-top:5px;
+}
+
+.partial{}
+.partial a,.partial a:active,.partial a:hover{font-weight:bold }
+.ManageVehcile input{width: 188px;font-weight: bold;}
+
+
+table.adminContent
+{
+	border-collapse: collapse;
+	color: #333;
+	font-size: 12px;
+	margin: 0px;
+	width: 100%;
+	vertical-align: middle;
+	text-align: left;
+}
+
+table.adminContent td.adminTitle
+{
+	padding: 4px 4px 4px 4px;
+}
+
+table.adminContent td.adminData
+{
+	padding: 4px 4px 4px 4px;
+	width:219px;
+}
+
+td.adminTitle
+{
+	text-align: left;
+	vertical-align: top;
+	width: 175px;
+}
+
+td.adminTitle img
+{
+	vertical-align: bottom;
+	padding-right: 2px;
+}
+
+td.adminData
+{
+	text-align: left;
+	vertical-align: middle;
+}
+
+tr.adminSeparator hr
+{
+	background-color: #D3D3D3;
+	border: medium none;
+	color: #D3D3D3;
+	height: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+
+/*-------- Added by henisha rathod ---------------------*/
+
+
+table.adminContentNew
+{
+	border-collapse: collapse;
+	color: #333;
+	font-size: 12px;
+	margin: 0px;
+	width: 100%;
+	vertical-align: middle;
+	text-align: left;
+}
+  .manageproduct table tr td{ width:200px;border:solid #AFDFFD 1px;text-align:center;}
+   .manageproduct table tr th{ width:200px;text-align:center;background-color:#189ef7;color:White;font-weight:bold;}
+   
+.link a ,.link a:hover {color:Blue;text-decoration:none;}
+
+.divBack {background-color: #F7FFFF;padding-top: 25px;padding-left: 15px;
+          border: 1px solid #AFDFFD;}
+          
+        #ad{
+		padding-top:220px;
+		padding-left:10px;
+	}
+	
+	
+  .first{background-color:White;}
+ .second{background-color:#eff7ff;}
+ .pageNumber{cursor: pointer;background: white;color: blue;padding-right: 3px;padding-left: 3px;}
+.pageNumberActive{cursor: pointer;background: white;color: blue;padding-right: 3px;padding-left: 3px;border: black 1px solid;
+}
+
+.ImagePic image{width:739px;}
+
+.DisplayOrder{vertical-align: top;padding-top: 5px;text-align:center;width:150px}
+.DisplayOrder input{width:77px;} 
+
+.DelButton{text-align:center;width:150px;vertical-align: top;padding-top: 5px;}
+#addproductDiv table td{ border:solid 1px #AFDFFD ;background:#eff7ff;}
+#addproductDiv table{width:100%;}
+#addproductDiv table .Head td{background:#189eef;color:White;font-weight:bold;text-align:center;padding-top:3px;padding-bottom:5px;}
+#addproductDiv table .Head {background:#189eef;color:White;}
+.PicturUpload td{background-color:White}
+
+#tabcontainer  textarea,#tabcontainer   select{width:197px}
+
+.dealer_info .editor-label{width:264px;float:left;}
+.dealer_info .editor-field{float:left;}
+.dealer_info {background-color:#f7ffff;border:1px solid rgb(175, 223, 253);font-weight:normal;}
+.dealer_info td{background-color:White;}
+.dealer_info table{width:400px;}
+
+
+#dealerDashboard
+{
+	  background-color: #003C8D;
+	 
+}
+.dealerDashboard  div .link {float:left;color:White;margin-right:5px;font-size:11px;}
+.dealerDashboard  div  .seperator{float:left;width:15px;}
+.dealerDashboard  .link a,
+.dealerDashboard  .link a:hover{color:White;font-size:11px;}
+
+ #Hotsheet td{text-align:center;} 
+ 
+ 
+ .modalpopupSearchModal
+{
+	background-color: white; /*background-color: #F2F2F2;*/
+	border: 1px solid black;
+	padding: 1px;
+	top: 0px;
+	color: Black;
+	z-index: 200;
+}
+
+
+ .firstCol{width:213px;}
+ 
+ .firstColmanageDealer {width:150px}
+ 
+ 
+ .SearchDealer th{
+	background:  #189ef7;
+	color: #fff;
+	padding: 5px 10px 5px 10px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: normal;
+	border: solid 1px #28ACFD;
+	font-size: 12px;
+}
+.SearchDealer table{border: 1px solid #afdffd;}
+
+/* .SearchDealer td{height:23px 	;text-align: center;background-color: #ECF6FF; border:solid 1px #AFDFFD}*/
+ .SearchDealer tr.clsWhite td{background-color:White;height:23px}
+ .section-body
+{
+	border: 1px solid #afdffd;
+	background-color: #F3FBFE;
+	padding: 15px;
+	width:95%;
+}
+:95%;
+}
+.section-body input[type='text']{border: 1px solid #ACACAC;}
+.firstcolCustomerAdd
+{
+width:150px;
+    }
+    
+  
+    .CustomerManage input ,.CustomerManage select {width:200px;border: 1px solid #ACACAC;}
+.section-info{ color:#333; }
+
+#menu{}
+#menu li{ float:left; position:relative; display:block;}
+#menu li a{}
+#menu li .level_02{ position:absolute; left:0px; margin:0px; padding:0px; width:150px; display:none;}
+#menu li:hover .level_02{ display:block;}
+#menu li .level_02 li{ float:none; display:block;z-index:125;}
+#menu li .level_02 li a{ padding:5px 10px; display:block; text-align:left;}
+#menu li .level_02 li a:hover{ background:#5C87B2; color:#fff;}
+ table#AdvSearchTable   tr td {width:200px;}
+.tableHeader{background:#189ef7;color:White;font-weight:bold;text-align:center;}
+table#manageParteners th{width:200px;background:#189ef7;color:White;font-weight:bold;text-align:center;padding-top:3px;padding-bottom:3px;}
+table#manageParteners td{padding-left:5px;color:#245D75;background:white;height:21px;}
+table#manageParteners tr.alter td{background:#eff7ff;}
+ /*table#manageParteners td {border:solid 1px #AFDFFD}*/
+
+ 
+ 
+
+table#Topic {width:100%;}
+table#Topic th{text-align: center;background-color: #189EF7;color: white;padding-bottom: 3px;padding-top: 3px;font-weight: bold;font-size: 13px;}
+table#Topic tr td{text-align:left;padding-left:10px;border:solid 1px #AFDFFD;background:#eff7ff;height:17px;color:#245D75; }
+
+table#Topic tr.alter td{background-color:White;}
+div#Topicpanel2,div#Topicpanel1   {width:100%}
+div#topicEdit td.editor-label{width:139px;margin:0px 0px 0px 0px; }
+div#topicEdit td.editor-field{width:676px;  }
+
+div#topicEdit table{width:100%;}
+.msgUrl{color:Green;font-size:11px;margin-left:55px; }
+a#profileLink{text-align:right;color:blue;float:right;}
+ #ProductsOptions {overflow:hidden; }
+         #ProductsOptions  div{width: 306px;float: left;}
+.rowstyleNew{	background-color: #F8FCFF;}
+.divHeader{background-color:#0896EF; height: 19px;width: 967px;font-weight: bold;padding-top:5px;
+color: white;}
+div.divHeader div {text-align:center;float:left}
+table#interestedCustomer {font-size:11px;color:#245D75;}
+
+.tableborder  { border:solid 1px #AFDFFD;}
+.divtablemiddle table td{padding-left:3px;padding-top:3px;}
+#ankLoad {margin-top:5px;}
+.SettingsChase{padding-left:5px;}
+.SettingsChase{background-color: #F7FFFF; border: 1px solid #AFDFFD; color: #333333;
+        margin-right: 15px; padding-bottom: 15px; padding-top: 15px;}
+        .SettingsChase table tr td{padding-bottom:5px;}
+  .SettingsChase table .second{background:none;}
+.SettingsChase table .first{width:100px;background:transparent; }
+.contentTable table {width:980px;}
+.contentTable table thead td,
+.contentTable table thead th
+{    
+text-align: center;
+background-color: #189EF7;
+color: white;
+font-weight: bold;
+padding-bottom: 5px;
+padding-top: 4px;}
+.contentTable table tbody td
+{
+     
+text-align: center;
+ 
+padding-bottom: 5px;
+padding-top: 4px;
+border: solid #AFDFFD 1px;
+line-height:16px;font-size:11px;
+}
+
+.page #main .submit-form {
+	
+}
+.page #main .submit-form tr td {
+	padding: 10px 5px;	
+}
+.page #main .submit-form tr td img {
+	vertical-align: middle;
+}
+.page #main .submit-form tr td.input-title {
+	font-size: 12px;
+}
+.page #main .submit-form tr td .success-message {
+    color: #136312;
+    font-size: 14px;	
+}
+.page #main .submit-form tr td .error-message {
+    color: #D52C3C;
+    font-size: 14px;	
+}

@@ -1,0 +1,208 @@
+﻿@model  Edrive.Edrivie_Service_Ref.IntrestedCustomer
+      
+            @if (Model != null)
+            {
+                <td  class="tableborder" style="width:182px;">
+                <table width="100%">
+                <tr>
+                            <td style="border: none;">
+                            
+                                <img  id="imgProdcut" src="@Url.Action("GetProudctDefaultImage", "Home", new { id = Model.productId })"
+                                 width="60px" height="60px" />
+
+                            </td>
+                            <td style="border: none;">
+                                <table>
+                                    <tr>
+                                        <td colspan="2" style="border: none; font-weight: bold;">
+                                        
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none; font-weight: bold;">
+                                            Dealer id:
+                                        </td>
+                                        <td style="border: none; font-weight: bold;">
+                                       @Model.customerId
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">
+                                            Stock#:
+                                        </td>
+                                        <td style="border: none;" align="left">
+                                         @(ViewData["Stock"]??"") 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;" colspan="2">
+                                            @(ViewData["PrdtName"]??"")
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;" colspan="2">
+                                          @(ViewData["Price"]??"")
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+            </table>
+            </td>
+                <td class="tableborder" style="width:671px;">
+            
+                    <table width="100%" class="divtablemiddle">
+                        <tr>
+                            <td style="border: none;" width="30%">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="border: none;" width="40%">
+                                            Full Name
+                                        </td>
+                                        <td width="1%" style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                               @Model.firstname @Model.lastname
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">
+                                            Email
+                                        </td>
+                                        <td width="1%" style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                               @Model.email 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">
+                                            Phone
+                                        </td>
+                                        <td width="1%" style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                                   @Model.phoneno 
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="50%" style="border: none;" valign="top">
+                                <table width="100%">
+                                    <tr>
+                                        <td width="50%" style="border: none;" valign="top">
+                                            Preferred Contact Method
+                                        </td>
+                                        <td width="1%" style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                            <asp:Label ID="lblContact" ></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">
+                                            Request Made On
+                                        </td>
+                                        <td width="1%" style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                             @String.Format("{0:MM/dd/yy}", @Model.createdOn)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="border: none;">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="20%" style="border: none;" valign="top">
+                                <table width="100%">
+                                    <tr>
+                                        <td style="border: none;">
+                                            Price Lock
+                                        </td>
+                                        <td style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                            @(Model.price_Lock==false?"No":"Yes")
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">
+                                            Financing
+                                        </td>
+                                        <td style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                          @(Model.finacing == false ? "No" : "Yes")
+                                          
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;">
+                                            Trade-in
+                                        </td>
+                                        <td style="border: none;">
+                                            :
+                                        </td>
+                                        <td style="border: none;">
+                                           @(Model.Trade_in == false ? "No" : "Yes")
+                                           
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border: none;">
+                                <div style="margin-left: 5px;">
+                                    <table>
+                                        <tr>
+                                            <td style="border: none;padding-top:13px;">
+                                                <a id="ankLoad" >
+                                                    <img id="imgLoad" style="cursor:pointer" onclick="showHideDiv('pnlView@(Model.InterestedCustomerID)')" src="@Url.Content("~/Content/Themes/App_Themes/administration/images/adminAdd.png")" />
+                                                    <span style="color: #0C94EA; font-weight: bold; vertical-align: top;">Message from Customer</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <br />
+                                 
+                              
+                                <div id="pnlView@(Model.InterestedCustomerID)" style="display:none;margin-bottom:5px;margin-left:3px;">
+                                    <div style="padding: 8px 8px 8px 8px; border: solid 1px #AFDFFD">
+                                       @Model.additionalComments 
+                                    </div>
+                             </div>
+                            </td>
+                        </tr>
+                    </table>    </td>
+                 <td class="tableborder" style="width:58px;"> 
+                  <table align="center">
+                <tr>
+                <td  style="text-align:center">
+                   <a id="aEmail" >Send<br /> Message</a></td>
+                </tr>
+                </table>
+                </td>
+                  
+                         <td class="tableborder" style="width:52px;"> 
+                <table align="center">  <tr>
+                <td>
+                 <input type="image" id="imgDelete" onclick="return deleteInterest('@(Model.InterestedCustomerID)')" src="@Url.Content("~/Content/Themes/App_Themes/EDrive/images/ico-delete.gif")" />
+                </td>
+                </tr>
+                </table> 
+                   </td>
+                  
+            }
+                   

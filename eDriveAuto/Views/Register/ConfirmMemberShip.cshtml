@@ -1,0 +1,66 @@
+﻿@model Edrive.Models.Customer
+
+@if(Model != null)
+{
+	using (Html.BeginForm("ConfirmMembership", "Register", FormMethod.Post, new {id = "paypalSubmitForm"}))
+	{
+		<div class="product-inner-page">
+			<div class="paypal-details-form">
+				<h2>Payment Details</h2>
+	
+				<table>
+					<tr>
+						<td class="form-title">Payment Amount</td>
+						<td>$9.95</td>
+					</tr>
+					<tr>
+						<td class="form-title">First Name</td>
+						<td>@Model.FirstName</td>
+					</tr>
+					<tr>
+						<td class="form-title">First Name</td>
+						<td>@Model.LastName</td>
+					</tr>
+					<tr>
+						<td class="form-title">Email</td>
+						<td>@Model.Email</td>
+					</tr>
+					<tr>
+						<td class="form-title">Address</td>
+						<td>@Model.ADDRESS</td>
+					</tr>
+					<tr>
+						<td class="form-title">City</td>
+						<td>@Model.CITY</td>
+					</tr>
+					<tr>
+						<td class="form-title">State</td>
+						<td>@Model.STATE</td>
+					</tr>
+					<tr>
+						<td class="form-title">Zip</td>
+						<td>@(Common_Methods.GetZip(Model.zip))</td>
+					</tr>
+				</table>
+		
+				<div class="submit-buttons">
+					@Html.HiddenFor(c => c.CustomerID)
+					@Html.Hidden("Token", (string)ViewBag.Token)
+					@Html.Hidden("PayerID", (string)ViewBag.PayerID)
+					
+					<input type="submit" name="paymentSubmitType" id="confirm" value="Confirm" />
+					<input type="submit" name="paymentSubmitType" id="cancel" value="Cancel" />
+				</div>
+			</div>
+		</div>
+	}
+}
+else
+{
+	if (ViewBag.Message != null && ViewBag.Message == "failure")
+	{
+		<div style="margin:20px 10px;font-size: 14px;">
+			Error occurred while processing the payment, please try again later.
+		</div>
+	}
+}

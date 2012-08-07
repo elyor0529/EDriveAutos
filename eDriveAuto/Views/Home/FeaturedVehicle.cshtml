@@ -1,0 +1,104 @@
+﻿@using Edrive.NADA_UsedCars
+@using Edrive.UsedCarPrices
+@model List<Edrive.Edrivie_Service_Ref.Products>
+@{
+    
+	if(Model != null)
+	{
+		foreach(var item in Model)
+		{
+			string customerAddress = "";
+			if(item.Customer.City.Trim() == "")
+			{
+				customerAddress = item.Customer.StateName;
+
+			}
+			else
+			{
+				customerAddress = item.Customer.City + ", " + item.Customer.StateName;
+
+			}
+			String title = String.Format("<div><b>{0}</b><br/>{1:n0} Miles<br/>{2} </div>", item.Year + " " + item.MakeName + " " + item.ModelName + " " + item.body, item.mileage, customerAddress);
+
+
+			String priceSave = String.Format("${0:n0}", item.averageRetailPrice - item.price_Current);
+			try
+			{
+
+				UsedCars oUsedCarService = new UsedCars();
+				UsedCarResultSet oUsedCarsResultSet = oUsedCarService.GetUsedCars("EdriveAutos", "ed12uc20", item.vin);
+				UsedCarPrices oUsedCarPrices = new UsedCarPrices();
+				if(oUsedCarsResultSet.UsedCars != null)
+				{
+					foreach(UsedCar uc in oUsedCarsResultSet.UsedCars)
+					{
+						//var userLogin = NopContext.Current.User;
+						ViewData["ltrAverageRetail"] = uc.AverageRetailPrice.ToString();
+						ViewData["ltrDifference"] = ((Decimal)uc.AverageRetailPrice - item.price_Current).ToString();
+						// ltrDifference.Visible = false;
+
+
+						priceSave = String.Format("${0:n0}", ((Decimal)uc.AverageRetailPrice - item.price_Current));
+						break;
+					}
+				}
+			}
+			catch(Exception ex)
+			{
+				
+			}
+
+			if(String.IsNullOrEmpty(item.pics))
+			{
+				<li>
+					<a href="@Url.Action("ProductDetail", "Product", new { id = item.productId })">
+						  	<img src="@Url.Content("~/Content/Images/photo-comming-soon.jpg")"  alt="Product Image" title="@title"/>
+						  	<div class="pricetext" style="">
+								Save @priceSave</div>
+					</a>
+				</li>
+			}
+			else
+			{
+				<li>
+					<div class="imgDiv" style="">
+						<a href="@Url.Action("ProductDetail", "Product", new { id = item.productId })" >
+							<img src="@item.pics" alt="Product Image" title="@title"/>
+						</a>
+					</div>
+					<div class="pricetext" style="">
+						<a href="@Url.Action("ProductDetail", "Product", new { id = item.productId })" >Save
+							@priceSave
+						</a>
+					</div>
+				</li>
+			}
+		}
+	}
+	else
+	{
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+		<li><a href="#">
+				<img src="@Url.Content("~/Content/Images/caraousal_img.jpg")" alt="" /></a></li>
+	}
+
+
+}
+<script type="text/javascript">
+	$('li .imgDiv a img').error(function () {
+		$(this).attr('src', '/Content/Images/photo-comming-soon.jpg');
+	});
+</script>

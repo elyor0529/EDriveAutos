@@ -1,0 +1,9 @@
+﻿
+
+CREATE PROCEDURE [dbo].[Nop_SearchLogClear]
+AS
+BEGIN
+	SET NOCOUNT ON
+	DELETE
+	FROM [Nop_SearchLog]
+END

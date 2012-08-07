@@ -1,0 +1,149 @@
+﻿ <div style="background-color: #EFF9FA; /*background-color: #F2F2F2;*/
+	border: 1px solid black;
+	padding: 1px;
+	top: 0px;
+	color: Black;
+	z-index: 200px;width:550px;
+">
+<div style="overflow-y: auto; color: Gray; min-height: 120px; padding-left: 10px;
+            padding-top: 10px;">
+            <table id="ctl00_cph1_ctrlHotSheet_tblDealerInfo" width="100%">
+		<tbody><tr>
+			<td colspan="2">
+                        <table width="100%">
+                            <tbody><tr>
+                                <td width="50%" style="color: Black; font-size: 14px">
+                                    <b>Vehicle Details</b>
+                                </td>
+                                <td width="50%" style="color: Black; font-size: 14px">
+                                    <b>
+                                        <span id="ctl00_cph1_ctrlHotSheet_lblMiles">@Model.mileage Miles</span></b>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-top: dashed 1px gray">
+                    </td>
+		</tr>
+		<tr>
+			<td width="50%" valign="top">
+                        <table width="100%">
+                            <tbody><tr>
+                                <td width="40%" valign="top">
+                                    <b>Exterior Color: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblExColor">@Model.exterior</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <b>Engine: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblEngine">@Model.engine</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <b>Interior Color: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblIntColor">@Model.interior</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <b>Transmission: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblTrans">@Model.transmission</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <b>Body Style: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblBody">@Model.body</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <b>Fuel Type: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblFuelType">@Model.fuel_Type</span>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+			<td width="45%" valign="top">
+                        <table width="100%">
+                            <tbody><tr>
+                                <td width="40%" valign="top">
+                                    <b>Drive Type: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblDriveType">@Model.drive_Type</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <b>Stock No.: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblStockNum">@Model.stock</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <b>Doors: </b>
+                                </td>
+                                <td valign="top">
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblDoors">@Model.doors</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="50%">
+                                    <b>VIN: </b>
+                                </td>
+                                <td>
+                                    <span id="ctl00_cph1_ctrlHotSheet_lblVIN">@Model.vin</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="height: 45px;">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+		</tr>
+		<tr>
+			<td colspan="2">
+                        <table width="100%">
+                            <tbody><tr>
+                                <td>
+                                    <div>
+                                        <div style="float: left">
+                                            <b>Seller's Notes: </b>
+                                            <div style="float: left; text-align: justify;">
+                                                "@Model.descriptiont "
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+		</tr>
+	</tbody></table>
+	
+            
+            <div style="margin-top: 15px; margin-bottom: 15px; text-align: center">
+                
+            </div>
+        </div>
+        </div>

@@ -1,0 +1,116 @@
+﻿@model Edrive.Models.NoResultsSearchFilter
+@{
+	Layout = null;
+}
+
+@using(Ajax.BeginForm("SearchNoResults", "Search", null, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "NoResultsSection" }, new { id = "noresultsForm" }))
+{
+	Html.EnableClientValidation(true);
+	
+	<div class="no-results-section" id="NoResultsSection">
+		<div class="no-results-message">
+			<p class="bold">Sorry, there are no vehicles that meet your search criteria.</p>
+			<p>(Please expand your search using the filters on the left of this page)</p>
+			<p class="bold">- or -</p>
+			<p class="bold">Sign up for our free Vehicle Early Notification service.</p>
+			<p>(Simply complete the form below and when a vehicle meeting your search criteria becomes available, you will be notified via email)</p>
+		</div>
+		<table>
+			<tr>
+				<td>Make</td>
+				<td>
+					@Html.DropDownList("NoResultsMake") 
+					<span style="display: none;">
+						@Html.DropDownList("NoResultsType")
+					</span>
+				</td>
+				<td>Body</td>
+				<td>@Html.DropDownList("NoResultsBody")</td>
+			</tr>
+			<tr>
+				<td>Model</td>
+				<td>@Html.DropDownList("NoResultsModel")</td>
+				<td>Transmission</td>
+				<td>@Html.DropDownList("NoResultsTransmission")</td>
+			</tr>
+			<tr>
+				<td>Maximum Mileage</td>
+				<td>@Html.TextBox("NoResultsMileage")</td>
+				<td>Engine</td>
+				<td>@Html.DropDownList("NoResultsEngine")</td>
+			</tr>
+			<tr>
+				<td>Year From</td>
+				<td>@Html.TextBox("NoResultsYearMin", "")</td>
+				<td>Drive Type</td>
+				<td>@Html.DropDownList("NoResultsDriveType")</td>
+			</tr>
+			<tr>
+				<td>Year To</td>
+				<td>@Html.TextBox("NoResultsYearMax", "")</td>
+				<td>VIN #</td>
+				<td>@Html.TextBox("NoResultsVin", "")</td>
+			</tr>
+			<tr>
+				<td>Min Price</td>
+				<td>@Html.TextBox("NoResultsPriceMin", "")</td>
+				<td>Zip Code</td>
+				<td>@Html.TextBoxFor(model => model.NoResultsZip)</td>
+			</tr>
+			<tr>
+				<td>Max Price</td>
+				<td>@Html.TextBox("NoResultsPriceMax", "")</td>
+				<td>Radius</td>
+				<td colspan="3">
+					<select id="NoResultsRadius" name="NoResultsRadius" style="width: 150px">
+						<option value="-1">Only with same zip code</option>
+						@for(int i = 10; i < 200; i += 10)
+	  {
+							<option value="@i">@i</option>
+	  }
+					</select>
+					
+					@Html.Hidden("NoResultsWarranty", "-1")
+					@Html.Hidden("IsNoResultSubmit", true)
+				</td>
+			</tr>
+		</table>
+		<div class="submit-button">
+			<input type="submit" class="green-button" value=""/>
+		</div>
+
+		@Html.ValidationSummary(false)
+	</div>
+}
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		//		try {
+		$(".no-results-section #NoResultsModel").html("").attr("disabled", "disabled");
+
+		$(".no-results-section #NoResultsMake").change(function () {
+			$(".no-results-section #NoResultsModel").html("");
+			if ($(this).val() == "-1") {
+				$(".no-results-section #NoResultsModel").attr("disabled", "disabled");
+				return;
+			};
+
+			$.post(serverurl + "/Home/GetModel?MakeID=" + $(this).val(), null, function (data) {
+				$.each(data, function () {
+					$(".no-results-section #NoResultsModel").append("<option value='" + this.id + "'>" + this.modelName + "</option>")
+                         .removeAttr("disabled");
+				});
+			}, "json");
+		});
+		//		} catch (e) {
+		//
+		//		}
+	});
+
+
+	$(document).ready(function () {
+		$(".no-results-section table tr td input[type='text']").css("width", "200px");
+		$(".no-results-section table tr td select").css("width", "200px");
+		$(".no-results-section table tr td").css("padding-bottom", "5px");
+	});
+</script>

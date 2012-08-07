@@ -1,0 +1,462 @@
+﻿@model Edrive.Models.SearchFilter
+@{
+	ViewBag.Title = "Home Page";
+}
+@section Head{
+	<!-- Seo Info-->
+	<!-- Seo Info ends-->
+	<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+	<script type="text/javascript" src="@Url.Content("~/Scripts/jcarousellite_1.0.1.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.tinywatermark-2.1.0.min.js")"></script>
+	<!--For tool tip baloon -->
+	<script type="text/javascript" src="/Scripts/jquery.balloon.js"></script>
+	<script type="text/javascript">
+
+
+		$(function () {
+			$('div .CarousalArea img').balloon({ css: {
+
+				padding: '10px',
+				fontSize: '12px',
+				opacity: 1,
+				lineHeight: '1',
+				backgroundColor: '#ffffff',
+				color: '#000000'
+			}
+			});
+		});
+	</script>
+	<style type="text/css">
+		.balloonTip
+		{
+			background: white;
+			color: Black;
+		}
+	</style>
+	<link href="@Url.Content("~/Content/jquery-ui.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		.ui-autocompletel
+		{
+			z-index: 150;
+		}
+	</style>
+	<script src="/Scripts/jquery.jcarousel.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/Content/skins/tango/skin.css" />
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.SearchArea input.zip-code-text-box').val('');
+			$("#TabContainer .Tabs a").click(function () {
+				try {
+					var id = "#" + $(this).attr("rel");
+					$("#TabContainer .TabContent .TabDescp").css("display", "none");
+					// alert("#TabContainer .TabContent " + id);
+					$("#TabContainer .TabContent " + id).css("display", "block");
+					$("#TabContainer .Tabs a.active").removeAttr("class");
+					$(this).attr("class", "active");
+				}
+
+
+				catch (e) {
+					alert(e);
+				}
+			}
+        );
+
+			$("#FirstBox .Tab_02").click(function () {
+				$(this).parent(".BoxTabs").addClass("Tab_Second");
+				$(this).parents("#FirstBox").find(".Video").hide();
+				$(this).parents("#FirstBox").find(".AllVideo").show();
+			});
+
+			$("#FirstBox .Tab_01").click(function () {
+				$(this).parent(".BoxTabs").removeClass("Tab_Second");
+				$(this).parents("#FirstBox").find(".AllVideo").hide();
+				$(this).parents("#FirstBox").find(".Video").show();
+			});
+
+			$("#SecondBox .Tab_02").click(function () {
+				$(this).parent(".BoxTabs").addClass("Tab_Second");
+				$(this).parents("#SecondBox").find(".TestimonialsIn").hide();
+				$(this).parents("#SecondBox").find(".NewsIn").show();
+			});
+
+			$("#SecondBox .Tab_01").click(function () {
+				$(this).parent(".BoxTabs").removeClass("Tab_Second");
+				$(this).parents("#SecondBox").find(".NewsIn").hide();
+				$(this).parents("#SecondBox").find(".TestimonialsIn").show();
+			});
+
+		});
+	</script>
+	<script type="text/javascript">
+
+		function mycarousel_initCallback(carousel) {
+			// Disable autoscrolling if the user clicks the prev or next button.
+
+			jQuery('#mycarousel-next').bind('click', function () {
+
+				carousel.startAuto(0);
+				carousel.next();
+			});
+
+			jQuery('#mycarousel-prev').bind('click', function () {
+
+				carousel.prev();
+				carousel.startAuto(0);
+
+			});
+
+
+			// Pause autoscrolling if the user moves with the cursor over the clip.
+			carousel.clip.hover(function () {
+				carousel.stopAuto();
+			}, function () {
+				carousel.startAuto();
+			});
+		};
+
+		jQuery(document).ready(function () {
+			jQuery('div.carousel-wrap ul').jcarousel({
+				scroll: 1,
+				auto: 4,
+				animation: 'slow',
+				wrap: 'circular',
+				initCallback: mycarousel_initCallback,
+				buttonPrevHTML: null,
+				buttonNextHTML: null
+			});
+		});
+
+		function submitSearchCarForm(type) {
+			$('#searchType').val(type);
+			$('#searchCarForm').submit();
+			return false;
+		}
+
+	</script>
+	<script type="text/javascript" language="javascript">
+		// to show the water mark text in search textbox
+		$(function () {
+			$('#myTextBox').watermark('watermark', 'Enter a Make, Model, Year, etc.');
+			$('.SearchArea input.zip-code-text-box').watermark('watermark', 'Zip Code');
+			$("#myTextBox").autocomplete({
+				source: function (request, response) {
+					$.ajax({
+						url: serverurl + "/home/GetCarsName", type: "GET", dataType: "json",
+						data: { searchText: request.term, maxResults: 10 },
+						success: function (data) {
+							response($.map(data, function (item) {
+								return { label: item.name, value: item.name }
+							}))
+						}
+					})
+				},
+				select: function (event, ui) {
+
+					window.location = "/Search/Index?SearchKey=" + ui.item.label;
+					//$("#form1").submit();
+					// alert(ui.item ? ("You picked '" + ui.item.label + "' with an ID of ")
+					//    : "Nothing selected, input was " + this.value);
+				}
+			});
+
+		});
+	</script>
+	<script type="text/javascript">
+		function showSearchMessageDiv() {
+			$("#HomePageSearchShadow").fadeIn('slow');
+		}
+		function HideSearchMessageDiv() {
+			$("#HomePageSearchShadow").fadeOut('slow');
+		}
+	</script>
+}
+@*if Users have never visited this site it will show a popup only the first visit of Uses*@
+@if(ViewData["IsUsersFirstVisit"] != null)
+{<script type="text/javascript">
+ 	$(function () {
+ 		//set dialog
+ 		$("#firstTimePopUp").dialog({ modal: true, dialogClass: "PopupEdrive" });
+ 		//set overlay css
+ 		$(".ui-widget-overlay").addClass("modaldialog_firstTimePopUp");
+
+ 	});
+ 	function closeDialog() {
+ 		$("#firstTimePopUp").dialog("destroy");
+ 	}
+</script>
+	<div id="firstTimePopUp" style="display: none">
+		<div class="firstTimePopUp">
+			<h2>
+				Welcome to the #1 Website for Vehicle Deals!</h2>
+			<br />
+			<b>E-Drive Autos</b> is the <b><u>first</u></b> vehicle marketplace to give consumers
+			access to "near wholesale" prices on cars and trucks from thousands of reputable
+			dealers across the country.
+			<br />
+			<br />
+			The vehicles advertised on this site will be available for a limited time before
+			they are sent to dealer-only auction.
+			<br />
+			<br />
+			This is your chance to save up to 30% on your next vehicle purchase.
+			<div style="margin-left: 320px; text-align: center; width: 120px;">
+				<br />
+				Enjoy The site!
+				<br />
+				<br />
+				<a href="/">
+					<img src="/Content/Images/EdrivPopupLogo.png" alt="" /></a><br />
+				<br />
+			</div>
+		</div>
+		<img src="/Content/Images/closelabel.gif" style="position: relative; left: 476px;
+			cursor: pointer;" onclick="closeDialog()" alt="X" />
+	</div>
+}
+<div style="height: 25px;">
+	<div class="HomePageSearchShadow" id="HomePageSearchShadow" style="display: none;">
+		One moment while we search vehicle listings and validate prices.
+	</div>
+</div>
+@*@using (Html.BeginForm("Index", "Search", FormMethod.Get, new {id="form1" }))*@
+@{
+
+
+	<div class="LeftSection Flt">
+		<div class="FindDeals">
+			<div class="Arrow">
+				<img src="@Url.Content("~/Content/Images/arrow.png")" alt="" /></div>
+			<div class="SearchArea">
+				<h2>Search all the best deals in one place!</h2>
+				<fieldset>
+					<form id="form1" action="/Search/Index" method="get">
+					<div class="pre-auction">
+						<label>
+							<span>@(((int)ViewBag.TotalVehicleCount).ToString("###,###,###"))</span><i>pre-auction
+								vehicles available from </i><span>@(((int)ViewBag.TotalDealersCount).ToString("###,###,###"))</span><i>dealers.</i>
+						</label>
+					</div>
+						<input id="myTextBox" name="SearchKey" type="text" />
+						
+						<label>
+							<span class="zipcode-title">Near</span>
+							<input type="text" name="ZipCode" id="ZipCode" class="zip-code-text-box" />
+						</label>
+					<input name="" type="image" src="@Url.Content("~/Content/Images/go.gif")" onclick="showSearchMessageDiv()" />
+					</form>
+				</fieldset>
+				<div class="divSellCars">
+					@using(Html.BeginForm("SearchCars", "Search", FormMethod.Post, new { id = "searchCarForm" }))
+					{
+						<a href="#" title="Search Cars Under $10,000" onclick="return submitSearchCarForm('@SearchType.Cheap');">
+							Cars Under $10k</a>
+						<a href="#" title="Search Luxury Vehicles" onclick="return submitSearchCarForm('@SearchType.Luxury');">
+							Luxury Vehicles</a>
+						<a href="@Url.Action("SellYourCar", "Product")" title="Sell a Car">Sell a Car</a>
+						
+						<input type="hidden" id="searchType" name="searchType" value="" />
+					}
+				</div>
+			</div>
+			<div class="Clr">
+			</div>
+		</div>
+		<div id="FeaturedVehicles">
+			<div class="LftCrv">
+			</div>
+			<h2>
+				Today's Featured Vehicles <span style="font-size: 12px; font-weight: normal;">(Hold
+					mouse over image for details)</span></h2>
+			<div class="CarousalArea js">
+				@*<span class="LeftArrow"></span>*@
+				<img id="mycarousel-next" src="@Url.Content("~/Content/images/caraousal_lft_arrow.jpg")" class="carousel-control previous carousel-previous" alt="left"  />
+				<div class="carousel-wrap">
+					<ul class="jcarousel-skin-tango">
+						@Html.Action("FeaturedVehicle", "Home")</ul>
+				</div>
+				<img id="mycarousel-prev" src="@Url.Content("~/Content/images/caraousal_rht_arrow.jpg")" alt="left"  class="carousel-control next carousel-next hover"  />
+			</div>
+			<div class="RhtCrv">
+			</div>
+		</div>
+		<div id="TabContainer">
+			<div class="TabsLft">
+				<div class="Tabs">
+					<a class="active" href="javascript:void(0)" rel="ID_01">Why Buy Pre-Auction?</a></div>
+				<div class="Tabs">
+					<a href="javascript:void(0)" rel="ID_02">How It Works</a></div>
+				<div class="Tabs">
+					<a href="javascript:void(0)" rel="ID_03">How You Win</a></div>
+				@*<div class="Tabs">
+                    <a href="javascript:void(0)" rel="rel_04">Payment Method</a></div>*@
+			</div>
+			<div class="TabContent">
+				<div id="ID_01" class="TabDescp" style="display: block;">
+					<div class="CarImg">
+						<img src="@Url.Content("~/Content/Images/car_img.png")" alt="" /></div>
+					<div class="TextContent">
+						<h1>
+							Buy <u>Before</u> Vehicle Price is Marked up!</h1>
+						<h2>
+							Get "First Access" to Exclusive Dealer Inventory</h2>
+						<p>
+							Everyday, Auto dealers across the country need to liquidate thousands of well-maintained.
+							late-model vehicles to make room for newer inventory. Until now, these vehicles
+							were only available at dealer-only auction.</p>
+						<a class="readmore" href="@Url.Action("Index", "Search")">Start Your Search</a>
+					</div>
+				</div>
+				<div id="ID_02" class="TabDescp" style="width: 368px;">
+					@*  <div class="CarImg">
+                        <img src="@Url.Content("~/Content/Images/car_img.png")" alt="" /></div>*@
+					<div class="TextContent">
+						<h1>
+							Value Comes to Those Who Shop Smart.</h1>
+						<h2>
+							Buy BEFORE auction and save up to 30%, or buy AFTER and pay more.</h2>
+						<div>
+							<div style="text-align: center; margin-top: 10px;">
+								<img src="@Url.Content("~/Content/Images/HowItWorks.png")" alt="Image" />
+							</div>
+							<div style="text-align: center; margin-top: 10px; text-decoration: underline; color: Blue;
+								font-weight: bold">
+								<a href="@Url.Content("~/Content/Images/Vehicle_Remarketing.png")" class="readmore thickbox" rel="lightbox"
+									id="Enlarge">Enlarge Image</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="ID_03" class="TabDescp">
+					<div class="TextContent">
+						<div>
+							<span class="LargeText">
+								<h1>
+									Everyone Loves a Bargain, Even if they Don't Need One.</h1>
+							</span>
+						</div>
+						<div>
+							<b style="font-size: 14px;">The best bargains are always found here.</b>
+						</div>
+						<div style="padding-top: 10px;">
+							With E-Drive Autos you never have to sift through thousands of retail-priced vehicles
+							to find a great deal.
+							<div style="margin-top: 10px;">
+								Every vehicle listed on E-Drive goes through multiple qualifying filters to determine
+								value, condition, title status and availabililty. Over 60% of our vehicles are not
+								listed on any other consumer site.
+							</div>
+						</div>
+						<br />
+						<a class="readmore" href="@Url.Action("Index", "Search")">Start Your Search</a>
+					</div>
+				</div>
+				<div id="ID_04" class="TabDescp">
+				</div>
+			</div>
+		</div>
+		<div class="CompLogos">
+			<span class="Txt">In<br />
+				Alliance<br />
+				with</span>
+			<div class="OtherLogos">
+				<img src="@Url.Content("~/Content/Images/logos.png")" alt="" /></div>
+			<div class="Clr">
+			</div>
+		</div>
+	</div>
+	<div class="Sidebar Flr">
+		<div id="FirstBox" class="SideBox">
+			<div class="BackBox">
+				<div class="BoxTabs">
+					<span class="Tabs Tab_01 Wathch"><a class="Green" href="javascript:void(0)">Watch Our
+						Commercial</a></span> <span class="Tabs Tab_02 All"><a class="Blue" href="javascript:void(0)">
+							All</a></span>
+				</div>
+				<div class="FrontBox">
+					<div class="Video">
+						<object width="261" height="209">
+							<param name="movie" value="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US">
+							<param name="allowFullScreen" value="true">
+							<param name="allowscriptaccess" value="always">
+							<embed src="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US" type="application/x-shockwave-flash"
+								width="261" height="209" wmode="transparent" allowscriptaccess="always" allowfullscreen="true" /></object>
+					</div>
+					<div class="AllVideo">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td>
+									<object width="150" height="129">
+										<param name="movie" value="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US">
+										<param name="allowFullScreen" value="true">
+										<param name="allowscriptaccess" value="always">
+										<embed src="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US" type="application/x-shockwave-flash"
+											width="150" height="129" wmode="transparent" allowscriptaccess="always" allowfullscreen="true" /></object>
+								</td>
+								<td class="Col2">
+									E-Drive at NIADA
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" style="height: 20px;">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<object width="150" height="129">
+										<param name="movie" value="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US">
+										<param name="allowFullScreen" value="true">
+										<param name="allowscriptaccess" value="always">
+										<embed src="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US" type="application/x-shockwave-flash"
+											width="150" height="129" wmode="transparent" allowscriptaccess="always" allowfullscreen="true" /></object>
+								</td>
+								<td class="Col2">
+									E-Drive Dealer Promo
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="SecondBox" class="SideBox">
+			<div class="BackBox">
+				<div class="BoxTabs">
+					<span class="Tabs Tab_01 Testimonial"><a class="Green" href="javascript:void(0)">Testimonials</a></span>
+					<span class="Tabs Tab_02 News"><a class="Blue" href="javascript:void(0)">Recent News</a></span>
+				</div>
+				<div class="FrontBox">
+					<div class="TestimonialsIn">
+						@Html.Action("LatestTestimonial", "Customers_Speak")
+					</div>
+					<div class="NewsIn">
+						@Html.Action("RecentNews", "Press_Release")
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="ThirdBox" class="SideBox featured-seller">
+			<div class="BackBox">
+				<div class="BoxTabs">
+					<span class="Tabs tab"><a href="javascript:void(0);">This Week's Featured Seller</a></span>
+				</div>
+				<div class="FrontBox">
+					<div class="content">
+						<img src="@Url.Content(String.Format("~/Content/Images/Dealer/FeaturedSellerIcon.gif?r={0}", new Random().Next(1, 50))))" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="Clr">
+	</div>
+@* </form>*@
+
+}
+@section Footer
+{
+	<script src="@Url.Content("~/Scripts/SlimBox/slimbox2.js")" type="text/javascript"></script>
+	<link href="@Url.Content("~/Scripts/SlimBox/slimbox2.css")" rel="stylesheet" type="text/css" />
+}

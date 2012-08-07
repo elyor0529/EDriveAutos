@@ -1,0 +1,920 @@
+/* CSS Document */
+*{ margin:0px; padding:0px;}
+html, body{}
+body{ font-size: 12px;font-style:normal;font-family: Arial, Helvetica, sans-serif !important; color:#2c2d2e;}
+h1,h2,h3,h4,h5,h6{ font-weight:normal;}
+p{}
+a:link, a:visited{ outline:none; text-decoration:none;}
+a:hover{}
+img, fieldset{ border:none;}
+input, select, textarea{ outline:medium;}
+ol, ul{ list-style:none;}
+
+.Flt{ float:left;}
+.Flr{ float:right;}
+.Fln{ float:none;}
+.Clr{ clear:both; height:0px;}
+.Clr-Lft{ clear:left;}
+.Clr-Rht{ clear:right;}
+
+.Wrapper{ margin:0 auto;}
+
+#Header{ position:relative; height:195px;background-color: #231F20;}
+#Header .separator-line {
+    border-bottom: 1px solid #818181;
+    box-shadow: 0 1px 3px #565656;
+    clear: both;
+    float: left;
+    width: 100%;
+}
+#Header .header-content {margin: auto;width: 964px;height: 196px;}
+#Header .header-content .slogan {color: #d6d6d6; margin-top: 6px;}
+#Header .Logo {background: url("images/logo.gif") no-repeat scroll 0 0 transparent;float: left;height: 71px;margin: 50px 0 0;width: 318px;}
+#Header .Logo a{ height:55px; display:block; text-indent:-9999em;}
+/**/
+#Header .Menu_01 ul li{ float:left; position:relative; background:url(images/divider_01.gif) no-repeat top right; line-height:14px; padding:0 12px 5px 12px; font-weight:bold;}
+/**/ 
+/*Level 2 menu*/
+
+
+#Header .SingleLine{font-size: 13px;font-weight: normal;padding: 68px 0 0 0;}
+/**/
+#Header .Menu_01{ padding:15px 0 0 0;margin-right: -11px;}
+#Header .Menu_01 ul{}
+#Header .Menu_01 ul li{ float:left; background:url(images/divider_01.gif) no-repeat top right; line-height:14px; padding:0 12px; font-weight:bold;}
+#Header .Menu_01 ul li.last{ background:none;}
+#Header .Menu_01 ul li a{ color:#257FFB;}
+#Header .Menu_01 ul li a:hover{ color:#0070d8;}
+
+#Header .MainMenu{clear: both;padding: 44px 0 0 0;}
+#Header .MainMenu ul{}
+#Header .MainMenu ul li{ float:left; background:url(images/divider_02.gif) no-repeat top right; line-height:16px; font-size:14px; padding:0 30px;}
+#Header .MainMenu ul li.first{ padding-left: 0;}
+#Header .MainMenu ul li.last{ background:none;padding-right: 0;}
+#Header .MainMenu ul li a{ color:#599F00;text-transform: uppercase;font-family: verdana;}
+
+#Header .MainMenu ul li a:hover{ color: #63bb26;}
+#Header .Menu_01 ul li .Menu_01_l2{ display:none; position:absolute; left:0px; /*top:18px;*/ background:#0070D8; border-radius:5px; padding:5px; width:150px;}
+#Header .Menu_01 ul li:hover .Menu_01_l2{ display:block;}
+#Header .Menu_01 ul li .Menu_01_l2 li{ float:none; line-height:24px; padding:0px; text-align:left; background:none;}
+#Header .Menu_01 ul li .Menu_01_l2 li a{ display:block; line-height:24px; padding:0 5px; color:#fff;}
+#Header .Menu_01 ul li .Menu_01_l2 li a:hover{ background:#fff; border-radius:5px; color:#257FFB;}
+
+#Content{ padding:28px 0;margin: auto;width: 964px;}
+.LeftSection{ width:614px;}
+.Sidebar{ width:614px; width:288px;}
+
+.FindDeals{ padding:10px 0 0 0; margin:0 0 16px 0;}
+.FindDeals .Arrow{ float:left; padding:10px 0 0 20px;}
+.FindDeals .SearchArea{ width:446px; float:left; padding:0 0 0 15px;}
+.FindDeals .SearchArea .zipcode-title { font-style: italic;font-weight: bold;font-size: 15px;color: #585757;float: left;margin: 5px 10px 0 20px; }
+.FindDeals .SearchArea fieldset form input.zip-code-text-box { width: 70px; }
+.FindDeals .SearchArea h2{ font-size:18px; font-weight:bold; line-height:20px; padding-left:0px;}
+.FindDeals .SearchArea h2 span{ font-size:14px; font-weight:normal;}
+.FindDeals .SearchArea p{ color:#767676; font-size:11px; padding-left:10px;}
+.FindDeals .SearchArea fieldset{ padding:6px 0;}
+.FindDeals .SearchArea fieldset input[type="text"]{ width:205px; height:16px; padding:5px 10px; background:url(images/input_bg.gif) repeat-x; border:1px solid #cfcfcf;/* color:#b4b4b4;*/ float:left; margin-right:11px; font-size:11px; line-height:16px;}
+.FindDeals .SearchArea .blue{ font-size:14px; font-weight:bold; font-style:italic; color:#0070d8;}
+
+.FindDeals .SearchArea .pre-auction {
+    margin: 0 0 5px;	
+}
+.FindDeals .SearchArea .pre-auction label {
+    font-size: 12px;
+	margin: 0 8px 0 0;
+}
+.FindDeals .SearchArea .pre-auction label i {
+	font-style: normal;	
+    margin: 0 0 0 5px;
+}
+.FindDeals .SearchArea .pre-auction label span {
+	font-weight: bold;	
+	
+}
+.FindDeals .SearchArea .pre-auction label.disabled {
+	color: #999999 !important;
+}
+
+
+#FeaturedVehicles{ position:relative; background:url(images/car_box_mid_strip.png) repeat-x; height:168px; width:602px; margin:0 auto 32px auto;}
+#FeaturedVehicles .LftCrv{ background:url(images/car_box_lft_crv.png) no-repeat; width:6px; height:169px; position:absolute; top:0px; left:-6px;}
+#FeaturedVehicles .RhtCrv{ background:url(images/car_box_rht_crv.png) no-repeat; width:6px; height:169px; position:absolute; top:0px; right:-6px;}
+#FeaturedVehicles h2{ font-size:14px; font-weight:bold; line-height:18px; width:471px; margin:0 auto; padding:20px 0 13px 0;}
+#FeaturedVehicles .CarousalArea{ width:490px; margin:0 auto; position:relative;}
+#FeaturedVehicles .CarousalArea ul{}
+/*#FeaturedVehicles .CarousalArea ul li{ width:111px; height:83px; float:left; padding:0 9px  0 0;text-align:center;}*/
+#FeaturedVehicles .CarousalArea ul li{ width:111px; height:91px; float:left; padding:0 9px /*9px*/ 0 0;text-align:center;}
+#FeaturedVehicles .CarousalArea ul li .pricetext
+{
+     background-color: #BDE794;
+    color: Black;
+    font-weight: bold;
+    height: 18px;
+    margin-left: 11px;
+    margin-top: 0;
+    padding-left: 5px;
+    padding-right: 3px;
+    padding-top: 4px;
+    text-align: center;
+    width: 89px;}
+#FeaturedVehicles .CarousalArea ul li img{border: 1px solid #868686;
+    height: 59px;
+    margin-left: 9px;
+    width: 95px;}
+#FeaturedVehicles .CarousalArea .previous{ background:url(images/caraousal_lft_arrow.jpg) no-repeat; width:24px; height:20px; position:absolute; top:27px; left:-35px; cursor:pointer; border:0px; text-indent:-9999em;}
+#FeaturedVehicles .CarousalArea .next{ background:url(images/caraousal_rht_arrow.jpg) no-repeat; width:24px; height:20px; position:absolute; top:27px; right:-35px; cursor:pointer; border:0px; text-indent:-9999em;}
+
+.SearchPage #FeaturedVehicles{
+     position:relative;
+     background:url(images/car_box_mid_strip.png) repeat-x;
+     height:168px;
+     width:660px;
+     margin:0 auto 32px auto;
+ }
+.SearchPage #FeaturedVehicles .CarousalArea{
+    width:590px;
+    margin:0 auto;
+    position:relative;
+}
+
+#TabContainer{ background:url(images/tab_container_bg.png) no-repeat; width:615px; height:280px; padding:1px; margin:0 0 30px 0;}
+#TabContainer .TabsLft{ background:#fefdfd url(images/tab_container_left.png) repeat-x bottom left; height:278px; width:201px; border-right:1px solid #d5d5d5; border-radius:5px 0 0 5px; float:left;}
+#TabContainer .TabsLft .Tabs{ height:34px; line-height:34px; border-bottom:1px solid #d5d5d5; font-size:14px; font-weight:bold;}
+#TabContainer .TabsLft .Tabs a{ display:block; padding-left:22px; color:#2c2d2e; background:url(images/tabs_bg.png) repeat-x;}
+#TabContainer .TabsLft .Tabs a:hover, #TabContainer .TabsLft .Tabs a.active{width:180px;}
+#TabContainer .TabContent{ width:350px; float:left; padding:0 0 0 30px;}
+#TabContainer .TabContent .TabDescp{ display:none; position:relative; height:279px;zoom:1;}
+#TabContainer .TabContent .TabDescp h1{ font-size:18px; line-height:20px; font-weight:bold; color:#57a800; margin-bottom:10px; padding-top:8px;}
+#TabContainer .TabContent .TabDescp h2{ font-size:14px; line-height:18px; font-weight:bold; margin-bottom:8px;}
+#TabContainer .TabContent .TabDescp p{ width:300px; margin-bottom:10px;}
+#TabContainer .TabContent .TabDescp a.readmore{color:#0070d8; font-weight:bold;text-decoration:underline;}
+#TabContainer .TabContent .TabDescp a.readmore:hover{ text-decoration:underline;}
+#TabContainer .TabContent .TabDescp .CarImg{ position:absolute; right:0px; bottom:5px; z-index:100;}
+#TabContainer .TabContent .TabDescp .TextContent{ position:relative; /*z-index:150;*/z-index:71;}
+
+.CompLogos{ padding:0;margin: 80px 0 0 0;}
+.CompLogos .Txt {
+    border-right: 1px solid #797978;
+    color: #797978;
+    float: left;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0 10px 0 0;
+    padding: 0 10px 0 5px;
+    text-align: right;
+    width: 59px;
+}
+.CompLogos .OtherLogos{ float:left; width:445px;}
+
+#DealerRegisForm input[type='text'],table#DealerRegisForm table input[type='text'],table#DealerRegisForm table input[type='password']{width:200px;margin: 1px;
+border-right: #A9D5D6 1px solid;
+border-top: #A9D5D6 1px solid;
+border-left: #A9D5D6 1px solid;
+border-bottom: #A9D5D6 1px solid;
+background: url(Images/bgTextBox.gif) white repeat-x left top;
+color: #333;
+padding: 1px 5px;
+height: 15px;}
+#DealerRegisForm input[type='text'].input-validation-error,#DealerRegisForm select.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background: #ffeeee;
+}
+
+.SideBox{ margin:0 0 32px 0; width:286px;}
+.SideBox .BackBox{ background:#ffffff url(images/back_box-top.png) no-repeat;}
+.SideBox .BackBox .FrontBox{ background:url(images/front_box_bg.png) no-repeat left bottom; }
+.SideBox .BoxTabs{ height:43px;}
+.SideBox .BoxTabs .Tabs{ height:36px; float:left; text-align:center; font-size:14px; font-weight:bold; line-height:37px; cursor:pointer;}
+.SideBox .BoxTabs .Wathch{ width:199px; float:left;}
+.SideBox .BoxTabs .All{ width:85px; float:left;}
+.SideBox .BoxTabs .Testimonial{ width:156px; float:left;}
+.SideBox .BoxTabs .News{ width:126px; float:left;}
+.SideBox .BoxTabs .Tabs .Green{ color:#57A800;}
+.SideBox .BoxTabs .Tabs .Blue{ color:#0070D8;}
+
+.SideBox.featured-seller {
+	margin: 0;
+}
+.SideBox.featured-seller .BackBox .BoxTabs span.tab {
+    cursor: default;
+    display: block;
+    float: none;
+    text-align: center;
+}
+.SideBox.featured-seller .BackBox .BoxTabs span.tab a {
+    color: #080708;
+    cursor: default;
+    text-align: center;
+}
+.SideBox.featured-seller .BackBox .FrontBox {
+	background: none;
+	border: 1px solid #d6d7d6;
+	border-top: 0 none;
+	height: 100px;
+	border-radius: 0 0 5px 5px;
+}
+.SideBox.featured-seller .BackBox .FrontBox .content {
+	text-align: center;
+}
+.SideBox.featured-seller .BackBox .FrontBox .content img {
+    margin: 15px 0 0;
+    max-height: 45px;
+    max-width: 190px;
+    vertical-align: middle;
+}
+
+#FirstBox .Tab_first{ background: url(images/first_tabs.png) no-repeat;}
+#FirstBox .BoxTabs{ background: url(images/first_tabs.png) no-repeat;}
+#FirstBox .Tab_Second{ background: url(images/first_tabs.png) no-repeat bottom left;}
+#SecondBox .Tab_first{ background: url(images/second_tabs.png) no-repeat;}
+#SecondBox .BoxTabs{ background: url(images/second_tabs.png) no-repeat;}
+#SecondBox .Tab_Second{ background: url(images/second_tabs.png) no-repeat bottom left;}
+
+.SideBox .BackBox .FrontBox .Video{ width:262px;height: 208px; margin:0 auto; padding:20px 0;}
+.SideBox .BackBox .FrontBox .AllVideo{ width:262px; height: 208px;overflow-x: auto; margin:0 auto; padding:20px 0; min-height:200px; display:none;}
+.SideBox .BackBox .FrontBox .TestimonialsIn{ padding:20px 40px 10px 35px;height: 207px;margin-bottom:10px;}
+.SideBox .BackBox .FrontBox .TestimonialsIn .TestArt,.SideBox .BackBox .FrontBox .NewsIn .TestArt{ margin-bottom:10px;}
+.SideBox .BackBox .FrontBox .TestimonialsIn p{ margin-bottom:10px;}
+.SideBox .BackBox .FrontBox .TestimonialsIn .Blue,.SideBox .BackBox .FrontBox .NewsIn .Blue{ color:#0070D8; font-style:italic;}
+.SideBox .BackBox .FrontBox .NewsIn{ padding:20px 40px 10px 35px; margin-bottom:10px; display:none;height: 207px;}
+.SideBox .BackBox .FrontBox .NewsIn p{ margin-bottom:10px;}
+
+#PreFooter{ background:url(images/prefooter.png) repeat-x top left; padding:50px 0 30px 0;margin: auto;width: 964px;}
+#PreFooter h3{ font-size:14px; line-height:18px; font-weight:bold; color:#57A800; margin-bottom:18px;}
+#PreFooter .Column_01{ width:245px; padding:0 0 0 45px;}
+#PreFooter .Column_02{ width:285px;}
+#PreFooter .Column_03{ width:215px;}
+#PreFooter .Column_04{ width:150px;}
+#PreFooter .FooterLinks{}
+#PreFooter .FooterLinks li{ font-size:11px; line-height:14px; font-weight:bold;}
+#PreFooter .FooterLinks li a{ color:#2c2d2e;}
+#PreFooter .FooterLinks li a:hover{ color:#2c2d2e; text-decoration:underline;}
+
+#Footer{ background:url(images/prefooter.png) repeat-x top left; padding:80px 0 50px 0; position:relative;margin: auto;width: 964px;}
+#Footer .FooterLogo{ text-align:center; margin-bottom:10px;font-size: 11px;}
+#Footer p.lower-text {
+	color: gray;	
+}
+#Footer p{ font-size:11px; text-align:center;}
+.Social{ position:absolute; right:0px; top:30px;}
+.Social h3{ font-size:21px; line-height:23px; font-weight:normal; color:#2c2d2e; margin-bottom:5px;}  
+.Social .Icons span{ float:left; margin-right:5px;}
+
+
+.BannerTop{ text-align:center; margin-bottom:17px;}
+ .BannerTop .financing{font-weight:bold;margin-bottom:5px;}
+ .BannerTop .financing a,.BannerTop .financing a:visited,.BannerTop .financing a:hover{text-decoration:underline;color:Blue;}
+ 
+.BannerBtm{ text-align:center; margin-bottom:30px;}
+.InnerBoxWhite{ background:#fff; width:875px; margin:0 auto; border:1px solid #d5d5d5; border-radius:5px; behavior:url(/Content/pie/PIE.htc); padding:22px 20px; margin:0 auto 20px auto;}
+.InnerBoxWhite .BoxHeader{ margin:0 0 10px 0;}
+.InnerBoxWhite .BoxHeader .BoxMenu{ padding:12px 0 0 9px; width:465px; color:#cac8c8;}
+.InnerBoxWhite .BoxHeader .BoxMenu a{ color:#232528;}
+.InnerBoxWhite .BoxHeader .BoxMenu a:hover{ color:#232528; text-decoration:underline;}
+.InnerBoxWhite .BoxHeader .BoxMenu .BackNext{ float:left; width:54px;}
+.InnerBoxWhite .BoxHeader .BoxMenu .BackNext .Back{ float:left;}
+.InnerBoxWhite .BoxHeader .BoxMenu .BackNext .Next{ float:left; margin-left:7px;}
+.InnerBoxWhite .BoxHeader .BoxMenu .BackNext img{ margin:5px 7px 0 7px;}
+.InnerBoxWhite .BoxHeader .BoxMenu ul{}
+.InnerBoxWhite .BoxHeader .BoxMenu ul li{ display:inline; margin-right:7px; float:left;}
+.InnerBoxWhite .BoxHeader .BoxMenu ul li.CarFax{ width: 207px;text-align: center;position: relative;top: -15px;}
+
+.InnerBoxWhite .BoxHeader .Rating{ width:322px; padding:0 5px 0 0;}
+.InnerBoxWhite .BoxHeader .Rating .DealStars{padding: 11px 0 0 0;width: 68px;}
+.InnerBoxWhite .BoxHeader .Rating .DealStars div.PriceDiv{margin:0px;color:black;} 
+.InnerBoxWhite .BoxHeader .Rating .DealStars .RatingTxt{ font-size:15px; color:#232528; float:left;} 
+.InnerBoxWhite .BoxHeader .Rating .DealStars .Stars{ padding: 0 0 0 5px;float: left;width: 92px !important;position: relative;right: -12px;}
+.InnerBoxWhite .BoxHeader .Rating .DealStars .Stars span{ float:left;}
+#star img{float:left;}
+.InnerBoxWhite .BoxHeader .Rating .RateDealer{ text-align:right;}
+.InnerBoxWhite .BoxHeader .Rating .RateDealer a{ color:#003078; text-decoration:underline;}
+
+.InnerBoxWhite .LeftColumn{ width:466px;}
+.InnerBoxWhite .RightColumn{ width:398px;}
+.InnerBoxWhite .RoundedBox{ border:1px solid #d5d5d5; border-radius:5px; behavior:url(/Content/pie/PIE.htc); overflow:hidden; margin-bottom:14px;}
+
+.InnerBoxWhite .RoundedBox h2.BoxTitle{ background:#efecec; line-height:28px; color:#57a800; font-size:15px; font-weight:bold; padding:0 17px;}
+.InnerBoxWhite .RoundedBox h2.BoxTitle span{ font-weight:normal;}
+.InnerBoxWhite .LeftColumn .Width_228{ width:226px;}
+.InnerBoxWhite .LeftColumn .Width_228 .Height_255{ height:265px;}
+.InnerBoxWhite .RoundedBox .VehicleDetails{ padding:10px 17px;}
+.InnerBoxWhite .RoundedBox .VehicleDetails h3{ font-size:15px; line-height:22px; font-weight:bold; color:#000; margin-bottom:10px;}
+.InnerBoxWhite .RoundedBox .VehicleDetails ul{}
+.InnerBoxWhite .RoundedBox .VehicleDetails ul li{ width:190px;background:url(images/dot.gif) no-repeat 0 6px; padding-left:15px; margin-bottom:2px;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics{ padding:10px 5px;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics .Price{ font-size:18px; font-weight:bold; text-align:center; margin-bottom:10px;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics .AvrPrice{ text-align:center; margin-bottom:20px;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics .AvrPrice span{ font-size:11px;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics p{ margin-bottom:30px;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics a{ color:#003078; text-decoration:underline;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics .MPG{ background:url(images/mpg.png) no-repeat; width:93px; height:33px; margin:0 auto; position:relative;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics .MPG .City{ position:absolute; top:15px; left:0px; width:30px; font-weight:bold; text-align:center;}
+.InnerBoxWhite .RoundedBox .PricingAnalytics .MPG .Hwy{ position:absolute; top:15px; right:5px; width:30px; font-weight:bold; text-align:center;}
+
+.InnerBoxWhite .RoundedBox .SellerNote{ padding:10px 17px;}
+.InnerBoxWhite .RoundedBox .SellerNote p{ font-size:11px; line-height:18px; color:#000;}
+.InnerBoxWhite .RoundedBox .SellerNote a{ color:#a3a3a3;}
+.InnerBoxWhite .RoundedBox .SellerNote a:hover{ color:#000;}
+.InnerBoxWhite .RoundedBox .HelpfulLinks{ padding:10px 17px;}
+.InnerBoxWhite .RoundedBox .HelpfulLinks li{ float:left; width:195px; background:url(images/grey_arrow.gif) no-repeat 0 5px; padding-left:14px; margin-bottom:5px;}
+.InnerBoxWhite .RoundedBox .HelpfulLinks li a{ display:block; width:125px; border-bottom:1px solid #8098bc; padding-left:7px; color:#003078;}
+.InnerBoxWhite .RoundedBox .HelpfulLinks li a.lnkdisabled{color:Gray;}
+.InnerBoxWhite .RoundedBox .HelpfulLinks li .lnkdisabled{cursor: pointer;border-bottom:1px solid #8098BC; color: gray;padding-left:7px;width:125px;padding-right:21px;}
+.InnerBoxWhite .Adv_Lft{ padding:10px 0 0 35px;}
+.InnerBoxWhite .Adv_Rht{ padding:10px 45px 0 0px;}
+
+.InnerBoxWhite .RoundedBox .VehiclePhoto{ width:342px; margin:0 auto; padding:10px 15px;} 
+.InnerBoxWhite .RoundedBox .VehiclePhoto .LargePic{ width:338px; height:225px; padding:1px; border:1px solid #28282a;}
+.InnerBoxWhite .VehiclePhoto_Thumbs{ padding:5px 0 0 25px; height:45px; margin-bottom:21px;}
+.InnerBoxWhite .VehiclePhoto_Thumbs .ThumbCarousal{ width:356px; position:relative;}
+.InnerBoxWhite .VehiclePhoto_Thumbs ul{}
+.InnerBoxWhite .VehiclePhoto_Thumbs ul li{ width:45px; height:45px; padding-right:5px; float:left;}
+.InnerBoxWhite .VehiclePhoto_Thumbs ul li img{ width:44px; height:44px; border:1px solid #5c6467;}
+.InnerBoxWhite .VehiclePhoto_Thumbs .ThumbCarousal .previous{ background:url(images/prev_small.gif) no-repeat; width:16px; height:16px; position:absolute; top:18px; left:-22px; cursor:pointer; border:0px; text-indent:-9999em;}
+.InnerBoxWhite .VehiclePhoto_Thumbs .ThumbCarousal .next{ background:url(images/next_small.gif) no-repeat; width:16px; height:16px; position:absolute; top:18px; right:-18px; cursor:pointer; border:0px; text-indent:-9999em;}
+
+
+.InnerBoxWhite .SideBox{ margin:0 0 10px 0; width:392px;}
+.InnerBoxWhite .SideBox .BackBox{}
+.InnerBoxWhite .SideBox .BackBox .FrontBox{ background:url(images/third_btm.png) no-repeat left bottom; }
+.InnerBoxWhite .SideBox .BoxTabs{ height:43px; background: url("images/third_tabs.png") no-repeat scroll 0 0 transparent;}
+.InnerBoxWhite .SideBox  .Tab_Second{background: url("images/third_tabs.png") no-repeat scroll bottom left transparent;}
+.InnerBoxWhite .SideBox .BoxTabs .Tabs{ height:36px; float:left; text-align:center; font-size:14px; line-height:37px; cursor:pointer;}
+.InnerBoxWhite .SideBox .BoxTabs .Tabs a{ color:#000;}
+.InnerBoxWhite .SideBox .BoxTabs .Tabs .active{ color:#57A800;}
+.InnerBoxWhite .SideBox .BoxTabs .Tab_01{ width:155px;}
+.InnerBoxWhite .SideBox .BoxTabs .Tab_02{ width:130px;}
+.InnerBoxWhite .SideBox .ContactDeal{ padding:10px 20px;}
+.InnerBoxWhite .SideBox .ContactDeal .Row{ margin-bottom:9px;}
+.InnerBoxWhite .SideBox .ContactDeal .Row p{ line-height:20px;}
+.InnerBoxWhite .SideBox .ContactDeal .inpfld{ border-width:1px 1px 1px 1px; border-color:#aaaaaa #e6e6e6 #e6e6e6 #e6e6e6; border-style:solid;}
+.InnerBoxWhite .SideBox .ContactDeal .Txtfld{ height:15px; line-height:15px; padding:2px 3px;}
+.InnerBoxWhite .SideBox .ContactDeal .Txtarea{ height:40px; padding:2px 3px; width:337px;}
+.InnerBoxWhite .SideBox .ContactDeal .email{}
+.InnerBoxWhite .SideBox .ContactDeal .width_105{ width:105px;}
+.InnerBoxWhite .SideBox .ContactDeal .width_130{ width:130px;}
+.InnerBoxWhite .SideBox .ContactDeal .width_93{ width:93px; text-align:center;}
+.InnerBoxWhite .SideBox .DealProfile{padding:20px;}
+.InnerBoxWhite .SideBox .DealProfile .DealProf{line-height:24px;}
+.InnerBoxWhite .SideBox .DealProfile .DealProf .CompanyName{font-size:14px;}
+.InnerBoxWhite .SideBox .DealProfile .DealProf table .firstcol{width:197px;}
+.InnerBoxWhite .SideBox .DealProfile .DealProf table .secondCol{vertical-align:top;text-align:center;width:191px;}
+.InnerBoxWhite .SideBox .DealProfile .DealProf table .secondCol .ImageDiv{vertical-align:top;height:46px;}
+
+
+
+.InnerBoxWhite .SideBox .DealProfile .DealProf a{color:Blue;}
+
+.After_BoxWhite{ width:885px; margin:0 auto 65px auto;}
+.After_BoxWhite p{ line-height:18px; color:#000;}
+.After_BoxWhite p a{ color:#003078;}
+.After_BoxWhite p a:hover{ color:#003078; text-decoration:underline;}
+.After_BoxWhite .font_10{ font-size:10px;}
+.After_BoxWhite .font_12{ font-size:12px;}
+
+#BottomCarausal{ width:763px; margin:0 auto 65px auto;}
+#BottomCarausal h3{ font-size:15px; line-height:20px; font-weight:bold; color:#000; padding-left:46px; margin-bottom:20px;}
+#BottomCarausal .CaraousArea{ width:664px; margin:0 auto; position:relative;}
+#BottomCarausal .CaraousArea ul{}
+#BottomCarausal .CaraousArea ul li{ width:136px; padding-right:40px; text-align:center; float:left;}
+#BottomCarausal .CaraousArea ul li .name{ font-weight:bold; margin-bottom:5px;}
+#BottomCarausal .CaraousArea ul li .name a{ color:#003078; text-decoration:underline;}
+#BottomCarausal .CaraousArea ul li .thumb_110x70{ background:#e3e3e1; border:1px solid #cccccc; padding:12px; height:70px; margin-bottom:5px;}
+#BottomCarausal .CaraousArea ul li .thumb_110x70 img{ width:110px; height:70px;}
+#BottomCarausal .CaraousArea ul li .price{ font-size:15px; font-weight:bold;}
+#BottomCarausal .CaraousArea .previous{ background:url(images/caraousal_lft_arrow.jpg) no-repeat; width:24px; height:20px; position:absolute; top:57px; left:-35px; cursor:pointer; border:0px; text-indent:-9999em;}
+#BottomCarausal .CaraousArea .next{ background:url(images/caraousal_rht_arrow.jpg) no-repeat; width:24px; height:20px; position:absolute; top:57px; right:-35px; cursor:pointer; border:0px; text-indent:-9999em;}
+
+.SearchPage{ width:912px; margin:0 auto;}
+.SearchSidebar{ width:232px;}
+.SearchSidebar .Srch_SideBox{ border:1px solid #d5d5d5; border-radius:5px; behavior:url(/Content/pie/PIE.htc); overflow:hidden; margin-bottom:16px;}
+.SearchSidebar .Srch_SideBox h2.BoxTitle{ background:#efecec; line-height:28px; color:#57a800; font-size:17px; font-weight:bold; padding:0 17px;}
+.SearchSidebar .Srch_SideBox h2.BoxTitle span{ font-weight:normal;}
+.SearchSidebar .Srch_SideBox .WhiteArea{ padding:5px 4px; background:#fff; border-radius:0 0 5px 5px; behavior:url(/Content/pie/PIE.htc);}
+.SearchSidebar .Srch_SideBox .WhiteArea .BorderBtm{ border-bottom:2px solid #e6e6e6;overflow:hidden;}
+.SearchSidebar .Srch_SideBox .WhiteArea .UserName{ color:#000; text-align:center; padding:1px 0 6px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .AdvSrch{ position:relative; padding:6px 0; text-align:center; font-weight:bold;}
+.SearchSidebar .Srch_SideBox .WhiteArea a{ color:#003078; font-weight:bold;}
+.SearchSidebar .Srch_SideBox .WhiteArea a:hover{ color:#003078; text-decoration:underline;}
+.SearchSidebar .Srch_SideBox .WhiteArea .AdvSrch img{ position:absolute; left:3px; top:3px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropTitle{ padding:6px 0; position:relative;width:250px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropTitle .Plus{ position:absolute; left:7px; top:10px;top:8px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropTitle .Title{ padding-left:24px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .LastDiv{ padding:6px 0 1px 0; text-align:center;clear: left;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropMain{float:left;clear:left;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropDiv{ padding:10px 0 10px 10px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropDiv .DropRow{ float:left; width:212px; margin-bottom:7px;margin-bottom:0px;}
+
+.SearchSidebar .Srch_SideBox .WhiteArea .DropDiv .DropRow .Left{ float:left; width:100px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropDiv .DropRow .Right{ float:left; width:106px;}
+.SearchSidebar .Srch_SideBox .WhiteArea .DropDiv .DropRow input[type="checkbox"]{ float:left; margin-right:5px; width:13px; height:13px;}
+#Make div input[type="checkbox"]{ float:left; margin-right:5px; width:13px; height:13px;}
+#Make div {  float: left;    margin-bottom: 3px;    width: 106px;}
+ #ModelDiv div, #Body div,#Type div,#Model div,#Price div,#Year div,#Mileage div{height:18px;}
+#Warranty div input[type="radio"]{margin-right: 5px;    position: relative;    top: 3px;}
+
+
+
+
+.SearchSidebar .Srch_SideBox .WhiteArea .DropDiv .DropRow label{ color:#868686; font-size:11px; font-weight:bold;text-transform: capitalize;}
+
+.SearchRight{ width:674px;}
+.SearchRight .Srch_Breadcrumb{ font-size:13px; font-weight:bold; color:#003078; padding-left:18px; margin-bottom:18px;}
+.SearchRight .TotalMatch{ padding-left:18px; margin-bottom:13px;}
+.SearchRight .ChangeZip{ padding:7px 0 0 12px; margin-bottom:20px; height:22px;}
+.SearchRight .ChangeZip select{ width:191px; margin-right:5px;}
+.SearchRight .ChangeZip input[type="text"]{ width:60px; line-height:16px; height:16px; border:1px solid #d5d5d5; margin-right:5px; padding:2px 5px;}
+.SearchRight .ChangeZip input[type="submit"]{ background:#c9edff; border:1px solid #d5d5d5; color:#2f688c; width:90px; height:20px; cursor:pointer; border-color:#d5d5d5;}
+
+.Sorting{ margin-bottom:6px;}
+.Sorting .SortBy{ float:left; margin-left: 28px;}
+#Zip {position:relative;top:1px;}
+#btnZip {  position: relative;    top: 6px;}
+.Sorting .SortBy ul{}
+.Sorting .SortBy ul li{font-size:13px; font-weight:bold; color:#003078; padding-left:18px; display:inline;}
+.Sorting .SortBy ul li a{color:#003078; text-decoration:underline;}
+.Sorting .SortBy ul li a:hover{color:#003078; text-decoration:none;}
+.Pagination{width: 279px; text-align:right;}
+.Pagination ul{}
+.Pagination ul li{ color:#111111; float:left; margin-left:8px;}
+.Pagination ul li a{cursor:pointer; color:#111111; background:#fff; border:1px solid #d5d5d5; padding:0px 4px; float:left;}
+.Pagination ul li a.next{color:#003078; background:none; border:0px solid #d5d5d5; padding:0px 0px;}
+
+
+.ResultItem{background:#fff; border:1px solid #d5d5d5; padding:10px 13px 10px 27px; margin:0 0 8px 0; position:relative;}
+.ResultItem h3{ margin-bottom:8px; font-size:12px; font-weight:bold;}
+.ResultItem h3 a{color:#003078; text-decoration:underline;}
+.ResultItem .ResultPic{ float:left; margin-right:8px;width:120px;}
+.ResultItem .ResultPic img{ width:119px; height:87px; border:1px solid #d5d5d5;}
+.ResultItem .ResultInfo_Mid{ width:331px;}
+.ResultItem .ResultInfo_Mid .LocationZip{width:208px}
+.ResultItem .ResultInfo_Mid  div{ margin-bottom:2px;}
+.ResultItem .ResultInfo_Mid div .SellerNotes{text-transform:uppercase;}
+.ResultItem .Verified{ position:absolute; left:375px; top:21px; z-index:999; zoom:1;}
+.ResultItem .Verified img{ width:68px; height:49px;}
+.ResultItem .ResultInfo_Rht{ width:162px;margin-top:-21px;}
+.ResultItem .ResultInfo_Rht .YourPrice{ text-align:right; font-size:16px; line-height:18px; font-weight:bold;}
+.ResultItem .ResultInfo_Rht .ValidateBy{ text-align:right; font-size:11px; line-height:14px; color:#868686; margin-bottom:10px;}
+.ResultItem .ResultInfo_Rht .Links{ text-align:right; font-size:13px; font-weight:bold; margin-bottom:3px;padding-top:44px; }
+.ResultItem .ResultInfo_Rht .Links a{color:#003078; background:url(images/grey_arrow.gif) no-repeat 0 4px; padding-left:10px;}
+.ResultItem .ResultInfo_Rht .Links .disabled{cursor:pointer;color:#003078; background:url(images/grey_arrow.gif) no-repeat 0 4px; padding-left:10px;}
+
+.ResultItem .ResultInfo_Rht .MoreOption{ text-align:right;padding-top:4px;}
+.ResultItem .ResultInfo_Rht .MoreOption a{ background:url(images/more_arrow.png) no-repeat right 5px; padding-right:10px; color:#003078;}
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+input[type='text'].input-validation-error
+{
+    border: 1px solid #ff0000 !important ;
+    background: #ffeeee !important;
+    background-image:none ;
+}
+input[type='password'].input-validation-error
+{
+    border: 1px solid #ff0000 !important ;
+    background: #ffeeee !important;
+    background-image:none ;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+#make div{width:50px;float:left;}
+.logOnUser{width:500px;margin:0 auto;}
+.lnkSort{color:#29699c;          font-weight: bold; text-transform:uppercase;}   
+.loglbl{float:left;width: 100px;}
+.logtxt{width:300px;padding-top:10px;}
+.logtxt input[type="text"]{}
+
+table#Parteners  tr       {height:24px; }
+table#Parteners   tr td {padding-bottom:5px;}
+table#Parteners  td.first     {width:200px;padding-left:19px; }
+
+ 
+table#Parteners  td.second input[type="text"]{height: 20px;width: 200px;}
+table#Parteners  td.second textarea{height: 134px;width: 442px;}
+.MsgStatusDiv{text-align:center;margin:auto;width:400px;clear:both;z-index:123; }
+#StatusMsg{ display:none;border: 1px solid gray;border-top: none;background-color: yellow;font-weight: bold;padding-bottom: 3px;padding-top: 3px;text-align: center;position: fixed;top: 0px;padding-left: 22px;padding-right: 22px;}
+
+.WishResultItem{overflow:hidden ;background:#fff; border:1px solid #d5d5d5; padding:23px 13px 2px 27px; margin:0 0 8px 0; position:relative;width:902px;margin:14px auto;height:152px;}
+.WishResultItem h3{ margin-bottom:8px; font-size:12px; font-weight:bold;}
+.WishResultItem h3 a{color:#2928ff; text-decoration:underline;}
+.WishResultItem .ResultPic{ float:left; margin-right:8px;}
+.WishResultItem .ResultPic img{ width:119px; height:87px; border:1px solid #d5d5d5;}
+.WishResultItem .ResultInfo_Mid{ width:340px;line-height:15px; }
+/*.WishResultItem .ResultInfo_Mid .LocationZip{width:208px}*/
+
+.WishResultItem .ResultInfo_Mid div{ margin-bottom:2px;}
+.WishResultItem .Verified{ position:absolute; left:375px; top:21px; z-index:999; zoom:1;}
+.WishResultItem .Verified img{ width:68px; height:49px;}
+.WishResultItem .ResultInfo_Rht{ float: left;padding-top: 31px;padding-left: -1px;width:138px;}
+.WishResultItem .ResultInfo_Rht .YourPrice{ text-align:right; font-size:16px; line-height:18px; font-weight:bold;}
+.WishResultItem .ResultInfo_Rht .ValidateBy{ text-align:right; font-size:11px; line-height:14px; color:#868686; margin-bottom:10px;}
+.WishResultItem .ResultInfo_Rht .Links{ text-align:right; font-size:13px; font-weight:bold; margin-bottom:10px;}
+.WishResultItem .ResultInfo_Rht .Links a{color:#003078; background:url(images/grey_arrow.gif) no-repeat 0 4px; padding-left:10px;}
+.WishResultItem .ResultInfo_Rht .MoreOption{ text-align:right;}
+.WishResultItem .ResultInfo_Rht .MoreOption a{ background:url(images/more_arrow.png) no-repeat right 5px; padding-right:10px; color:#003078;}
+.daydiv{background-color: White;	border: solid 2px #DEEEEE;	float: left;	height: 18px;	margin: 3px 4px 3px 0px;	padding: 2px 2px 2px 2px;	text-align: center;	width: 23px;	font-family: arial, verdana, helvetica, sans-serif;	font-size: 12px;	color: #0E67F5;	font-weight: bold;	position: relative;}
+.Pricediv{float:left;margin-top: 38px;}
+.daydiv p{font-size:11px;color:Black;font-weight:normal;margin-top:5px;}
+.Interestedtype {padding-left:5px;}
+label.Interestedtype  input[type='checkbox']{top:3px;margin-right:3px;position:relative;}
+
+input[type="text"].watermark {color:#999}
+
+table#featuredList {width:675px;height:106px;margin-bottom:26px;}
+ table#featuredList  td.Line{background-color:#d6d7d6;height:1px;margin-bottom:10px;margin-top:10px;}
+ table#featuredList   td a.links{color:#003078;font-weight:bold;}
+ table#featuredList   td a.linksContant{color:#003078;font-weight:bold;background:url(images/grey_arrow.gif) no-repeat 0 4px}
+ table#featuredList   td a.linksContantFeatured{color: #003078;font-weight: bold;background: url(images/grey_arrow.gif) no-repeat;background-position: left;padding-left: 10px;}
+
+ table#featuredList  td.price{color:#e79e4a;font-weight:bold;padding-right:11px;}
+ 
+ .newsHOmePage{position:relative;left:-119px;}
+ .TestiHOmePage{position:relative;left:-136px;}
+ div.AllVideo table{width:100%;}
+ div.AllVideo table td{text-align:left}
+ div.AllVideo table td.Col2{padding-left:15px;}
+ 
+ 
+ 
+/*---------------------------------------2-April-2012-------------------------------*/
+
+#LoginBox{ width:388px; margin: 0 auto; color:#000;}
+#LoginBox h2{ margin-bottom:15px;}
+#LoginBox fieldset{ border:1px solid #d3d3d3; padding:34px 85px 15px 25px; margin-bottom:10px;}
+#LoginBox fieldset .Row{ margin-bottom:30px;}
+#LoginBox fieldset label{ float:left; font-weight:bold; width:70px; float:left; line-height:24px;}
+#LoginBox fieldset .inpfld{ width:194px; height:24px; border:1px solid #c1c1c1; border-top:1px solid #848484; background:#fff url(images/input_bg2.gif)  repeat-x; float:left; padding:0 5px;}
+#LoginBox fieldset .remember{ text-align:center; margin-bottom:10px;}
+#LoginBox fieldset .login{ text-align:center;}
+#LoginBox p{ line-height:14px; margin-bottom:10px; padding:0 5px;}
+#LoginBox p a{ text-decoration:underline;}
+#LoginBox .facebookConnect{padding:0 5px;}
+
+#CreateSteps{ margin-bottom:30px; height:24px;}
+#CreateSteps ul{}
+#CreateSteps ul li{ float:left; margin-right:25px;}
+#CreateSteps ul li a{ color:#666666; line-height:20px; padding:0 0 6px 0;}
+#CreateSteps ul li a.active{ color:#000; background:url(images/step_active.jpg) no-repeat center bottom;}
+.Required{color:#FF0000; clear:left; margin-bottom:30px;}
+
+#CreateForm{}
+#CreateForm .Col_1{ width:230px; float:left;}
+#CreateForm .Col_2{ width:290px; float:left;}
+#CreateForm .Col_3{ width:200px; float:left; padding-left:100px;}
+#CreateForm .rows{ margin-bottom:6px;}
+#CreateForm .rows label{ float:left; line-height:22px;}
+#CreateForm .rows .inpfld{ width:106px; height:20px; border:1px solid #c1c1c1; border-top:1px solid #848484; background:#fff url(images/input_bg2.gif)  repeat-x; float:left; padding:0 2px;}
+#CreateForm .Col_1 label{ width:115px;}
+#CreateForm .Col_2 label{ width:125px; padding-left:40px;}
+#CreateForm .Col_3 .Continue{ text-align:center;}
+#CreateForm .Col_3 p{ text-align:center;}
+#CreateForm .Col_3 p a{ color:#2da1d2;}
+
+#Registration{ width:740px; margin:0 auto;}
+#Registration h2{color:#950706; font-weight:bold;font-size:18px;}
+#Registration .font_14{ font-size:14px;}
+ #Registration .MemberLogin a {color: #2928FF;    font-weight: bold;       text-decoration: underline;}
+ #Registration .MemberLogin {margin-top: 25px; }
+.LimitedAccount{ width:300px; padding:0 60px 0 0;}
+.FullAccount{ width:275px; padding:0 0px 0 75px; border-left:1px solid #a9a9a9; min-height:300px;}
+.OfferList{ float:left; margin:45px 0 0 0;}
+.OfferList h2{ color:#212121 !important;}
+.OfferList h4 a { color: #099DEB;text-decoration: underline; }
+.OfferList ul{ padding:35px 0 25px 20px; min-height:130px;}
+.OfferList ul li{ background:url(images/arrow_grey.png) no-repeat 0 7px; font-size:14px; color:#767676; padding-left:20px; margin-bottom:5px;}
+.OfferList p{ line-height:16px; margin-bottom:15px;}
+.ImpInfoTxt{ padding:100px 0 0 0;}
+.ImpInfoTxt p{ margin-bottom:10px; line-height:16px;}
+
+/*---------------------------------------5-April-2012-------------------------------*/
+.testimonialMore{text-align:right}
+.lnkbuttonSendmessage{background: url(Images/sendemail01.jpg)   no-repeat left top;
+padding: 7px 10px 7px 11px;font-weight: bold;text-shadow: 1px 1px 1px white;}
+
+.PaymentDiv{margin: auto; width: 781px;overflow:hidden}
+.PaymentDiv .content {padding: 15px;text-align: center;}
+.PaymentDiv p.note { float: left; width: 100%; text-align: center; margin: 15px 0; }
+.paymentContent{text-align:center;font-size:15px;font-weight:bold;font-size:18px;padding-top: 10px;margin-bottom: 16px;                                                }
+.leftPay{float: left; margin-right: 20px; width: 352px;padding-top: 10px}
+.leftPay  p{margin-left: 55px;padding-top: 11px;}
+.leftPay   p label{font-weight: bold; font-size: 14px;}
+.centerPay{float: left;background-image: url('images/centrePay.png');width: 27px;height: 250px;margin-top: -52px;}
+.rightPay{float: left; margin-left: 26px; width: 353px;padding-top:11px;}
+.rightPay p{padding-top: 39px;padding-left:52px;}
+.rightPay .content{padding-top: 5px;padding-left:0;}
+.rightPay  .radioText{    font-size: 13px;font-weight: bold;float: left;width: 279px;top: -24px;position: relative;margin-left: 24px;}
+.rightPay .OfferList{margin-top:0px;} 
+.rightPay .listPay{padding-top:0px;padding-left:82px;}
+.PaySubmit{ text-align:center;margin-top:10px;}
+table#PaymentCreditCard {margin-top:25px;width:422px;margin:auto;}
+table#PaymentCreditCard td{height:30px;}
+table#PaymentCreditCard td.firstCol {width:150px;}
+table#PaymentCreditCard td.secondCol{width:250px;}
+table#PaymentCreditCard input[type='text'],table#PaymentCreditCard input[type='password']
+{
+	margin: 1px;
+	border-right: #A9D5D6 1px solid;
+	border-top: #A9D5D6 1px solid;
+	border-left: #A9D5D6 1px solid;
+	border-bottom: #A9D5D6 1px solid;
+	background: url(Images/bgTextBox.gif) white repeat-x left top;
+	color: #333; /*font-size: 8pt;*/
+	padding: 1px 5px;
+	height: 15px;
+}
+table#PaymentCreditCard select
+{
+	margin: 1px;
+	border-right: #A9D5D6 1px solid;
+	border-top: #A9D5D6 1px solid;
+	border-left: #A9D5D6 1px solid;
+	border-bottom: #A9D5D6 1px solid;
+	background: url(Images/bgTextBox.gif) white repeat-x left top;
+	color: #333; /*font-size: 8pt;*/
+	 
+ }
+
+.divNothanks{text-align: center;font-weight: bold;margin-bottom: -47px;margin-top: 65px;}
+div.divNothanks a{color: #2928FF;}
+
+.divMsgCentre{float:left;width:18px;padding-top:74px;}
+.MsgCentreDiv1 {background:#A9A9A9;height:40px;text-align:center;width:1px;margin:auto;}
+.MsgCentreDiv2{color:#A9A9A9;font-weight:bold;}
+.MsgCentreDiv3{background:#A9A9A9;height:114px;text-align:center;width:1px;margin:auto;}
+
+div.PriceLabel div{float: left;width: 36px;padding-left: 1px;}
+div.PriceLabel{ }
+.divCountDown{float:left;width:151px;}
+
+.divSellCars{text-align:right;font-weight: bold;font-size: 11px;}
+div.divSellCars a{color: #1896FB;float: left;font-size: 11px;margin-right: 10px;font-weight: normal;text-decoration: underline;}
+.mtop #PriceLockClose{   color: black;    font-size: 14px;    font-weight: bold;    left: 262px;    margin-right: 25px;    position: relative;    right: 0;    top: 23px;}
+
+/*--------------------------------------26-04-2012---------------------------------*/
+.ResultItem .ResultInfo_Rht .MoreOption .DropOption{ display:none; border:1px solid #ccc; position:absolute; right:0px;  z-index:100; width:135px; text-align:left;}
+.ResultItem .ResultInfo_Rht .MoreOption:hover .DropOption{ display:block;}
+.ResultItem .ResultInfo_Rht .MoreOption .DropOption a{ border-bottom:1px solid #ccc; display:block; padding:3px 5px; background:#fff;}
+.ResultItem .ResultInfo_Rht .MoreOption .DropOption a.last{ border:0px;}
+.ResultItem .ResultInfo_Rht .MoreOption .DropOption a:hover{ background:#0070D8; color:#fff;}
+
+.carfaceLinkImage{position: relative;left: 225px;top: -91px;}
+
+/*--------------------------------------30-04-2012---------------------------------*/
+#showCountdownDiv{float:left;position: fixed;right: 0px; width:210px;                 }
+div#showCountdownDiv .title{font-weight: bold;background-color: #5AA600;font-size: 17px;color: white;padding-top: 3px;padding-bottom: 3px;text-align: center;padding-left: 8px;padding-right: 8px;}
+div#showCountdownDiv  .Message{font-weight: bold;font-size: 12px;text-align: center;background-color: #EFEFEF;padding: 6px;}
+div#showCountdownDiv  .TimeDiv{background-color:#f7f7ff;}
+div#showCountdownDiv  .TimeDiv .content{margin:auto;width:150px;height:79px;}
+/*--------------------------------------30-04-2012---------------------------------*/
+.chaseImage{margin-top:-14px; text-align:right;position:absolute;width:400px;left:283px;}
+.chaseImage .firstcol{float:left;padding-top:7px;padding-right: 5px;width:150px;padding-top:5px;      }
+.chaseImage .secondCol{float:left;}
+.chaseImage a {color: #645B62;}
+.chaseImage img{float:left}
+.chase{margin-top:-14px;left: 401px;position: absolute;}
+#FeaturedVehicles .CarousalArea ul li .imgDiv{height: 59px;    margin-bottom: 6px;    padding-left: 2px;    width: 95px;}
+#FeaturedVehicles .CarousalArea ul li a {color:Black;font-weight:bold;text-decoration:none;}
+#FeaturedVehicles .CarousalArea ul li a:hover{color:Black;font-weight:bold;text-decoration:none;}
+#FeaturedVehicles .CarousalArea ul li a:visited{color:Black;font-weight:bold;text-decoration:none;}
+.PrdDetials{overflow:hidden}
+ .PrdDetials a{color: #003078;text-decoration: underline;font-weight:bold}
+ .PrdDetials .names{margin-bottom:5px;}
+.PrdDetials  ul li{float: left;width: 223px;text-align: center;margin: 4px;margin-top: 5px;}
+.PrdDetials  ul li img{width: 187px;height: 126px;}
+
+.PrdDetials .thumb_110x70{background: #E3E3E1;
+border: 1px solid #CCC;
+padding: 14px;
+height: 132px;font-weight:bold;
+margin-bottom: 5px;}
+
+.PrdDetials .price{font-size: 15px;
+font-weight: bold;}
+.LnkViewDealer{color:blue;}
+
+
+
+/*-----------------------------------------7-May-2012-----------------------------------*/
+
+#PreApproval_Form{}
+#PreApproval_Form h1{ text-align:center; font-weight:bold; color:#000; font-size:24px; line-height:30px;}
+#PreApproval_Form h2{ text-align:center; color:#000; font-size:17px; line-height:22px;}
+#PreApproval_Form h2 span{ color:#1896fb; font-weight:bold;}
+#PreApproval_Form .LeftCol{ width:429px; border-right:1px solid #e4e4e4; float:left;}
+#PreApproval_Form .RightCol{ width:445px; padding:0 0 0 14px; float:left;}
+#PreApproval_Form .Form{ margin:40px 0 0 0; color:#666666;}
+#PreApproval_Form .Form .Title{ font-size:18px; color:#797979; line-height:22px; margin-bottom:25px; font-weight:bold; padding-left:142px;}
+#PreApproval_Form .RightCol .Title{ padding-left: 40px;margin-bottom: 23px;margin-top: 0px;}
+#PreApproval_Form .Form .row{ float:left; width:429px; margin-bottom:16px;}
+#PreApproval_Form .Form label{ text-align:right; float:left;}
+#PreApproval_Form .LeftCol label{ width:206px;}
+#PreApproval_Form .RightCol label{ width:200px;}
+#PreApproval_Form .Form .flds{ float:left; padding-left:5px;}
+#PreApproval_Form .Form .width_205{ width:205px;}
+#PreApproval_Form .Form input, #PreApproval_Form .Form select{ border:1px solid #c1c1c1; padding:0px;}
+#PreApproval_Form .Form .link{ padding-left:150px; text-decoration:underline;}
+#PreApproval_Form .Form .link a{color:Blue}
+.Disclaimer{ padding:10px; width:520px; border:1px solid #ff1314; margin:30px auto;}
+#PreApproval_Form .Disclaimer h3{ color:#000; font-weight:bold;}
+#PreApproval_Form .Submit{ width:170px; margin:0 auto; text-align:center;}
+#PreApproval_Form .Submit p{ margin-bottom:10px;}
+#PreApproval_Form .Submit p a{ text-decoration:underline;color:Blue}
+
+/*-----------------------------------------8-May-2012-------------------------------------*/
+
+#BreadCrumb{ margin:0 0 25px 0;}
+#BreadCrumb a{ color:#000;}
+#BreadCrumb a:hover{ color:#000; text-decoration:underline;}
+#BreadCrumb a.back{ background:url(images/back_arrow.gif) no-repeat 0 4px; padding-left:10px;}
+
+#CompareVehicle{ padding:0 0 0 160px;}
+#CompareVehicle .Column{ padding:0 0 50px 27px; width:228px; float:left;}
+#CompareVehicle .Column .Head{ margin-bottom:10px;}
+#CompareVehicle .Column .Head h2{ padding-left:10px; color:#797979;}
+#CompareVehicle .Column .Head .Share{ padding-right:10px;}
+#CompareVehicle .Column .CompImg{ text-align:center; margin-bottom:5px;}
+#CompareVehicle .Column .CompImg img{ border:1px solid #838284;width:214px;height:142px;}
+#CompareVehicle .RoundedBox{ position:relative;border:1px solid #d5d5d5; border-radius:5px; behavior:url(/Content/pie/PIE.htc); overflow:hidden; margin-bottom:14px;}
+#CompareVehicle .RoundedBox h2.BoxTitle{ background:#efecec; line-height:28px; color:#57a800; font-size:15px; font-weight:bold; padding:0 17px;}
+#CompareVehicle .RoundedBox h2.BoxTitle span{ font-weight:normal;}
+#CompareVehicle .LeftColumn .Width_228{ width:226px;}
+#CompareVehicle .LeftColumn .Width_228 .Height_255{ height:255px;}
+#CompareVehicle .RoundedBox .VehicleDetails{ padding:10px 17px;}
+#CompareVehicle .RoundedBox .VehicleDetails h3{ font-size:18px; line-height:22px; font-weight:bold; color:#000; margin-bottom:10px;}
+#CompareVehicle .RoundedBox .VehicleDetails ul{}
+#CompareVehicle .RoundedBox .VehicleDetails ul li{ background:url(images/dot.gif) no-repeat 0 6px; padding-left:15px; margin-bottom:2px;}
+#CompareVehicle .RoundedBox .PricingAnalytics{ padding:10px 5px;}
+#CompareVehicle .RoundedBox .PricingAnalytics .Price{ font-size:18px; font-weight:bold; text-align:center; margin-bottom:10px;}
+#CompareVehicle .RoundedBox .PricingAnalytics .AvrPrice{ text-align:center; margin-bottom:20px;}
+#CompareVehicle .RoundedBox .PricingAnalytics .AvrPrice span{ font-size:11px;}
+#CompareVehicle .RoundedBox .PricingAnalytics p{ margin-bottom:30px;}
+#CompareVehicle .RoundedBox .PricingAnalytics a{ color:#003078; text-decoration:underline;}
+#CompareVehicle .RoundedBox .PricingAnalytics .MPG{ background:url(images/mpg.png) no-repeat; width:93px; height:33px; margin:0 auto;margin-bottom:15px; position:relative;}
+#CompareVehicle .RoundedBox .PricingAnalytics .MPG .City{ position:absolute; top:15px; left:0px; width:30px; font-weight:bold; text-align:center;}
+#CompareVehicle .RoundedBox .PricingAnalytics .MPG .Hwy{ position:absolute; top:15px; right:5px; width:30px; font-weight:bold; text-align:center;}
+
+#CompareVehicle .RoundedBox .SellerNote{ padding:10px 17px;}
+#CompareVehicle .RoundedBox .SellerNote p{ font-size:11px; line-height:18px; color:#000;}
+#CompareVehicle .RoundedBox .SellerNote a{ color:#a3a3a3;}
+#CompareVehicle .RoundedBox .SellerNote a:hover{ color:#000;}
+#CompareVehicle .RoundedBox .HelpfulLinks{ padding:10px 17px;}
+#CompareVehicle .RoundedBox .HelpfulLinks li{ float:left; width:195px; background:url(images/grey_arrow.gif) no-repeat 0 5px; padding-left:14px; margin-bottom:5px;}
+#CompareVehicle .RoundedBox .HelpfulLinks li a{ display:block; width:125px; border-bottom:1px solid #8098bc; padding-left:7px; color:#003078;}
+#CompareVehicle .Adv_Lft{ padding:10px 0 0 35px;}
+
+#CompareVehicle .Adv_Rht{ padding:10px 45px 0 0px;}
+#CompareVehicle .RoundedBox .Height_255{height:265px}
+#CompareVehicle .RoundedBox .VehiclePhoto{ width:342px; margin:0 auto; padding:10px 15px;} 
+#CompareVehicle .RoundedBox .VehiclePhoto .LargePic{ width:338px; height:225px; padding:1px; border:1px solid #28282a;}
+#CompareVehicle .Column .BtmLogo{ text-align:center; height:72px;}
+#CompareVehicle .Column .BtmLinks{ padding:0 0 0 70px;}
+#CompareVehicle .Column .BtmLinks a{ text-decoration:underline;}
+#CompareVehicle .Column .BtmLinks a:hover{ text-decoration:none;}
+#TabContainer .TabContent .TabDescp .TextContent .LargeText{}
+.ModalPopUpRegister {display:none;border:gray 0px solid;height:86px !important;text-align:center;font-size:16px;padding-top:40px !important;    }
+.ModalPopUpRegister  a{color:Blue !important;}
+
+
+
+.PopupEdrive .firstTimePopUp{border: 2px gray solid !important;
+margin-top: 12px;
+margin-bottom: 12px;
+margin-right: 0px;
+padding-top: 19px !important;
+padding-left: 13px;
+padding-right: 9px;}
+ .PopupEdrive h2{color: #1096FF;font-size: 23px;font-weight: bold;}
+.PopupEdrive .ui-dialog-titlebar {display:none}
+.PopupEdrive{ width: 584px !important;font-size: 15px !important;}
+.modaldialog_firstTimePopUp{background:black  !important;}
+
+.SessionLogOUt{border: 1px solid #CDCDCD; margin: auto; width: 353px;}
+.SessionLogOUt .SessionText{background-color: Black; border: 4px solid white; color: #ADCF6B; font-weight: bold;
+            margin: auto; padding: 9px 13px 9px 23px;}
+.HomePageSearchShadow 
+{
+   box-shadow: 3px 3px 3px gray;-moz-box-shadow: 3px 3px 3px gray;-webkit-box-shadow: 3px 3px 3px gray;
+  /* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+
+   width: 402px;padding: 4px 3px 4px 2px;margin-left: 274px; background-color: yellow;color: black;font-weight: bold;text-align: center;position: relative;top: -26px;
+   }
+   .sortbycolumn{text-decoration:none !important;}
+      
+.green-button {
+	background: url('themes/App_Themes/EDrive/images/submit.png') transparent top left;border: 0px; padding-left: 38px; width: 107px; height: 35px;	cursor: pointer;
+}   
+ 
+.no-results-section {
+	width: 100%;
+	margin: auto;
+}
+.no-results-section .no-results-message {
+	background-color: #EDF5B7;
+	margin: 7px 0;
+	padding: 10px 0;
+	text-align: center;
+	width: 100%;
+}
+.no-results-section .no-results-message p {
+	font-size: 14px;
+	line-height: 1.5;
+}
+.no-results-section .no-results-message p.bold {
+	font-size: 18px;
+	font-weight: bold;
+}
+.no-results-section table {
+	background-color: #D6D6D6;
+    border-spacing: 0;
+    padding: 8px 0;
+    width: 100%;
+}
+.no-results-section table tr td {
+	padding: 7px 10px;
+}   
+.no-results-section .submit-button {
+	width: 100%;
+	text-align: center;
+	margin: 25px 0 10px 0;
+}
+.no-results-section .thank-you-message {
+	margin: 20px;
+	font-size: 20px;
+	text-align: center;
+}
+   
+.registration-popup-window {
+    background-color: #FFFFFF;
+    border: 1px solid #9F9F9F;
+    left: 30%;
+    padding: 10px;
+    position: fixed;
+    text-align: center;
+    top: 40%;
+    width: 700px;
+    z-index: 2000000;	
+}   
+.registration-popup-window p {
+	padding: 10px;
+}
+.registration-popup-window a {
+	margin-top: 10px;
+	font-size: 16px;
+}   
+.darken-modal-bg {
+	background-color: gray;
+    height: 100%;
+    left: 0;
+    opacity: 0.3;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100000;
+}
+
+.product-inner-page .paypal-details-form h2 {
+	margin: 5px 0 20px 5px;
+}
+.product-inner-page .paypal-details-form table tr td {
+    font-size: 13px;
+    padding: 3px 5px;
+}
+.product-inner-page .paypal-details-form table tr td.form-title {
+	font-weight: bold;
+}
+.product-inner-page .paypal-details-form .submit-buttons {
+	margin: 10px 0 10px 0;
+}
+.product-inner-page .paypal-details-form .submit-buttons input {
+	margin: 0 5px;
+	padding: 0 15px;
+}   
+   
+   
+   
+   
+   
+   
+   
+   

@@ -1,0 +1,128 @@
+﻿@model Edrive.Models._Enquiry
+@{
+    ViewBag.Title = "Index";
+}
+@section  head{
+<title>
+	Inquiry
+</title><meta name="metatitle" /><meta name="description" /><meta name="keywords" />
+
+    <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+}
+   <div class="product-inner-page">
+        <div class="divdetail-inner">
+            <div class="clear">
+            </div>
+        </div>
+        <div class="tab-new">
+            <div class="teb-left">
+            </div>
+            <div class="tab-line">
+                <div class="tab-tital">
+                    Inquiry</div>
+            </div>
+            <div class="tab-right">
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear1">
+        </div>
+        <div class="divbottom-home">
+            <div class="divbottomleft-new-top">
+            </div>
+            <div class="divbottommiddetail-new-line-top-inner">
+            </div>
+            <div class="divbottomright-new-top">
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="divinnercontent-home-new-one-innernew-new">
+          
+            <div class="divinnercontent">
+                <div class="wishlist-page">
+                    <div class="page-title">
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div class="body">
+                      <div class="contact-form">
+    <div class="newslist">
+            <div class="subtitlenew" style="font-size:12px;">
+           @(ViewData["Msg"]??"")
+            </div>
+         </div>
+    <div class="clear">
+    </div>
+    <asp:Panel runat="server" ID="pnlResult" Visible="false" CssClass="result">
+        @*<strong>
+            <%=GetLocaleResourceString("ContactUs.YourEnquiryHasBeenSent")%></strong>*@
+    </asp:Panel>
+    <div class="clear">
+    </div>
+    <div class="send-email" runat="server" id="pnlContactUs">
+    @using (Html.BeginForm("Index", "Enquiry"))
+    {<table width="80%"> 
+    <tr>
+        <td class="item-name" width="14%">Full Name:</td>
+        <td class="item-value">
+        @Html.TextBoxFor(m => m.FullName, new { style = "width:250px;"  ,@class="textBox"})
+        </td>
+    </tr>
+    <tr>
+        <td class="item-name" valign="top">Address:</td>
+        <td class="item-value">
+        @Html.TextAreaFor(m => m.Enquiry, new { style = "width:250px;height:120px;", @class="textBox"} )
+
+        </td>
+    </tr>
+    <tr>
+        <td class="item-name" valign="top">Email:</td>
+        <td class="item-value">
+             @Html.TextBoxFor(m => m.Email, new { style = "width:250px;" ,@class="textBox"})
+        </td>
+    </tr>
+    <tr>
+                <td class="item-name">
+                 Phone:
+                </td>
+                <td class="item-value">
+                       @Html.TextBoxFor(m => m.Phone, new { style = "width:250px;", @class = "textBox" })
+                </td>
+            </tr>
+            <tr><td></td><td></td></tr>
+            <tr><td></td><td></td></tr>
+            <tr><td></td><td></td></tr>
+            <tr>
+                <td colspan="2">
+                <input   type="submit" style="border:0px;font-weight:normal" class="lnkbuttonreg" value="Submit" />
+
+                </td>
+                
+            </tr>
+    </table>
+    }
+             
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        <div class="divbottom-home">
+            <div class="divbottomleft-new">
+            </div>
+            <div class="divbottommiddetail-new-line-inner">
+            </div>
+            <div class="divbottomright-new">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>

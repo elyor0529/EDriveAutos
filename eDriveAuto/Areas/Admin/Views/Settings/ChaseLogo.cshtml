@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "ChaseLogo";
+}
+@section Head{
+    <script type="text/javascript">
+        function checkImage() {
+            if ($("#fupLogo").val() == "") {
+                alert("--Please select an image to upload--");
+                return false;
+            }
+            var ext = $('#fupLogo').val().split('.').pop().toLowerCase();
+            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                alert('invalid extension!');
+                return false;
+            }
+        }
+    </script>
+}
+<h2>
+    ChaseLogo</h2>
+<div>
+</div>
+@using (Html.BeginForm("ChaseLogo","Settings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="color:red;text-align:center">
+    @(ViewData["Msg"]??"")
+    </div>
+    <div>
+        <a href="/Admin/Settings/">Back to Settings</a>
+    </div>
+    <br/>
+    <div class="SettingsChase" style="">
+        <table>
+            <tr>
+                <td class="first">
+                    Logo
+                </td>
+                <td class="second">
+                    @if (ViewData["Chase"] != null)
+                    {
+                        <img src="@ViewData["Chase"].ToString()" alt="chaseimage" />            
+                    }
+                    <br />
+                    <input type="file" name="fupLogo" id="fupLogo" />
+                </td>
+            </tr>
+            <tr>
+                <td class="first">
+                </td>
+                <td class="second">
+                    <input type="submit" value="Save" onclick="return checkImage()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+}

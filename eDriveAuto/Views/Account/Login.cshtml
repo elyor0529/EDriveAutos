@@ -1,0 +1,55 @@
+﻿@model Edrive.Models.LogOnModel
+@{
+    ViewBag.Title = "Log On";
+}
+@section container{
+
+    <p>
+        Please enter your user name and password. @Html.ActionLink("Register", "Register")
+        if you don't have an account.
+    </p>
+    @using (Html.BeginForm("LogIn", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.ValidationSummary(true, "Log on was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-block alert-error" })
+        <fieldset>
+            <legend>Login Information</legend>
+            <div class="control-group">
+                <div class="control-label">
+                    @Html.LabelFor(m => m.UserName)
+                </div>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "required" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    @Html.LabelFor(m => m.Password)
+                </div>
+                <div class="controls">
+                    @Html.PasswordFor(m => m.Password, new { @class = "required" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+                <div class="controls">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                </div>
+            </div>
+            <div class="form-actions">
+                <input type="submit" value="Log On" class="btn btn-primary" />
+                <a href="#">I forgot my password</a>
+            </div>
+        </fieldset>
+    }
+}
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+

@@ -1,0 +1,1598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Edrive_Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://dev.edriveautos.com/EdriveDataService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://dev.edriveautos.com/EdriveDataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://dev.edriveautos.com/EdriveDataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" />
+      <xsd:import schemaLocation="http://dev.edriveautos.com/EdriveDataService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEdrive_Service_AddDealer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDealer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddDealer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDealerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UpdatePassword_for_Dealer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword_for_Dealer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UpdatePassword_for_Dealer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword_for_DealerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Update_Dealer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Dealer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Update_Dealer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_DealerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UpdateAdmin_InfoDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAdmin_InfoDetails" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UpdateAdmin_InfoDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAdmin_InfoDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Update_Dealer_Personal_Details_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Dealer_Personal_Details" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Update_Dealer_Personal_Details_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Dealer_Personal_DetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetED_ZipCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetED_ZipCodes" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetED_ZipCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetED_ZipCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetHotSheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotSheet" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetHotSheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotSheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Authenticate_Dealer_or_Admin_InputMessage">
+    <wsdl:part name="parameters" element="tns:Authenticate_Dealer_or_Admin" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Authenticate_Dealer_or_Admin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Authenticate_Dealer_or_AdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerByDealerEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerByDealerEmail" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerByDealerEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerByDealerEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerByDealerID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerByDealerID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerByDealerID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerByDealerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealer_Profile_ByDealerID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealer_Profile_ByDealerID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealer_Profile_ByDealerID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealer_Profile_ByDealerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetSellerCount_for_HotSheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSellerCount_for_HotSheet" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetSellerCount_for_HotSheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSellerCount_for_HotSheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchDealer_For_ManagDealerSection_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDealer_For_ManagDealerSection" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchDealer_For_ManagDealerSection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDealer_For_ManagDealerSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IsDealerExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsDealerExists" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IsDealerExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsDealerExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Is_other_DealerExist_for_same_email_InputMessage">
+    <wsdl:part name="parameters" element="tns:Is_other_DealerExist_for_same_email" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Is_other_DealerExist_for_same_email_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Is_other_DealerExist_for_same_emailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IntrestedCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:IntrestedCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IntrestedCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IntrestedCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_Dealer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Dealer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_Dealer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_DealerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_Dealer_Profile_PageImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Dealer_Profile_PageImage" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_Dealer_Profile_PageImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Dealer_Profile_PageImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_Dealer_Profile_Logo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Dealer_Profile_Logo" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_Dealer_Profile_Logo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_Dealer_Profile_LogoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchProductBy_Make_Model_City_Zip_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBy_Make_Model_City_Zip" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchProductBy_Make_Model_City_Zip_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBy_Make_Model_City_ZipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchProductBy_Make_Model_City_Zip_Count_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBy_Make_Model_City_Zip_Count" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchProductBy_Make_Model_City_Zip_Count_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProductBy_Make_Model_City_Zip_CountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_TotalVehicles_Count_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_TotalVehicles_Count" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_TotalVehicles_Count_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_TotalVehicles_CountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_TotalDealers_Count_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_TotalDealers_Count" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_TotalDealers_Count_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_TotalDealers_CountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_InterestedCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_InterestedCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_InterestedCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_InterestedCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_InterestedCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_InterestedCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Delete_InterestedCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Delete_InterestedCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchCars_for_home_Page_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCars_for_home_Page" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchCars_for_home_Page_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCars_for_home_PageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerGUID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductByIDs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByIDs" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductByIDs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_FeaturedVehicles_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_FeaturedVehicles" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_FeaturedVehicles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_FeaturedVehiclesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IsProductExist_by_VIN_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsProductExist_by_VIN" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IsProductExist_by_VIN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsProductExist_by_VINResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IsProductExist_by_VIN_for_other_vehicle_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsProductExist_by_VIN_for_other_vehicle" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_IsProductExist_by_VIN_for_other_vehicle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsProductExist_by_VIN_for_other_vehicleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductsByDealerID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByDealerID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductsByDealerID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByDealerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductOptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductOptions" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductOptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAllProductOptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductOptions" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAllProductOptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAllProductOptions_By_ProductID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductOptions_By_ProductID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAllProductOptions_By_ProductID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductOptions_By_ProductIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddPicsToProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPicsToProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddPicsToProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPicsToProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetMakeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMakeById" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetMakeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMakeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetBodybyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBodybyId" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetBodybyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBodybyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetModelbyId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetModelbyId" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetModelbyId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetModelbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerbyProductID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerbyProductID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealerbyProductID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerbyProductIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchProduct_for_ManageProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProduct_for_ManageProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchProduct_for_ManageProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProduct_for_ManageProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealers" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealers_for_ManageProoduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealers_for_ManageProoduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDealers_for_ManageProoduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealers_for_ManageProoductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_DeleteProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_DeleteProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_Count_SearchProduct_for_ManageProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Count_SearchProduct_for_ManageProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_Count_SearchProduct_for_ManageProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Count_SearchProduct_for_ManageProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_ApproveProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveProducts" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_ApproveProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_QualifyPriceofProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:QualifyPriceofProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_QualifyPriceofProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QualifyPriceofProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductPicture_By_ProductID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductPicture_By_ProductID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductPicture_By_ProductID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductPicture_By_ProductIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UpdateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UpdateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Update_Product_Picture_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Product_Picture" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Update_Product_Picture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Product_PictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountry" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetStateByCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateByCountry" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetStateByCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateByCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetState_Detail_By_StateID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetState_Detail_By_StateID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetState_Detail_By_StateID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetState_Detail_By_StateIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_MakeDealer_as_FeaturedDealer_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeDealer_as_FeaturedDealer" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_MakeDealer_as_FeaturedDealer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeDealer_as_FeaturedDealerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_Dealers_FeaturedVehicle_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Dealers_FeaturedVehicle" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Get_Dealers_FeaturedVehicle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_Dealers_FeaturedVehicleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UploadOnCarfax_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadOnCarfax" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_UploadOnCarfax_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadOnCarfaxResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_DownloadFromCarfax_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFromCarfax" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_DownloadFromCarfax_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFromCarfaxResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Data_Import_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Data_Import_Update" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Data_Import_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Data_Import_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromAutoBase_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromAutoBase" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromAutoBase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromAutoBaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromGetAuto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromGetAuto" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromGetAuto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromGetAutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromSchumacher_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromSchumacher" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromSchumacher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromSchumacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromAULtec_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromAULtec" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetDataFromAULtec_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromAULtecResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchCars_Count_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCars_Count" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchCars_Count_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCars_CountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchCars_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCars" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_SearchCars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_searchProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_searchProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Qualify_All_Products_InputMessage">
+    <wsdl:part name="parameters" element="tns:Qualify_All_Products" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Qualify_All_Products_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Qualify_All_ProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Qualify_All_Products_to_RecoverDeletedProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:Qualify_All_Products_to_RecoverDeletedProducts" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_Qualify_All_Products_to_RecoverDeletedProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Qualify_All_Products_to_RecoverDeletedProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductUsingNadaService_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductUsingNadaService" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductUsingNadaService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductUsingNadaServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProduct" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductRating_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductRating" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductRating_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductRating_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductRating" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductRating_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductPicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductPicture" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_AddProductPicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductPictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAdvancedSearchProducts_Count_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvancedSearchProducts_Count" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAdvancedSearchProducts_Count_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvancedSearchProducts_CountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAdvancedSearchProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvancedSearchProducts" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetAdvancedSearchProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvancedSearchProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindDriveType_InputMessage">
+    <wsdl:part name="parameters" element="tns:BindDriveType" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindDriveType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BindDriveTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindModel_InputMessage">
+    <wsdl:part name="parameters" element="tns:BindModel" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindModel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BindModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindMake_InputMessage">
+    <wsdl:part name="parameters" element="tns:BindMake" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindMake_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BindMakeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_bindMakeAttributes_InputMessage">
+    <wsdl:part name="parameters" element="tns:bindMakeAttributes" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_bindMakeAttributes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:bindMakeAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_bindtypeAttributes_InputMessage">
+    <wsdl:part name="parameters" element="tns:bindtypeAttributes" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_bindtypeAttributes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:bindtypeAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindBodyType_InputMessage">
+    <wsdl:part name="parameters" element="tns:BindBodyType" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_BindBodyType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BindBodyTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetTransmission_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransmission" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetTransmission_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransmissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetEngine_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEngine" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetEngine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEngineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByID" />
+  </wsdl:message>
+  <wsdl:message name="IEdrive_Service_GetProductByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEdrive_Service">
+    <wsdl:operation name="AddDealer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/AddDealer" message="tns:IEdrive_Service_AddDealer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/AddDealerResponse" message="tns:IEdrive_Service_AddDealer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword_for_Dealer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/UpdatePassword_for_Dealer" message="tns:IEdrive_Service_UpdatePassword_for_Dealer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/UpdatePassword_for_DealerResponse" message="tns:IEdrive_Service_UpdatePassword_for_Dealer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Dealer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Update_Dealer" message="tns:IEdrive_Service_Update_Dealer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Update_DealerResponse" message="tns:IEdrive_Service_Update_Dealer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdmin_InfoDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/UpdateAdmin_InfoDetails" message="tns:IEdrive_Service_UpdateAdmin_InfoDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/UpdateAdmin_InfoDetailsResponse" message="tns:IEdrive_Service_UpdateAdmin_InfoDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Dealer_Personal_Details">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Update_Dealer_Personal_Details" message="tns:IEdrive_Service_Update_Dealer_Personal_Details_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Update_Dealer_Personal_DetailsResponse" message="tns:IEdrive_Service_Update_Dealer_Personal_Details_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetED_ZipCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetED_ZipCodes" message="tns:IEdrive_Service_GetED_ZipCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetED_ZipCodesResponse" message="tns:IEdrive_Service_GetED_ZipCodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotSheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetHotSheet" message="tns:IEdrive_Service_GetHotSheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetHotSheetResponse" message="tns:IEdrive_Service_GetHotSheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate_Dealer_or_Admin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Authenticate_Dealer_or_Admin" message="tns:IEdrive_Service_Authenticate_Dealer_or_Admin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Authenticate_Dealer_or_AdminResponse" message="tns:IEdrive_Service_Authenticate_Dealer_or_Admin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerByDealerEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerByDealerEmail" message="tns:IEdrive_Service_GetDealerByDealerEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerByDealerEmailResponse" message="tns:IEdrive_Service_GetDealerByDealerEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerByDealerID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerByDealerID" message="tns:IEdrive_Service_GetDealerByDealerID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerByDealerIDResponse" message="tns:IEdrive_Service_GetDealerByDealerID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealer_Profile_ByDealerID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealer_Profile_ByDealerID" message="tns:IEdrive_Service_GetDealer_Profile_ByDealerID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealer_Profile_ByDealerIDResponse" message="tns:IEdrive_Service_GetDealer_Profile_ByDealerID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSellerCount_for_HotSheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetSellerCount_for_HotSheet" message="tns:IEdrive_Service_GetSellerCount_for_HotSheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetSellerCount_for_HotSheetResponse" message="tns:IEdrive_Service_GetSellerCount_for_HotSheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDealer_For_ManagDealerSection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/SearchDealer_For_ManagDealerSection" message="tns:IEdrive_Service_SearchDealer_For_ManagDealerSection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/SearchDealer_For_ManagDealerSectionResponse" message="tns:IEdrive_Service_SearchDealer_For_ManagDealerSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsDealerExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/IsDealerExists" message="tns:IEdrive_Service_IsDealerExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/IsDealerExistsResponse" message="tns:IEdrive_Service_IsDealerExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Is_other_DealerExist_for_same_email">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Is_other_DealerExist_for_same_email" message="tns:IEdrive_Service_Is_other_DealerExist_for_same_email_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Is_other_DealerExist_for_same_emailResponse" message="tns:IEdrive_Service_Is_other_DealerExist_for_same_email_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IntrestedCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/IntrestedCustomer" message="tns:IEdrive_Service_IntrestedCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/IntrestedCustomerResponse" message="tns:IEdrive_Service_IntrestedCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Dealer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_Dealer" message="tns:IEdrive_Service_Delete_Dealer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_DealerResponse" message="tns:IEdrive_Service_Delete_Dealer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Dealer_Profile_PageImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_Dealer_Profile_PageImage" message="tns:IEdrive_Service_Delete_Dealer_Profile_PageImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_Dealer_Profile_PageImageResponse" message="tns:IEdrive_Service_Delete_Dealer_Profile_PageImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Dealer_Profile_Logo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_Dealer_Profile_Logo" message="tns:IEdrive_Service_Delete_Dealer_Profile_Logo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_Dealer_Profile_LogoResponse" message="tns:IEdrive_Service_Delete_Dealer_Profile_Logo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductBy_Make_Model_City_Zip">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/SearchProductBy_Make_Model_City_Zip" message="tns:IEdrive_Service_SearchProductBy_Make_Model_City_Zip_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/SearchProductBy_Make_Model_City_ZipResponse" message="tns:IEdrive_Service_SearchProductBy_Make_Model_City_Zip_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductBy_Make_Model_City_Zip_Count">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/SearchProductBy_Make_Model_City_Zip_Count" message="tns:IEdrive_Service_SearchProductBy_Make_Model_City_Zip_Count_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/SearchProductBy_Make_Model_City_Zip_CountResponse" message="tns:IEdrive_Service_SearchProductBy_Make_Model_City_Zip_Count_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_TotalVehicles_Count">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Get_TotalVehicles_Count" message="tns:IEdrive_Service_Get_TotalVehicles_Count_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Get_TotalVehicles_CountResponse" message="tns:IEdrive_Service_Get_TotalVehicles_Count_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_TotalDealers_Count">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Get_TotalDealers_Count" message="tns:IEdrive_Service_Get_TotalDealers_Count_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Get_TotalDealers_CountResponse" message="tns:IEdrive_Service_Get_TotalDealers_Count_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_InterestedCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Get_InterestedCustomer" message="tns:IEdrive_Service_Get_InterestedCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Get_InterestedCustomerResponse" message="tns:IEdrive_Service_Get_InterestedCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_InterestedCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_InterestedCustomer" message="tns:IEdrive_Service_Delete_InterestedCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Delete_InterestedCustomerResponse" message="tns:IEdrive_Service_Delete_InterestedCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCars_for_home_Page">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/SearchCars_for_home_Page" message="tns:IEdrive_Service_SearchCars_for_home_Page_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/SearchCars_for_home_PageResponse" message="tns:IEdrive_Service_SearchCars_for_home_Page_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerGUID" message="tns:IEdrive_Service_GetDealerGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerGUIDResponse" message="tns:IEdrive_Service_GetDealerGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByIDs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductByIDs" message="tns:IEdrive_Service_GetProductByIDs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductByIDsResponse" message="tns:IEdrive_Service_GetProductByIDs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_FeaturedVehicles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Get_FeaturedVehicles" message="tns:IEdrive_Service_Get_FeaturedVehicles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Get_FeaturedVehiclesResponse" message="tns:IEdrive_Service_Get_FeaturedVehicles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsProductExist_by_VIN">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/IsProductExist_by_VIN" message="tns:IEdrive_Service_IsProductExist_by_VIN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/IsProductExist_by_VINResponse" message="tns:IEdrive_Service_IsProductExist_by_VIN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsProductExist_by_VIN_for_other_vehicle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/IsProductExist_by_VIN_for_other_vehicle" message="tns:IEdrive_Service_IsProductExist_by_VIN_for_other_vehicle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/IsProductExist_by_VIN_for_other_vehicleResponse" message="tns:IEdrive_Service_IsProductExist_by_VIN_for_other_vehicle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByDealerID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductsByDealerID" message="tns:IEdrive_Service_GetProductsByDealerID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductsByDealerIDResponse" message="tns:IEdrive_Service_GetProductsByDealerID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductOptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductOptions" message="tns:IEdrive_Service_AddProductOptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductOptionsResponse" message="tns:IEdrive_Service_AddProductOptions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductOptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetAllProductOptions" message="tns:IEdrive_Service_GetAllProductOptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetAllProductOptionsResponse" message="tns:IEdrive_Service_GetAllProductOptions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductOptions_By_ProductID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetAllProductOptions_By_ProductID" message="tns:IEdrive_Service_GetAllProductOptions_By_ProductID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetAllProductOptions_By_ProductIDResponse" message="tns:IEdrive_Service_GetAllProductOptions_By_ProductID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPicsToProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/AddPicsToProduct" message="tns:IEdrive_Service_AddPicsToProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/AddPicsToProductResponse" message="tns:IEdrive_Service_AddPicsToProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMakeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetMakeById" message="tns:IEdrive_Service_GetMakeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetMakeByIdResponse" message="tns:IEdrive_Service_GetMakeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBodybyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetBodybyId" message="tns:IEdrive_Service_GetBodybyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetBodybyIdResponse" message="tns:IEdrive_Service_GetBodybyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetModelbyId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetModelbyId" message="tns:IEdrive_Service_GetModelbyId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetModelbyIdResponse" message="tns:IEdrive_Service_GetModelbyId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerbyProductID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerbyProductID" message="tns:IEdrive_Service_GetDealerbyProductID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealerbyProductIDResponse" message="tns:IEdrive_Service_GetDealerbyProductID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProduct_for_ManageProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/SearchProduct_for_ManageProduct" message="tns:IEdrive_Service_SearchProduct_for_ManageProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/SearchProduct_for_ManageProductResponse" message="tns:IEdrive_Service_SearchProduct_for_ManageProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealers" message="tns:IEdrive_Service_GetDealers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealersResponse" message="tns:IEdrive_Service_GetDealers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealers_for_ManageProoduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealers_for_ManageProoduct" message="tns:IEdrive_Service_GetDealers_for_ManageProoduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDealers_for_ManageProoductResponse" message="tns:IEdrive_Service_GetDealers_for_ManageProoduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/DeleteProduct" message="tns:IEdrive_Service_DeleteProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/DeleteProductResponse" message="tns:IEdrive_Service_DeleteProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Count_SearchProduct_for_ManageProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Get_Count_SearchProduct_for_ManageProduct" message="tns:IEdrive_Service_Get_Count_SearchProduct_for_ManageProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Get_Count_SearchProduct_for_ManageProductResponse" message="tns:IEdrive_Service_Get_Count_SearchProduct_for_ManageProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/ApproveProducts" message="tns:IEdrive_Service_ApproveProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/ApproveProductsResponse" message="tns:IEdrive_Service_ApproveProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QualifyPriceofProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/QualifyPriceofProduct" message="tns:IEdrive_Service_QualifyPriceofProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/QualifyPriceofProductResponse" message="tns:IEdrive_Service_QualifyPriceofProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductPicture_By_ProductID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductPicture_By_ProductID" message="tns:IEdrive_Service_GetProductPicture_By_ProductID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductPicture_By_ProductIDResponse" message="tns:IEdrive_Service_GetProductPicture_By_ProductID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/UpdateProduct" message="tns:IEdrive_Service_UpdateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/UpdateProductResponse" message="tns:IEdrive_Service_UpdateProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Product_Picture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Update_Product_Picture" message="tns:IEdrive_Service_Update_Product_Picture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Update_Product_PictureResponse" message="tns:IEdrive_Service_Update_Product_Picture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetCountry" message="tns:IEdrive_Service_GetCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetCountryResponse" message="tns:IEdrive_Service_GetCountry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStateByCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetStateByCountry" message="tns:IEdrive_Service_GetStateByCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetStateByCountryResponse" message="tns:IEdrive_Service_GetStateByCountry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetState_Detail_By_StateID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetState_Detail_By_StateID" message="tns:IEdrive_Service_GetState_Detail_By_StateID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetState_Detail_By_StateIDResponse" message="tns:IEdrive_Service_GetState_Detail_By_StateID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeDealer_as_FeaturedDealer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/MakeDealer_as_FeaturedDealer" message="tns:IEdrive_Service_MakeDealer_as_FeaturedDealer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/MakeDealer_as_FeaturedDealerResponse" message="tns:IEdrive_Service_MakeDealer_as_FeaturedDealer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Dealers_FeaturedVehicle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Get_Dealers_FeaturedVehicle" message="tns:IEdrive_Service_Get_Dealers_FeaturedVehicle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Get_Dealers_FeaturedVehicleResponse" message="tns:IEdrive_Service_Get_Dealers_FeaturedVehicle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadOnCarfax">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/UploadOnCarfax" message="tns:IEdrive_Service_UploadOnCarfax_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/UploadOnCarfaxResponse" message="tns:IEdrive_Service_UploadOnCarfax_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFromCarfax">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/DownloadFromCarfax" message="tns:IEdrive_Service_DownloadFromCarfax_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/DownloadFromCarfaxResponse" message="tns:IEdrive_Service_DownloadFromCarfax_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Data_Import_Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Data_Import_Update" message="tns:IEdrive_Service_Data_Import_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Data_Import_UpdateResponse" message="tns:IEdrive_Service_Data_Import_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromAutoBase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromAutoBase" message="tns:IEdrive_Service_GetDataFromAutoBase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromAutoBaseResponse" message="tns:IEdrive_Service_GetDataFromAutoBase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromGetAuto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromGetAuto" message="tns:IEdrive_Service_GetDataFromGetAuto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromGetAutoResponse" message="tns:IEdrive_Service_GetDataFromGetAuto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromSchumacher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromSchumacher" message="tns:IEdrive_Service_GetDataFromSchumacher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromSchumacherResponse" message="tns:IEdrive_Service_GetDataFromSchumacher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromAULtec">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromAULtec" message="tns:IEdrive_Service_GetDataFromAULtec_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetDataFromAULtecResponse" message="tns:IEdrive_Service_GetDataFromAULtec_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCars_Count">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/SearchCars_Count" message="tns:IEdrive_Service_SearchCars_Count_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/SearchCars_CountResponse" message="tns:IEdrive_Service_SearchCars_Count_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCars">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/SearchCars" message="tns:IEdrive_Service_SearchCars_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/SearchCarsResponse" message="tns:IEdrive_Service_SearchCars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/searchProduct" message="tns:IEdrive_Service_searchProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/searchProductResponse" message="tns:IEdrive_Service_searchProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Qualify_All_Products">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Qualify_All_Products" message="tns:IEdrive_Service_Qualify_All_Products_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Qualify_All_ProductsResponse" message="tns:IEdrive_Service_Qualify_All_Products_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Qualify_All_Products_to_RecoverDeletedProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/Qualify_All_Products_to_RecoverDeletedProducts" message="tns:IEdrive_Service_Qualify_All_Products_to_RecoverDeletedProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/Qualify_All_Products_to_RecoverDeletedProductsResponse" message="tns:IEdrive_Service_Qualify_All_Products_to_RecoverDeletedProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductUsingNadaService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductUsingNadaService" message="tns:IEdrive_Service_AddProductUsingNadaService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductUsingNadaServiceResponse" message="tns:IEdrive_Service_AddProductUsingNadaService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/AddProduct" message="tns:IEdrive_Service_AddProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductResponse" message="tns:IEdrive_Service_AddProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductRating">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductRating" message="tns:IEdrive_Service_GetProductRating_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductRatingResponse" message="tns:IEdrive_Service_GetProductRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductRating">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductRating" message="tns:IEdrive_Service_AddProductRating_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductRatingResponse" message="tns:IEdrive_Service_AddProductRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductPicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductPicture" message="tns:IEdrive_Service_AddProductPicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/AddProductPictureResponse" message="tns:IEdrive_Service_AddProductPicture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedSearchProducts_Count">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetAdvancedSearchProducts_Count" message="tns:IEdrive_Service_GetAdvancedSearchProducts_Count_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetAdvancedSearchProducts_CountResponse" message="tns:IEdrive_Service_GetAdvancedSearchProducts_Count_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedSearchProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetAdvancedSearchProducts" message="tns:IEdrive_Service_GetAdvancedSearchProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetAdvancedSearchProductsResponse" message="tns:IEdrive_Service_GetAdvancedSearchProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BindDriveType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/BindDriveType" message="tns:IEdrive_Service_BindDriveType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/BindDriveTypeResponse" message="tns:IEdrive_Service_BindDriveType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BindModel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/BindModel" message="tns:IEdrive_Service_BindModel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/BindModelResponse" message="tns:IEdrive_Service_BindModel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BindMake">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/BindMake" message="tns:IEdrive_Service_BindMake_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/BindMakeResponse" message="tns:IEdrive_Service_BindMake_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="bindMakeAttributes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/bindMakeAttributes" message="tns:IEdrive_Service_bindMakeAttributes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/bindMakeAttributesResponse" message="tns:IEdrive_Service_bindMakeAttributes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="bindtypeAttributes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/bindtypeAttributes" message="tns:IEdrive_Service_bindtypeAttributes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/bindtypeAttributesResponse" message="tns:IEdrive_Service_bindtypeAttributes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BindBodyType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/BindBodyType" message="tns:IEdrive_Service_BindBodyType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/BindBodyTypeResponse" message="tns:IEdrive_Service_BindBodyType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransmission">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetTransmission" message="tns:IEdrive_Service_GetTransmission_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetTransmissionResponse" message="tns:IEdrive_Service_GetTransmission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEngine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetEngine" message="tns:IEdrive_Service_GetEngine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetEngineResponse" message="tns:IEdrive_Service_GetEngine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductByID" message="tns:IEdrive_Service_GetProductByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEdrive_Service/GetProductByIDResponse" message="tns:IEdrive_Service_GetProductByID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EdriveService" type="tns:IEdrive_Service">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddDealer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/AddDealer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword_for_Dealer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/UpdatePassword_for_Dealer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Dealer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Update_Dealer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdmin_InfoDetails">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/UpdateAdmin_InfoDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Dealer_Personal_Details">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Update_Dealer_Personal_Details" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetED_ZipCodes">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetED_ZipCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotSheet">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetHotSheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate_Dealer_or_Admin">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Authenticate_Dealer_or_Admin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerByDealerEmail">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDealerByDealerEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerByDealerID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDealerByDealerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealer_Profile_ByDealerID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDealer_Profile_ByDealerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSellerCount_for_HotSheet">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetSellerCount_for_HotSheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDealer_For_ManagDealerSection">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/SearchDealer_For_ManagDealerSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsDealerExists">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/IsDealerExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Is_other_DealerExist_for_same_email">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Is_other_DealerExist_for_same_email" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IntrestedCustomer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/IntrestedCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Dealer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Delete_Dealer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Dealer_Profile_PageImage">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Delete_Dealer_Profile_PageImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Dealer_Profile_Logo">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Delete_Dealer_Profile_Logo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductBy_Make_Model_City_Zip">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/SearchProductBy_Make_Model_City_Zip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProductBy_Make_Model_City_Zip_Count">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/SearchProductBy_Make_Model_City_Zip_Count" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_TotalVehicles_Count">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Get_TotalVehicles_Count" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_TotalDealers_Count">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Get_TotalDealers_Count" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_InterestedCustomer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Get_InterestedCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_InterestedCustomer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Delete_InterestedCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCars_for_home_Page">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/SearchCars_for_home_Page" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerGUID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDealerGUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByIDs">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetProductByIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_FeaturedVehicles">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Get_FeaturedVehicles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsProductExist_by_VIN">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/IsProductExist_by_VIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsProductExist_by_VIN_for_other_vehicle">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/IsProductExist_by_VIN_for_other_vehicle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByDealerID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetProductsByDealerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductOptions">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/AddProductOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductOptions">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetAllProductOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductOptions_By_ProductID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetAllProductOptions_By_ProductID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPicsToProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/AddPicsToProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMakeById">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetMakeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBodybyId">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetBodybyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetModelbyId">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetModelbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerbyProductID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDealerbyProductID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProduct_for_ManageProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/SearchProduct_for_ManageProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealers">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDealers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealers_for_ManageProoduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDealers_for_ManageProoduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/DeleteProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Count_SearchProduct_for_ManageProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Get_Count_SearchProduct_for_ManageProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveProducts">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/ApproveProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QualifyPriceofProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/QualifyPriceofProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductPicture_By_ProductID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetProductPicture_By_ProductID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/UpdateProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Product_Picture">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Update_Product_Picture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountry">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStateByCountry">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetStateByCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetState_Detail_By_StateID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetState_Detail_By_StateID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeDealer_as_FeaturedDealer">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/MakeDealer_as_FeaturedDealer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Dealers_FeaturedVehicle">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Get_Dealers_FeaturedVehicle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadOnCarfax">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/UploadOnCarfax" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFromCarfax">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/DownloadFromCarfax" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Data_Import_Update">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Data_Import_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromAutoBase">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDataFromAutoBase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromGetAuto">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDataFromGetAuto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromSchumacher">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDataFromSchumacher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromAULtec">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetDataFromAULtec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCars_Count">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/SearchCars_Count" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCars">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/SearchCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/searchProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Qualify_All_Products">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Qualify_All_Products" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Qualify_All_Products_to_RecoverDeletedProducts">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/Qualify_All_Products_to_RecoverDeletedProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductUsingNadaService">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/AddProductUsingNadaService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/AddProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductRating">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetProductRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductRating">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/AddProductRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductPicture">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/AddProductPicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedSearchProducts_Count">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetAdvancedSearchProducts_Count" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedSearchProducts">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetAdvancedSearchProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindDriveType">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/BindDriveType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindModel">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/BindModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindMake">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/BindMake" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bindMakeAttributes">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/bindMakeAttributes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bindtypeAttributes">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/bindtypeAttributes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BindBodyType">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/BindBodyType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransmission">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetTransmission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEngine">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetEngine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByID">
+      <soap:operation soapAction="http://tempuri.org/IEdrive_Service/GetProductByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Edrive_Service">
+    <wsdl:port name="EdriveService" binding="tns:EdriveService">
+      <soap:address location="http://dev.edriveautos.com/EdriveDataService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

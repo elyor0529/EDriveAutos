@@ -1,0 +1,16 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System.Configuration;
+
+namespace <#= Model.Namespace #>.Security
+{
+    public class MonitoringSection : ConfigurationSection
+    {
+        [ConfigurationProperty("exceptionsEmail", IsRequired = true)]
+        public string EmailAddress
+        {
+            get { return (string)base["exceptionsEmail"]; }
+            set { base["exceptionsEmail"] = value; }
+        }
+    }
+}

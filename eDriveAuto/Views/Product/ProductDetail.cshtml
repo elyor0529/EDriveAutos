@@ -1,0 +1,771 @@
+﻿@model Edrive.Core.Model.Products
+@section Head{
+    <link href="@Url.Content("~/Content/jquery.lightbox-0.5.css")" rel="stylesheet" type="text/css" />
+   <script src="@Url.Content("~/Scripts/jquery.lightbox-0.5.min.js")" type="text/javascript"></script>
+@*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+*@
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.carousel.min.js")"></script>
+    <script src="/Scripts/jquery.floatobject-1.0.js" type="text/javascript"></script>
+    @if(User.Identity.IsAuthenticated)
+    {if( User.IsInRole("Guest"))
+    {<script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function ShowFullRegisterPopUp() {
+            $("#ModalPopUpRegister").dialog();
+         }
+    </script>
+        }
+        }
+    <script type="text/javascript">
+        $(function () {
+           
+            $("#showCountdownDiv").makeFloat({ x: "current", y: "current" });
+        });
+    </script>
+     <script type="text/javascript">
+         $(document).ready(function () {
+             var top = Math.floor($(window).height() / 2);
+             $("#showCountdownDiv").css("top", top + 35 + "px");
+         });
+    </script>
+@* <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.tinywatermark-2.1.0.min.js")"></script>*@
+ @* <script src="/Scripts/jquery.raty.js" type="text/javascript"></script>*@
+  @*  <script src="../../Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>*@
+ @* <script type="text/javascript">
+      $(document).ready(function () {
+          //  To show product Ratings
+          $('#star').raty({
+          start: @(ViewData["Rating"]), 
+              click: function (score, evt) {
+
+                  var hidProductId = $("input[type='hidden'][name='hidProductId']").val();
+                 
+
+
+                  $.post("/Product/AddRating", { score: score, id: hidProductId }, function (data) {
+                     
+                  }, "json");
+
+                 $('#star').raty('readOnly', true);
+                  //alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+              }
+          });
+      });
+     </script>*@
+
+@*<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.prettyPhoto.js")"></script>*@
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.carouFredSel-5.5.0-packed.js")"></script>
+<link href="@Url.Content("~/Content/prettyPhoto.css")" rel="stylesheet" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+
+<link rel="stylesheet" type="text/css" href="/Content/carousel_css/example1.css" />
+@*<script type="text/javascript" src="/Scripts/jMyCarousel.js"></script>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+//        $(".Tabs a").mouseover(function () {
+//            var rel = $(this).attr("rel");
+//            var relID = rel.split('_');
+//            var getID = relID[1];
+//            $(".Tabs a").removeClass("active");
+//            $(this).addClass("active");
+//            $(".TabContent").find(".TabDescp").hide();
+//            $(".TabContent").find("#ID_" + [getID]).show();
+//        });
+
+        $("#ThirdBox .Tab_02").click(function () {
+
+            $(this).parent(".BoxTabs").addClass("Tab_Second");
+            $(this).parents("#ThirdBox").find(".ContactDeal").hide();
+            $(this).parents("#ThirdBox").find(".DealProfile").show();
+           
+            $(this).parents().find("span a .active").removeClass("active");
+            $(this).first("span a").addClass("active");
+        });
+
+        $("#ThirdBox .Tab_01").click(function () {
+            $(this).parent(".BoxTabs").removeClass("Tab_Second");
+            $(this).parents("#ThirdBox").find(".DealProfile").hide();
+            $(this).parents("#ThirdBox").find(".ContactDeal").show();
+        });
+    });
+
+//    $(function () {
+//        $("div.CarousalArea").carousel({
+//            loop: false,
+//            dispItems: 4,
+//            autoSlide: true,
+//            scroll: {
+//                duration: 5000
+//            }
+//        });
+//    });
+
+//		$(function() {
+//		    $("div.CarousalArea").jMyCarousel({
+//		        visible: '50%',
+//                auto:true
+//		    });
+//		});
+// 
+
+
+
+   
+
+    </script>
+<script type="text/javascript">
+    $(function () {
+        $("div.CaraousArea").carousel({
+            loop: false,
+            dispItems: 4,
+            autoSlide: false,
+            animSpeed: 'slow',
+             effect:"slide"
+        });
+    });
+
+    $(function () {
+        $("div.ThumbCarousal").carousel({
+            loop: false,
+            dispItems: 4,
+            autoSlide: true
+        });
+    });
+
+</script>
+    <script src="@Url.Content("~/Scripts/jquery.countdown.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/jquery.countdown.css")" rel="stylesheet" type="text/css" />
+     <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+ 
+@*<script language="javascript" type="text/javascript">
+
+    $(document).ready(function () {
+        $("#imgPopup").click(function () {
+            $("#pnlMSRP").show();
+        });
+        $("#btnCloseMSRP").click(function () {
+            $("#pnlMSRP").hide();
+        });
+
+        $("#Panel1").hide();
+
+        $("#lnkPopup").click(function () {
+            $("#Panel1").show();
+        });
+        $("#btnPopupCloseOne").click(function () {
+            $("#Panel1").hide();
+        });
+
+        $("#pnlListingExpires").hide();
+
+        $("#imgPopup2").click(function () {
+            $("#pnlListingExpires").show();
+        });
+        $("#lnkListringExpires").click(function () {
+            $("#pnlListingExpires").hide();
+        });
+
+        
+
+        $("area[rel^='prettyPhoto']").prettyPhoto();
+
+        $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({ animation_speed: 'normal', theme: 'light_square', slideshow: 3000, autoplay_slideshow: true });
+        $(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({ animation_speed: 'fast', slideshow: 10000, hideflash: true });
+
+        $("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+            custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+            changepicturecallback: function () { initialize(); }
+        });
+
+        $("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+            custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+            changepicturecallback: function () { _bsap.exec(); }
+        });
+
+
+    });
+</script>*@
+<script>
+    $(document).ready(function () {
+        setTimeout("$('#Msg').fadeOut();", 10000);
+    });
+</script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+ <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script> 
+<script type="text/javascript">
+
+
+    var todayDate = new Date();
+    function SetCountDown(datetoend, divId) {
+        try {
+
+        
+        var tempDate = new Date();
+        tempDate.setDate(tempDate.getDate() + parseInt(datetoend));
+        //            alert(tempDate);
+        //            alert(datetoend);
+
+        $("#" + divId).countdown({ until: tempDate, compact: true,
+            layout: '<div class="Pricediv" style="margin:0px 0px 0px 0px"><div class="daydiv">{dn}</div><div class="daydiv"> {hnn}</div><div class="daydiv">{mnn}</div><div class="daydiv">{snn}</div></div>'
+        });
+
+    } catch (e) {
+
+    }
+    }
+</script>
+}
+
+<div id="ModalPopUpRegister" class="ModalPopUpRegister" style="">
+<b>To Use this Feature, Register For<br /> <a href="/Register">Full Access.</a> </b>
+</div>
+
+<div id="Content">
+    <div class="BannerTop">
+    <div class="financing">
+Get an Auto Loan up to $30,000 with Good or Bad Credit.
+<a href="/Apply_for_financing" >Apply today, drive today</a>
+    </div>
+
+        <a href="#">
+            <img src="@Url.Content("~/Content/Images/banner_01.jpg")" alt="" /></a></div>
+            <div>
+           
+    <div class="InnerBoxWhite" style="float:left;width:875px">
+    <div id="Msg" style="display:block;text-align:center">
+    @if (ViewData["Msg"] != null)
+    {
+    <span style="background-color:Yellow;font-weight:bold;padding-left:3px;padding-right:3px;padding-top:2px;padding-bottom:2px;">@(ViewData["Msg"] ?? "")</span> 
+    }
+    </div>
+        <div class="BoxHeader">
+            <div class="BoxMenu Flt">
+                <div class="BackNext">
+                    <span class="Back">@{
+                        var prevUrl = HttpContext.Current.Request.UrlReferrer == null ? "/" : HttpContext.Current.Request.UrlReferrer.OriginalString;
+                    <a href="@prevUrl">
+                        <img class="Flt" src="@Url.Content("~/Content/Images/back.png")" alt="" /></a> @*<a
+                           href="@(prevUrl)">Back</a>*@
+                        <a
+                           href="/Product/BackButton">Back</a>
+                        }</span> 
+                           @*<span class="Next"><a class="Flt" href="#">Next</a> <a href="#">
+                                <img class="Flr" src="@Url.Content("~/Content/Images/next.png")" alt="" /></a></span>*@
+                </div>
+                <ul>
+                    <li>I</li>
+                    <li>
+                       @{ if (User.IsInRole("Guest"))
+                          {
+                       <a href="#" onclick="ShowFullRegisterPopUp()" style="color:gray">Print Brochure</a>
+                          }
+                          else
+                          {   <a href="#" onclick="window.print()">Print Brochure</a>
+                              
+                          }
+                              }
+                    </li>
+                    <li>I</li>
+              
+
+                    @{if (User.IsInRole("Guest"))
+                      {
+                        <li><a href="#" onclick="ShowFullRegisterPopUp()" class="lnkdisabled" style="color:gray">My Account</a></li>
+                      }
+                      else
+                      {
+                       <li><a href="@Url.Action("Index", "MyAccount")">My Account</a></li>      
+                        
+                      }
+                         }
+                 
+                 
+                  @*  <li>I</li> *@
+                    <li class="CarFax" style="">
+                    <a    href="http://www.carfax.com/cfm/ccc_displayhistoryrpt.cfm?partner=EDA_0&vin=@Model.vin" target="_blank">
+                     @if (Model.OwnerDetail == "1")
+                     {
+                        <img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/car-fax01.jpg")" alt="more" />
+                     }
+                     else
+                     {
+                           <img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/show-me01.jpg")" alt="more" />
+                     }
+                </a>
+                      @*<a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4e28222d475d1103">
+                        <img class="Flt" src="@Url.Content("~/Content/Images/share.png")" alt="" />&nbsp;Share</a>*@
+                        <!-- AddThis Button BEGIN -->  @* <div class="addthis_toolbox addthis_default_style "> 
+                        <a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4e28222d475d1103"
+                          class="addthis_button_compact">Share</a>  </div>  <script type="text/javascript" 
+                          src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e28222d475d1103"></script>  <!-- AddThis Button END -->
+                       *@ </li>
+                </ul>
+            </div>
+            <div class="Rating Flr">
+                <span class="Flt"></span>
+                <div class="DealStars Flr">
+                 
+                         <div class="addthis_toolbox addthis_default_style "> 
+                        <a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4e28222d475d1103"
+                          class="addthis_button_compact">Share</a>  </div>  <script type="text/javascript" 
+                          src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e28222d475d1103"></script>
+                            <!-- AddThis Button END -->
+                       
+
+                   
+
+                </div>
+            </div>
+            <div class="Clr">
+            </div>
+        </div>
+        <div class="LeftColumn Flt">
+            <div class="RoundedBox Width_228 Flt">
+                <h2 class="BoxTitle">
+                    <center>
+                        Vehicle Details</center>
+                </h2>
+                <div class="Height_255">
+                    <div class="VehicleDetails">
+                        <h3>
+                            @Model.Year @Model.MakeName @Model.ModelName</h3>
+                        <ul>
+                            <li>Mileage: @Model.mileage</li>
+                            <li>Transmision: @Model.transmission</li>
+                            <li>Engine: @Model.engine</li>
+                            <li>Exterior: @Model.exterior</li>
+                            <li>Interior: @Model.interior</li>
+                            <li>VIN: @Model.vin</li>
+                            <li>Stock# @Model.stock</li>
+                            <li>Body: @Model.body</li>
+                            <li>Trim: @(String.IsNullOrEmpty(Model.trim) ? "N/A" : Model.trim)</li>
+                            <li>Drive Type: @Model.drive_Type</li>
+                            <li>Warranty: @(Model.warranty == false ? "No" : "Yes")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="RoundedBox Width_228 Flr">
+                <h2 class="BoxTitle">
+                    <center>
+                        Pricing Analytics</center>
+                </h2>
+                <div class="Height_255">
+                    <div class="PricingAnalytics">
+                        <div class="Price">
+                            @String.Format("${0:n2}", Model.price_Current)</div>
+                        <div class="AvrPrice">
+                            <strong>
+                            @{
+                                if (Model.averageRetailPrice > Model.price_Current)
+                                {
+                                 
+                                    <span style="color:#76923C">
+                                        @String.Format("${0:n2}", Math.Abs(Model.savingAmount)) below
+                                     </span> 
+                                      <img src="@Url.Content("~/Content/Images/down_arrow.png")" alt="" />
+                                }
+                                else
+                                {  <span style="color:red">
+                                       @String.Format("${0:n2}", Math.Abs(Model.savingAmount)) up  </span> 
+                                             <img src="@Url.Content("~/Content/Images/arrow-up01.png")" alt="" />
+                                }
+                                                                }
+                             </strong>
+                          
+                            
+                       
+                            <br />
+                            <span>Average Market Price</span>
+                            <br />
+                            <span>@String.Format("${0:n2}", Model.averageRetailPrice)</span>
+                        </div>
+                        <p>
+                            You can buy this vehicle with confidence knowing that we have verified its price
+                            through <a href="http://www.nadaguides.com/?nozip=1&nopop=1" target="_blank">NADA Guide</a></p>
+                        <div class="MPG">
+                            <span class="City">@Model.city_Fuel</span> <span class="Hwy">@Model.highWay_Fuel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="RoundedBox Clr-Lft">
+                <h2 class="BoxTitle">
+                    Seller's Notes</h2>
+                <div class="SellerNote">
+                    <p>@(String.IsNullOrEmpty(Model.descriptiont) ? "N/A" : Model.descriptiont)
+                         <a href="#">[ more ]</a></p>
+                </div>
+            </div>
+            <div class="RoundedBox Clr-Lft">
+                <h2 class="BoxTitle">
+                    Helpful Links</h2>
+                <div class="HelpfulLinks">
+                    <ul>
+                      @*@{if (User.IsInRole("Guest"))
+                        {
+                        <li><a href="#" class="lnkdisabled">Price Lock Guarantee</a></li>
+                        }
+                        else
+                        {
+                       <li><a href="@Url.Action("PriceLock", new { id = @Model.productId })">Price Lock Guarantee</a></li>
+                        
+                        }
+                         }*@
+                        
+                  
+
+                        <li><a href="/Apply_for_financing">Get Financing</a></li>
+                              <li><a href="http://www.carfax.com/cfm/check_order.cfm?partner=EDA_2&VIN=@Model.vin" target="_blank">Carfax Record Check</a></li>
+                        <li><a href="https://www.roadloans.com/" target="_blank">Loan Tools</a></li>
+                  
+                        @{if (User.IsInRole("Guest") == false)
+                          {
+                         <li>@Html.ActionLink("Save to My Wishlist", "SaveWistList", "Product", new { id = @Model.productId }, null)</li>
+                          }
+                          else
+                          {
+                        <li><span   onclick="ShowFullRegisterPopUp()" class="lnkdisabled">Save to My Wishlist</span></li>
+                          }
+                         }
+                 
+                      @*  <li><a href="#">Save to My Wishlist</a></li>*@
+                    </ul>
+                    <div class="Clr">
+                    </div>
+                </div>
+            </div>
+            <div class="Adv_Lft Flt">
+                <a href="http://www.autocreditexpress.com/">
+                    <img src="@Url.Content("~/Content/Images/no_credit.jpg")" alt="" /></a></div>
+            <div class="Adv_Rht Flr">
+                <a href="http://www.insurance.com/">
+                    <img src="@Url.Content("~/Content/Images/car_insurance.jpg")" alt="" /></a></div>
+        </div>
+        <div class="RightColumn Flr">
+            <div class="RoundedBox">
+                <h2 class="BoxTitle">
+                    <center>
+                        Vehicle Photos <span>( Click Smaller Photos to Enlarge )</span></center>
+                </h2>
+                <div class="VehiclePhoto">
+                    <a href="#">
+                     @{
+                         if (String.IsNullOrEmpty(Model.pics.Trim()))
+                         {
+                        <img class="LargePic" src="@Url.Content("~/Content/Images/photo-comming-soon.jpg")" alt="" />
+                             
+                         }
+                         else
+                         {
+
+                             var FirstPics = Model.pics.Split(';');
+                        <img id="largePics" class="LargePic" src="@FirstPics[0]" alt="" />
+                          <script type="text/javascript">
+                              // this line check for if cdn image exist or not if image not exist it will show the default image
+                              $('#largePics').error(function () {
+                                  $('#largePics').attr("src", "/Content/Images/photo-comming-soon.jpg");
+                              });
+                        </script>
+                         }
+                         }</a>
+                </div>
+            </div>
+            <div class="VehiclePhoto_Thumbs">
+                <div class="ThumbCarousal" id="ThumbCarousal">
+                    
+                   
+                
+
+                       @{ 
+                           var Pics = Model.pics.Split(';');
+                           if (Pics.Length > 0)
+                           { 
+                            @:<ul class="gallery clearfix" >
+                           }
+                           for (int i = 0; i < Pics.Length; i++)
+                           { 
+                                
+                               <li>  
+                               @if (String.IsNullOrEmpty(@Pics[i]))
+                               {
+                                 <a  href="@Url.Content("~/Content/Images/photo-comming-soon.jpg")">
+                        <img class="LargePic" src="@Url.Content("~/Content/Images/photo-comming-soon.jpg")" alt="" />
+                              </a>
+                               }
+                               else
+                               {
+                                  
+                              <a href="@Pics[i]" id="anchor_thumsbImage_@(i)">
+                               <img src="@Pics[i]" id="thumbs_@(i)" width="60" height="60" alt="This is the title" /> </a>
+                                <script type="text/javascript">
+                                       // this line check for if cdn image exist or not if image not exist it will show the default image
+                                       $('#thumbs_@(i)').error(function () {
+                                           $('#anchor_thumsbImage_@(i)').attr("href", "/Content/Images/photo-comming-soon.jpg");
+                                    $('#thumbs_@(i)').attr("src", "/Content/Images/photo-comming-soon.jpg");
+                                          
+                                       });
+                                  </script>  
+                               }
+                                                                                                    
+                                                                                               
+                               </li> 
+                            
+                           }
+                           if (Pics.Length > 0)
+                           {
+                               @:</ul>               
+                           }
+                           }
+                    </div>
+                
+                   
+                  
+               
+            </div>
+            <div class="SideBox" id="ThirdBox">
+                <div class="BackBox">
+                    <div class="BoxTabs">
+                        <span class="Tabs Tab_01"><a href="javascript:void(0)" class="active">Contact Dealer</a></span>
+                        <span class="Tabs Tab_02"><a href="javascript:void(0)" class="">Dealer Profile</a></span>
+                    </div>
+                    <div class="FrontBox">
+                        <div class="ContactDeal">
+                            
+                          @Html.Partial("_ContactDealer", new Edrive.Core.Model.IntrestedCustomer())
+
+                        </div>
+                        <div class="DealProfile" style="display:none">
+                       @{      var Dealerprofile = ViewData["GetDealer"] as Edrive.Core.Model.Customer;
+                          
+                     
+                     
+                
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                      <div class="DealProf">
+                      
+                           @if (User.IsInRole("Guest"))
+                           {
+                               <b>To view details <a href="/Register">Register for full access.</a></b>
+                           }
+                           else
+                           {
+                               <table>
+                               <tr>
+                               <td   class="firstcol">
+                              
+                                <span class="CompanyName" style=""><b>@Dealerprofile.CompanyName</b> </span><br />
+                          <strong> Name:</strong> @Dealerprofile.Name <br />
+                         <strong>  Phone:</strong>
+                         <a href="/Home/DealerProfile/@Model.customerId"><u>Click To Call</u></a>
+                         <br />
+                         <strong>  Zip Code:</strong> @Common_Methods.GetZip(Dealerprofile.Zip)<br />
+                          <strong> City:</strong> @Dealerprofile.City<br />
+                          <strong> State:</strong> @(String.IsNullOrEmpty(Dealerprofile.StateName) ? "N/A" : Dealerprofile.StateName)<br />
+                       </td>
+                       <td class="secondCol" style="">
+                            <div class="ImageDiv" style="">
+                      
+                      @if (ViewData["ProfileLogo"] != null)
+                      {
+                          try
+                          {
+
+
+                              var prfImageUrl = ViewData["ProfileLogo"].ToString();
+                              var ImageWidth = 161;
+                              var ImageHeight = 36;
+                              var Image = System.Drawing.Image.FromFile(Server.MapPath(prfImageUrl.Substring(prfImageUrl.IndexOf("/Content"))));
+                              if (Image.Height > ImageHeight && Image.Width > ImageWidth)
+                              {
+                                    <span style="position: relative">
+                                        <img src="@ViewData["ProfileLogo"].ToString()" height="@ImageHeight" width="@ImageWidth" />
+                                    </span>
+                                    
+                              }
+                              else
+                              {
+                                  if (Image.Height > ImageHeight)
+                                  {
+                                    <span style="position: relative">
+                                        <img src="@ViewData["ProfileLogo"].ToString()" height="@ImageHeight"   />
+                                    </span>
+                                  }
+                                  else
+                                  {
+                                      if (Image.Width > ImageWidth)
+                                      {<span style="position: relative">
+                                             <img src="@ViewData["ProfileLogo"].ToString()" width="@ImageWidth"   />
+                                         </span>
+                                      }
+                                      else
+                                      {
+                                             <span style="position: relative">
+                                             <img src="@ViewData["ProfileLogo"].ToString()"    />
+                                         </span>
+                                      }
+                                  }
+                              }
+                          }
+                          catch (Exception)
+                          {
+                           <span style="position: relative">
+                                             <img src="@ViewData["ProfileLogo"].ToString()"    />
+                                         </span>
+                              
+                          }
+                      }
+                     </div>
+                     <div>
+                       <span><a href="/Home/DealerProfile/@Model.customerId"><u>View Full Profile</u></a></span>
+                      </div>
+                       </td>
+                               </tr>
+                               </table>
+                               
+                           }
+                       
+                       </div>}
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <div class="Clr">
+        </div>
+    </div>
+   
+   <div style="" id="showCountdownDiv">
+               @{
+                   var LastDays = Model.updatedOn.AddDays(Convert.ToDouble(ViewData["CountDownDays"]));
+
+                   TimeSpan diff = LastDays - DateTime.Now;
+                   var TotalDays = diff.TotalDays;
+                                                        
+                                                <img src="/Content/Images/arrowleft.png" style="left: -27px;position: relative;top: 63px;" />                           
+                                                  
+                                     <div class="title" style="
+                                     ">Hurry, Before it Expires!</div>       
+                            <div class="Message" style="">This Vehicle goes to auction in:</div>
+                   <div class="TimeDiv" style="">
+                   <div class="content" style="">
+                                    <div id="showTime@(Model.productId)"></div>
+                      @{var prdID = Model.productId;
+                                    <script>
+                                        SetCountDown('@TotalDays', 'showTime@(prdID)');
+                                    </script>
+                          }
+                       <div class="PriceLabel" style="font-size:11px;">
+                                        <div>Days</div> <div>Hours</div> <div>Mins</div> <div>Secs</div>
+
+                                       
+                                    </div>
+                                    <div style="text-align:center">
+										<br /> <br />
+										@if (User.IsInRole("Guest"))
+										{
+											<b><a href="/Register">Register for full access.</a></b>
+										}
+										else
+										{
+											<a href="/Product/SaveWistList/@Model.productId" style="color: #2928ff; text-decoration: underline" >Save to Wishlist</a>
+										}
+                                    </div>
+                                    </div>
+                   </div>
+                   
+                      }
+                      </div>
+            
+            </div>
+            <div class="clear">
+            </div>
+    <div class="After_BoxWhite">
+        <p class="font_10">
+            
+            Information in this listing is deemed reliable, but not guaranteed. Interested parties
+            should confirm all information listed here in before relying on it to make a purchase
+            decision. All prices are subject to change at any time without prior notice. The
+            advertised price may not include additional fees such as government fees, taxes,
+            title fees, registration fees, finance changes, Dealer document fees, processing
+            fees and emission testing and compliance charges. E-Drive Autos. LLC makes no representation,
+            expressed or implied to any actual of prospective purchaser or owner of the listed
+            vehicles as to existence, ownership, accuracy, description or condition of the vehicles
+            equipment, accessories, price specials or any warranties and all difference
+            must be addressed prior to the sale of the vehicle. All vehicles are subject to
+            prior sale without notice. Please contact the dealer directly to verify that the
+            vehicle is still available for sale. E-Drive Autos, LLC is not a licensed auto dealer,
+            nor do we participate in the sale of any vehicles listed on our website. 
+            
+            <span class="font_12"><strong>By using this service, you accept our <a href="@Url.Action("Index", "ConditionsOfUse")">Terms
+                of Use.</a></strong></span></p>
+    </div>
+    <div id="BottomCarausal">
+        <h3>View other vehicles from this seller</h3>
+        <div class="CaraousArea">
+            <ul>
+           
+            @{
+				var dealerDetails = ViewData["DealerDetails"] as List<Edrive.Core.Model.Products>;
+
+                foreach (var item in dealerDetails)
+                {
+                    var ProductImage = item.pics.Split(';');
+                    if (String.IsNullOrEmpty(ProductImage[0]))
+                    {
+                        ProductImage[0] = Url.Content("~/Content/Images/photo-comming-soon.jpg");
+                    }
+                        
+                <li>
+                    <div class="name">
+                             <a href="@Url.Action("ProductDetail", "Product", new { id = @item.productId }, null)">
+                        @item.Year @item.Make  
+                        </a></div>
+                    <div class="thumb_110x70">
+                        <a  href="@Url.Action("ProductDetail", "Product", new { id = @item.productId }, null)">
+                            <img id="dealerImage_@(item.productId)" src="@ProductImage[0]" alt="" />
+                            </a>
+                             <script type="text/javascript">
+                                 // this line check for if cdn image exist or not if image not exist it will show the default image
+                                 $('#dealerImage_@(item.productId)').error(function () {
+                                     $('#dealerImage_@(item.productId)').attr("src", "/Content/Images/photo-comming-soon.jpg");
+                                      
+                                 });
+                        </script>
+                    </div>
+                    <div class="price">
+                        $@string.Format("{0:n0}", item.price_Current)</div>
+                </li>
+                }
+            }
+            </ul>
+        </div>
+        <div class="Clr">
+        </div>
+    </div>
+    <div class="BannerBtm">
+        <a href="#">
+            <img src="@Url.Content("~/Content/Images/banner_02.jpg")" alt="" /></a></div>
+</div>
+<script src="@Url.Content("~/Scripts/jquery.lightbox-0.5.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ThumbCarousal a').lightBox({
+            imageLoading: '/Scripts/images/lightbox-ico-loading.gif',
+            imageBtnClose: '/Scripts/images/lightbox-btn-close.gif',
+            imageBtnPrev: '/Scripts/images/lightbox-btn-prev.gif',
+            imageBtnNext: '/Scripts/images/lightbox-btn-next.gif',
+            containerResizeSpeed: 350,
+            txtImage: 'Image',
+            txtOf: 'of'
+        });
+
+    });
+</script>

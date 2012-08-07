@@ -1,0 +1,10 @@
+﻿
+
+CREATE PROCEDURE [dbo].[Nop_TopicLoadAll]
+AS
+BEGIN
+	SET NOCOUNT ON
+	SELECT *
+	FROM [Nop_Topic]
+	ORDER BY [Name]
+END

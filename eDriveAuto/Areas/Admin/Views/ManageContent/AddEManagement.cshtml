@@ -1,0 +1,96 @@
+﻿@model  Edrive.Models.ED_EManagement
+@{
+    ViewBag.Title = "AddEManagement";
+}
+
+@section  Head{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+<style>
+    #Manage {
+}
+    #Manage table input[type='text']{width:250px;}
+    #Manage table textarea{width:350px;height:120px;}
+#Manage table{width:100%;border: 1px solid #AFDFFD;
+background-color: #F3FBFE;width:969px;}
+#Manage table tr td.firstManage{background-color: #F3FBFE;width: 177px;padding-left: 11px;}
+#Manage table tr td.secondManage{background-color: #F3FBFE;}
+
+</style>
+
+<script>
+ 
+</script>
+}
+<div id="Manage">
+@using (Html.BeginForm("AddEManagement", "ManageContent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+<h2>Add management details</h2>
+    <br />
+  
+    
+    @Html.ActionLink("back to management list", "EManagement", "ManageContent")
+    <br />
+    <div style="text-align:right;margin-right:14px;">
+    <input type="submit" value="Save" />
+      <br />
+    <br />
+        </div>
+  <table>
+  <tr>
+  <td class="firstManage">
+  Title
+  </td>
+  <td class="secondManage">
+  @Html.TextBoxFor(m => m.Title)
+  @Html.HiddenFor(m => m.ManagementID)
+  </td>
+  
+  </tr><tr>
+  <td class="firstManage">
+  Short Description
+  </td>
+  <td class="secondManage">
+  @Html.TextAreaFor(m => m.ShortDesc)
+  </td>
+  
+  </tr><tr>
+  <td class="firstManage">
+  Select picture
+  </td>
+  <td class="secondManage">
+  <input type="file" name="Pic" id="Pic" />
+  <br />
+  <span style="font-size: 10px;">Image size should be height:162px and width:111px.</span>
+  <br />
+
+  </td>
+  
+  </tr><tr>
+  <td class="firstManage">
+  Display Order
+  </td>
+  <td class="secondManage">
+  @Html.TextBox("DisplayOrder", "", new {style="width:40px;" })
+  </td>
+  
+  </tr>
+
+  <tr>
+  <td class="firstManage">
+  Published
+  </td>
+  <td class="secondManage">
+  @Html.CheckBoxFor(m => m.Published)
+  </td>
+  
+  </tr>
+  </table>  
+                                 
+}
+
+
+
+</div>

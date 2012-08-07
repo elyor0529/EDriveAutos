@@ -1,0 +1,46 @@
+﻿  @model List<Edrive.Core.Model.Products>
+  @if (Model != null)
+  { 
+      <table id="featuredList" cellpadding="0" cellspacing="0" border="0" style="">
+ 
+      @foreach (var item in Model)
+      {
+          <tr>
+          <td colspan="7" class="Line">
+          </td>
+          </tr>
+     
+      <tr>
+        <td style= "padding-left:10px">
+         <a class="links" href="@Url.Action("ProductDetail", "Product", new { id = @item.productId })"> 
+                    @item.Year @item.MakeName @item.ModelName @item.body</a>
+        </td>
+        <td>
+        <b>
+        Mileage</b>: @item.mileage
+
+        </td>
+        <td>
+         <b> Interior</b>:
+         </td>
+
+         <td>
+          @item.exterior
+        </td>
+        <td>
+        @item.OwnerDetail
+        </td>
+        <td class="price">
+         @string.Format("${0:n0}", item.price_Current)
+        </td>
+        <td >
+           <a class="linksContantFeatured" href="@Url.Action("ProductDetail", "Product", new { id = @item.productId })">View
+                        Details</a>
+        </td>
+        
+        </tr>
+  } 
+    </table>
+      
+  }
+      

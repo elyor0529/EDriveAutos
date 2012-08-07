@@ -1,0 +1,200 @@
+﻿@model  List<Edrive.Models.ED_Testimonials>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+@section  Head{
+	<link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/jquery.lightbox-0.5.min.js")" type="text/javascript"></script>
+	<link href="@Url.Content("~/Content/jquery.lightbox-0.5.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/CustomerSpeak.Index.css")" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.newsitems a').lightBox();
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			//select all the a tag with name equal to modal
+			$('a[name=modal]').click(function (e) {
+				try {
+					//Cancel the link behavior
+					e.preventDefault();
+
+					//Get the A tag
+					var id = $(this).attr('href');
+
+					//Get the screen height and width
+					var maskHeight = $(document).height();
+					var maskWidth = $(window).width();
+
+					//Set heigth and width to mask to fill up the whole screen
+					$('#mask').css({ 'width': maskWidth, 'height': maskHeight });
+
+					//transition effect		
+					$('#mask').fadeIn(1000);
+					$('#mask').fadeTo("slow", 0.8);
+
+					//Get the window height and width
+					var winH = $(window).height();
+					var winW = $(window).width();
+
+					//Set the popup window to center
+					$(id).css('top', winH / 2 - $(id).height() / 2);
+					$(id).css('left', winW / 2 - $(id).width() / 2);
+
+					//transition effect
+					$(id).fadeIn(2000);
+				} catch (e) {
+					alert(e.Message);
+				}
+			});
+
+			//if close button is clicked
+			$('.window .close').click(function (e) {
+				//Cancel the link behavior
+				e.preventDefault();
+
+				$('#mask').hide();
+				$('.window').hide();
+			});
+
+			$('#lnkClose').click(function () {
+				$('#mask').hide();
+				$('.window').hide();
+			});
+
+			//if mask is clicked
+			$('#mask').click(function () {
+				//$(this).hide();
+				//$('.window').hide();
+			});
+
+			$(window).resize(function () {
+
+				var box = $('#boxes .window');
+
+				//Get the screen height and width
+				var maskHeight = $(document).height();
+				var maskWidth = $(window).width();
+
+				//Set height and width to mask to fill up the whole screen
+				$('#mask').css({ 'width': maskWidth, 'height': maskHeight });
+
+				//Get the window height and width
+				var winH = $(window).height();
+				var winW = $(window).width();
+
+				//Set the popup window to center
+				box.css('top', winH / 2 - box.height() / 2);
+				box.css('left', winW / 2 - box.width() / 2);
+			});
+		});
+
+	</script>
+	
+	<script type="text/javascript">
+		function postPage(obj) {
+			try {
+				var pageindex = $(obj).attr("id");
+				$("#PageIndex").val(pageindex);
+				document.forms["form2"].submit();
+			} catch (e) {
+				alert(e.Message);
+			}
+		}
+
+	</script>
+}
+<div class="product-inner-page">
+	<div class="divdetail-inner">
+		<div class="clear">
+		</div>
+	</div>
+	<div class="tab-new">
+		<div class="teb-left">
+		</div>
+		<div class="tab-line">
+			<div class="tab-tital">
+				Testimonials</div>
+		</div>
+		<div class="tab-right">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+	<div class="clear1">
+	</div>
+	<div class="divbottom-home">
+		<div class="divbottomleft-new-top">
+		</div>
+		<div class="divbottommiddetail-new-line-top-inner">
+		</div>
+		<div class="divbottomright-new-top">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+	<div class="divinnercontent-home-new-one">
+		<div class="divinnercontent">
+			<div class="newslist">
+				<div class="divtestiaddnew">
+					<a id="lnkaddnew" href="#dialog1" name="modal" class="readmore">Add New Testimonial</a>
+					<div id="boxes">
+						<div id="dialog1" class="window  modalpopupSearch" style="text-align: left; display: none;
+							font-size: 12px; height: 387px; width: 600px">
+							@Html.Partial("_CreateTestimonial", new _ED_Testimonials())
+						</div>
+					</div>
+					<div id="mask">
+					</div>
+				</div>
+				<div class="newsitems">
+					@if(Model != null)
+					{
+						foreach (var item in Model)
+						{
+							<div class="item">
+								<div class="divtestiitemleft">
+									<div class="divtestiipicture">
+										<a href="@Url.Action("ShowMediumSizeImage", "Partners", new {area = "", id = @item.PictureId})" rel="lightbox-p">
+											<img src="@Url.Action("show", "Partners", new {area = "", id = @item.PictureId})" style="width: 80px; height: 66px;" alt="Testimonials"/>
+										</a>
+									</div>
+								</div>
+								<div class="divtestiitemright">
+									<div class="divtestimain">
+										<span class="divtestiname">@item.Name </span>- <span class="divtestiaddress">@item.Address</span>
+									</div>
+									<div class="divtesticontent">
+										"
+										@item.TContent
+										"</div>
+								</div>
+							</div>
+						}
+						<div class="pager">
+							<form id="form2" action="@Url.Action("Index", "Customers_Speak")" method="post">
+								@Html.Partial("_PagerPressRelease")
+							</form>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+	<div class="divbottom-home">
+		<div class="divbottomleft-new">
+		</div>
+		<div class="divbottommiddetail-new-line-inner">
+		</div>
+		<div class="divbottomright-new">
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>

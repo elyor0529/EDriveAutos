@@ -1,0 +1,13 @@
+﻿<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web.Mvc;
+
+namespace <#= Model.Namespace #>.Security
+{
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    public sealed class UnsecureAttribute : Attribute { }
+}
