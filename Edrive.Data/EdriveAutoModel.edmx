@@ -1258,27 +1258,12 @@
             <End Role="VEHICLE" EntitySet="VEHICLEs" />
             <End Role="VEHICLE_RATING" EntitySet="VEHICLE_RATING" />
           </AssociationSet>
-          <FunctionImport Name="SearchStandard" EntitySet="VEHICLEs" ReturnType="Collection(EdriveAutosModel.VEHICLE)">
-            <Parameter Name="QUERY" Mode="In" Type="String" />
-            <Parameter Name="ZIP" Mode="In" Type="String" />
-            <Parameter Name="RADIUS" Mode="In" Type="Int32" />
-            <Parameter Name="PRICE" Mode="In" Type="String" />
-            <Parameter Name="YEAR" Mode="In" Type="String" />
-            <Parameter Name="MILEAGE" Mode="In" Type="String" />
-            <Parameter Name="MAKE" Mode="In" Type="String" />
-            <Parameter Name="MODEL" Mode="In" Type="String" />
-            <Parameter Name="WARRANTY" Mode="In" Type="Boolean" />
-            <Parameter Name="BODYTYPE" Mode="In" Type="String" />
-            <Parameter Name="VALIDATEDONLY" Mode="In" Type="Boolean" />
-            <Parameter Name="SORTCOLUMN" Mode="In" Type="String" />
-            <Parameter Name="SORTORDER" Mode="In" Type="String" />
-            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
-            <Parameter Name="PAGENUM" Mode="In" Type="Int32" />
-            <Parameter Name="TOTALRESULTS" Mode="InOut" Type="Int32" />
-            <Parameter Name="TOTALPAGES" Mode="InOut" Type="Int32" />
-            <Parameter Name="EXACTMATCH" Mode="InOut" Type="Boolean" />
-          </FunctionImport>
-          <FunctionImport Name="SearchAdvanced" EntitySet="VEHICLEs" ReturnType="Collection(EdriveAutosModel.VEHICLE)">
+          <AssociationSet Name="FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE" Association="EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE">
+            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
+            <End Role="LST_VEHICLEMODEL" EntitySet="LST_VEHICLEMODEL" />
+          </AssociationSet>
+          <FunctionImport Name="FeaturedVehicles" ReturnType="Collection(EdriveAutosModel.FeaturedVehicles_Result)" />
+          <FunctionImport Name="AdvancedSearch" EntitySet="VEHICLEs" ReturnType="Collection(EdriveAutosModel.VEHICLE)">
             <Parameter Name="MAKE" Mode="In" Type="Int32" />
             <Parameter Name="MODEL" Mode="In" Type="Int32" />
             <Parameter Name="MAXMILEAGE" Mode="In" Type="Int32" />
@@ -1301,11 +1286,26 @@
             <Parameter Name="TOTALRESULTS" Mode="InOut" Type="Int32" />
             <Parameter Name="TOTALPAGES" Mode="InOut" Type="Int32" />
           </FunctionImport>
-          <AssociationSet Name="FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE" Association="EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE">
-            <End Role="LST_VEHICLEMAKE" EntitySet="LST_VEHICLEMAKE" />
-            <End Role="LST_VEHICLEMODEL" EntitySet="LST_VEHICLEMODEL" />
-          </AssociationSet>
-          <FunctionImport Name="FeaturedVehicles" ReturnType="Collection(EdriveAutosModel.FeaturedVehicles_Result)" />
+          <FunctionImport Name="StandardSearch" EntitySet="VEHICLEs" ReturnType="Collection(EdriveAutosModel.VEHICLE)">
+            <Parameter Name="QUERY" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="RADIUS" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="String" />
+            <Parameter Name="YEAR" Mode="In" Type="String" />
+            <Parameter Name="MILEAGE" Mode="In" Type="String" />
+            <Parameter Name="MAKE" Mode="In" Type="String" />
+            <Parameter Name="MODEL" Mode="In" Type="String" />
+            <Parameter Name="WARRANTY" Mode="In" Type="Boolean" />
+            <Parameter Name="BODYTYPE" Mode="In" Type="String" />
+            <Parameter Name="VALIDATEDONLY" Mode="In" Type="Boolean" />
+            <Parameter Name="SORTCOLUMN" Mode="In" Type="String" />
+            <Parameter Name="SORTORDER" Mode="In" Type="String" />
+            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
+            <Parameter Name="PAGENUM" Mode="In" Type="Int32" />
+            <Parameter Name="TOTALRESULTS" Mode="InOut" Type="Int32" />
+            <Parameter Name="TOTALPAGES" Mode="InOut" Type="Int32" />
+            <Parameter Name="EXACTMATCH" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="BUYER">
           <Key>
@@ -2295,6 +2295,152 @@
           <Property Type="String" Name="MAKE" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="MODEL" Nullable="true" MaxLength="200" />
         </ComplexType>
+        <ComplexType Name="SearchAdvanced_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+          <Property Type="DateTime" Name="DATE_CREATED" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DATE_UPDATED" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DATE_NADACHECKED" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DATE_INSTOCK" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="SALESPERSON_ID" Nullable="true" />
+          <Property Type="Int32" Name="TYPE_ID" Nullable="false" />
+          <Property Type="String" Name="STOCKNUMBER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VIN" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="YEAR" Nullable="true" />
+          <Property Type="Int32" Name="MAKE_ID" Nullable="false" />
+          <Property Type="Int32" Name="MODEL_ID" Nullable="false" />
+          <Property Type="String" Name="TRIM" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BODY_ID" Nullable="false" />
+          <Property Type="Int32" Name="MILEAGE" Nullable="true" />
+          <Property Type="String" Name="CONDITION" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="COLOR_EXTERIOR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="COLOR_INTERIOR" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="DOORS" Nullable="true" />
+          <Property Type="String" Name="ENGINE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TRANSMISSION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUEL_TYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DRIVE_TYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" />
+          <Property Type="String" Name="FILENAME" Nullable="true" MaxLength="2000" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_QUALIFY" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_AVERAGERETAIL" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_AVERAGETRADEIN" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_COST" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_WHOLESALE" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="RESERVED" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SAVINGS" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="FUEL_CITY" Nullable="true" />
+          <Property Type="Int32" Name="FUEL_HIGHWAY" Nullable="true" />
+          <Property Type="String" Name="TITLE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PICS" Nullable="true" />
+          <Property Type="String" Name="OWNERDETAIL" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="ISFEATURE" Nullable="true" />
+          <Property Type="Boolean" Name="ISNEW" Nullable="true" />
+          <Property Type="Boolean" Name="ISOFFER" Nullable="true" />
+          <Property Type="Boolean" Name="ISONDEALERPROFILE" Nullable="true" />
+          <Property Type="Boolean" Name="ISQUALIFIED" Nullable="false" />
+          <Property Type="Boolean" Name="ISWARRANTY" Nullable="true" />
+          <Property Type="String" Name="ZIP" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="SearchStandard_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+          <Property Type="DateTime" Name="DATE_CREATED" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DATE_UPDATED" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DATE_NADACHECKED" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DATE_INSTOCK" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="SALESPERSON_ID" Nullable="true" />
+          <Property Type="Int32" Name="TYPE_ID" Nullable="false" />
+          <Property Type="String" Name="STOCKNUMBER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VIN" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="YEAR" Nullable="true" />
+          <Property Type="Int32" Name="MAKE_ID" Nullable="false" />
+          <Property Type="Int32" Name="MODEL_ID" Nullable="false" />
+          <Property Type="String" Name="TRIM" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BODY_ID" Nullable="false" />
+          <Property Type="Int32" Name="MILEAGE" Nullable="true" />
+          <Property Type="String" Name="CONDITION" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="COLOR_EXTERIOR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="COLOR_INTERIOR" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="DOORS" Nullable="true" />
+          <Property Type="String" Name="ENGINE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TRANSMISSION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUEL_TYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DRIVE_TYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" />
+          <Property Type="String" Name="FILENAME" Nullable="true" MaxLength="2000" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_QUALIFY" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_AVERAGERETAIL" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_AVERAGETRADEIN" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_COST" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_WHOLESALE" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="RESERVED" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SAVINGS" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="FUEL_CITY" Nullable="true" />
+          <Property Type="Int32" Name="FUEL_HIGHWAY" Nullable="true" />
+          <Property Type="String" Name="TITLE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PICS" Nullable="true" />
+          <Property Type="String" Name="OWNERDETAIL" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="ISFEATURE" Nullable="true" />
+          <Property Type="Boolean" Name="ISNEW" Nullable="true" />
+          <Property Type="Boolean" Name="ISOFFER" Nullable="true" />
+          <Property Type="Boolean" Name="ISONDEALERPROFILE" Nullable="true" />
+          <Property Type="Boolean" Name="ISQUALIFIED" Nullable="false" />
+          <Property Type="Boolean" Name="ISWARRANTY" Nullable="true" />
+          <Property Type="String" Name="ZIP" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NAME_MAKE" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NAME_MODEL" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="VehicleSearch_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Boolean" Name="ISDELETED" Nullable="false" />
+          <Property Type="DateTime" Name="DATE_CREATED" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DATE_UPDATED" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DATE_NADACHECKED" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DATE_INSTOCK" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="SALESPERSON_ID" Nullable="true" />
+          <Property Type="Int32" Name="TYPE_ID" Nullable="false" />
+          <Property Type="String" Name="STOCKNUMBER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VIN" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="YEAR" Nullable="true" />
+          <Property Type="Int32" Name="MAKE_ID" Nullable="false" />
+          <Property Type="Int32" Name="MODEL_ID" Nullable="false" />
+          <Property Type="String" Name="TRIM" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BODY_ID" Nullable="false" />
+          <Property Type="Int32" Name="MILEAGE" Nullable="true" />
+          <Property Type="String" Name="CONDITION" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="COLOR_EXTERIOR" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="COLOR_INTERIOR" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="DOORS" Nullable="true" />
+          <Property Type="String" Name="ENGINE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TRANSMISSION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUEL_TYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DRIVE_TYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" />
+          <Property Type="String" Name="FILENAME" Nullable="true" MaxLength="2000" />
+          <Property Type="Decimal" Name="PRICE" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_QUALIFY" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_AVERAGERETAIL" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_AVERAGETRADEIN" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_COST" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="PRICE_WHOLESALE" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="RESERVED" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SAVINGS" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="FUEL_CITY" Nullable="true" />
+          <Property Type="Int32" Name="FUEL_HIGHWAY" Nullable="true" />
+          <Property Type="String" Name="TITLE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PICS" Nullable="true" />
+          <Property Type="String" Name="OWNERDETAIL" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="ISFEATURE" Nullable="true" />
+          <Property Type="Boolean" Name="ISNEW" Nullable="true" />
+          <Property Type="Boolean" Name="ISOFFER" Nullable="true" />
+          <Property Type="Boolean" Name="ISONDEALERPROFILE" Nullable="true" />
+          <Property Type="Boolean" Name="ISQUALIFIED" Nullable="false" />
+          <Property Type="Boolean" Name="ISWARRANTY" Nullable="true" />
+          <Property Type="String" Name="ZIP" Nullable="true" MaxLength="10" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2708,8 +2854,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SearchStandard" FunctionName="EdriveAutosModel.Store.SPSEARCH_STANDARD" />
-          <FunctionImportMapping FunctionImportName="SearchAdvanced" FunctionName="EdriveAutosModel.Store.SPSEARCH_ADVANCED" />
           <FunctionImportMapping FunctionImportName="FeaturedVehicles" FunctionName="EdriveAutosModel.Store.SPSITE_RETRIEVEFEATURED" >
           <ResultMapping>
               <ComplexTypeMapping TypeName="EdriveAutosModel.FeaturedVehicles_Result">
@@ -2767,6 +2911,10 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AdvancedSearch" FunctionName="EdriveAutosModel.Store.SPSEARCH_ADVANCED" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StandardSearch" FunctionName="EdriveAutosModel.Store.SPSEARCH_STANDARD" >
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2787,7 +2935,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="EdriveAutoModel">
+      <Diagram Name="EdriveAutoModel" ZoomLevel="74">
         <EntityTypeShape EntityType="EdriveAutosModel.BUYER" Width="1.5" PointX="5.25" PointY="0.75" Height="5.634013671875" IsExpanded="true" />
         <EntityTypeShape EntityType="EdriveAutosModel.BUYER_FAQ" Width="1.5" PointX="7.75" PointY="14" Height="2.3648893229166656" IsExpanded="true" />
         <EntityTypeShape EntityType="EdriveAutosModel.BUYER_FINANCEREQUEST" Width="1.5" PointX="7.5" PointY="3.125" Height="5.8263151041666648" IsExpanded="true" />

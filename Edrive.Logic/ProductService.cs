@@ -281,9 +281,10 @@ namespace Edrive.Logic
 
 			using(Context = GetDataContext())
 			{
-				var result = Context.SearchStandard(searchText, zipCode, radius, price, year, mileage, make, model,
-				                                     warranty, body, true, sortColumn, sortOrder, pageSize, pageIndex, totalCount,
-				                                     totalPages, exactMatch).Select(ConvertType).ToList();
+				var result = Context.StandardSearch(searchText, zipCode, radius, price, year, mileage, make, model,
+				                                    warranty, body, true, sortColumn, sortOrder, pageSize, pageIndex, totalCount,
+				                                    totalPages, exactMatch)
+					.Select(ConvertType).ToList();
 
 				carsCount = (int) totalCount.Value;
 
@@ -327,13 +328,13 @@ namespace Edrive.Logic
 
 			using(Context = GetDataContext())
 			{
-				result = Context.SearchAdvanced(attributes._make, attributes._model, attributes._mileageTo, attributes._minYaer,
-				                                 attributes._maxYear,
-				                                 attributes._minPrice, attributes._maxPrice, attributes._body,
-				                                 attributes._transmission,
-				                                 attributes._engine, attributes._driveType,
-				                                 vin, zipCode, true, radius, sortColumn, sortOrder, pageSize, pageIndex,
-				                                 totalCount, totalPages)
+				result = Context.AdvancedSearch(attributes._make, attributes._model, attributes._mileageTo, attributes._minYaer,
+				                                attributes._maxYear,
+				                                attributes._minPrice, attributes._maxPrice, attributes._body,
+				                                attributes._transmission,
+				                                attributes._engine, attributes._driveType,
+				                                vin, zipCode, true, radius, sortColumn, sortOrder, pageSize, pageIndex,
+				                                totalCount, totalPages)
 					.Select(ConvertType).ToList();
 
 				count = (int) totalCount.Value;

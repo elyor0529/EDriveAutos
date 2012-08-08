@@ -1040,799 +1040,799 @@ namespace Edrive.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="qUERY">No Metadata Documentation available.</param>
-        /// <param name="zIP">No Metadata Documentation available.</param>
-        /// <param name="rADIUS">No Metadata Documentation available.</param>
-        /// <param name="pRICE">No Metadata Documentation available.</param>
-        /// <param name="yEAR">No Metadata Documentation available.</param>
-        /// <param name="mILEAGE">No Metadata Documentation available.</param>
-        /// <param name="mAKE">No Metadata Documentation available.</param>
-        /// <param name="mODEL">No Metadata Documentation available.</param>
-        /// <param name="wARRANTY">No Metadata Documentation available.</param>
-        /// <param name="bODYTYPE">No Metadata Documentation available.</param>
-        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
-        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
-        /// <param name="sORTORDER">No Metadata Documentation available.</param>
-        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
-        /// <param name="pAGENUM">No Metadata Documentation available.</param>
-        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
-        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
-        /// <param name="eXACTMATCH">No Metadata Documentation available.</param>
-        public ObjectResult<VEHICLE> SearchStandard(global::System.String qUERY, global::System.String zIP, Nullable<global::System.Int32> rADIUS, global::System.String pRICE, global::System.String yEAR, global::System.String mILEAGE, global::System.String mAKE, global::System.String mODEL, Nullable<global::System.Boolean> wARRANTY, global::System.String bODYTYPE, Nullable<global::System.Boolean> vALIDATEDONLY, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES, ObjectParameter eXACTMATCH)
-        {
-            ObjectParameter qUERYParameter;
-            if (qUERY != null)
-            {
-                qUERYParameter = new ObjectParameter("QUERY", qUERY);
-            }
-            else
-            {
-                qUERYParameter = new ObjectParameter("QUERY", typeof(global::System.String));
-            }
-    
-            ObjectParameter zIPParameter;
-            if (zIP != null)
-            {
-                zIPParameter = new ObjectParameter("ZIP", zIP);
-            }
-            else
-            {
-                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
-            }
-    
-            ObjectParameter rADIUSParameter;
-            if (rADIUS.HasValue)
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
-            }
-            else
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pRICEParameter;
-            if (pRICE != null)
-            {
-                pRICEParameter = new ObjectParameter("PRICE", pRICE);
-            }
-            else
-            {
-                pRICEParameter = new ObjectParameter("PRICE", typeof(global::System.String));
-            }
-    
-            ObjectParameter yEARParameter;
-            if (yEAR != null)
-            {
-                yEARParameter = new ObjectParameter("YEAR", yEAR);
-            }
-            else
-            {
-                yEARParameter = new ObjectParameter("YEAR", typeof(global::System.String));
-            }
-    
-            ObjectParameter mILEAGEParameter;
-            if (mILEAGE != null)
-            {
-                mILEAGEParameter = new ObjectParameter("MILEAGE", mILEAGE);
-            }
-            else
-            {
-                mILEAGEParameter = new ObjectParameter("MILEAGE", typeof(global::System.String));
-            }
-    
-            ObjectParameter mAKEParameter;
-            if (mAKE != null)
-            {
-                mAKEParameter = new ObjectParameter("MAKE", mAKE);
-            }
-            else
-            {
-                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.String));
-            }
-    
-            ObjectParameter mODELParameter;
-            if (mODEL != null)
-            {
-                mODELParameter = new ObjectParameter("MODEL", mODEL);
-            }
-            else
-            {
-                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.String));
-            }
-    
-            ObjectParameter wARRANTYParameter;
-            if (wARRANTY.HasValue)
-            {
-                wARRANTYParameter = new ObjectParameter("WARRANTY", wARRANTY);
-            }
-            else
-            {
-                wARRANTYParameter = new ObjectParameter("WARRANTY", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter bODYTYPEParameter;
-            if (bODYTYPE != null)
-            {
-                bODYTYPEParameter = new ObjectParameter("BODYTYPE", bODYTYPE);
-            }
-            else
-            {
-                bODYTYPEParameter = new ObjectParameter("BODYTYPE", typeof(global::System.String));
-            }
-    
-            ObjectParameter vALIDATEDONLYParameter;
-            if (vALIDATEDONLY.HasValue)
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
-            }
-            else
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter sORTCOLUMNParameter;
-            if (sORTCOLUMN != null)
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
-            }
-            else
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
-            }
-    
-            ObjectParameter sORTORDERParameter;
-            if (sORTORDER != null)
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
-            }
-            else
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
-            }
-    
-            ObjectParameter pAGESIZEParameter;
-            if (pAGESIZE.HasValue)
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
-            }
-            else
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pAGENUMParameter;
-            if (pAGENUM.HasValue)
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
-            }
-            else
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<VEHICLE>("SearchStandard", qUERYParameter, zIPParameter, rADIUSParameter, pRICEParameter, yEARParameter, mILEAGEParameter, mAKEParameter, mODELParameter, wARRANTYParameter, bODYTYPEParameter, vALIDATEDONLYParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES, eXACTMATCH);
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="mergeOption"></param>
-        /// <param name="qUERY">No Metadata Documentation available.</param>
-        /// <param name="zIP">No Metadata Documentation available.</param>
-        /// <param name="rADIUS">No Metadata Documentation available.</param>
-        /// <param name="pRICE">No Metadata Documentation available.</param>
-        /// <param name="yEAR">No Metadata Documentation available.</param>
-        /// <param name="mILEAGE">No Metadata Documentation available.</param>
-        /// <param name="mAKE">No Metadata Documentation available.</param>
-        /// <param name="mODEL">No Metadata Documentation available.</param>
-        /// <param name="wARRANTY">No Metadata Documentation available.</param>
-        /// <param name="bODYTYPE">No Metadata Documentation available.</param>
-        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
-        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
-        /// <param name="sORTORDER">No Metadata Documentation available.</param>
-        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
-        /// <param name="pAGENUM">No Metadata Documentation available.</param>
-        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
-        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
-        /// <param name="eXACTMATCH">No Metadata Documentation available.</param>
-        public ObjectResult<VEHICLE> SearchStandard(global::System.String qUERY, global::System.String zIP, Nullable<global::System.Int32> rADIUS, global::System.String pRICE, global::System.String yEAR, global::System.String mILEAGE, global::System.String mAKE, global::System.String mODEL, Nullable<global::System.Boolean> wARRANTY, global::System.String bODYTYPE, Nullable<global::System.Boolean> vALIDATEDONLY, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES, ObjectParameter eXACTMATCH, MergeOption mergeOption)
-        {
-            ObjectParameter qUERYParameter;
-            if (qUERY != null)
-            {
-                qUERYParameter = new ObjectParameter("QUERY", qUERY);
-            }
-            else
-            {
-                qUERYParameter = new ObjectParameter("QUERY", typeof(global::System.String));
-            }
-    
-            ObjectParameter zIPParameter;
-            if (zIP != null)
-            {
-                zIPParameter = new ObjectParameter("ZIP", zIP);
-            }
-            else
-            {
-                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
-            }
-    
-            ObjectParameter rADIUSParameter;
-            if (rADIUS.HasValue)
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
-            }
-            else
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pRICEParameter;
-            if (pRICE != null)
-            {
-                pRICEParameter = new ObjectParameter("PRICE", pRICE);
-            }
-            else
-            {
-                pRICEParameter = new ObjectParameter("PRICE", typeof(global::System.String));
-            }
-    
-            ObjectParameter yEARParameter;
-            if (yEAR != null)
-            {
-                yEARParameter = new ObjectParameter("YEAR", yEAR);
-            }
-            else
-            {
-                yEARParameter = new ObjectParameter("YEAR", typeof(global::System.String));
-            }
-    
-            ObjectParameter mILEAGEParameter;
-            if (mILEAGE != null)
-            {
-                mILEAGEParameter = new ObjectParameter("MILEAGE", mILEAGE);
-            }
-            else
-            {
-                mILEAGEParameter = new ObjectParameter("MILEAGE", typeof(global::System.String));
-            }
-    
-            ObjectParameter mAKEParameter;
-            if (mAKE != null)
-            {
-                mAKEParameter = new ObjectParameter("MAKE", mAKE);
-            }
-            else
-            {
-                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.String));
-            }
-    
-            ObjectParameter mODELParameter;
-            if (mODEL != null)
-            {
-                mODELParameter = new ObjectParameter("MODEL", mODEL);
-            }
-            else
-            {
-                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.String));
-            }
-    
-            ObjectParameter wARRANTYParameter;
-            if (wARRANTY.HasValue)
-            {
-                wARRANTYParameter = new ObjectParameter("WARRANTY", wARRANTY);
-            }
-            else
-            {
-                wARRANTYParameter = new ObjectParameter("WARRANTY", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter bODYTYPEParameter;
-            if (bODYTYPE != null)
-            {
-                bODYTYPEParameter = new ObjectParameter("BODYTYPE", bODYTYPE);
-            }
-            else
-            {
-                bODYTYPEParameter = new ObjectParameter("BODYTYPE", typeof(global::System.String));
-            }
-    
-            ObjectParameter vALIDATEDONLYParameter;
-            if (vALIDATEDONLY.HasValue)
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
-            }
-            else
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter sORTCOLUMNParameter;
-            if (sORTCOLUMN != null)
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
-            }
-            else
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
-            }
-    
-            ObjectParameter sORTORDERParameter;
-            if (sORTORDER != null)
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
-            }
-            else
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
-            }
-    
-            ObjectParameter pAGESIZEParameter;
-            if (pAGESIZE.HasValue)
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
-            }
-            else
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pAGENUMParameter;
-            if (pAGENUM.HasValue)
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
-            }
-            else
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<VEHICLE>("SearchStandard", mergeOption, qUERYParameter, zIPParameter, rADIUSParameter, pRICEParameter, yEARParameter, mILEAGEParameter, mAKEParameter, mODELParameter, wARRANTYParameter, bODYTYPEParameter, vALIDATEDONLYParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES, eXACTMATCH);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="mAKE">No Metadata Documentation available.</param>
-        /// <param name="mODEL">No Metadata Documentation available.</param>
-        /// <param name="mAXMILEAGE">No Metadata Documentation available.</param>
-        /// <param name="yEAR_FROM">No Metadata Documentation available.</param>
-        /// <param name="yEAR_TO">No Metadata Documentation available.</param>
-        /// <param name="pRICE_MIN">No Metadata Documentation available.</param>
-        /// <param name="pRICE_MAX">No Metadata Documentation available.</param>
-        /// <param name="bODY">No Metadata Documentation available.</param>
-        /// <param name="tRANSMISSION">No Metadata Documentation available.</param>
-        /// <param name="eNGINE">No Metadata Documentation available.</param>
-        /// <param name="dRIVETYPE">No Metadata Documentation available.</param>
-        /// <param name="vIN">No Metadata Documentation available.</param>
-        /// <param name="zIP">No Metadata Documentation available.</param>
-        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
-        /// <param name="rADIUS">No Metadata Documentation available.</param>
-        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
-        /// <param name="sORTORDER">No Metadata Documentation available.</param>
-        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
-        /// <param name="pAGENUM">No Metadata Documentation available.</param>
-        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
-        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
-        public ObjectResult<VEHICLE> SearchAdvanced(Nullable<global::System.Int32> mAKE, Nullable<global::System.Int32> mODEL, Nullable<global::System.Int32> mAXMILEAGE, Nullable<global::System.Int32> yEAR_FROM, Nullable<global::System.Int32> yEAR_TO, Nullable<global::System.Decimal> pRICE_MIN, Nullable<global::System.Decimal> pRICE_MAX, Nullable<global::System.Int32> bODY, global::System.String tRANSMISSION, global::System.String eNGINE, global::System.String dRIVETYPE, global::System.String vIN, global::System.String zIP, Nullable<global::System.Boolean> vALIDATEDONLY, Nullable<global::System.Int32> rADIUS, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES)
-        {
-            ObjectParameter mAKEParameter;
-            if (mAKE.HasValue)
-            {
-                mAKEParameter = new ObjectParameter("MAKE", mAKE);
-            }
-            else
-            {
-                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter mODELParameter;
-            if (mODEL.HasValue)
-            {
-                mODELParameter = new ObjectParameter("MODEL", mODEL);
-            }
-            else
-            {
-                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter mAXMILEAGEParameter;
-            if (mAXMILEAGE.HasValue)
-            {
-                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", mAXMILEAGE);
-            }
-            else
-            {
-                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter yEAR_FROMParameter;
-            if (yEAR_FROM.HasValue)
-            {
-                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", yEAR_FROM);
-            }
-            else
-            {
-                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter yEAR_TOParameter;
-            if (yEAR_TO.HasValue)
-            {
-                yEAR_TOParameter = new ObjectParameter("YEAR_TO", yEAR_TO);
-            }
-            else
-            {
-                yEAR_TOParameter = new ObjectParameter("YEAR_TO", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pRICE_MINParameter;
-            if (pRICE_MIN.HasValue)
-            {
-                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", pRICE_MIN);
-            }
-            else
-            {
-                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter pRICE_MAXParameter;
-            if (pRICE_MAX.HasValue)
-            {
-                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", pRICE_MAX);
-            }
-            else
-            {
-                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter bODYParameter;
-            if (bODY.HasValue)
-            {
-                bODYParameter = new ObjectParameter("BODY", bODY);
-            }
-            else
-            {
-                bODYParameter = new ObjectParameter("BODY", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter tRANSMISSIONParameter;
-            if (tRANSMISSION != null)
-            {
-                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", tRANSMISSION);
-            }
-            else
-            {
-                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", typeof(global::System.String));
-            }
-    
-            ObjectParameter eNGINEParameter;
-            if (eNGINE != null)
-            {
-                eNGINEParameter = new ObjectParameter("ENGINE", eNGINE);
-            }
-            else
-            {
-                eNGINEParameter = new ObjectParameter("ENGINE", typeof(global::System.String));
-            }
-    
-            ObjectParameter dRIVETYPEParameter;
-            if (dRIVETYPE != null)
-            {
-                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", dRIVETYPE);
-            }
-            else
-            {
-                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", typeof(global::System.String));
-            }
-    
-            ObjectParameter vINParameter;
-            if (vIN != null)
-            {
-                vINParameter = new ObjectParameter("VIN", vIN);
-            }
-            else
-            {
-                vINParameter = new ObjectParameter("VIN", typeof(global::System.String));
-            }
-    
-            ObjectParameter zIPParameter;
-            if (zIP != null)
-            {
-                zIPParameter = new ObjectParameter("ZIP", zIP);
-            }
-            else
-            {
-                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
-            }
-    
-            ObjectParameter vALIDATEDONLYParameter;
-            if (vALIDATEDONLY.HasValue)
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
-            }
-            else
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter rADIUSParameter;
-            if (rADIUS.HasValue)
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
-            }
-            else
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter sORTCOLUMNParameter;
-            if (sORTCOLUMN != null)
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
-            }
-            else
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
-            }
-    
-            ObjectParameter sORTORDERParameter;
-            if (sORTORDER != null)
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
-            }
-            else
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
-            }
-    
-            ObjectParameter pAGESIZEParameter;
-            if (pAGESIZE.HasValue)
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
-            }
-            else
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pAGENUMParameter;
-            if (pAGENUM.HasValue)
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
-            }
-            else
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<VEHICLE>("SearchAdvanced", mAKEParameter, mODELParameter, mAXMILEAGEParameter, yEAR_FROMParameter, yEAR_TOParameter, pRICE_MINParameter, pRICE_MAXParameter, bODYParameter, tRANSMISSIONParameter, eNGINEParameter, dRIVETYPEParameter, vINParameter, zIPParameter, vALIDATEDONLYParameter, rADIUSParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES);
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="mergeOption"></param>
-        /// <param name="mAKE">No Metadata Documentation available.</param>
-        /// <param name="mODEL">No Metadata Documentation available.</param>
-        /// <param name="mAXMILEAGE">No Metadata Documentation available.</param>
-        /// <param name="yEAR_FROM">No Metadata Documentation available.</param>
-        /// <param name="yEAR_TO">No Metadata Documentation available.</param>
-        /// <param name="pRICE_MIN">No Metadata Documentation available.</param>
-        /// <param name="pRICE_MAX">No Metadata Documentation available.</param>
-        /// <param name="bODY">No Metadata Documentation available.</param>
-        /// <param name="tRANSMISSION">No Metadata Documentation available.</param>
-        /// <param name="eNGINE">No Metadata Documentation available.</param>
-        /// <param name="dRIVETYPE">No Metadata Documentation available.</param>
-        /// <param name="vIN">No Metadata Documentation available.</param>
-        /// <param name="zIP">No Metadata Documentation available.</param>
-        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
-        /// <param name="rADIUS">No Metadata Documentation available.</param>
-        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
-        /// <param name="sORTORDER">No Metadata Documentation available.</param>
-        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
-        /// <param name="pAGENUM">No Metadata Documentation available.</param>
-        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
-        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
-        public ObjectResult<VEHICLE> SearchAdvanced(Nullable<global::System.Int32> mAKE, Nullable<global::System.Int32> mODEL, Nullable<global::System.Int32> mAXMILEAGE, Nullable<global::System.Int32> yEAR_FROM, Nullable<global::System.Int32> yEAR_TO, Nullable<global::System.Decimal> pRICE_MIN, Nullable<global::System.Decimal> pRICE_MAX, Nullable<global::System.Int32> bODY, global::System.String tRANSMISSION, global::System.String eNGINE, global::System.String dRIVETYPE, global::System.String vIN, global::System.String zIP, Nullable<global::System.Boolean> vALIDATEDONLY, Nullable<global::System.Int32> rADIUS, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES, MergeOption mergeOption)
-        {
-            ObjectParameter mAKEParameter;
-            if (mAKE.HasValue)
-            {
-                mAKEParameter = new ObjectParameter("MAKE", mAKE);
-            }
-            else
-            {
-                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter mODELParameter;
-            if (mODEL.HasValue)
-            {
-                mODELParameter = new ObjectParameter("MODEL", mODEL);
-            }
-            else
-            {
-                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter mAXMILEAGEParameter;
-            if (mAXMILEAGE.HasValue)
-            {
-                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", mAXMILEAGE);
-            }
-            else
-            {
-                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter yEAR_FROMParameter;
-            if (yEAR_FROM.HasValue)
-            {
-                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", yEAR_FROM);
-            }
-            else
-            {
-                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter yEAR_TOParameter;
-            if (yEAR_TO.HasValue)
-            {
-                yEAR_TOParameter = new ObjectParameter("YEAR_TO", yEAR_TO);
-            }
-            else
-            {
-                yEAR_TOParameter = new ObjectParameter("YEAR_TO", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pRICE_MINParameter;
-            if (pRICE_MIN.HasValue)
-            {
-                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", pRICE_MIN);
-            }
-            else
-            {
-                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter pRICE_MAXParameter;
-            if (pRICE_MAX.HasValue)
-            {
-                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", pRICE_MAX);
-            }
-            else
-            {
-                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", typeof(global::System.Decimal));
-            }
-    
-            ObjectParameter bODYParameter;
-            if (bODY.HasValue)
-            {
-                bODYParameter = new ObjectParameter("BODY", bODY);
-            }
-            else
-            {
-                bODYParameter = new ObjectParameter("BODY", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter tRANSMISSIONParameter;
-            if (tRANSMISSION != null)
-            {
-                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", tRANSMISSION);
-            }
-            else
-            {
-                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", typeof(global::System.String));
-            }
-    
-            ObjectParameter eNGINEParameter;
-            if (eNGINE != null)
-            {
-                eNGINEParameter = new ObjectParameter("ENGINE", eNGINE);
-            }
-            else
-            {
-                eNGINEParameter = new ObjectParameter("ENGINE", typeof(global::System.String));
-            }
-    
-            ObjectParameter dRIVETYPEParameter;
-            if (dRIVETYPE != null)
-            {
-                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", dRIVETYPE);
-            }
-            else
-            {
-                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", typeof(global::System.String));
-            }
-    
-            ObjectParameter vINParameter;
-            if (vIN != null)
-            {
-                vINParameter = new ObjectParameter("VIN", vIN);
-            }
-            else
-            {
-                vINParameter = new ObjectParameter("VIN", typeof(global::System.String));
-            }
-    
-            ObjectParameter zIPParameter;
-            if (zIP != null)
-            {
-                zIPParameter = new ObjectParameter("ZIP", zIP);
-            }
-            else
-            {
-                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
-            }
-    
-            ObjectParameter vALIDATEDONLYParameter;
-            if (vALIDATEDONLY.HasValue)
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
-            }
-            else
-            {
-                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
-            }
-    
-            ObjectParameter rADIUSParameter;
-            if (rADIUS.HasValue)
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
-            }
-            else
-            {
-                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter sORTCOLUMNParameter;
-            if (sORTCOLUMN != null)
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
-            }
-            else
-            {
-                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
-            }
-    
-            ObjectParameter sORTORDERParameter;
-            if (sORTORDER != null)
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
-            }
-            else
-            {
-                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
-            }
-    
-            ObjectParameter pAGESIZEParameter;
-            if (pAGESIZE.HasValue)
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
-            }
-            else
-            {
-                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter pAGENUMParameter;
-            if (pAGENUM.HasValue)
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
-            }
-            else
-            {
-                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<VEHICLE>("SearchAdvanced", mergeOption, mAKEParameter, mODELParameter, mAXMILEAGEParameter, yEAR_FROMParameter, yEAR_TOParameter, pRICE_MINParameter, pRICE_MAXParameter, bODYParameter, tRANSMISSIONParameter, eNGINEParameter, dRIVETYPEParameter, vINParameter, zIPParameter, vALIDATEDONLYParameter, rADIUSParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectResult<FeaturedVehicles_Result> FeaturedVehicles()
         {
             return base.ExecuteFunction<FeaturedVehicles_Result>("FeaturedVehicles");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="mAKE">No Metadata Documentation available.</param>
+        /// <param name="mODEL">No Metadata Documentation available.</param>
+        /// <param name="mAXMILEAGE">No Metadata Documentation available.</param>
+        /// <param name="yEAR_FROM">No Metadata Documentation available.</param>
+        /// <param name="yEAR_TO">No Metadata Documentation available.</param>
+        /// <param name="pRICE_MIN">No Metadata Documentation available.</param>
+        /// <param name="pRICE_MAX">No Metadata Documentation available.</param>
+        /// <param name="bODY">No Metadata Documentation available.</param>
+        /// <param name="tRANSMISSION">No Metadata Documentation available.</param>
+        /// <param name="eNGINE">No Metadata Documentation available.</param>
+        /// <param name="dRIVETYPE">No Metadata Documentation available.</param>
+        /// <param name="vIN">No Metadata Documentation available.</param>
+        /// <param name="zIP">No Metadata Documentation available.</param>
+        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
+        /// <param name="rADIUS">No Metadata Documentation available.</param>
+        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
+        /// <param name="sORTORDER">No Metadata Documentation available.</param>
+        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
+        /// <param name="pAGENUM">No Metadata Documentation available.</param>
+        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
+        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
+        public ObjectResult<VEHICLE> AdvancedSearch(Nullable<global::System.Int32> mAKE, Nullable<global::System.Int32> mODEL, Nullable<global::System.Int32> mAXMILEAGE, Nullable<global::System.Int32> yEAR_FROM, Nullable<global::System.Int32> yEAR_TO, Nullable<global::System.Decimal> pRICE_MIN, Nullable<global::System.Decimal> pRICE_MAX, Nullable<global::System.Int32> bODY, global::System.String tRANSMISSION, global::System.String eNGINE, global::System.String dRIVETYPE, global::System.String vIN, global::System.String zIP, Nullable<global::System.Boolean> vALIDATEDONLY, Nullable<global::System.Int32> rADIUS, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES)
+        {
+            ObjectParameter mAKEParameter;
+            if (mAKE.HasValue)
+            {
+                mAKEParameter = new ObjectParameter("MAKE", mAKE);
+            }
+            else
+            {
+                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter mODELParameter;
+            if (mODEL.HasValue)
+            {
+                mODELParameter = new ObjectParameter("MODEL", mODEL);
+            }
+            else
+            {
+                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter mAXMILEAGEParameter;
+            if (mAXMILEAGE.HasValue)
+            {
+                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", mAXMILEAGE);
+            }
+            else
+            {
+                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yEAR_FROMParameter;
+            if (yEAR_FROM.HasValue)
+            {
+                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", yEAR_FROM);
+            }
+            else
+            {
+                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yEAR_TOParameter;
+            if (yEAR_TO.HasValue)
+            {
+                yEAR_TOParameter = new ObjectParameter("YEAR_TO", yEAR_TO);
+            }
+            else
+            {
+                yEAR_TOParameter = new ObjectParameter("YEAR_TO", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pRICE_MINParameter;
+            if (pRICE_MIN.HasValue)
+            {
+                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", pRICE_MIN);
+            }
+            else
+            {
+                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter pRICE_MAXParameter;
+            if (pRICE_MAX.HasValue)
+            {
+                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", pRICE_MAX);
+            }
+            else
+            {
+                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter bODYParameter;
+            if (bODY.HasValue)
+            {
+                bODYParameter = new ObjectParameter("BODY", bODY);
+            }
+            else
+            {
+                bODYParameter = new ObjectParameter("BODY", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter tRANSMISSIONParameter;
+            if (tRANSMISSION != null)
+            {
+                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", tRANSMISSION);
+            }
+            else
+            {
+                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", typeof(global::System.String));
+            }
+    
+            ObjectParameter eNGINEParameter;
+            if (eNGINE != null)
+            {
+                eNGINEParameter = new ObjectParameter("ENGINE", eNGINE);
+            }
+            else
+            {
+                eNGINEParameter = new ObjectParameter("ENGINE", typeof(global::System.String));
+            }
+    
+            ObjectParameter dRIVETYPEParameter;
+            if (dRIVETYPE != null)
+            {
+                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", dRIVETYPE);
+            }
+            else
+            {
+                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", typeof(global::System.String));
+            }
+    
+            ObjectParameter vINParameter;
+            if (vIN != null)
+            {
+                vINParameter = new ObjectParameter("VIN", vIN);
+            }
+            else
+            {
+                vINParameter = new ObjectParameter("VIN", typeof(global::System.String));
+            }
+    
+            ObjectParameter zIPParameter;
+            if (zIP != null)
+            {
+                zIPParameter = new ObjectParameter("ZIP", zIP);
+            }
+            else
+            {
+                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
+            }
+    
+            ObjectParameter vALIDATEDONLYParameter;
+            if (vALIDATEDONLY.HasValue)
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
+            }
+            else
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter rADIUSParameter;
+            if (rADIUS.HasValue)
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
+            }
+            else
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter sORTCOLUMNParameter;
+            if (sORTCOLUMN != null)
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
+            }
+            else
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
+            }
+    
+            ObjectParameter sORTORDERParameter;
+            if (sORTORDER != null)
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
+            }
+            else
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
+            }
+    
+            ObjectParameter pAGESIZEParameter;
+            if (pAGESIZE.HasValue)
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
+            }
+            else
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pAGENUMParameter;
+            if (pAGENUM.HasValue)
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
+            }
+            else
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<VEHICLE>("AdvancedSearch", mAKEParameter, mODELParameter, mAXMILEAGEParameter, yEAR_FROMParameter, yEAR_TOParameter, pRICE_MINParameter, pRICE_MAXParameter, bODYParameter, tRANSMISSIONParameter, eNGINEParameter, dRIVETYPEParameter, vINParameter, zIPParameter, vALIDATEDONLYParameter, rADIUSParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES);
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="mergeOption"></param>
+        /// <param name="mAKE">No Metadata Documentation available.</param>
+        /// <param name="mODEL">No Metadata Documentation available.</param>
+        /// <param name="mAXMILEAGE">No Metadata Documentation available.</param>
+        /// <param name="yEAR_FROM">No Metadata Documentation available.</param>
+        /// <param name="yEAR_TO">No Metadata Documentation available.</param>
+        /// <param name="pRICE_MIN">No Metadata Documentation available.</param>
+        /// <param name="pRICE_MAX">No Metadata Documentation available.</param>
+        /// <param name="bODY">No Metadata Documentation available.</param>
+        /// <param name="tRANSMISSION">No Metadata Documentation available.</param>
+        /// <param name="eNGINE">No Metadata Documentation available.</param>
+        /// <param name="dRIVETYPE">No Metadata Documentation available.</param>
+        /// <param name="vIN">No Metadata Documentation available.</param>
+        /// <param name="zIP">No Metadata Documentation available.</param>
+        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
+        /// <param name="rADIUS">No Metadata Documentation available.</param>
+        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
+        /// <param name="sORTORDER">No Metadata Documentation available.</param>
+        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
+        /// <param name="pAGENUM">No Metadata Documentation available.</param>
+        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
+        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
+        public ObjectResult<VEHICLE> AdvancedSearch(Nullable<global::System.Int32> mAKE, Nullable<global::System.Int32> mODEL, Nullable<global::System.Int32> mAXMILEAGE, Nullable<global::System.Int32> yEAR_FROM, Nullable<global::System.Int32> yEAR_TO, Nullable<global::System.Decimal> pRICE_MIN, Nullable<global::System.Decimal> pRICE_MAX, Nullable<global::System.Int32> bODY, global::System.String tRANSMISSION, global::System.String eNGINE, global::System.String dRIVETYPE, global::System.String vIN, global::System.String zIP, Nullable<global::System.Boolean> vALIDATEDONLY, Nullable<global::System.Int32> rADIUS, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES, MergeOption mergeOption)
+        {
+            ObjectParameter mAKEParameter;
+            if (mAKE.HasValue)
+            {
+                mAKEParameter = new ObjectParameter("MAKE", mAKE);
+            }
+            else
+            {
+                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter mODELParameter;
+            if (mODEL.HasValue)
+            {
+                mODELParameter = new ObjectParameter("MODEL", mODEL);
+            }
+            else
+            {
+                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter mAXMILEAGEParameter;
+            if (mAXMILEAGE.HasValue)
+            {
+                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", mAXMILEAGE);
+            }
+            else
+            {
+                mAXMILEAGEParameter = new ObjectParameter("MAXMILEAGE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yEAR_FROMParameter;
+            if (yEAR_FROM.HasValue)
+            {
+                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", yEAR_FROM);
+            }
+            else
+            {
+                yEAR_FROMParameter = new ObjectParameter("YEAR_FROM", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter yEAR_TOParameter;
+            if (yEAR_TO.HasValue)
+            {
+                yEAR_TOParameter = new ObjectParameter("YEAR_TO", yEAR_TO);
+            }
+            else
+            {
+                yEAR_TOParameter = new ObjectParameter("YEAR_TO", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pRICE_MINParameter;
+            if (pRICE_MIN.HasValue)
+            {
+                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", pRICE_MIN);
+            }
+            else
+            {
+                pRICE_MINParameter = new ObjectParameter("PRICE_MIN", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter pRICE_MAXParameter;
+            if (pRICE_MAX.HasValue)
+            {
+                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", pRICE_MAX);
+            }
+            else
+            {
+                pRICE_MAXParameter = new ObjectParameter("PRICE_MAX", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter bODYParameter;
+            if (bODY.HasValue)
+            {
+                bODYParameter = new ObjectParameter("BODY", bODY);
+            }
+            else
+            {
+                bODYParameter = new ObjectParameter("BODY", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter tRANSMISSIONParameter;
+            if (tRANSMISSION != null)
+            {
+                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", tRANSMISSION);
+            }
+            else
+            {
+                tRANSMISSIONParameter = new ObjectParameter("TRANSMISSION", typeof(global::System.String));
+            }
+    
+            ObjectParameter eNGINEParameter;
+            if (eNGINE != null)
+            {
+                eNGINEParameter = new ObjectParameter("ENGINE", eNGINE);
+            }
+            else
+            {
+                eNGINEParameter = new ObjectParameter("ENGINE", typeof(global::System.String));
+            }
+    
+            ObjectParameter dRIVETYPEParameter;
+            if (dRIVETYPE != null)
+            {
+                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", dRIVETYPE);
+            }
+            else
+            {
+                dRIVETYPEParameter = new ObjectParameter("DRIVETYPE", typeof(global::System.String));
+            }
+    
+            ObjectParameter vINParameter;
+            if (vIN != null)
+            {
+                vINParameter = new ObjectParameter("VIN", vIN);
+            }
+            else
+            {
+                vINParameter = new ObjectParameter("VIN", typeof(global::System.String));
+            }
+    
+            ObjectParameter zIPParameter;
+            if (zIP != null)
+            {
+                zIPParameter = new ObjectParameter("ZIP", zIP);
+            }
+            else
+            {
+                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
+            }
+    
+            ObjectParameter vALIDATEDONLYParameter;
+            if (vALIDATEDONLY.HasValue)
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
+            }
+            else
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter rADIUSParameter;
+            if (rADIUS.HasValue)
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
+            }
+            else
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter sORTCOLUMNParameter;
+            if (sORTCOLUMN != null)
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
+            }
+            else
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
+            }
+    
+            ObjectParameter sORTORDERParameter;
+            if (sORTORDER != null)
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
+            }
+            else
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
+            }
+    
+            ObjectParameter pAGESIZEParameter;
+            if (pAGESIZE.HasValue)
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
+            }
+            else
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pAGENUMParameter;
+            if (pAGENUM.HasValue)
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
+            }
+            else
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<VEHICLE>("AdvancedSearch", mergeOption, mAKEParameter, mODELParameter, mAXMILEAGEParameter, yEAR_FROMParameter, yEAR_TOParameter, pRICE_MINParameter, pRICE_MAXParameter, bODYParameter, tRANSMISSIONParameter, eNGINEParameter, dRIVETYPEParameter, vINParameter, zIPParameter, vALIDATEDONLYParameter, rADIUSParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="qUERY">No Metadata Documentation available.</param>
+        /// <param name="zIP">No Metadata Documentation available.</param>
+        /// <param name="rADIUS">No Metadata Documentation available.</param>
+        /// <param name="pRICE">No Metadata Documentation available.</param>
+        /// <param name="yEAR">No Metadata Documentation available.</param>
+        /// <param name="mILEAGE">No Metadata Documentation available.</param>
+        /// <param name="mAKE">No Metadata Documentation available.</param>
+        /// <param name="mODEL">No Metadata Documentation available.</param>
+        /// <param name="wARRANTY">No Metadata Documentation available.</param>
+        /// <param name="bODYTYPE">No Metadata Documentation available.</param>
+        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
+        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
+        /// <param name="sORTORDER">No Metadata Documentation available.</param>
+        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
+        /// <param name="pAGENUM">No Metadata Documentation available.</param>
+        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
+        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
+        /// <param name="eXACTMATCH">No Metadata Documentation available.</param>
+        public ObjectResult<VEHICLE> StandardSearch(global::System.String qUERY, global::System.String zIP, Nullable<global::System.Int32> rADIUS, global::System.String pRICE, global::System.String yEAR, global::System.String mILEAGE, global::System.String mAKE, global::System.String mODEL, Nullable<global::System.Boolean> wARRANTY, global::System.String bODYTYPE, Nullable<global::System.Boolean> vALIDATEDONLY, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES, ObjectParameter eXACTMATCH)
+        {
+            ObjectParameter qUERYParameter;
+            if (qUERY != null)
+            {
+                qUERYParameter = new ObjectParameter("QUERY", qUERY);
+            }
+            else
+            {
+                qUERYParameter = new ObjectParameter("QUERY", typeof(global::System.String));
+            }
+    
+            ObjectParameter zIPParameter;
+            if (zIP != null)
+            {
+                zIPParameter = new ObjectParameter("ZIP", zIP);
+            }
+            else
+            {
+                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
+            }
+    
+            ObjectParameter rADIUSParameter;
+            if (rADIUS.HasValue)
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
+            }
+            else
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pRICEParameter;
+            if (pRICE != null)
+            {
+                pRICEParameter = new ObjectParameter("PRICE", pRICE);
+            }
+            else
+            {
+                pRICEParameter = new ObjectParameter("PRICE", typeof(global::System.String));
+            }
+    
+            ObjectParameter yEARParameter;
+            if (yEAR != null)
+            {
+                yEARParameter = new ObjectParameter("YEAR", yEAR);
+            }
+            else
+            {
+                yEARParameter = new ObjectParameter("YEAR", typeof(global::System.String));
+            }
+    
+            ObjectParameter mILEAGEParameter;
+            if (mILEAGE != null)
+            {
+                mILEAGEParameter = new ObjectParameter("MILEAGE", mILEAGE);
+            }
+            else
+            {
+                mILEAGEParameter = new ObjectParameter("MILEAGE", typeof(global::System.String));
+            }
+    
+            ObjectParameter mAKEParameter;
+            if (mAKE != null)
+            {
+                mAKEParameter = new ObjectParameter("MAKE", mAKE);
+            }
+            else
+            {
+                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.String));
+            }
+    
+            ObjectParameter mODELParameter;
+            if (mODEL != null)
+            {
+                mODELParameter = new ObjectParameter("MODEL", mODEL);
+            }
+            else
+            {
+                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.String));
+            }
+    
+            ObjectParameter wARRANTYParameter;
+            if (wARRANTY.HasValue)
+            {
+                wARRANTYParameter = new ObjectParameter("WARRANTY", wARRANTY);
+            }
+            else
+            {
+                wARRANTYParameter = new ObjectParameter("WARRANTY", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter bODYTYPEParameter;
+            if (bODYTYPE != null)
+            {
+                bODYTYPEParameter = new ObjectParameter("BODYTYPE", bODYTYPE);
+            }
+            else
+            {
+                bODYTYPEParameter = new ObjectParameter("BODYTYPE", typeof(global::System.String));
+            }
+    
+            ObjectParameter vALIDATEDONLYParameter;
+            if (vALIDATEDONLY.HasValue)
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
+            }
+            else
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter sORTCOLUMNParameter;
+            if (sORTCOLUMN != null)
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
+            }
+            else
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
+            }
+    
+            ObjectParameter sORTORDERParameter;
+            if (sORTORDER != null)
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
+            }
+            else
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
+            }
+    
+            ObjectParameter pAGESIZEParameter;
+            if (pAGESIZE.HasValue)
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
+            }
+            else
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pAGENUMParameter;
+            if (pAGENUM.HasValue)
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
+            }
+            else
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<VEHICLE>("StandardSearch", qUERYParameter, zIPParameter, rADIUSParameter, pRICEParameter, yEARParameter, mILEAGEParameter, mAKEParameter, mODELParameter, wARRANTYParameter, bODYTYPEParameter, vALIDATEDONLYParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES, eXACTMATCH);
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="mergeOption"></param>
+        /// <param name="qUERY">No Metadata Documentation available.</param>
+        /// <param name="zIP">No Metadata Documentation available.</param>
+        /// <param name="rADIUS">No Metadata Documentation available.</param>
+        /// <param name="pRICE">No Metadata Documentation available.</param>
+        /// <param name="yEAR">No Metadata Documentation available.</param>
+        /// <param name="mILEAGE">No Metadata Documentation available.</param>
+        /// <param name="mAKE">No Metadata Documentation available.</param>
+        /// <param name="mODEL">No Metadata Documentation available.</param>
+        /// <param name="wARRANTY">No Metadata Documentation available.</param>
+        /// <param name="bODYTYPE">No Metadata Documentation available.</param>
+        /// <param name="vALIDATEDONLY">No Metadata Documentation available.</param>
+        /// <param name="sORTCOLUMN">No Metadata Documentation available.</param>
+        /// <param name="sORTORDER">No Metadata Documentation available.</param>
+        /// <param name="pAGESIZE">No Metadata Documentation available.</param>
+        /// <param name="pAGENUM">No Metadata Documentation available.</param>
+        /// <param name="tOTALRESULTS">No Metadata Documentation available.</param>
+        /// <param name="tOTALPAGES">No Metadata Documentation available.</param>
+        /// <param name="eXACTMATCH">No Metadata Documentation available.</param>
+        public ObjectResult<VEHICLE> StandardSearch(global::System.String qUERY, global::System.String zIP, Nullable<global::System.Int32> rADIUS, global::System.String pRICE, global::System.String yEAR, global::System.String mILEAGE, global::System.String mAKE, global::System.String mODEL, Nullable<global::System.Boolean> wARRANTY, global::System.String bODYTYPE, Nullable<global::System.Boolean> vALIDATEDONLY, global::System.String sORTCOLUMN, global::System.String sORTORDER, Nullable<global::System.Int32> pAGESIZE, Nullable<global::System.Int32> pAGENUM, ObjectParameter tOTALRESULTS, ObjectParameter tOTALPAGES, ObjectParameter eXACTMATCH, MergeOption mergeOption)
+        {
+            ObjectParameter qUERYParameter;
+            if (qUERY != null)
+            {
+                qUERYParameter = new ObjectParameter("QUERY", qUERY);
+            }
+            else
+            {
+                qUERYParameter = new ObjectParameter("QUERY", typeof(global::System.String));
+            }
+    
+            ObjectParameter zIPParameter;
+            if (zIP != null)
+            {
+                zIPParameter = new ObjectParameter("ZIP", zIP);
+            }
+            else
+            {
+                zIPParameter = new ObjectParameter("ZIP", typeof(global::System.String));
+            }
+    
+            ObjectParameter rADIUSParameter;
+            if (rADIUS.HasValue)
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", rADIUS);
+            }
+            else
+            {
+                rADIUSParameter = new ObjectParameter("RADIUS", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pRICEParameter;
+            if (pRICE != null)
+            {
+                pRICEParameter = new ObjectParameter("PRICE", pRICE);
+            }
+            else
+            {
+                pRICEParameter = new ObjectParameter("PRICE", typeof(global::System.String));
+            }
+    
+            ObjectParameter yEARParameter;
+            if (yEAR != null)
+            {
+                yEARParameter = new ObjectParameter("YEAR", yEAR);
+            }
+            else
+            {
+                yEARParameter = new ObjectParameter("YEAR", typeof(global::System.String));
+            }
+    
+            ObjectParameter mILEAGEParameter;
+            if (mILEAGE != null)
+            {
+                mILEAGEParameter = new ObjectParameter("MILEAGE", mILEAGE);
+            }
+            else
+            {
+                mILEAGEParameter = new ObjectParameter("MILEAGE", typeof(global::System.String));
+            }
+    
+            ObjectParameter mAKEParameter;
+            if (mAKE != null)
+            {
+                mAKEParameter = new ObjectParameter("MAKE", mAKE);
+            }
+            else
+            {
+                mAKEParameter = new ObjectParameter("MAKE", typeof(global::System.String));
+            }
+    
+            ObjectParameter mODELParameter;
+            if (mODEL != null)
+            {
+                mODELParameter = new ObjectParameter("MODEL", mODEL);
+            }
+            else
+            {
+                mODELParameter = new ObjectParameter("MODEL", typeof(global::System.String));
+            }
+    
+            ObjectParameter wARRANTYParameter;
+            if (wARRANTY.HasValue)
+            {
+                wARRANTYParameter = new ObjectParameter("WARRANTY", wARRANTY);
+            }
+            else
+            {
+                wARRANTYParameter = new ObjectParameter("WARRANTY", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter bODYTYPEParameter;
+            if (bODYTYPE != null)
+            {
+                bODYTYPEParameter = new ObjectParameter("BODYTYPE", bODYTYPE);
+            }
+            else
+            {
+                bODYTYPEParameter = new ObjectParameter("BODYTYPE", typeof(global::System.String));
+            }
+    
+            ObjectParameter vALIDATEDONLYParameter;
+            if (vALIDATEDONLY.HasValue)
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", vALIDATEDONLY);
+            }
+            else
+            {
+                vALIDATEDONLYParameter = new ObjectParameter("VALIDATEDONLY", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter sORTCOLUMNParameter;
+            if (sORTCOLUMN != null)
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", sORTCOLUMN);
+            }
+            else
+            {
+                sORTCOLUMNParameter = new ObjectParameter("SORTCOLUMN", typeof(global::System.String));
+            }
+    
+            ObjectParameter sORTORDERParameter;
+            if (sORTORDER != null)
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", sORTORDER);
+            }
+            else
+            {
+                sORTORDERParameter = new ObjectParameter("SORTORDER", typeof(global::System.String));
+            }
+    
+            ObjectParameter pAGESIZEParameter;
+            if (pAGESIZE.HasValue)
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", pAGESIZE);
+            }
+            else
+            {
+                pAGESIZEParameter = new ObjectParameter("PAGESIZE", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter pAGENUMParameter;
+            if (pAGENUM.HasValue)
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", pAGENUM);
+            }
+            else
+            {
+                pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<VEHICLE>("StandardSearch", mergeOption, qUERYParameter, zIPParameter, rADIUSParameter, pRICEParameter, yEARParameter, mILEAGEParameter, mAKEParameter, mODELParameter, wARRANTYParameter, bODYTYPEParameter, vALIDATEDONLYParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES, eXACTMATCH);
         }
 
         #endregion
@@ -15000,6 +15000,3503 @@ namespace Edrive.Data
         private global::System.String _MODEL;
         partial void OnMODELChanging(global::System.String value);
         partial void OnMODELChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="EdriveAutosModel", Name="SearchAdvanced_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class SearchAdvanced_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SearchAdvanced_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="iSDELETED">Initial value of the ISDELETED property.</param>
+        /// <param name="dATE_CREATED">Initial value of the DATE_CREATED property.</param>
+        /// <param name="dATE_UPDATED">Initial value of the DATE_UPDATED property.</param>
+        /// <param name="tYPE_ID">Initial value of the TYPE_ID property.</param>
+        /// <param name="vIN">Initial value of the VIN property.</param>
+        /// <param name="mAKE_ID">Initial value of the MAKE_ID property.</param>
+        /// <param name="mODEL_ID">Initial value of the MODEL_ID property.</param>
+        /// <param name="bODY_ID">Initial value of the BODY_ID property.</param>
+        /// <param name="iSQUALIFIED">Initial value of the ISQUALIFIED property.</param>
+        public static SearchAdvanced_Result CreateSearchAdvanced_Result(global::System.Int32 id, global::System.Boolean iSDELETED, global::System.DateTime dATE_CREATED, global::System.DateTime dATE_UPDATED, global::System.Int32 tYPE_ID, global::System.String vIN, global::System.Int32 mAKE_ID, global::System.Int32 mODEL_ID, global::System.Int32 bODY_ID, global::System.Boolean iSQUALIFIED)
+        {
+            SearchAdvanced_Result searchAdvanced_Result = new SearchAdvanced_Result();
+            searchAdvanced_Result.ID = id;
+            searchAdvanced_Result.ISDELETED = iSDELETED;
+            searchAdvanced_Result.DATE_CREATED = dATE_CREATED;
+            searchAdvanced_Result.DATE_UPDATED = dATE_UPDATED;
+            searchAdvanced_Result.TYPE_ID = tYPE_ID;
+            searchAdvanced_Result.VIN = vIN;
+            searchAdvanced_Result.MAKE_ID = mAKE_ID;
+            searchAdvanced_Result.MODEL_ID = mODEL_ID;
+            searchAdvanced_Result.BODY_ID = bODY_ID;
+            searchAdvanced_Result.ISQUALIFIED = iSQUALIFIED;
+            return searchAdvanced_Result;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                OnIDChanging(value);
+                ReportPropertyChanging("ID");
+                _ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID");
+                OnIDChanged();
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ISDELETED
+        {
+            get
+            {
+                return _ISDELETED;
+            }
+            set
+            {
+                OnISDELETEDChanging(value);
+                ReportPropertyChanging("ISDELETED");
+                _ISDELETED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISDELETED");
+                OnISDELETEDChanged();
+            }
+        }
+        private global::System.Boolean _ISDELETED;
+        partial void OnISDELETEDChanging(global::System.Boolean value);
+        partial void OnISDELETEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DATE_CREATED
+        {
+            get
+            {
+                return _DATE_CREATED;
+            }
+            set
+            {
+                OnDATE_CREATEDChanging(value);
+                ReportPropertyChanging("DATE_CREATED");
+                _DATE_CREATED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_CREATED");
+                OnDATE_CREATEDChanged();
+            }
+        }
+        private global::System.DateTime _DATE_CREATED;
+        partial void OnDATE_CREATEDChanging(global::System.DateTime value);
+        partial void OnDATE_CREATEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DATE_UPDATED
+        {
+            get
+            {
+                return _DATE_UPDATED;
+            }
+            set
+            {
+                OnDATE_UPDATEDChanging(value);
+                ReportPropertyChanging("DATE_UPDATED");
+                _DATE_UPDATED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_UPDATED");
+                OnDATE_UPDATEDChanged();
+            }
+        }
+        private global::System.DateTime _DATE_UPDATED;
+        partial void OnDATE_UPDATEDChanging(global::System.DateTime value);
+        partial void OnDATE_UPDATEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATE_NADACHECKED
+        {
+            get
+            {
+                return _DATE_NADACHECKED;
+            }
+            set
+            {
+                OnDATE_NADACHECKEDChanging(value);
+                ReportPropertyChanging("DATE_NADACHECKED");
+                _DATE_NADACHECKED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_NADACHECKED");
+                OnDATE_NADACHECKEDChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATE_NADACHECKED;
+        partial void OnDATE_NADACHECKEDChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATE_NADACHECKEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATE_INSTOCK
+        {
+            get
+            {
+                return _DATE_INSTOCK;
+            }
+            set
+            {
+                OnDATE_INSTOCKChanging(value);
+                ReportPropertyChanging("DATE_INSTOCK");
+                _DATE_INSTOCK = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_INSTOCK");
+                OnDATE_INSTOCKChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATE_INSTOCK;
+        partial void OnDATE_INSTOCKChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATE_INSTOCKChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SALESPERSON_ID
+        {
+            get
+            {
+                return _SALESPERSON_ID;
+            }
+            set
+            {
+                OnSALESPERSON_IDChanging(value);
+                ReportPropertyChanging("SALESPERSON_ID");
+                _SALESPERSON_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SALESPERSON_ID");
+                OnSALESPERSON_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SALESPERSON_ID;
+        partial void OnSALESPERSON_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnSALESPERSON_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TYPE_ID
+        {
+            get
+            {
+                return _TYPE_ID;
+            }
+            set
+            {
+                OnTYPE_IDChanging(value);
+                ReportPropertyChanging("TYPE_ID");
+                _TYPE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TYPE_ID");
+                OnTYPE_IDChanged();
+            }
+        }
+        private global::System.Int32 _TYPE_ID;
+        partial void OnTYPE_IDChanging(global::System.Int32 value);
+        partial void OnTYPE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String STOCKNUMBER
+        {
+            get
+            {
+                return _STOCKNUMBER;
+            }
+            set
+            {
+                OnSTOCKNUMBERChanging(value);
+                ReportPropertyChanging("STOCKNUMBER");
+                _STOCKNUMBER = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("STOCKNUMBER");
+                OnSTOCKNUMBERChanged();
+            }
+        }
+        private global::System.String _STOCKNUMBER;
+        partial void OnSTOCKNUMBERChanging(global::System.String value);
+        partial void OnSTOCKNUMBERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String VIN
+        {
+            get
+            {
+                return _VIN;
+            }
+            set
+            {
+                OnVINChanging(value);
+                ReportPropertyChanging("VIN");
+                _VIN = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("VIN");
+                OnVINChanged();
+            }
+        }
+        private global::System.String _VIN;
+        partial void OnVINChanging(global::System.String value);
+        partial void OnVINChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> YEAR
+        {
+            get
+            {
+                return _YEAR;
+            }
+            set
+            {
+                OnYEARChanging(value);
+                ReportPropertyChanging("YEAR");
+                _YEAR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("YEAR");
+                OnYEARChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _YEAR;
+        partial void OnYEARChanging(Nullable<global::System.Int32> value);
+        partial void OnYEARChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MAKE_ID
+        {
+            get
+            {
+                return _MAKE_ID;
+            }
+            set
+            {
+                OnMAKE_IDChanging(value);
+                ReportPropertyChanging("MAKE_ID");
+                _MAKE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MAKE_ID");
+                OnMAKE_IDChanged();
+            }
+        }
+        private global::System.Int32 _MAKE_ID;
+        partial void OnMAKE_IDChanging(global::System.Int32 value);
+        partial void OnMAKE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MODEL_ID
+        {
+            get
+            {
+                return _MODEL_ID;
+            }
+            set
+            {
+                OnMODEL_IDChanging(value);
+                ReportPropertyChanging("MODEL_ID");
+                _MODEL_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MODEL_ID");
+                OnMODEL_IDChanged();
+            }
+        }
+        private global::System.Int32 _MODEL_ID;
+        partial void OnMODEL_IDChanging(global::System.Int32 value);
+        partial void OnMODEL_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRIM
+        {
+            get
+            {
+                return _TRIM;
+            }
+            set
+            {
+                OnTRIMChanging(value);
+                ReportPropertyChanging("TRIM");
+                _TRIM = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRIM");
+                OnTRIMChanged();
+            }
+        }
+        private global::System.String _TRIM;
+        partial void OnTRIMChanging(global::System.String value);
+        partial void OnTRIMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BODY_ID
+        {
+            get
+            {
+                return _BODY_ID;
+            }
+            set
+            {
+                OnBODY_IDChanging(value);
+                ReportPropertyChanging("BODY_ID");
+                _BODY_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BODY_ID");
+                OnBODY_IDChanged();
+            }
+        }
+        private global::System.Int32 _BODY_ID;
+        partial void OnBODY_IDChanging(global::System.Int32 value);
+        partial void OnBODY_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MILEAGE
+        {
+            get
+            {
+                return _MILEAGE;
+            }
+            set
+            {
+                OnMILEAGEChanging(value);
+                ReportPropertyChanging("MILEAGE");
+                _MILEAGE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MILEAGE");
+                OnMILEAGEChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MILEAGE;
+        partial void OnMILEAGEChanging(Nullable<global::System.Int32> value);
+        partial void OnMILEAGEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CONDITION
+        {
+            get
+            {
+                return _CONDITION;
+            }
+            set
+            {
+                OnCONDITIONChanging(value);
+                ReportPropertyChanging("CONDITION");
+                _CONDITION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CONDITION");
+                OnCONDITIONChanged();
+            }
+        }
+        private global::System.String _CONDITION;
+        partial void OnCONDITIONChanging(global::System.String value);
+        partial void OnCONDITIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COLOR_EXTERIOR
+        {
+            get
+            {
+                return _COLOR_EXTERIOR;
+            }
+            set
+            {
+                OnCOLOR_EXTERIORChanging(value);
+                ReportPropertyChanging("COLOR_EXTERIOR");
+                _COLOR_EXTERIOR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COLOR_EXTERIOR");
+                OnCOLOR_EXTERIORChanged();
+            }
+        }
+        private global::System.String _COLOR_EXTERIOR;
+        partial void OnCOLOR_EXTERIORChanging(global::System.String value);
+        partial void OnCOLOR_EXTERIORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COLOR_INTERIOR
+        {
+            get
+            {
+                return _COLOR_INTERIOR;
+            }
+            set
+            {
+                OnCOLOR_INTERIORChanging(value);
+                ReportPropertyChanging("COLOR_INTERIOR");
+                _COLOR_INTERIOR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COLOR_INTERIOR");
+                OnCOLOR_INTERIORChanged();
+            }
+        }
+        private global::System.String _COLOR_INTERIOR;
+        partial void OnCOLOR_INTERIORChanging(global::System.String value);
+        partial void OnCOLOR_INTERIORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DOORS
+        {
+            get
+            {
+                return _DOORS;
+            }
+            set
+            {
+                OnDOORSChanging(value);
+                ReportPropertyChanging("DOORS");
+                _DOORS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DOORS");
+                OnDOORSChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DOORS;
+        partial void OnDOORSChanging(Nullable<global::System.Int32> value);
+        partial void OnDOORSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ENGINE
+        {
+            get
+            {
+                return _ENGINE;
+            }
+            set
+            {
+                OnENGINEChanging(value);
+                ReportPropertyChanging("ENGINE");
+                _ENGINE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ENGINE");
+                OnENGINEChanged();
+            }
+        }
+        private global::System.String _ENGINE;
+        partial void OnENGINEChanging(global::System.String value);
+        partial void OnENGINEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRANSMISSION
+        {
+            get
+            {
+                return _TRANSMISSION;
+            }
+            set
+            {
+                OnTRANSMISSIONChanging(value);
+                ReportPropertyChanging("TRANSMISSION");
+                _TRANSMISSION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRANSMISSION");
+                OnTRANSMISSIONChanged();
+            }
+        }
+        private global::System.String _TRANSMISSION;
+        partial void OnTRANSMISSIONChanging(global::System.String value);
+        partial void OnTRANSMISSIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FUEL_TYPE
+        {
+            get
+            {
+                return _FUEL_TYPE;
+            }
+            set
+            {
+                OnFUEL_TYPEChanging(value);
+                ReportPropertyChanging("FUEL_TYPE");
+                _FUEL_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FUEL_TYPE");
+                OnFUEL_TYPEChanged();
+            }
+        }
+        private global::System.String _FUEL_TYPE;
+        partial void OnFUEL_TYPEChanging(global::System.String value);
+        partial void OnFUEL_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DRIVE_TYPE
+        {
+            get
+            {
+                return _DRIVE_TYPE;
+            }
+            set
+            {
+                OnDRIVE_TYPEChanging(value);
+                ReportPropertyChanging("DRIVE_TYPE");
+                _DRIVE_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DRIVE_TYPE");
+                OnDRIVE_TYPEChanged();
+            }
+        }
+        private global::System.String _DRIVE_TYPE;
+        partial void OnDRIVE_TYPEChanging(global::System.String value);
+        partial void OnDRIVE_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DESCRIPTION
+        {
+            get
+            {
+                return _DESCRIPTION;
+            }
+            set
+            {
+                OnDESCRIPTIONChanging(value);
+                ReportPropertyChanging("DESCRIPTION");
+                _DESCRIPTION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DESCRIPTION");
+                OnDESCRIPTIONChanged();
+            }
+        }
+        private global::System.String _DESCRIPTION;
+        partial void OnDESCRIPTIONChanging(global::System.String value);
+        partial void OnDESCRIPTIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FILENAME
+        {
+            get
+            {
+                return _FILENAME;
+            }
+            set
+            {
+                OnFILENAMEChanging(value);
+                ReportPropertyChanging("FILENAME");
+                _FILENAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FILENAME");
+                OnFILENAMEChanged();
+            }
+        }
+        private global::System.String _FILENAME;
+        partial void OnFILENAMEChanging(global::System.String value);
+        partial void OnFILENAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE
+        {
+            get
+            {
+                return _PRICE;
+            }
+            set
+            {
+                OnPRICEChanging(value);
+                ReportPropertyChanging("PRICE");
+                _PRICE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE");
+                OnPRICEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE;
+        partial void OnPRICEChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_QUALIFY
+        {
+            get
+            {
+                return _PRICE_QUALIFY;
+            }
+            set
+            {
+                OnPRICE_QUALIFYChanging(value);
+                ReportPropertyChanging("PRICE_QUALIFY");
+                _PRICE_QUALIFY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_QUALIFY");
+                OnPRICE_QUALIFYChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_QUALIFY;
+        partial void OnPRICE_QUALIFYChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_QUALIFYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_AVERAGERETAIL
+        {
+            get
+            {
+                return _PRICE_AVERAGERETAIL;
+            }
+            set
+            {
+                OnPRICE_AVERAGERETAILChanging(value);
+                ReportPropertyChanging("PRICE_AVERAGERETAIL");
+                _PRICE_AVERAGERETAIL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_AVERAGERETAIL");
+                OnPRICE_AVERAGERETAILChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_AVERAGERETAIL;
+        partial void OnPRICE_AVERAGERETAILChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_AVERAGERETAILChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_AVERAGETRADEIN
+        {
+            get
+            {
+                return _PRICE_AVERAGETRADEIN;
+            }
+            set
+            {
+                OnPRICE_AVERAGETRADEINChanging(value);
+                ReportPropertyChanging("PRICE_AVERAGETRADEIN");
+                _PRICE_AVERAGETRADEIN = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_AVERAGETRADEIN");
+                OnPRICE_AVERAGETRADEINChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_AVERAGETRADEIN;
+        partial void OnPRICE_AVERAGETRADEINChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_AVERAGETRADEINChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_COST
+        {
+            get
+            {
+                return _PRICE_COST;
+            }
+            set
+            {
+                OnPRICE_COSTChanging(value);
+                ReportPropertyChanging("PRICE_COST");
+                _PRICE_COST = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_COST");
+                OnPRICE_COSTChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_COST;
+        partial void OnPRICE_COSTChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_COSTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_WHOLESALE
+        {
+            get
+            {
+                return _PRICE_WHOLESALE;
+            }
+            set
+            {
+                OnPRICE_WHOLESALEChanging(value);
+                ReportPropertyChanging("PRICE_WHOLESALE");
+                _PRICE_WHOLESALE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_WHOLESALE");
+                OnPRICE_WHOLESALEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_WHOLESALE;
+        partial void OnPRICE_WHOLESALEChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_WHOLESALEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> RESERVED
+        {
+            get
+            {
+                return _RESERVED;
+            }
+            set
+            {
+                OnRESERVEDChanging(value);
+                ReportPropertyChanging("RESERVED");
+                _RESERVED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RESERVED");
+                OnRESERVEDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _RESERVED;
+        partial void OnRESERVEDChanging(Nullable<global::System.Decimal> value);
+        partial void OnRESERVEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> SAVINGS
+        {
+            get
+            {
+                return _SAVINGS;
+            }
+            set
+            {
+                OnSAVINGSChanging(value);
+                ReportPropertyChanging("SAVINGS");
+                _SAVINGS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SAVINGS");
+                OnSAVINGSChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _SAVINGS;
+        partial void OnSAVINGSChanging(Nullable<global::System.Decimal> value);
+        partial void OnSAVINGSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FUEL_CITY
+        {
+            get
+            {
+                return _FUEL_CITY;
+            }
+            set
+            {
+                OnFUEL_CITYChanging(value);
+                ReportPropertyChanging("FUEL_CITY");
+                _FUEL_CITY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FUEL_CITY");
+                OnFUEL_CITYChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FUEL_CITY;
+        partial void OnFUEL_CITYChanging(Nullable<global::System.Int32> value);
+        partial void OnFUEL_CITYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FUEL_HIGHWAY
+        {
+            get
+            {
+                return _FUEL_HIGHWAY;
+            }
+            set
+            {
+                OnFUEL_HIGHWAYChanging(value);
+                ReportPropertyChanging("FUEL_HIGHWAY");
+                _FUEL_HIGHWAY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FUEL_HIGHWAY");
+                OnFUEL_HIGHWAYChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FUEL_HIGHWAY;
+        partial void OnFUEL_HIGHWAYChanging(Nullable<global::System.Int32> value);
+        partial void OnFUEL_HIGHWAYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TITLE
+        {
+            get
+            {
+                return _TITLE;
+            }
+            set
+            {
+                OnTITLEChanging(value);
+                ReportPropertyChanging("TITLE");
+                _TITLE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TITLE");
+                OnTITLEChanged();
+            }
+        }
+        private global::System.String _TITLE;
+        partial void OnTITLEChanging(global::System.String value);
+        partial void OnTITLEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PICS
+        {
+            get
+            {
+                return _PICS;
+            }
+            set
+            {
+                OnPICSChanging(value);
+                ReportPropertyChanging("PICS");
+                _PICS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PICS");
+                OnPICSChanged();
+            }
+        }
+        private global::System.String _PICS;
+        partial void OnPICSChanging(global::System.String value);
+        partial void OnPICSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OWNERDETAIL
+        {
+            get
+            {
+                return _OWNERDETAIL;
+            }
+            set
+            {
+                OnOWNERDETAILChanging(value);
+                ReportPropertyChanging("OWNERDETAIL");
+                _OWNERDETAIL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OWNERDETAIL");
+                OnOWNERDETAILChanged();
+            }
+        }
+        private global::System.String _OWNERDETAIL;
+        partial void OnOWNERDETAILChanging(global::System.String value);
+        partial void OnOWNERDETAILChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISFEATURE
+        {
+            get
+            {
+                return _ISFEATURE;
+            }
+            set
+            {
+                OnISFEATUREChanging(value);
+                ReportPropertyChanging("ISFEATURE");
+                _ISFEATURE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISFEATURE");
+                OnISFEATUREChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISFEATURE;
+        partial void OnISFEATUREChanging(Nullable<global::System.Boolean> value);
+        partial void OnISFEATUREChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISNEW
+        {
+            get
+            {
+                return _ISNEW;
+            }
+            set
+            {
+                OnISNEWChanging(value);
+                ReportPropertyChanging("ISNEW");
+                _ISNEW = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISNEW");
+                OnISNEWChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISNEW;
+        partial void OnISNEWChanging(Nullable<global::System.Boolean> value);
+        partial void OnISNEWChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISOFFER
+        {
+            get
+            {
+                return _ISOFFER;
+            }
+            set
+            {
+                OnISOFFERChanging(value);
+                ReportPropertyChanging("ISOFFER");
+                _ISOFFER = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISOFFER");
+                OnISOFFERChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISOFFER;
+        partial void OnISOFFERChanging(Nullable<global::System.Boolean> value);
+        partial void OnISOFFERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISONDEALERPROFILE
+        {
+            get
+            {
+                return _ISONDEALERPROFILE;
+            }
+            set
+            {
+                OnISONDEALERPROFILEChanging(value);
+                ReportPropertyChanging("ISONDEALERPROFILE");
+                _ISONDEALERPROFILE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISONDEALERPROFILE");
+                OnISONDEALERPROFILEChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISONDEALERPROFILE;
+        partial void OnISONDEALERPROFILEChanging(Nullable<global::System.Boolean> value);
+        partial void OnISONDEALERPROFILEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ISQUALIFIED
+        {
+            get
+            {
+                return _ISQUALIFIED;
+            }
+            set
+            {
+                OnISQUALIFIEDChanging(value);
+                ReportPropertyChanging("ISQUALIFIED");
+                _ISQUALIFIED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISQUALIFIED");
+                OnISQUALIFIEDChanged();
+            }
+        }
+        private global::System.Boolean _ISQUALIFIED;
+        partial void OnISQUALIFIEDChanging(global::System.Boolean value);
+        partial void OnISQUALIFIEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISWARRANTY
+        {
+            get
+            {
+                return _ISWARRANTY;
+            }
+            set
+            {
+                OnISWARRANTYChanging(value);
+                ReportPropertyChanging("ISWARRANTY");
+                _ISWARRANTY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISWARRANTY");
+                OnISWARRANTYChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISWARRANTY;
+        partial void OnISWARRANTYChanging(Nullable<global::System.Boolean> value);
+        partial void OnISWARRANTYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ZIP
+        {
+            get
+            {
+                return _ZIP;
+            }
+            set
+            {
+                OnZIPChanging(value);
+                ReportPropertyChanging("ZIP");
+                _ZIP = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ZIP");
+                OnZIPChanged();
+            }
+        }
+        private global::System.String _ZIP;
+        partial void OnZIPChanging(global::System.String value);
+        partial void OnZIPChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="EdriveAutosModel", Name="SearchStandard_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class SearchStandard_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SearchStandard_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="iSDELETED">Initial value of the ISDELETED property.</param>
+        /// <param name="dATE_CREATED">Initial value of the DATE_CREATED property.</param>
+        /// <param name="dATE_UPDATED">Initial value of the DATE_UPDATED property.</param>
+        /// <param name="tYPE_ID">Initial value of the TYPE_ID property.</param>
+        /// <param name="vIN">Initial value of the VIN property.</param>
+        /// <param name="mAKE_ID">Initial value of the MAKE_ID property.</param>
+        /// <param name="mODEL_ID">Initial value of the MODEL_ID property.</param>
+        /// <param name="bODY_ID">Initial value of the BODY_ID property.</param>
+        /// <param name="iSQUALIFIED">Initial value of the ISQUALIFIED property.</param>
+        /// <param name="nAME_MAKE">Initial value of the NAME_MAKE property.</param>
+        public static SearchStandard_Result CreateSearchStandard_Result(global::System.Int32 id, global::System.Boolean iSDELETED, global::System.DateTime dATE_CREATED, global::System.DateTime dATE_UPDATED, global::System.Int32 tYPE_ID, global::System.String vIN, global::System.Int32 mAKE_ID, global::System.Int32 mODEL_ID, global::System.Int32 bODY_ID, global::System.Boolean iSQUALIFIED, global::System.String nAME_MAKE)
+        {
+            SearchStandard_Result searchStandard_Result = new SearchStandard_Result();
+            searchStandard_Result.ID = id;
+            searchStandard_Result.ISDELETED = iSDELETED;
+            searchStandard_Result.DATE_CREATED = dATE_CREATED;
+            searchStandard_Result.DATE_UPDATED = dATE_UPDATED;
+            searchStandard_Result.TYPE_ID = tYPE_ID;
+            searchStandard_Result.VIN = vIN;
+            searchStandard_Result.MAKE_ID = mAKE_ID;
+            searchStandard_Result.MODEL_ID = mODEL_ID;
+            searchStandard_Result.BODY_ID = bODY_ID;
+            searchStandard_Result.ISQUALIFIED = iSQUALIFIED;
+            searchStandard_Result.NAME_MAKE = nAME_MAKE;
+            return searchStandard_Result;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                OnIDChanging(value);
+                ReportPropertyChanging("ID");
+                _ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID");
+                OnIDChanged();
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ISDELETED
+        {
+            get
+            {
+                return _ISDELETED;
+            }
+            set
+            {
+                OnISDELETEDChanging(value);
+                ReportPropertyChanging("ISDELETED");
+                _ISDELETED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISDELETED");
+                OnISDELETEDChanged();
+            }
+        }
+        private global::System.Boolean _ISDELETED;
+        partial void OnISDELETEDChanging(global::System.Boolean value);
+        partial void OnISDELETEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DATE_CREATED
+        {
+            get
+            {
+                return _DATE_CREATED;
+            }
+            set
+            {
+                OnDATE_CREATEDChanging(value);
+                ReportPropertyChanging("DATE_CREATED");
+                _DATE_CREATED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_CREATED");
+                OnDATE_CREATEDChanged();
+            }
+        }
+        private global::System.DateTime _DATE_CREATED;
+        partial void OnDATE_CREATEDChanging(global::System.DateTime value);
+        partial void OnDATE_CREATEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DATE_UPDATED
+        {
+            get
+            {
+                return _DATE_UPDATED;
+            }
+            set
+            {
+                OnDATE_UPDATEDChanging(value);
+                ReportPropertyChanging("DATE_UPDATED");
+                _DATE_UPDATED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_UPDATED");
+                OnDATE_UPDATEDChanged();
+            }
+        }
+        private global::System.DateTime _DATE_UPDATED;
+        partial void OnDATE_UPDATEDChanging(global::System.DateTime value);
+        partial void OnDATE_UPDATEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATE_NADACHECKED
+        {
+            get
+            {
+                return _DATE_NADACHECKED;
+            }
+            set
+            {
+                OnDATE_NADACHECKEDChanging(value);
+                ReportPropertyChanging("DATE_NADACHECKED");
+                _DATE_NADACHECKED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_NADACHECKED");
+                OnDATE_NADACHECKEDChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATE_NADACHECKED;
+        partial void OnDATE_NADACHECKEDChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATE_NADACHECKEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATE_INSTOCK
+        {
+            get
+            {
+                return _DATE_INSTOCK;
+            }
+            set
+            {
+                OnDATE_INSTOCKChanging(value);
+                ReportPropertyChanging("DATE_INSTOCK");
+                _DATE_INSTOCK = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_INSTOCK");
+                OnDATE_INSTOCKChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATE_INSTOCK;
+        partial void OnDATE_INSTOCKChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATE_INSTOCKChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SALESPERSON_ID
+        {
+            get
+            {
+                return _SALESPERSON_ID;
+            }
+            set
+            {
+                OnSALESPERSON_IDChanging(value);
+                ReportPropertyChanging("SALESPERSON_ID");
+                _SALESPERSON_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SALESPERSON_ID");
+                OnSALESPERSON_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SALESPERSON_ID;
+        partial void OnSALESPERSON_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnSALESPERSON_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TYPE_ID
+        {
+            get
+            {
+                return _TYPE_ID;
+            }
+            set
+            {
+                OnTYPE_IDChanging(value);
+                ReportPropertyChanging("TYPE_ID");
+                _TYPE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TYPE_ID");
+                OnTYPE_IDChanged();
+            }
+        }
+        private global::System.Int32 _TYPE_ID;
+        partial void OnTYPE_IDChanging(global::System.Int32 value);
+        partial void OnTYPE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String STOCKNUMBER
+        {
+            get
+            {
+                return _STOCKNUMBER;
+            }
+            set
+            {
+                OnSTOCKNUMBERChanging(value);
+                ReportPropertyChanging("STOCKNUMBER");
+                _STOCKNUMBER = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("STOCKNUMBER");
+                OnSTOCKNUMBERChanged();
+            }
+        }
+        private global::System.String _STOCKNUMBER;
+        partial void OnSTOCKNUMBERChanging(global::System.String value);
+        partial void OnSTOCKNUMBERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String VIN
+        {
+            get
+            {
+                return _VIN;
+            }
+            set
+            {
+                OnVINChanging(value);
+                ReportPropertyChanging("VIN");
+                _VIN = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("VIN");
+                OnVINChanged();
+            }
+        }
+        private global::System.String _VIN;
+        partial void OnVINChanging(global::System.String value);
+        partial void OnVINChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> YEAR
+        {
+            get
+            {
+                return _YEAR;
+            }
+            set
+            {
+                OnYEARChanging(value);
+                ReportPropertyChanging("YEAR");
+                _YEAR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("YEAR");
+                OnYEARChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _YEAR;
+        partial void OnYEARChanging(Nullable<global::System.Int32> value);
+        partial void OnYEARChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MAKE_ID
+        {
+            get
+            {
+                return _MAKE_ID;
+            }
+            set
+            {
+                OnMAKE_IDChanging(value);
+                ReportPropertyChanging("MAKE_ID");
+                _MAKE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MAKE_ID");
+                OnMAKE_IDChanged();
+            }
+        }
+        private global::System.Int32 _MAKE_ID;
+        partial void OnMAKE_IDChanging(global::System.Int32 value);
+        partial void OnMAKE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MODEL_ID
+        {
+            get
+            {
+                return _MODEL_ID;
+            }
+            set
+            {
+                OnMODEL_IDChanging(value);
+                ReportPropertyChanging("MODEL_ID");
+                _MODEL_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MODEL_ID");
+                OnMODEL_IDChanged();
+            }
+        }
+        private global::System.Int32 _MODEL_ID;
+        partial void OnMODEL_IDChanging(global::System.Int32 value);
+        partial void OnMODEL_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRIM
+        {
+            get
+            {
+                return _TRIM;
+            }
+            set
+            {
+                OnTRIMChanging(value);
+                ReportPropertyChanging("TRIM");
+                _TRIM = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRIM");
+                OnTRIMChanged();
+            }
+        }
+        private global::System.String _TRIM;
+        partial void OnTRIMChanging(global::System.String value);
+        partial void OnTRIMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BODY_ID
+        {
+            get
+            {
+                return _BODY_ID;
+            }
+            set
+            {
+                OnBODY_IDChanging(value);
+                ReportPropertyChanging("BODY_ID");
+                _BODY_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BODY_ID");
+                OnBODY_IDChanged();
+            }
+        }
+        private global::System.Int32 _BODY_ID;
+        partial void OnBODY_IDChanging(global::System.Int32 value);
+        partial void OnBODY_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MILEAGE
+        {
+            get
+            {
+                return _MILEAGE;
+            }
+            set
+            {
+                OnMILEAGEChanging(value);
+                ReportPropertyChanging("MILEAGE");
+                _MILEAGE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MILEAGE");
+                OnMILEAGEChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MILEAGE;
+        partial void OnMILEAGEChanging(Nullable<global::System.Int32> value);
+        partial void OnMILEAGEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CONDITION
+        {
+            get
+            {
+                return _CONDITION;
+            }
+            set
+            {
+                OnCONDITIONChanging(value);
+                ReportPropertyChanging("CONDITION");
+                _CONDITION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CONDITION");
+                OnCONDITIONChanged();
+            }
+        }
+        private global::System.String _CONDITION;
+        partial void OnCONDITIONChanging(global::System.String value);
+        partial void OnCONDITIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COLOR_EXTERIOR
+        {
+            get
+            {
+                return _COLOR_EXTERIOR;
+            }
+            set
+            {
+                OnCOLOR_EXTERIORChanging(value);
+                ReportPropertyChanging("COLOR_EXTERIOR");
+                _COLOR_EXTERIOR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COLOR_EXTERIOR");
+                OnCOLOR_EXTERIORChanged();
+            }
+        }
+        private global::System.String _COLOR_EXTERIOR;
+        partial void OnCOLOR_EXTERIORChanging(global::System.String value);
+        partial void OnCOLOR_EXTERIORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COLOR_INTERIOR
+        {
+            get
+            {
+                return _COLOR_INTERIOR;
+            }
+            set
+            {
+                OnCOLOR_INTERIORChanging(value);
+                ReportPropertyChanging("COLOR_INTERIOR");
+                _COLOR_INTERIOR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COLOR_INTERIOR");
+                OnCOLOR_INTERIORChanged();
+            }
+        }
+        private global::System.String _COLOR_INTERIOR;
+        partial void OnCOLOR_INTERIORChanging(global::System.String value);
+        partial void OnCOLOR_INTERIORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DOORS
+        {
+            get
+            {
+                return _DOORS;
+            }
+            set
+            {
+                OnDOORSChanging(value);
+                ReportPropertyChanging("DOORS");
+                _DOORS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DOORS");
+                OnDOORSChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DOORS;
+        partial void OnDOORSChanging(Nullable<global::System.Int32> value);
+        partial void OnDOORSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ENGINE
+        {
+            get
+            {
+                return _ENGINE;
+            }
+            set
+            {
+                OnENGINEChanging(value);
+                ReportPropertyChanging("ENGINE");
+                _ENGINE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ENGINE");
+                OnENGINEChanged();
+            }
+        }
+        private global::System.String _ENGINE;
+        partial void OnENGINEChanging(global::System.String value);
+        partial void OnENGINEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRANSMISSION
+        {
+            get
+            {
+                return _TRANSMISSION;
+            }
+            set
+            {
+                OnTRANSMISSIONChanging(value);
+                ReportPropertyChanging("TRANSMISSION");
+                _TRANSMISSION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRANSMISSION");
+                OnTRANSMISSIONChanged();
+            }
+        }
+        private global::System.String _TRANSMISSION;
+        partial void OnTRANSMISSIONChanging(global::System.String value);
+        partial void OnTRANSMISSIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FUEL_TYPE
+        {
+            get
+            {
+                return _FUEL_TYPE;
+            }
+            set
+            {
+                OnFUEL_TYPEChanging(value);
+                ReportPropertyChanging("FUEL_TYPE");
+                _FUEL_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FUEL_TYPE");
+                OnFUEL_TYPEChanged();
+            }
+        }
+        private global::System.String _FUEL_TYPE;
+        partial void OnFUEL_TYPEChanging(global::System.String value);
+        partial void OnFUEL_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DRIVE_TYPE
+        {
+            get
+            {
+                return _DRIVE_TYPE;
+            }
+            set
+            {
+                OnDRIVE_TYPEChanging(value);
+                ReportPropertyChanging("DRIVE_TYPE");
+                _DRIVE_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DRIVE_TYPE");
+                OnDRIVE_TYPEChanged();
+            }
+        }
+        private global::System.String _DRIVE_TYPE;
+        partial void OnDRIVE_TYPEChanging(global::System.String value);
+        partial void OnDRIVE_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DESCRIPTION
+        {
+            get
+            {
+                return _DESCRIPTION;
+            }
+            set
+            {
+                OnDESCRIPTIONChanging(value);
+                ReportPropertyChanging("DESCRIPTION");
+                _DESCRIPTION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DESCRIPTION");
+                OnDESCRIPTIONChanged();
+            }
+        }
+        private global::System.String _DESCRIPTION;
+        partial void OnDESCRIPTIONChanging(global::System.String value);
+        partial void OnDESCRIPTIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FILENAME
+        {
+            get
+            {
+                return _FILENAME;
+            }
+            set
+            {
+                OnFILENAMEChanging(value);
+                ReportPropertyChanging("FILENAME");
+                _FILENAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FILENAME");
+                OnFILENAMEChanged();
+            }
+        }
+        private global::System.String _FILENAME;
+        partial void OnFILENAMEChanging(global::System.String value);
+        partial void OnFILENAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE
+        {
+            get
+            {
+                return _PRICE;
+            }
+            set
+            {
+                OnPRICEChanging(value);
+                ReportPropertyChanging("PRICE");
+                _PRICE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE");
+                OnPRICEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE;
+        partial void OnPRICEChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_QUALIFY
+        {
+            get
+            {
+                return _PRICE_QUALIFY;
+            }
+            set
+            {
+                OnPRICE_QUALIFYChanging(value);
+                ReportPropertyChanging("PRICE_QUALIFY");
+                _PRICE_QUALIFY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_QUALIFY");
+                OnPRICE_QUALIFYChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_QUALIFY;
+        partial void OnPRICE_QUALIFYChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_QUALIFYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_AVERAGERETAIL
+        {
+            get
+            {
+                return _PRICE_AVERAGERETAIL;
+            }
+            set
+            {
+                OnPRICE_AVERAGERETAILChanging(value);
+                ReportPropertyChanging("PRICE_AVERAGERETAIL");
+                _PRICE_AVERAGERETAIL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_AVERAGERETAIL");
+                OnPRICE_AVERAGERETAILChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_AVERAGERETAIL;
+        partial void OnPRICE_AVERAGERETAILChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_AVERAGERETAILChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_AVERAGETRADEIN
+        {
+            get
+            {
+                return _PRICE_AVERAGETRADEIN;
+            }
+            set
+            {
+                OnPRICE_AVERAGETRADEINChanging(value);
+                ReportPropertyChanging("PRICE_AVERAGETRADEIN");
+                _PRICE_AVERAGETRADEIN = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_AVERAGETRADEIN");
+                OnPRICE_AVERAGETRADEINChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_AVERAGETRADEIN;
+        partial void OnPRICE_AVERAGETRADEINChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_AVERAGETRADEINChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_COST
+        {
+            get
+            {
+                return _PRICE_COST;
+            }
+            set
+            {
+                OnPRICE_COSTChanging(value);
+                ReportPropertyChanging("PRICE_COST");
+                _PRICE_COST = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_COST");
+                OnPRICE_COSTChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_COST;
+        partial void OnPRICE_COSTChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_COSTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_WHOLESALE
+        {
+            get
+            {
+                return _PRICE_WHOLESALE;
+            }
+            set
+            {
+                OnPRICE_WHOLESALEChanging(value);
+                ReportPropertyChanging("PRICE_WHOLESALE");
+                _PRICE_WHOLESALE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_WHOLESALE");
+                OnPRICE_WHOLESALEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_WHOLESALE;
+        partial void OnPRICE_WHOLESALEChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_WHOLESALEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> RESERVED
+        {
+            get
+            {
+                return _RESERVED;
+            }
+            set
+            {
+                OnRESERVEDChanging(value);
+                ReportPropertyChanging("RESERVED");
+                _RESERVED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RESERVED");
+                OnRESERVEDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _RESERVED;
+        partial void OnRESERVEDChanging(Nullable<global::System.Decimal> value);
+        partial void OnRESERVEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> SAVINGS
+        {
+            get
+            {
+                return _SAVINGS;
+            }
+            set
+            {
+                OnSAVINGSChanging(value);
+                ReportPropertyChanging("SAVINGS");
+                _SAVINGS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SAVINGS");
+                OnSAVINGSChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _SAVINGS;
+        partial void OnSAVINGSChanging(Nullable<global::System.Decimal> value);
+        partial void OnSAVINGSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FUEL_CITY
+        {
+            get
+            {
+                return _FUEL_CITY;
+            }
+            set
+            {
+                OnFUEL_CITYChanging(value);
+                ReportPropertyChanging("FUEL_CITY");
+                _FUEL_CITY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FUEL_CITY");
+                OnFUEL_CITYChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FUEL_CITY;
+        partial void OnFUEL_CITYChanging(Nullable<global::System.Int32> value);
+        partial void OnFUEL_CITYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FUEL_HIGHWAY
+        {
+            get
+            {
+                return _FUEL_HIGHWAY;
+            }
+            set
+            {
+                OnFUEL_HIGHWAYChanging(value);
+                ReportPropertyChanging("FUEL_HIGHWAY");
+                _FUEL_HIGHWAY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FUEL_HIGHWAY");
+                OnFUEL_HIGHWAYChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FUEL_HIGHWAY;
+        partial void OnFUEL_HIGHWAYChanging(Nullable<global::System.Int32> value);
+        partial void OnFUEL_HIGHWAYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TITLE
+        {
+            get
+            {
+                return _TITLE;
+            }
+            set
+            {
+                OnTITLEChanging(value);
+                ReportPropertyChanging("TITLE");
+                _TITLE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TITLE");
+                OnTITLEChanged();
+            }
+        }
+        private global::System.String _TITLE;
+        partial void OnTITLEChanging(global::System.String value);
+        partial void OnTITLEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PICS
+        {
+            get
+            {
+                return _PICS;
+            }
+            set
+            {
+                OnPICSChanging(value);
+                ReportPropertyChanging("PICS");
+                _PICS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PICS");
+                OnPICSChanged();
+            }
+        }
+        private global::System.String _PICS;
+        partial void OnPICSChanging(global::System.String value);
+        partial void OnPICSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OWNERDETAIL
+        {
+            get
+            {
+                return _OWNERDETAIL;
+            }
+            set
+            {
+                OnOWNERDETAILChanging(value);
+                ReportPropertyChanging("OWNERDETAIL");
+                _OWNERDETAIL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OWNERDETAIL");
+                OnOWNERDETAILChanged();
+            }
+        }
+        private global::System.String _OWNERDETAIL;
+        partial void OnOWNERDETAILChanging(global::System.String value);
+        partial void OnOWNERDETAILChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISFEATURE
+        {
+            get
+            {
+                return _ISFEATURE;
+            }
+            set
+            {
+                OnISFEATUREChanging(value);
+                ReportPropertyChanging("ISFEATURE");
+                _ISFEATURE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISFEATURE");
+                OnISFEATUREChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISFEATURE;
+        partial void OnISFEATUREChanging(Nullable<global::System.Boolean> value);
+        partial void OnISFEATUREChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISNEW
+        {
+            get
+            {
+                return _ISNEW;
+            }
+            set
+            {
+                OnISNEWChanging(value);
+                ReportPropertyChanging("ISNEW");
+                _ISNEW = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISNEW");
+                OnISNEWChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISNEW;
+        partial void OnISNEWChanging(Nullable<global::System.Boolean> value);
+        partial void OnISNEWChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISOFFER
+        {
+            get
+            {
+                return _ISOFFER;
+            }
+            set
+            {
+                OnISOFFERChanging(value);
+                ReportPropertyChanging("ISOFFER");
+                _ISOFFER = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISOFFER");
+                OnISOFFERChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISOFFER;
+        partial void OnISOFFERChanging(Nullable<global::System.Boolean> value);
+        partial void OnISOFFERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISONDEALERPROFILE
+        {
+            get
+            {
+                return _ISONDEALERPROFILE;
+            }
+            set
+            {
+                OnISONDEALERPROFILEChanging(value);
+                ReportPropertyChanging("ISONDEALERPROFILE");
+                _ISONDEALERPROFILE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISONDEALERPROFILE");
+                OnISONDEALERPROFILEChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISONDEALERPROFILE;
+        partial void OnISONDEALERPROFILEChanging(Nullable<global::System.Boolean> value);
+        partial void OnISONDEALERPROFILEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ISQUALIFIED
+        {
+            get
+            {
+                return _ISQUALIFIED;
+            }
+            set
+            {
+                OnISQUALIFIEDChanging(value);
+                ReportPropertyChanging("ISQUALIFIED");
+                _ISQUALIFIED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISQUALIFIED");
+                OnISQUALIFIEDChanged();
+            }
+        }
+        private global::System.Boolean _ISQUALIFIED;
+        partial void OnISQUALIFIEDChanging(global::System.Boolean value);
+        partial void OnISQUALIFIEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISWARRANTY
+        {
+            get
+            {
+                return _ISWARRANTY;
+            }
+            set
+            {
+                OnISWARRANTYChanging(value);
+                ReportPropertyChanging("ISWARRANTY");
+                _ISWARRANTY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISWARRANTY");
+                OnISWARRANTYChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISWARRANTY;
+        partial void OnISWARRANTYChanging(Nullable<global::System.Boolean> value);
+        partial void OnISWARRANTYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ZIP
+        {
+            get
+            {
+                return _ZIP;
+            }
+            set
+            {
+                OnZIPChanging(value);
+                ReportPropertyChanging("ZIP");
+                _ZIP = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ZIP");
+                OnZIPChanged();
+            }
+        }
+        private global::System.String _ZIP;
+        partial void OnZIPChanging(global::System.String value);
+        partial void OnZIPChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NAME_MAKE
+        {
+            get
+            {
+                return _NAME_MAKE;
+            }
+            set
+            {
+                OnNAME_MAKEChanging(value);
+                ReportPropertyChanging("NAME_MAKE");
+                _NAME_MAKE = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NAME_MAKE");
+                OnNAME_MAKEChanged();
+            }
+        }
+        private global::System.String _NAME_MAKE;
+        partial void OnNAME_MAKEChanging(global::System.String value);
+        partial void OnNAME_MAKEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NAME_MODEL
+        {
+            get
+            {
+                return _NAME_MODEL;
+            }
+            set
+            {
+                OnNAME_MODELChanging(value);
+                ReportPropertyChanging("NAME_MODEL");
+                _NAME_MODEL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NAME_MODEL");
+                OnNAME_MODELChanged();
+            }
+        }
+        private global::System.String _NAME_MODEL;
+        partial void OnNAME_MODELChanging(global::System.String value);
+        partial void OnNAME_MODELChanged();
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="EdriveAutosModel", Name="VehicleSearch_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class VehicleSearch_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new VehicleSearch_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="iSDELETED">Initial value of the ISDELETED property.</param>
+        /// <param name="dATE_CREATED">Initial value of the DATE_CREATED property.</param>
+        /// <param name="dATE_UPDATED">Initial value of the DATE_UPDATED property.</param>
+        /// <param name="tYPE_ID">Initial value of the TYPE_ID property.</param>
+        /// <param name="vIN">Initial value of the VIN property.</param>
+        /// <param name="mAKE_ID">Initial value of the MAKE_ID property.</param>
+        /// <param name="mODEL_ID">Initial value of the MODEL_ID property.</param>
+        /// <param name="bODY_ID">Initial value of the BODY_ID property.</param>
+        /// <param name="iSQUALIFIED">Initial value of the ISQUALIFIED property.</param>
+        public static VehicleSearch_Result CreateVehicleSearch_Result(global::System.Int32 id, global::System.Boolean iSDELETED, global::System.DateTime dATE_CREATED, global::System.DateTime dATE_UPDATED, global::System.Int32 tYPE_ID, global::System.String vIN, global::System.Int32 mAKE_ID, global::System.Int32 mODEL_ID, global::System.Int32 bODY_ID, global::System.Boolean iSQUALIFIED)
+        {
+            VehicleSearch_Result vehicleSearch_Result = new VehicleSearch_Result();
+            vehicleSearch_Result.ID = id;
+            vehicleSearch_Result.ISDELETED = iSDELETED;
+            vehicleSearch_Result.DATE_CREATED = dATE_CREATED;
+            vehicleSearch_Result.DATE_UPDATED = dATE_UPDATED;
+            vehicleSearch_Result.TYPE_ID = tYPE_ID;
+            vehicleSearch_Result.VIN = vIN;
+            vehicleSearch_Result.MAKE_ID = mAKE_ID;
+            vehicleSearch_Result.MODEL_ID = mODEL_ID;
+            vehicleSearch_Result.BODY_ID = bODY_ID;
+            vehicleSearch_Result.ISQUALIFIED = iSQUALIFIED;
+            return vehicleSearch_Result;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                OnIDChanging(value);
+                ReportPropertyChanging("ID");
+                _ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID");
+                OnIDChanged();
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ISDELETED
+        {
+            get
+            {
+                return _ISDELETED;
+            }
+            set
+            {
+                OnISDELETEDChanging(value);
+                ReportPropertyChanging("ISDELETED");
+                _ISDELETED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISDELETED");
+                OnISDELETEDChanged();
+            }
+        }
+        private global::System.Boolean _ISDELETED;
+        partial void OnISDELETEDChanging(global::System.Boolean value);
+        partial void OnISDELETEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DATE_CREATED
+        {
+            get
+            {
+                return _DATE_CREATED;
+            }
+            set
+            {
+                OnDATE_CREATEDChanging(value);
+                ReportPropertyChanging("DATE_CREATED");
+                _DATE_CREATED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_CREATED");
+                OnDATE_CREATEDChanged();
+            }
+        }
+        private global::System.DateTime _DATE_CREATED;
+        partial void OnDATE_CREATEDChanging(global::System.DateTime value);
+        partial void OnDATE_CREATEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DATE_UPDATED
+        {
+            get
+            {
+                return _DATE_UPDATED;
+            }
+            set
+            {
+                OnDATE_UPDATEDChanging(value);
+                ReportPropertyChanging("DATE_UPDATED");
+                _DATE_UPDATED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_UPDATED");
+                OnDATE_UPDATEDChanged();
+            }
+        }
+        private global::System.DateTime _DATE_UPDATED;
+        partial void OnDATE_UPDATEDChanging(global::System.DateTime value);
+        partial void OnDATE_UPDATEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATE_NADACHECKED
+        {
+            get
+            {
+                return _DATE_NADACHECKED;
+            }
+            set
+            {
+                OnDATE_NADACHECKEDChanging(value);
+                ReportPropertyChanging("DATE_NADACHECKED");
+                _DATE_NADACHECKED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_NADACHECKED");
+                OnDATE_NADACHECKEDChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATE_NADACHECKED;
+        partial void OnDATE_NADACHECKEDChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATE_NADACHECKEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATE_INSTOCK
+        {
+            get
+            {
+                return _DATE_INSTOCK;
+            }
+            set
+            {
+                OnDATE_INSTOCKChanging(value);
+                ReportPropertyChanging("DATE_INSTOCK");
+                _DATE_INSTOCK = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DATE_INSTOCK");
+                OnDATE_INSTOCKChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATE_INSTOCK;
+        partial void OnDATE_INSTOCKChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATE_INSTOCKChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SALESPERSON_ID
+        {
+            get
+            {
+                return _SALESPERSON_ID;
+            }
+            set
+            {
+                OnSALESPERSON_IDChanging(value);
+                ReportPropertyChanging("SALESPERSON_ID");
+                _SALESPERSON_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SALESPERSON_ID");
+                OnSALESPERSON_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SALESPERSON_ID;
+        partial void OnSALESPERSON_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnSALESPERSON_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TYPE_ID
+        {
+            get
+            {
+                return _TYPE_ID;
+            }
+            set
+            {
+                OnTYPE_IDChanging(value);
+                ReportPropertyChanging("TYPE_ID");
+                _TYPE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TYPE_ID");
+                OnTYPE_IDChanged();
+            }
+        }
+        private global::System.Int32 _TYPE_ID;
+        partial void OnTYPE_IDChanging(global::System.Int32 value);
+        partial void OnTYPE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String STOCKNUMBER
+        {
+            get
+            {
+                return _STOCKNUMBER;
+            }
+            set
+            {
+                OnSTOCKNUMBERChanging(value);
+                ReportPropertyChanging("STOCKNUMBER");
+                _STOCKNUMBER = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("STOCKNUMBER");
+                OnSTOCKNUMBERChanged();
+            }
+        }
+        private global::System.String _STOCKNUMBER;
+        partial void OnSTOCKNUMBERChanging(global::System.String value);
+        partial void OnSTOCKNUMBERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String VIN
+        {
+            get
+            {
+                return _VIN;
+            }
+            set
+            {
+                OnVINChanging(value);
+                ReportPropertyChanging("VIN");
+                _VIN = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("VIN");
+                OnVINChanged();
+            }
+        }
+        private global::System.String _VIN;
+        partial void OnVINChanging(global::System.String value);
+        partial void OnVINChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> YEAR
+        {
+            get
+            {
+                return _YEAR;
+            }
+            set
+            {
+                OnYEARChanging(value);
+                ReportPropertyChanging("YEAR");
+                _YEAR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("YEAR");
+                OnYEARChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _YEAR;
+        partial void OnYEARChanging(Nullable<global::System.Int32> value);
+        partial void OnYEARChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MAKE_ID
+        {
+            get
+            {
+                return _MAKE_ID;
+            }
+            set
+            {
+                OnMAKE_IDChanging(value);
+                ReportPropertyChanging("MAKE_ID");
+                _MAKE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MAKE_ID");
+                OnMAKE_IDChanged();
+            }
+        }
+        private global::System.Int32 _MAKE_ID;
+        partial void OnMAKE_IDChanging(global::System.Int32 value);
+        partial void OnMAKE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MODEL_ID
+        {
+            get
+            {
+                return _MODEL_ID;
+            }
+            set
+            {
+                OnMODEL_IDChanging(value);
+                ReportPropertyChanging("MODEL_ID");
+                _MODEL_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MODEL_ID");
+                OnMODEL_IDChanged();
+            }
+        }
+        private global::System.Int32 _MODEL_ID;
+        partial void OnMODEL_IDChanging(global::System.Int32 value);
+        partial void OnMODEL_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRIM
+        {
+            get
+            {
+                return _TRIM;
+            }
+            set
+            {
+                OnTRIMChanging(value);
+                ReportPropertyChanging("TRIM");
+                _TRIM = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRIM");
+                OnTRIMChanged();
+            }
+        }
+        private global::System.String _TRIM;
+        partial void OnTRIMChanging(global::System.String value);
+        partial void OnTRIMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BODY_ID
+        {
+            get
+            {
+                return _BODY_ID;
+            }
+            set
+            {
+                OnBODY_IDChanging(value);
+                ReportPropertyChanging("BODY_ID");
+                _BODY_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BODY_ID");
+                OnBODY_IDChanged();
+            }
+        }
+        private global::System.Int32 _BODY_ID;
+        partial void OnBODY_IDChanging(global::System.Int32 value);
+        partial void OnBODY_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MILEAGE
+        {
+            get
+            {
+                return _MILEAGE;
+            }
+            set
+            {
+                OnMILEAGEChanging(value);
+                ReportPropertyChanging("MILEAGE");
+                _MILEAGE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MILEAGE");
+                OnMILEAGEChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MILEAGE;
+        partial void OnMILEAGEChanging(Nullable<global::System.Int32> value);
+        partial void OnMILEAGEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CONDITION
+        {
+            get
+            {
+                return _CONDITION;
+            }
+            set
+            {
+                OnCONDITIONChanging(value);
+                ReportPropertyChanging("CONDITION");
+                _CONDITION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CONDITION");
+                OnCONDITIONChanged();
+            }
+        }
+        private global::System.String _CONDITION;
+        partial void OnCONDITIONChanging(global::System.String value);
+        partial void OnCONDITIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COLOR_EXTERIOR
+        {
+            get
+            {
+                return _COLOR_EXTERIOR;
+            }
+            set
+            {
+                OnCOLOR_EXTERIORChanging(value);
+                ReportPropertyChanging("COLOR_EXTERIOR");
+                _COLOR_EXTERIOR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COLOR_EXTERIOR");
+                OnCOLOR_EXTERIORChanged();
+            }
+        }
+        private global::System.String _COLOR_EXTERIOR;
+        partial void OnCOLOR_EXTERIORChanging(global::System.String value);
+        partial void OnCOLOR_EXTERIORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COLOR_INTERIOR
+        {
+            get
+            {
+                return _COLOR_INTERIOR;
+            }
+            set
+            {
+                OnCOLOR_INTERIORChanging(value);
+                ReportPropertyChanging("COLOR_INTERIOR");
+                _COLOR_INTERIOR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COLOR_INTERIOR");
+                OnCOLOR_INTERIORChanged();
+            }
+        }
+        private global::System.String _COLOR_INTERIOR;
+        partial void OnCOLOR_INTERIORChanging(global::System.String value);
+        partial void OnCOLOR_INTERIORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DOORS
+        {
+            get
+            {
+                return _DOORS;
+            }
+            set
+            {
+                OnDOORSChanging(value);
+                ReportPropertyChanging("DOORS");
+                _DOORS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DOORS");
+                OnDOORSChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DOORS;
+        partial void OnDOORSChanging(Nullable<global::System.Int32> value);
+        partial void OnDOORSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ENGINE
+        {
+            get
+            {
+                return _ENGINE;
+            }
+            set
+            {
+                OnENGINEChanging(value);
+                ReportPropertyChanging("ENGINE");
+                _ENGINE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ENGINE");
+                OnENGINEChanged();
+            }
+        }
+        private global::System.String _ENGINE;
+        partial void OnENGINEChanging(global::System.String value);
+        partial void OnENGINEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRANSMISSION
+        {
+            get
+            {
+                return _TRANSMISSION;
+            }
+            set
+            {
+                OnTRANSMISSIONChanging(value);
+                ReportPropertyChanging("TRANSMISSION");
+                _TRANSMISSION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRANSMISSION");
+                OnTRANSMISSIONChanged();
+            }
+        }
+        private global::System.String _TRANSMISSION;
+        partial void OnTRANSMISSIONChanging(global::System.String value);
+        partial void OnTRANSMISSIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FUEL_TYPE
+        {
+            get
+            {
+                return _FUEL_TYPE;
+            }
+            set
+            {
+                OnFUEL_TYPEChanging(value);
+                ReportPropertyChanging("FUEL_TYPE");
+                _FUEL_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FUEL_TYPE");
+                OnFUEL_TYPEChanged();
+            }
+        }
+        private global::System.String _FUEL_TYPE;
+        partial void OnFUEL_TYPEChanging(global::System.String value);
+        partial void OnFUEL_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DRIVE_TYPE
+        {
+            get
+            {
+                return _DRIVE_TYPE;
+            }
+            set
+            {
+                OnDRIVE_TYPEChanging(value);
+                ReportPropertyChanging("DRIVE_TYPE");
+                _DRIVE_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DRIVE_TYPE");
+                OnDRIVE_TYPEChanged();
+            }
+        }
+        private global::System.String _DRIVE_TYPE;
+        partial void OnDRIVE_TYPEChanging(global::System.String value);
+        partial void OnDRIVE_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DESCRIPTION
+        {
+            get
+            {
+                return _DESCRIPTION;
+            }
+            set
+            {
+                OnDESCRIPTIONChanging(value);
+                ReportPropertyChanging("DESCRIPTION");
+                _DESCRIPTION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DESCRIPTION");
+                OnDESCRIPTIONChanged();
+            }
+        }
+        private global::System.String _DESCRIPTION;
+        partial void OnDESCRIPTIONChanging(global::System.String value);
+        partial void OnDESCRIPTIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FILENAME
+        {
+            get
+            {
+                return _FILENAME;
+            }
+            set
+            {
+                OnFILENAMEChanging(value);
+                ReportPropertyChanging("FILENAME");
+                _FILENAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FILENAME");
+                OnFILENAMEChanged();
+            }
+        }
+        private global::System.String _FILENAME;
+        partial void OnFILENAMEChanging(global::System.String value);
+        partial void OnFILENAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE
+        {
+            get
+            {
+                return _PRICE;
+            }
+            set
+            {
+                OnPRICEChanging(value);
+                ReportPropertyChanging("PRICE");
+                _PRICE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE");
+                OnPRICEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE;
+        partial void OnPRICEChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_QUALIFY
+        {
+            get
+            {
+                return _PRICE_QUALIFY;
+            }
+            set
+            {
+                OnPRICE_QUALIFYChanging(value);
+                ReportPropertyChanging("PRICE_QUALIFY");
+                _PRICE_QUALIFY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_QUALIFY");
+                OnPRICE_QUALIFYChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_QUALIFY;
+        partial void OnPRICE_QUALIFYChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_QUALIFYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_AVERAGERETAIL
+        {
+            get
+            {
+                return _PRICE_AVERAGERETAIL;
+            }
+            set
+            {
+                OnPRICE_AVERAGERETAILChanging(value);
+                ReportPropertyChanging("PRICE_AVERAGERETAIL");
+                _PRICE_AVERAGERETAIL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_AVERAGERETAIL");
+                OnPRICE_AVERAGERETAILChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_AVERAGERETAIL;
+        partial void OnPRICE_AVERAGERETAILChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_AVERAGERETAILChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_AVERAGETRADEIN
+        {
+            get
+            {
+                return _PRICE_AVERAGETRADEIN;
+            }
+            set
+            {
+                OnPRICE_AVERAGETRADEINChanging(value);
+                ReportPropertyChanging("PRICE_AVERAGETRADEIN");
+                _PRICE_AVERAGETRADEIN = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_AVERAGETRADEIN");
+                OnPRICE_AVERAGETRADEINChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_AVERAGETRADEIN;
+        partial void OnPRICE_AVERAGETRADEINChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_AVERAGETRADEINChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_COST
+        {
+            get
+            {
+                return _PRICE_COST;
+            }
+            set
+            {
+                OnPRICE_COSTChanging(value);
+                ReportPropertyChanging("PRICE_COST");
+                _PRICE_COST = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_COST");
+                OnPRICE_COSTChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_COST;
+        partial void OnPRICE_COSTChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_COSTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRICE_WHOLESALE
+        {
+            get
+            {
+                return _PRICE_WHOLESALE;
+            }
+            set
+            {
+                OnPRICE_WHOLESALEChanging(value);
+                ReportPropertyChanging("PRICE_WHOLESALE");
+                _PRICE_WHOLESALE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRICE_WHOLESALE");
+                OnPRICE_WHOLESALEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRICE_WHOLESALE;
+        partial void OnPRICE_WHOLESALEChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRICE_WHOLESALEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> RESERVED
+        {
+            get
+            {
+                return _RESERVED;
+            }
+            set
+            {
+                OnRESERVEDChanging(value);
+                ReportPropertyChanging("RESERVED");
+                _RESERVED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RESERVED");
+                OnRESERVEDChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _RESERVED;
+        partial void OnRESERVEDChanging(Nullable<global::System.Decimal> value);
+        partial void OnRESERVEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> SAVINGS
+        {
+            get
+            {
+                return _SAVINGS;
+            }
+            set
+            {
+                OnSAVINGSChanging(value);
+                ReportPropertyChanging("SAVINGS");
+                _SAVINGS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SAVINGS");
+                OnSAVINGSChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _SAVINGS;
+        partial void OnSAVINGSChanging(Nullable<global::System.Decimal> value);
+        partial void OnSAVINGSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FUEL_CITY
+        {
+            get
+            {
+                return _FUEL_CITY;
+            }
+            set
+            {
+                OnFUEL_CITYChanging(value);
+                ReportPropertyChanging("FUEL_CITY");
+                _FUEL_CITY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FUEL_CITY");
+                OnFUEL_CITYChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FUEL_CITY;
+        partial void OnFUEL_CITYChanging(Nullable<global::System.Int32> value);
+        partial void OnFUEL_CITYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FUEL_HIGHWAY
+        {
+            get
+            {
+                return _FUEL_HIGHWAY;
+            }
+            set
+            {
+                OnFUEL_HIGHWAYChanging(value);
+                ReportPropertyChanging("FUEL_HIGHWAY");
+                _FUEL_HIGHWAY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FUEL_HIGHWAY");
+                OnFUEL_HIGHWAYChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FUEL_HIGHWAY;
+        partial void OnFUEL_HIGHWAYChanging(Nullable<global::System.Int32> value);
+        partial void OnFUEL_HIGHWAYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TITLE
+        {
+            get
+            {
+                return _TITLE;
+            }
+            set
+            {
+                OnTITLEChanging(value);
+                ReportPropertyChanging("TITLE");
+                _TITLE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TITLE");
+                OnTITLEChanged();
+            }
+        }
+        private global::System.String _TITLE;
+        partial void OnTITLEChanging(global::System.String value);
+        partial void OnTITLEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PICS
+        {
+            get
+            {
+                return _PICS;
+            }
+            set
+            {
+                OnPICSChanging(value);
+                ReportPropertyChanging("PICS");
+                _PICS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PICS");
+                OnPICSChanged();
+            }
+        }
+        private global::System.String _PICS;
+        partial void OnPICSChanging(global::System.String value);
+        partial void OnPICSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OWNERDETAIL
+        {
+            get
+            {
+                return _OWNERDETAIL;
+            }
+            set
+            {
+                OnOWNERDETAILChanging(value);
+                ReportPropertyChanging("OWNERDETAIL");
+                _OWNERDETAIL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OWNERDETAIL");
+                OnOWNERDETAILChanged();
+            }
+        }
+        private global::System.String _OWNERDETAIL;
+        partial void OnOWNERDETAILChanging(global::System.String value);
+        partial void OnOWNERDETAILChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISFEATURE
+        {
+            get
+            {
+                return _ISFEATURE;
+            }
+            set
+            {
+                OnISFEATUREChanging(value);
+                ReportPropertyChanging("ISFEATURE");
+                _ISFEATURE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISFEATURE");
+                OnISFEATUREChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISFEATURE;
+        partial void OnISFEATUREChanging(Nullable<global::System.Boolean> value);
+        partial void OnISFEATUREChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISNEW
+        {
+            get
+            {
+                return _ISNEW;
+            }
+            set
+            {
+                OnISNEWChanging(value);
+                ReportPropertyChanging("ISNEW");
+                _ISNEW = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISNEW");
+                OnISNEWChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISNEW;
+        partial void OnISNEWChanging(Nullable<global::System.Boolean> value);
+        partial void OnISNEWChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISOFFER
+        {
+            get
+            {
+                return _ISOFFER;
+            }
+            set
+            {
+                OnISOFFERChanging(value);
+                ReportPropertyChanging("ISOFFER");
+                _ISOFFER = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISOFFER");
+                OnISOFFERChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISOFFER;
+        partial void OnISOFFERChanging(Nullable<global::System.Boolean> value);
+        partial void OnISOFFERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISONDEALERPROFILE
+        {
+            get
+            {
+                return _ISONDEALERPROFILE;
+            }
+            set
+            {
+                OnISONDEALERPROFILEChanging(value);
+                ReportPropertyChanging("ISONDEALERPROFILE");
+                _ISONDEALERPROFILE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISONDEALERPROFILE");
+                OnISONDEALERPROFILEChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISONDEALERPROFILE;
+        partial void OnISONDEALERPROFILEChanging(Nullable<global::System.Boolean> value);
+        partial void OnISONDEALERPROFILEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ISQUALIFIED
+        {
+            get
+            {
+                return _ISQUALIFIED;
+            }
+            set
+            {
+                OnISQUALIFIEDChanging(value);
+                ReportPropertyChanging("ISQUALIFIED");
+                _ISQUALIFIED = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISQUALIFIED");
+                OnISQUALIFIEDChanged();
+            }
+        }
+        private global::System.Boolean _ISQUALIFIED;
+        partial void OnISQUALIFIEDChanging(global::System.Boolean value);
+        partial void OnISQUALIFIEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ISWARRANTY
+        {
+            get
+            {
+                return _ISWARRANTY;
+            }
+            set
+            {
+                OnISWARRANTYChanging(value);
+                ReportPropertyChanging("ISWARRANTY");
+                _ISWARRANTY = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ISWARRANTY");
+                OnISWARRANTYChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ISWARRANTY;
+        partial void OnISWARRANTYChanging(Nullable<global::System.Boolean> value);
+        partial void OnISWARRANTYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ZIP
+        {
+            get
+            {
+                return _ZIP;
+            }
+            set
+            {
+                OnZIPChanging(value);
+                ReportPropertyChanging("ZIP");
+                _ZIP = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ZIP");
+                OnZIPChanged();
+            }
+        }
+        private global::System.String _ZIP;
+        partial void OnZIPChanging(global::System.String value);
+        partial void OnZIPChanged();
 
         #endregion
     }
