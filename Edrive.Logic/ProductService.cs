@@ -586,7 +586,10 @@ namespace Edrive.Logic
 		{
 			if(String.IsNullOrWhiteSpace(sortByColumn) ||
 				(!sortByColumn.StartsWith("Year") && !sortByColumn.StartsWith("Mileage") && !sortByColumn.StartsWith("Price") && !sortByColumn.StartsWith("savingAmount")))
-				sortByColumn = "ProductId";
+				sortByColumn = "ID";
+
+			sortByColumn = sortByColumn.Replace("ProductID", "ID");
+
 			if(sortByColumn.StartsWith("Price"))
 			{
 				if(sortByColumn.ToLower().EndsWith("desc"))

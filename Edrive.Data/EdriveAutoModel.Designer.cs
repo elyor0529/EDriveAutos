@@ -35,15 +35,15 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_EDRIVE_PARTNERS_EDRIVE_PICTURE", "EDRIVE_PICTURE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.EDRIVE_PICTURE), "EDRIVE_PARTNERS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.EDRIVE_PARTNERS), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_EDRIVE_TESTIMONIALS_EDRIVE_PICTURE", "EDRIVE_PICTURE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Edrive.Data.EDRIVE_PICTURE), "EDRIVE_TESTIMONIALS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.EDRIVE_TESTIMONIALS), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLEBODY", "LST_VEHICLEBODY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEBODY), "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE), true)]
+[assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_LST_VEHICLEMAKE_ALIAS_VEHICLE", "LST_VEHICLEMAKE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEMAKE), "LST_VEHICLEMAKE_ALIAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.LST_VEHICLEMAKE_ALIAS), true)]
+[assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE", "LST_VEHICLEMAKE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEMAKE), "LST_VEHICLEMODEL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.LST_VEHICLEMODEL), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLEMAKE", "LST_VEHICLEMAKE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEMAKE), "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLEMODEL", "LST_VEHICLEMODEL", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEMODEL), "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE), true)]
-[assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLETYPE", "LST_VEHICLETYPE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLETYPE), "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE), true)]
-[assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_LST_VEHICLEMAKE_ALIAS_VEHICLE", "LST_VEHICLEMAKE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEMAKE), "LST_VEHICLEMAKE_ALIAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.LST_VEHICLEMAKE_ALIAS), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_OPTIONS_LST_VEHICLEOPTION", "LST_VEHICLEOPTION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEOPTION), "VEHICLE_OPTIONS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE_OPTIONS), true)]
+[assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLETYPE", "LST_VEHICLETYPE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLETYPE), "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_OPTIONS_VEHICLE", "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.VEHICLE), "VEHICLE_OPTIONS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE_OPTIONS), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_IMAGES_VEHICLE", "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.VEHICLE), "VEHICLE_IMAGES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE_IMAGES), true)]
 [assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_VEHICLE_RATING_VEHICLE", "VEHICLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.VEHICLE), "VEHICLE_RATING", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.VEHICLE_RATING), true)]
-[assembly: EdmRelationshipAttribute("EdriveAutosModel", "FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE", "LST_VEHICLEMAKE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Edrive.Data.LST_VEHICLEMAKE), "LST_VEHICLEMODEL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Edrive.Data.LST_VEHICLEMODEL), true)]
 
 #endregion
 
@@ -546,6 +546,22 @@ namespace Edrive.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<LST_VEHICLEMAKE_ALIAS> LST_VEHICLEMAKE_ALIAS
+        {
+            get
+            {
+                if ((_LST_VEHICLEMAKE_ALIAS == null))
+                {
+                    _LST_VEHICLEMAKE_ALIAS = base.CreateObjectSet<LST_VEHICLEMAKE_ALIAS>("LST_VEHICLEMAKE_ALIAS");
+                }
+                return _LST_VEHICLEMAKE_ALIAS;
+            }
+        }
+        private ObjectSet<LST_VEHICLEMAKE_ALIAS> _LST_VEHICLEMAKE_ALIAS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<LST_VEHICLEMODEL> LST_VEHICLEMODEL
         {
             get
@@ -642,6 +658,22 @@ namespace Edrive.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<sysdiagram> sysdiagrams
+        {
+            get
+            {
+                if ((_sysdiagrams == null))
+                {
+                    _sysdiagrams = base.CreateObjectSet<sysdiagram>("sysdiagrams");
+                }
+                return _sysdiagrams;
+            }
+        }
+        private ObjectSet<sysdiagram> _sysdiagrams;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<VEHICLE> VEHICLEs
         {
             get
@@ -654,22 +686,6 @@ namespace Edrive.Data
             }
         }
         private ObjectSet<VEHICLE> _VEHICLEs;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<LST_VEHICLEMAKE_ALIAS> LST_VEHICLEMAKE_ALIAS
-        {
-            get
-            {
-                if ((_LST_VEHICLEMAKE_ALIAS == null))
-                {
-                    _LST_VEHICLEMAKE_ALIAS = base.CreateObjectSet<LST_VEHICLEMAKE_ALIAS>("LST_VEHICLEMAKE_ALIAS");
-                }
-                return _LST_VEHICLEMAKE_ALIAS;
-            }
-        }
-        private ObjectSet<LST_VEHICLEMAKE_ALIAS> _LST_VEHICLEMAKE_ALIAS;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -947,6 +963,14 @@ namespace Edrive.Data
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the LST_VEHICLEMAKE_ALIAS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLST_VEHICLEMAKE_ALIAS(LST_VEHICLEMAKE_ALIAS lST_VEHICLEMAKE_ALIAS)
+        {
+            base.AddObject("LST_VEHICLEMAKE_ALIAS", lST_VEHICLEMAKE_ALIAS);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the LST_VEHICLEMODEL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToLST_VEHICLEMODEL(LST_VEHICLEMODEL lST_VEHICLEMODEL)
@@ -995,19 +1019,19 @@ namespace Edrive.Data
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the sysdiagrams EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTosysdiagrams(sysdiagram sysdiagram)
+        {
+            base.AddObject("sysdiagrams", sysdiagram);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the VEHICLEs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToVEHICLEs(VEHICLE vEHICLE)
         {
             base.AddObject("VEHICLEs", vEHICLE);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the LST_VEHICLEMAKE_ALIAS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLST_VEHICLEMAKE_ALIAS(LST_VEHICLEMAKE_ALIAS lST_VEHICLEMAKE_ALIAS)
-        {
-            base.AddObject("LST_VEHICLEMAKE_ALIAS", lST_VEHICLEMAKE_ALIAS);
         }
     
         /// <summary>
@@ -1036,14 +1060,6 @@ namespace Edrive.Data
 
         #endregion
         #region Function Imports
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectResult<FeaturedVehicles_Result> FeaturedVehicles()
-        {
-            return base.ExecuteFunction<FeaturedVehicles_Result>("FeaturedVehicles");
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1655,8 +1671,8 @@ namespace Edrive.Data
             {
                 pAGENUMParameter = new ObjectParameter("PAGENUM", typeof(global::System.Int32));
             }
-    
-            return base.ExecuteFunction<VEHICLE>("StandardSearch", qUERYParameter, zIPParameter, rADIUSParameter, pRICEParameter, yEARParameter, mILEAGEParameter, mAKEParameter, mODELParameter, wARRANTYParameter, bODYTYPEParameter, vALIDATEDONLYParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES, eXACTMATCH);
+
+			return base.ExecuteFunction<VEHICLE>("StandardSearch", qUERYParameter, zIPParameter, rADIUSParameter, pRICEParameter, yEARParameter, mILEAGEParameter, mAKEParameter, mODELParameter, wARRANTYParameter, bODYTYPEParameter, vALIDATEDONLYParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES, eXACTMATCH);
         }
         /// <summary>
         /// No Metadata Documentation available.
@@ -1833,6 +1849,14 @@ namespace Edrive.Data
             }
     
             return base.ExecuteFunction<VEHICLE>("StandardSearch", mergeOption, qUERYParameter, zIPParameter, rADIUSParameter, pRICEParameter, yEARParameter, mILEAGEParameter, mAKEParameter, mODELParameter, wARRANTYParameter, bODYTYPEParameter, vALIDATEDONLYParameter, sORTCOLUMNParameter, sORTORDERParameter, pAGESIZEParameter, pAGENUMParameter, tOTALRESULTS, tOTALPAGES, eXACTMATCH);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<FeaturedVehiclesItem> FeaturedVehicles()
+        {
+            return base.ExecuteFunction<FeaturedVehiclesItem>("FeaturedVehicles");
         }
 
         #endregion
@@ -9431,28 +9455,6 @@ namespace Edrive.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLEMAKE", "VEHICLE")]
-        public EntityCollection<VEHICLE> VEHICLEs
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE", "VEHICLE");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE", "VEHICLE", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("EdriveAutosModel", "FK_LST_VEHICLEMAKE_ALIAS_VEHICLE", "LST_VEHICLEMAKE_ALIAS")]
         public EntityCollection<LST_VEHICLEMAKE_ALIAS> LST_VEHICLEMAKE_ALIAS
         {
@@ -9487,6 +9489,28 @@ namespace Edrive.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LST_VEHICLEMODEL>("EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE", "LST_VEHICLEMODEL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLEMAKE", "VEHICLE")]
+        public EntityCollection<VEHICLE> VEHICLEs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE", "VEHICLE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMAKE", "VEHICLE", value);
                 }
             }
         }
@@ -9779,28 +9803,6 @@ namespace Edrive.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLEMODEL", "VEHICLE")]
-        public EntityCollection<VEHICLE> VEHICLEs
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL", "VEHICLE");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL", "VEHICLE", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("EdriveAutosModel", "FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE", "LST_VEHICLEMAKE")]
         public LST_VEHICLEMAKE LST_VEHICLEMAKE
         {
@@ -9829,6 +9831,28 @@ namespace Edrive.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<LST_VEHICLEMAKE>("EdriveAutosModel.FK_LST_VEHICLEMODEL_LST_VEHICLEMAKE", "LST_VEHICLEMAKE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("EdriveAutosModel", "FK_VEHICLE_LST_VEHICLEMODEL", "VEHICLE")]
+        public EntityCollection<VEHICLE> VEHICLEs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL", "VEHICLE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VEHICLE>("EdriveAutosModel.FK_VEHICLE_LST_VEHICLEMODEL", "VEHICLE", value);
                 }
             }
         }
@@ -10484,6 +10508,167 @@ namespace Edrive.Data
         private Nullable<global::System.Int32> _VEHICLES_QUALIFIED;
         partial void OnVEHICLES_QUALIFIEDChanging(Nullable<global::System.Int32> value);
         partial void OnVEHICLES_QUALIFIEDChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="EdriveAutosModel", Name="sysdiagram")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class sysdiagram : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sysdiagram object.
+        /// </summary>
+        /// <param name="name">Initial value of the name property.</param>
+        /// <param name="principal_id">Initial value of the principal_id property.</param>
+        /// <param name="diagram_id">Initial value of the diagram_id property.</param>
+        public static sysdiagram Createsysdiagram(global::System.String name, global::System.Int32 principal_id, global::System.Int32 diagram_id)
+        {
+            sysdiagram sysdiagram = new sysdiagram();
+            sysdiagram.name = name;
+            sysdiagram.principal_id = principal_id;
+            sysdiagram.diagram_id = diagram_id;
+            return sysdiagram;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (_name != value)
+                {
+                    OnnameChanging(value);
+                    ReportPropertyChanging("name");
+                    _name = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("name");
+                    OnnameChanged();
+                }
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 principal_id
+        {
+            get
+            {
+                return _principal_id;
+            }
+            set
+            {
+                if (_principal_id != value)
+                {
+                    Onprincipal_idChanging(value);
+                    ReportPropertyChanging("principal_id");
+                    _principal_id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("principal_id");
+                    Onprincipal_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _principal_id;
+        partial void Onprincipal_idChanging(global::System.Int32 value);
+        partial void Onprincipal_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 diagram_id
+        {
+            get
+            {
+                return _diagram_id;
+            }
+            set
+            {
+                if (_diagram_id != value)
+                {
+                    Ondiagram_idChanging(value);
+                    ReportPropertyChanging("diagram_id");
+                    _diagram_id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("diagram_id");
+                    Ondiagram_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _diagram_id;
+        partial void Ondiagram_idChanging(global::System.Int32 value);
+        partial void Ondiagram_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> version
+        {
+            get
+            {
+                return _version;
+            }
+            set
+            {
+                OnversionChanging(value);
+                ReportPropertyChanging("version");
+                _version = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("version");
+                OnversionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _version;
+        partial void OnversionChanging(Nullable<global::System.Int32> value);
+        partial void OnversionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] definition
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_definition);
+            }
+            set
+            {
+                OndefinitionChanging(value);
+                ReportPropertyChanging("definition");
+                _definition = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("definition");
+                OndefinitionChanged();
+            }
+        }
+        private global::System.Byte[] _definition;
+        partial void OndefinitionChanging(global::System.Byte[] value);
+        partial void OndefinitionChanged();
 
         #endregion
     
