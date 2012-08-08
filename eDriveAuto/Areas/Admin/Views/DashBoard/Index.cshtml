@@ -1,0 +1,97 @@
+﻿@{
+    Layout = null;
+        //Layout = "_Admin.cshtml";
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Admin DashBoard</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+</head>
+<body id="dealerDashboard" class="dealerDashboard" style=" background-color: #003C8D;">
+    <form id="form1" runat="server">
+    <div style="width: 1000px; margin: auto; height: 530px">
+        <div>
+            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="1000px" height="530px"
+                id="movie_name" align="middle">
+                <param name="movie" value="@Url.Content("~/Content/Flashes/edrive-01.swf")" />
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash" data="@Url.Content("~/Content/Flashes/edrive-01.swf")" /
+                    width="1000px" height="530px">
+                    <param name="movie" value="movie_name.swf" />
+                    <!--<![endif]-->
+                    <a href="http://www.adobe.com/go/getflash">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
+                            alt="Get Adobe Flash player" />
+                    </a>
+                    <!--[if !IE]>-->
+                </object>
+                <!--<![endif]-->
+            </object>
+            <div >
+                <ul id="menu1">
+                    <li>@Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "Admin" }, new { @class = "footerlink3" }) 
+                    </li>
+                    <li>@Html.ActionLink("Hotsheet", "Hotsheet", "ManageVehicle", new { area = "Admin" }, new { @class = "footerlink3" }) 
+                    </li>
+                    <li>@Html.ActionLink("Manage Inventory", "Manage", "ManageVehicle", new { area = "Admin" }, new { @class = "footerlink3" }) 
+                    </li>
+                    <li>@Html.ActionLink("Manage Dealer", "Index", "ManageDealer", new { area = "Admin" }, new { @class = "footerlink3" }) 
+                    </li>
+                    <li>@Html.ActionLink("Manage Customer", "Index", "ManageCustomer", new { area = "Admin" }, new { @class = "footerlink3" }) 
+                    </li>
+                    <li>@Html.ActionLink("Upload Vehicles", "UploadVehicle", "ManageVehicle", new { area = "Admin" }, new { @class = "footerlink3" })
+                    </li>
+                    <li>@Html.ActionLink("Manage Partners", "Index", "ManagePartner", new { area = "Admin" }, new { @class = "footerlink3" })
+                    </li>
+
+                    
+                    @*<li><a href="#" class="footerlink3">Manage Leads</a> </li>
+                    <li><a href="#" class="footerlink3">Contact Us</a> </li>*@
+                </ul>
+                <div id="copyright">
+                &copy; Copyright 2011 EDRIVE Autos, LLC. All Rights Reserved.<br>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    @* <div style="display:none">
+@using (Html.BeginForm("Index", "Dashboard", new { area = "Admin" }))
+{
+ <table align="center" class="ManageVehcile">
+ <tr>
+ <td>
+  <h5>Manage Vehicle
+ </h5>
+<p>
+
+<table>
+<tr>
+<td>
+<input type="submit" value="Add New Vehicle" name="btnName" />
+</td>
+<td>
+<input type="submit" value="Manage/Edit/Delete Vehicle" name="btnName" />
+</td>    
+</tr>
+<tr>
+<td colspan="2">
+<input type="submit" value="Upload Vehicle" name="btnName" />
+
+<td>
+</td>
+</tr>
+</table>
+ 
+<br />
+</p>
+</td>
+ </tr>
+ </table>
+}
+   </div>
+*@
+</body>
+</html>

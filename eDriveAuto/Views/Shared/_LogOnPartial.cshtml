@@ -1,0 +1,77 @@
+﻿ 
+
+
+  <div class="Menu_01 Flr">
+@*  @{
+      try
+      {
+
+     
+      var ChaseImage = Html.Action("GetSettings", "Common", new { SetttingName = "Media.Images.Chase" }).ToString();
+
+      if (String.IsNullOrEmpty(ChaseImage) == false)
+      {
+          <div class="chaseImage" style="">
+      
+      <div class="firstcol"><a href="http://www.e-zdealership.com/">In alliance <br />with</a>
+      </div>
+      <div   class="secondCol">
+      <img src="/Content/Images/BarAlliance.png" />
+         <img src="@ChaseImage"    style=""/> 
+        </div>   
+           </div>
+      
+      }
+  }
+      catch (Exception)
+      {
+          
+          
+      }
+      }*@
+                
+                <ul style="float:left">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href="#">Dealers</a>
+						<ul class="Menu_01_l2">
+							<li><a href="@Url.Action("Login", "DealerDashboard", new { area = "Dealer" })">Login</a>
+							</li>
+							<li><a href="@Url.Action("Index", "Dealers")">How it Works</a>
+
+							</li>
+						</ul>
+						</li>
+                        
+@*                        {
+                             <li><a href="#">My Account</a></li>
+                       <li><a href="#">My Wishlist</a></li>
+                        }*@
+                        if (!User.IsInRole("Guest"))
+                        {
+                            <li><a href="@Url.Action("Index", "MyAccount")">My Account</a></li>
+							<li>@Html.ActionLink("My WishList", "Wishlist", "Product")</li>
+						}
+                  
+                    <li class="last">
+                        @Html.ActionLink("Logout", "LogOff", "Account")
+                    </li>
+				}
+				else
+				{
+                    <li><a href="#">Dealers</a>
+                    <ul class="Menu_01_l2">
+                    <li><a href="@Url.Action("Login", "DealerDashboard", new { area = "Dealer" })">Login</a>
+                    </li>
+                      <li><a href="@Url.Action("Index", "Dealers")">How it Works</a>
+
+                    </li>
+                    </ul></li>
+                    <li><a href="@Url.Action("RegisterUser", "Register")">Register</a></li>
+                    <li class="last">
+                        @Html.ActionLink("Login", "LogOn", "Account")
+
+                    </li>
+                }
+                </ul>
+            </div>

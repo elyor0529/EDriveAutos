@@ -1,0 +1,213 @@
+﻿@model Edrive.Models.SearchFilter
+@{
+     
+}
+@*<script src="../../Scripts/jquery-1.4.4-vsdoc.js" type="text/javascript"></script>
+*@ @*<script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+*@
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+@section Head{
+    <title>Advanced Search </title>
+    <meta name="metatitle" />
+    <meta name="description" />
+    <meta name="keywords" />
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+            try {
+
+                $("#Model").html("").attr("disabled", "disabled");
+
+                $("#Make").change(function () {
+                    $("#Model").html("");
+                    if ($(this).val() == "-1") {
+                        $("#Model").attr("disabled", "disabled");
+
+                        return;
+                    };
+
+                    $.post(serverurl + "/Home/GetModel?MakeID=" + $(this).val(), null, function (data) {
+
+                        $.each(data, function () {
+
+                            $("#Model").append("<option value='" + this.id + "'>" + this.modelName + "</option>")
+                         .removeAttr("disabled");
+
+
+                        });
+                    }, "json");
+                });
+            } catch (e) {
+
+            }
+        });
+
+
+        $(document).ready(function () {
+            $("#AdvSearchTable tr td input[type='text']").css("width", "200px");
+            $("#AdvSearchTable tr td select").css("width", "200px");
+            $("#AdvSearchTable tr td").css("padding-bottom", "5px");
+
+
+        }
+    );
+    </script>
+}
+@using (Html.BeginForm("Index", "Search", FormMethod.Post))
+{
+    Html.EnableClientValidation(true);
+    
+    <div>
+        <table id="AdvSearchTable" cellpadding="5" align="center" style="margin: auto; width: 715px;">
+            <tr>
+                <td>
+                    <h3 style="font-family: Arial; color: Green; font-size: 20px; font-weight: bold;">
+                        Advanced Search
+                    </h3>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Make
+                <td>
+               
+                  @Html.DropDownList("Make") <span style="display:none;">
+                    @Html.DropDownList("Type")
+                    </span>
+                </td>
+                <td>
+                    Body
+                </td>
+                <td>
+                    @Html.DropDownList("Body")
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                      Model
+                </td>
+                <td>
+                    @Html.DropDownList("Model")
+                </td>
+                <td>
+                    Transmission
+                </td>
+                <td>
+                    @Html.DropDownList("Transmission")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  Maximum Mileage
+                </td>
+                <td>
+                     @Html.TextBoxFor(m => m.Mileage)
+                </td>
+                <td>
+                    Engine
+                </td>
+                <td>
+                    @Html.DropDownList("Engine")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     Year From
+                </td>
+                <td>
+                    @Html.TextBox("YearMin", "")
+                    @*                    <select id="Mileage" name="Mileage" style=" width:150px">
+                        <option  value="-1">All</option>
+                        <option   value="0 - 10000">0 - 10000</option>
+
+                         @for (int i = 10001; i <= 90001; i += 10000)
+                         {
+                        <option value="@i - @(i + 10000 - 1)">@i - @(i + 10000 - 1)</option>
+                         }     </select>
+*@
+                </td>
+                <td>
+                    Drive Type
+                </td>
+                <td>
+                    @Html.DropDownList("DriveType")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     Year To
+                </td>
+                <td>
+                     @Html.TextBox("YearMax", "")
+                </td>
+                <td>
+                    VIN #
+                </td>
+                <td>
+                    @Html.TextBox("Vin", "")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Min Price
+                </td>
+                <td>
+                  @Html.TextBox("PriceMin", "")
+                </td>
+                <td>
+                    Zip Code
+                </td>
+                <td>
+                    @Html.TextBox("Zip", "")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Max Price
+                </td>
+                <td>
+                   @Html.TextBox("PriceMax", "")
+                </td>
+                <td>
+                    Radius
+                </td>
+                <td colspan="3">
+                    <select id="Radius" name="Radius" style="width: 150px">
+                        <option value="-1">Only with same zip code</option>
+                        @for (int i = 10; i < 200; i += 10)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                
+                <td colspan="3"></td>
+
+                <td colspan="1">
+                   
+                 
+                    @Html.Hidden("Warranty", "-1")
+                    <input type="image" src="/Content/Images/goBtn.png" value="GO" id="btnAdvncedSrch" />
+                    @*<input type="submit"  value="GO" style="width: 109px" />*@
+                </td>
+            </tr>
+            @*  <tr>
+                <td>
+                </td>
+                <td>
+               @Html.Hidden("Warranty", "-1")
+                    <input type="submit"  id="btnAdvncedSrch" value="GO"  style="Width:109px"/>
+
+                </td>
+            </tr>*@
+        </table>
+    </div>
+    
+    @Html.ValidationSummary(false)
+    
+}

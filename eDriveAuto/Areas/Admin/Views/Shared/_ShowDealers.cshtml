@@ -1,0 +1,48 @@
+﻿@model List<Edrive.Models.ED_DealersFaq>
+           @{
+               Layout = null;
+                 }
+<table cellpadding="0" cellspacing="0" border="0">
+<thead>
+<tr>
+<th>Question
+</th>
+<th style="width:100px;">Created On
+</th>
+<th style="width:50px;">Order
+</th>
+<th style="width:50px;text-align:center">Edit
+</th>
+</tr>
+</thead>
+<tbody>
+@{
+    if(Model!=null)
+    {
+         foreach (var item in Model)
+    {
+          var clsName =(Model.IndexOf(item)%2==0?"alter":"");
+        <tr  class="@clsName">
+<td style="text-align:left;padding-left:30px;">@item.Question
+</td>
+ <td>@item.CreatedOn.ToString("D")
+</td><td style="text-align:center">
+@if(Model.IndexOf(item)!=0){
+<img src="@Url.Content("~/Content/themes/App_Themes/Edrive/images/arrow_up_alt.png")" onclick="MoveUpRecord(@item.FaqId)" style="position:relative;left:19px;cursor:pointer" align="left" alt="up" />
+}
+@if(Model.IndexOf(item)!=Model.Count-1){
+
+<img src="@Url.Content("~/Content/themes/App_Themes/Edrive/images/arrow_down_alt.png")" alt="down" onclick="MoveDownRecord(@item.FaqId)" align="right"  style="position:relative;right:25px;cursor:pointer" />
+    }
+
+ 
+</td><td style="text-align:center">@Html.ActionLink("Edit","EditDealerFAQs",new{id=@item.FaqId}) 
+</td>
+</tr>
+    }
+    }
+    }
+</tbody>
+
+
+</table>

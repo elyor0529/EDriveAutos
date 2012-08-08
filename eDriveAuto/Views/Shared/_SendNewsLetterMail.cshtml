@@ -1,0 +1,34 @@
+﻿  @model Edrive.Models._SendNewsLetterMail 
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+   @using (Html.BeginForm("SendNewsLetterMail", "ManageContent"))
+   {
+    
+
+  <table>
+  <tr><td colspan="2" style="padding-left:15px;padding-bottom:15px;"><b>Make sure you've tested the campaign before sending it out to multiple customers. Save your campaign first by clicking "Save" button</b></td></tr>
+     <tr>
+    <td class="firstcol">Send test email to:
+    </td><td>
+    @Html.TextBoxFor(m=>m.Email,new{id="testEmail"})
+    <input type="submit" name="SendTestEmail" id="SendTestEmail"  value="Send Test Email" />
+
+    </td>
+    </tr>
+    <tr><td colspan="2"><br /> </td></tr>
+     <tr>
+    <td class="firstcol">Allowed message tokens:
+    </td><td>@{foreach (var item in ViewData["allowedTokens"] as string[])
+	{
+                   @: @item, 
+		 
+	} 
+        } <br /><br />
+   @Html.HiddenFor(m=>m.CampaignID)
+      <input type="submit" name="SendMassEmail" value="Send Mass Email" class="cancel" id="SendMassEmail" />
+
+    </td>
+    </tr>
+    <tr><td colspan="2"><hr style="background-color: #CECFCE;width: 938px;margin-top: 12px;margin-bottom: 15px;" /> </td></tr>
+    </table>
+   }

@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Edrive.CsvParserService" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LogFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\EdriveCsvParser.log</Value>
+    </Setting>
+    <Setting Name="TimerIntervalMilliseconds" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">30000</Value>
+    </Setting>
+    <Setting Name="CancelTaskAfterMilliseconds" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">86000000</Value>
+    </Setting>
+    <Setting Name="CarfaxPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Edrive\Carfax</Value>
+    </Setting>
+    <Setting Name="CarfaxTimerIntervalMilliseconds" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10800000</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

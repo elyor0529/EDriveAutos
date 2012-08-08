@@ -1,0 +1,20 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2>
+    Sorry, an error occurred while processing your request. Please try again at a later time.
+    <br />    <br /> 
+    @*@(TempData["Msg"]??"") 
+    Message :    @Model.Exception.Message
+    <br />   <br /> 
+    ControllerName : @Model.ControllerName
+    <br />   <br /> 
+    ActionName : @Model.ActionName*@
+
+
+ 
+
+</h2>

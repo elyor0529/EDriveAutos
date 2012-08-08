@@ -1,0 +1,6 @@
+--------------------Message--------------------
+The controller for path '/Error' was not found or does not implement IController.
+--------------------InnerException--------------------
+
+--------------------error code--------------------
+404

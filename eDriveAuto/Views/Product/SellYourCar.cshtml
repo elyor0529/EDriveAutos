@@ -1,0 +1,234 @@
+﻿@model Edrive.Models._SellCar
+@{
+    ViewBag.Title = "SellYourCar";
+}
+@section Head
+{
+    <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+}
+<div class="product-inner-page">
+    <div class="divdetail-inner">
+        <div class="clear">
+        </div>
+    </div>
+    <div class="tab-new">
+        <div class="teb-left">
+        </div>
+        <div class="tab-line">
+            <div class="tab-tital">
+                Sell a Car</div>
+        </div>
+        <div class="tab-right">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="clear1">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new-top">
+        </div>
+        <div class="divbottommiddetail-new-line-top-inner">
+        </div>
+        <div class="divbottomright-new-top">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="divinnercontent-home-new-one">
+        <div class="divinnercontent">
+            <div class="diviconwar">
+            </div>
+            <div class="overviewdetaillogowar">
+                <div style="width: 864px; text-align: center;">
+                    <img src="/Content/Themes/App_Themes/EDrive/images/new-banner.jpg">
+                    <div style="margin-left: 59px; margin-top: 20px;">
+                        
+                        <table width="100%">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 50%; text-align: justify;" valign="top">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="htmlcontent">
+                                                            <div class="htmlcontent-body">
+                                                                Find out the value of your trade, and list it on<br>
+                                                                E-Drive Autos and start receiving multiple<br>
+                                                                offers from our network of 4,000 dealerships.<br>
+                                                                No hassle. No obligation.<br/>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="height: 45px">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <i>vehicles value provided by</i> &nbsp;&nbsp;
+                                                                    </td>
+                                                                    <td>
+                                                                        <img alt="logo1" src="/Content/Themes/App_Themes/EDrive/images/nada-logo.jpg">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td style="width: 50%" valign="top">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="font-size: 16px; font-weight: bold;text-align:left">
+                                                        Enter your vehicle information
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                    <div style="text-align:center;color:red">
+                                                    @(ViewData["Msg"]??"")
+                                                    </div>
+                                                        @using (Html.BeginForm("SellYourCar", "Product", FormMethod.Post))
+                                                        {   <table cellpadding="2" cellspacing="2" style="margin-top: 10px;text-align:left">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="20px;" align="right">
+                                                                        VIN
+                                                                    </td>
+                                                                    <td>
+                                                                        :
+                                                                    </td>
+                                                                    <td style="width:344px;">
+                                                                        @Html.TextBoxFor(m => m.VIN, new { @class = "textBox"})
+                                                                        @Html.ValidationMessageFor(m=>m.VIN)
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="right">
+                                                                        Mileage
+                                                                    </td>
+                                                                    <td>
+                                                                        :
+                                                                    </td>
+                                                                    <td>
+                                                                        @Html.TextBoxFor(m => m.Mileage, new { @class = "textBox" })
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="right">
+                                                                        Zip
+                                                                    </td>
+                                                                    <td>
+                                                                        :
+                                                                    </td>
+                                                                    <td>
+                                                                        @Html.TextBoxFor(m => m.Zip, new { @class = "textBox" ,maxlength="5"})
+                                                                        @Html.ValidationMessageFor(m=>m.Zip)
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3" style="height: 6px;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Condition
+                                                                    </td>
+                                                                    <td>
+                                                                        :
+                                                                    </td>
+                                                                    <td>
+                                                                        <table id="ctl00_ctl00_cph1_cph1_ctrlSellYourCar_rdbConditions" border="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <label>
+                                                                                            <input type="radio" name="Condition" value="Excellent" checked="checked" />
+                                                                                            Excellent</label>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <label>
+                                                                                            <input type="radio" name="Condition" value="Good" />
+                                                                                            Good</label>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <label>
+                                                                                            <input type="radio" name="Condition" value="Fair" />
+                                                                                            Fair</label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3" style="height: 6px;">
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                <td>
+                                                                </td>
+                                                                <td>
+                                                                </td>
+                                                                    <td colspan="1" style="font-weight: bold;">
+                                                                        <i>All fields are required.</i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3" style="height: 6px;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                <td>
+                                                                </td>
+                                                                <td>
+                                                                </td>
+                                                                    <td colspan="1">
+                                                                        <input type="image" src="/Content/Themes/App_Themes/EDrive/images/get-values.jpg"
+                                                                            style="border-width: 0px;">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                        
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new">
+        </div>
+        <div class="divbottommiddetail-new-line-inner">
+        </div>
+        <div class="divbottomright-new">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>

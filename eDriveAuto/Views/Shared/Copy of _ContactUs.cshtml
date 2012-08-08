@@ -1,0 +1,362 @@
+﻿@model Edrive.Models._ContactUsForm
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                $("#Country").change(function () {
+                    $("#State").html("");
+                    if ($(this).val() == "-1") {
+                        $("#State").attr("disabled", "disabled");
+                        return;
+                    };
+
+
+                    var flag = true;
+                    $.post(serverurl + "/ContactUs/GetState?CountryID=" + $(this).val(), null, function (data) {
+
+
+                        $.each(data, function () {
+                            flag = false
+                            $("#State").append("<option value='" + this.StateProvinceID + "'>" + this.Name + "</option>")
+                         .removeAttr("disabled");
+                        });
+
+                        if (flag) {
+                            $("#State").append("<option value='-1'>Other (Non us)</option>");
+                        }
+                    }, "json");
+                   
+
+                });
+
+
+            } catch (e) {
+                alert(e.Message);
+            }
+        });
+
+       
+    </script>
+ 
+    <script language="javascript" type="text/javascript">
+        function submit() {
+            try {
+
+          if($("#formContact").valid()==false)
+          {
+           $("#Msg").html("Please fill the required details.");
+           return false;
+          }
+
+
+            var Name = $("#Name").val();
+            var Email = $("#Email").val();
+            var CustomerType = ""; //$("#CustomerType").val();
+            var Address = $("#Address").val();
+            var HearAboutUsBy = $("#HearAboutUsBy").val(); ;
+
+            $("input:checkbox[name='CustomerType']:checked").each(function () {
+                CustomerType = $(this).val() + ",";
+           }); 
+            var City = $("#City").val();
+            var Country = $("#Country").val();
+            var State = $("#State").val();
+            var Zip = $("#Zip").val();
+            var Telephone = $("#Telephone").val();
+            var TelephoneExt = $("#TelephoneExt").val();
+            var Fax = $("#Fax").val();
+            var UserRequest_Question = $("#UserRequest_Question").val();
+            
+
+
+                                    var saveData = {
+                                        Name: Name,
+                                    Email : Email,
+                                    CustomerType: CustomerType,
+                                    Address: Address,
+                                    HearAboutUsBy: HearAboutUsBy,
+                                    City: City,
+                                    Country: Country,
+                                    State: State,
+                                    Zip: Zip,
+                                    Telephone: Telephone,
+                                    TelephoneExt: TelephoneExt,
+                                    Fax: Fax,
+                                    UserRequest_Question: UserRequest_Question
+                                };
+
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/ContactUs/ContactUsSubmit",
+                                    data: saveData,
+                                    dataType: "json",
+                                    contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                                    success: function (data) {
+
+
+                                        if (data != null) {
+                                            $("#Msg").html(data.Msg.toString());
+
+
+                                        }
+                                    },
+                                    error: function (req, status, error) {
+                                        flashError("There was a problem registering your email, please try again.");
+                                    }
+                                });
+                                                                                             
+                    return false;
+                } catch (e) {
+                alert(e.Message);
+
+                }
+
+                
+        }
+        
+    </script> 
+    @using(Html.BeginForm("ContactUsSubmit","ContactUs",FormMethod.Post,new{id="formContact"}))
+                    {
+<div id="divoverviewdetaillogowar" class="overviewdetaillogowar">
+    <div class="divcontactheader">
+        Customer Support Form
+    </div>
+    <div style="float: right; margin-right: 142px; margin-top: -24px;" class="divcontactheader">
+    </div>
+   <br />
+    <table style="margin: auto;">
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <div class="message-error">
+                        <div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div>
+                            <div style="color: Red; display: block;" id="Msg">
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">
+                                @Html.ValidationSummary(true)
+                                    <div class="htmlcontent">
+                                        <div class="htmlcontent-body">
+                                            @{
+                                                var contactus_text = "";
+                                                try
+                                                {
+                                                    contactus_text = Html.Action("TopicDetail", "Home", new { id = "ContactUsNew" }).ToString();
+                                                }
+                                                catch (Exception ex)
+                                                {
+
+                                                }
+                                                @Html.Raw(contactus_text)
+                                                           
+                                            }
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <div>
+                                        <span class="spanrequired">* </span><font style="font-size: 11px;"><b>Required Information</b></font>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td width="9" class="spanrequirednew">
+                                                    *
+                                                </td>
+                                                <td width="130">
+                                                    Your Name:
+                                                </td>
+                                                <td width="250" class="item-value">
+                                                    @Html.TextBoxFor(m => m.Name)
+                                                </td>
+                                                <td width="9" class="spanrequirednew">
+                                                    *
+                                                </td>
+                                                <td width="80">
+                                                    Email:
+                                                </td>
+                                                <td width="250" class="item-value">
+                                                    @Html.TextBoxFor(m => m.Email)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td colspan="4">
+                                                    <table border="0" id="ctl00_ctl00_cph1_cph1_ctrlContactUs_chkUserType">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <label>
+                                                                        <input type="checkbox" name="CustomerType" value="I am a Buyer" />
+                                                                        I am a Buyer</label>
+                                                                  
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <label>
+                                                                        <input type="checkbox" name="CustomerType" value="I am a Dealer" />
+                                                                        I am a Dealer</label>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                </td>
+                                                <td colspan="2">
+                                                    <label>
+                                                        <input type="checkbox" name="CustomerType" value=" I am an Advertiser" />
+                                                        I am an Advertiser / Partner</label>
+                                                </td>
+                                                <td colspan="2">
+                                                    How did you first hear about EDrive Autos?:
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="9" class="spanrequirednew">
+                                                </td>
+                                                <td width="130">
+                                                    Address:
+                                                </td>
+                                                <td width="250" class="item-value">
+                                                    @Html.TextBoxFor(m => m.Address)
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td colspan="2">
+                                                    <select id="HearAboutUsBy" name="HearAboutUsBy">
+                                                        <option value="0">Please Select One</option>
+                                                        <option value="MSN">MSN</option>
+                                                        <option value="Google">Google</option>
+                                                        <option value="From your friend">From your friend</option>
+                                                        <option value="From your friend">Other</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="9" class="spanrequirednew">
+                                                </td>
+                                                <td width="130">
+                                                    City:
+                                                </td>
+                                                <td width="250" class="item-value" colspan="4">
+                                                    @Html.TextBoxFor(m => m.City)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-top: 6px;" class="spanrequired">
+                                                </td>
+                                                <td>
+                                                    Country:
+                                                </td>
+                                                <td colspan="4">
+                                                    @Html.DropDownListFor(m => m.Country, ViewData["Countries"] as SelectList, new { id = "Country" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-top: 6px;" class="spanrequired">
+                                                </td>
+                                                <td colspan="1">
+                                                    State:
+                                                </td>
+                                                <td colspan="1">
+                                                @{
+                                                    if (ViewData["States"] != null)
+                                                    {
+                                                     @Html.DropDownListFor(m => m.State, ViewData["States"] as SelectList, new { id = "State" })
+                                                    }
+                                                    else
+                                                    {
+                                                        <select id="State"><option value="0">Other (Non US)</option></select>
+                                                    }
+                                                }
+                                                   
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td colspan="2">
+                                                    Describe your question or request:
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="9" class="spanrequirednew">
+                                                </td>
+                                                <td width="130" colspan="1">
+                                                    Zip:
+                                                </td>
+                                                <td rowspan="1" colspan="2" width="250" class="item-value">
+                                                    @Html.TextBoxFor(m => m.Zip)
+                                                </td>
+                                                <td rowspan="3" colspan="2">
+                                                    <textarea style="height: 73px; width: 296px"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="spanrequirednew">
+                                                </td>
+                                                <td>
+                                                    Telephone:
+                                                </td>
+                                                <td style="width: 98px;" colspan="2">
+                                                    @Html.TextBoxFor(m => m.Telephone, new { style = "width:155px;" })
+                                                    <span style="padding:5px;"> ext </span>
+                                                    @Html.TextBoxFor(m => m.TelephoneExt, new { style = "width:30px;" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="9" class="spanrequirednew">
+                                                </td>
+                                                <td width="130">
+                                                    Fax:
+                                                </td>
+                                                <td width="250" class="item-value" colspan="2">
+                                                    @Html.TextBoxFor(m => m.Fax)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6" align="center" style="padding-top: 65px;">
+                                                <a id="Submit1"  onclick="return javascript:submit();">
+                                                    <img src="Content/themes/App_Themes/EDrive/images/submit.png" alt="Submit"
+                                                         />
+                                                        </a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+                    }

@@ -1,0 +1,105 @@
+﻿@model  List<Edrive.Models.ED_Testimonials>
+@{
+    ViewBag.Title = "Manage Testimonials";
+}
+@section  Head{
+<style>
+    th{width:200px;background:#189ef7;color:White;font-weight:bold;text-align:center;padding-top:3px;padding-bottom:3px;}
+ tr td{padding-left:5px;color:#245D75; height:21px;text-align:center;border:1px #afdffd solid;}
+ #ManageTestimonials  tr.alter td {background:white;}
+ #ManageTestimonials   table#inner  td{border:none;}
+ #ManageTestimonials   table#inner {margin-top:5px;margin-bottom:5px;margin-left:5px;margin-right:5px;width:97%; }
+  #ManageTestimonials ,#ManageTestimonials table {width:969px}
+#ManageTestimonials td{text-align:left;background-color:#eff7ff;vertical-align:top;padding-top:3px;padding-left:5px;padding-right:5px;padding-bottom:5px;}
+
+</style>
+
+<script src="@Url.Content("~/Scripts/jquery.tablesorter.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.tablesorter.pager.js")" type="text/javascript"></script>
+   
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("div#GetFaqs table").tablesorter({ headers: { 0: { sorter: false }, 1: { sorter: false }, 2: { sorter: false }, 3: { sorter: false}} }).tablesorterPager({ container: $("#pager") });
+    });
+
+</script>
+}
+
+
+<h2>Manage  Testimonials</h2>
+
+<div id="ManageTestimonials">
+<div style="color:Red;text-align:center">
+@(ViewData["Msg"]??"")
+</div>
+<div style="text-align:right">
+<input type="submit" value="Add new" onclick="javascript:window.location='@Url.Action("AddTestimonials", "ManageContent")' " />
+<br /><br />
+</div>
+<div id="GetFaqs">
+<table cellpadding="0" cellspacing="0" border="0">
+<thead>
+<tr>
+<th style="width:90px;">Testimonials
+</th>
+<th style="">
+ 
+</th>
+<th style="width:50px;text-align:center">Edit
+</th>
+</tr>
+</thead>
+<tbody>
+@{
+    if(Model!=null)
+    {
+         foreach (var item in Model)
+    {
+          var clsName =(Model.IndexOf(item)%2==0?"alter":"");
+        <tr  class="@clsName">
+<td style="padding-left:15px;padding-top:10px;" > <img  src="@Url.Action("show", "Partners", new { area = "", id = @item.PictureId })" width="70" height="57" />
+</td>
+ <td style="font:11px;"> 
+ <div>
+ <b>
+ @item.Name </b>
+
+ <span style="float:right">@item.CreatedOn.ToString("D")</span>
+ </div>
+<div >
+@item.Address
+</div>
+<div style="background:black;height:1px;margin-top:5px;margin-bottom:5px;">
+</div>
+<div>
+@item.TContent
+</div>
+
+</td>
+<td style="text-align:center">@Html.ActionLink("Edit", "EditTestimonials", new { id = @item.TId  }) 
+</td>
+</tr>
+    }
+    }
+    }
+</tbody>
+</table>
+
+  <div id="pager" class="pager" style= "margin-top:5px;position:relative">
+	<form>
+
+		<img src="@Url.Content("~/Content/Images/Pager/first.png")" class="first">
+		<img src="@Url.Content("~/Content/Images/Pager/prev.png")" class="prev">
+		<input type="text" class="pagedisplay">
+		<img src="@Url.Content("~/Content/Images/Pager/next.png")" class="next">
+		<img src="@Url.Content("~/Content/Images/Pager/last.png")" class="last">
+		<select class="pagesize">
+			<option selected="selected" value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+			<option value="40">40</option>
+		</select>
+	</form>
+</div>
+</div>
+</div>

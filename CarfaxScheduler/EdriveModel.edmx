@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EDriveAutosDevModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EDriveAutosDevModelStoreContainer">
+          <EntitySet Name="CARFAX_DEALER" EntityType="EDriveAutosDevModel.Store.CARFAX_DEALER" store:Type="Tables" store:Schema="dbo" store:Name="CARFAX.DEALER">
+            <DefiningQuery>SELECT 
+      [CARFAX_DEALER].[DEALERID] AS [DEALERID], 
+      [CARFAX_DEALER].[DEALERNAME] AS [DEALERNAME], 
+      [CARFAX_DEALER].[ADDRESS1] AS [ADDRESS1], 
+      [CARFAX_DEALER].[ADDRESS2] AS [ADDRESS2], 
+      [CARFAX_DEALER].[CITY] AS [CITY], 
+      [CARFAX_DEALER].[STATE] AS [STATE], 
+      [CARFAX_DEALER].[ZIP] AS [ZIP], 
+      [CARFAX_DEALER].[TELEPHONE] AS [TELEPHONE]
+      FROM [dbo].[CARFAX.DEALER] AS [CARFAX_DEALER]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ED_CarfaxLogDetail" EntityType="EDriveAutosDevModel.Store.ED_CarfaxLogDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="EDriveAutosDevModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Product_Product" Association="EDriveAutosDevModel.Store.FK_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product1" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'EDriveAutosDev.dbo.CARFAX.DEALER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="CARFAX_DEALER">
+          <Key>
+            <PropertyRef Name="DEALERID" />
+          </Key>
+          <Property Name="DEALERID" Type="int" Nullable="false" />
+          <Property Name="DEALERNAME" Type="varchar" MaxLength="100" />
+          <Property Name="ADDRESS1" Type="varchar" MaxLength="60" />
+          <Property Name="ADDRESS2" Type="varchar" MaxLength="60" />
+          <Property Name="CITY" Type="varchar" MaxLength="60" />
+          <Property Name="STATE" Type="char" MaxLength="2" />
+          <Property Name="ZIP" Type="varchar" MaxLength="5" />
+          <Property Name="TELEPHONE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ED_CarfaxLogDetail">
+          <Key>
+            <PropertyRef Name="CarFax_logID" />
+          </Key>
+          <Property Name="CarFax_logID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LogMsg" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Success" Type="int" />
+          <Property Name="CreateBy" Type="int" Nullable="false" />
+          <Property Name="CreateOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="400" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="VIN" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Model" Type="int" Nullable="false" />
+          <Property Name="Trim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Free_Text" Type="nvarchar(max)" />
+          <Property Name="Body" Type="int" Nullable="false" />
+          <Property Name="Mileage" Type="int" />
+          <Property Name="Price_Current" Type="money" />
+          <Property Name="Condition" Type="varchar" MaxLength="300" />
+          <Property Name="Exterior_Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Interior_Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Doors" Type="int" />
+          <Property Name="Engine" Type="nvarchar" MaxLength="50" />
+          <Property Name="Transmission" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fuel_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Drive_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Warranty" Type="bit" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date_in_Stock" Type="datetime" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="IsNew" Type="bit" />
+          <Property Name="IsFeature" Type="bit" />
+          <Property Name="SavingAmount" Type="money" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="QualifyPrice" Type="money" />
+          <Property Name="AverageRetailPrice" Type="money" />
+          <Property Name="AverageTradeinPrice" Type="money" />
+          <Property Name="City_Fuel" Type="int" />
+          <Property Name="Highway_Fuel" Type="int" />
+          <Property Name="zip" Type="int" />
+          <Property Name="Reserved" Type="varchar" MaxLength="50" />
+          <Property Name="Price_Cost" Type="float" />
+          <Property Name="Price_WholeSale" Type="float" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Pics" Type="varchar(max)" />
+          <Property Name="OwnerDetail" Type="varchar" MaxLength="50" />
+          <Property Name="ShowOnDealerProfile" Type="bit" />
+          <Property Name="SellerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="SellerName" Type="varchar" MaxLength="50" />
+          <Property Name="Offer" Type="bit" />
+          <Property Name="ISQUALIFIED" Type="bit" Nullable="false" />
+          <Property Name="NADACheckedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Product_Product">
+          <End Role="Product" Type="EDriveAutosDevModel.Store.Product" Multiplicity="1" />
+          <End Role="Product1" Type="EDriveAutosDevModel.Store.Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product1">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ED_GetModelByMake_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ED_NewGetSpecificationAttrOptByAttrID_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SpecificationAttributeName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ED_ProductCarfaxReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="File" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllDealerIDAndVIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllDealerInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStateProvinceID" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Abbreviation" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="NOP_getcustomerattributevalue" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <Parameter Name="AttributeKey" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NOP_getnotnullnotempty" ReturnType="nvarchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="p2" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Nop_ProductLoadAllForHotsheetNew_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Make" Type="int" Mode="In" />
+          <Parameter Name="Lat1" Type="float" Mode="In" />
+          <Parameter Name="Lat2" Type="float" Mode="In" />
+          <Parameter Name="Long1" Type="float" Mode="In" />
+          <Parameter Name="Long2" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Nop_SellerCnt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Make" Type="int" Mode="In" />
+          <Parameter Name="Lat1" Type="float" Mode="In" />
+          <Parameter Name="Lat2" Type="float" Mode="In" />
+          <Parameter Name="Long1" Type="float" Mode="In" />
+          <Parameter Name="Long2" Type="float" Mode="In" />
+        </Function>
+        <Function Name="SPLOAD_AUTOLOOPMANUALIMPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TIMESTOLOOP" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPLOAD_CSVNIGHTLYBATCH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOAD_VEHICLESMANUALLY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOG_ERRORINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPLOG_EVENTINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EVENT_TYPE" Type="char" Mode="In" />
+          <Parameter Name="CODE_BASE" Type="varchar" Mode="In" />
+          <Parameter Name="MESSAGE" Type="text" Mode="In" />
+        </Function>
+        <Function Name="SPRETRIEVE_CARFAXDEALERLIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_CARFAXVEHICLELIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_DEALERSFORMANAGEPRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_ERRORINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_FTPDIRECTORIES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_QUALIFIEDVEHICLECOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_VEHICLESTOPROCESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UFN_REPLACEDOUBLEQUOTES" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_STRIPCHARACTERS" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UFN_TRIMQUOTES" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRING" Type="varchar(max)" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EDriveAutosDevModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EDriveAutosDevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CARFAX_DEALER" EntityType="EDriveAutosDevModel.CARFAX_DEALER" />
+          <EntitySet Name="Products" EntityType="EDriveAutosDevModel.Product" />
+          <AssociationSet Name="FK_Product_Product" Association="EDriveAutosDevModel.FK_Product_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Product1" EntitySet="Products" />
+          </AssociationSet>
+          <FunctionImport Name="CarfaxVehicleList" ReturnType="Collection(EDriveAutosDevModel.CarfaxVehicleListItem)" />
+          <FunctionImport Name="CarfaxDealerList" ReturnType="Collection(EDriveAutosDevModel.CarfaxDealerListItem)" />
+          <FunctionImport Name="ProductCarfaxReport">
+          <Parameter Name="File" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ED_CarfaxLogDetail" EntityType="EDriveAutosDevModel.ED_CarfaxLogDetail" />
+        </EntityContainer>
+        <EntityType Name="CARFAX_DEALER">
+          <Key>
+            <PropertyRef Name="DEALERID" />
+          </Key>
+          <Property Name="DEALERID" Type="Int32" Nullable="false" />
+          <Property Name="DEALERNAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="CITY" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="STATE" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="ZIP" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="TELEPHONE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="VIN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Model" Type="Int32" Nullable="false" />
+          <Property Name="Trim" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Free_Text" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Body" Type="Int32" Nullable="false" />
+          <Property Name="Mileage" Type="Int32" />
+          <Property Name="Price_Current" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Condition" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="Exterior_Color" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Interior_Color" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Doors" Type="Int32" />
+          <Property Name="Engine" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Transmission" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Fuel_Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Drive_Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Warranty" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date_in_Stock" Type="DateTime" />
+          <Property Name="FileName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="IsFeature" Type="Boolean" />
+          <Property Name="SavingAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="QualifyPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AverageRetailPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AverageTradeinPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="City_Fuel" Type="Int32" />
+          <Property Name="Highway_Fuel" Type="Int32" />
+          <Property Name="zip" Type="Int32" />
+          <Property Name="Reserved" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Price_Cost" Type="Double" />
+          <Property Name="Price_WholeSale" Type="Double" />
+          <Property Name="Title" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Pics" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="OwnerDetail" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShowOnDealerProfile" Type="Boolean" />
+          <Property Name="SellerEmail" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SellerName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Offer" Type="Boolean" />
+          <Property Name="ISQUALIFIED" Type="Boolean" Nullable="false" />
+          <Property Name="NADACheckedOn" Type="DateTime" />
+          <NavigationProperty Name="Product1" Relationship="EDriveAutosDevModel.FK_Product_Product" FromRole="Product" ToRole="Product1" />
+          <NavigationProperty Name="Product2" Relationship="EDriveAutosDevModel.FK_Product_Product" FromRole="Product1" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Product_Product">
+          <End Role="Product" Type="EDriveAutosDevModel.Product" Multiplicity="1" />
+          <End Role="Product1" Type="EDriveAutosDevModel.Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product1">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="CarfaxVehicleListItem">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="48" />
+        </ComplexType>
+        <ComplexType Name="CarfaxDealerListItem">
+          <Property Type="String" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ED_CarfaxLogDetail">
+          <Key>
+            <PropertyRef Name="CarFax_logID" />
+          </Key>
+          <Property Type="Int32" Name="CarFax_logID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LogMsg" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="Success" />
+          <Property Type="Int32" Name="CreateBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreateOn" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EDriveAutosDevModelStoreContainer" CdmEntityContainer="EDriveAutosDevEntities">
+          <EntitySetMapping Name="CARFAX_DEALER"><EntityTypeMapping TypeName="EDriveAutosDevModel.CARFAX_DEALER"><MappingFragment StoreEntitySet="CARFAX_DEALER">
+            <ScalarProperty Name="DEALERID" ColumnName="DEALERID" />
+            <ScalarProperty Name="DEALERNAME" ColumnName="DEALERNAME" />
+            <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+            <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+            <ScalarProperty Name="CITY" ColumnName="CITY" />
+            <ScalarProperty Name="STATE" ColumnName="STATE" />
+            <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+            <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Products"><EntityTypeMapping TypeName="EDriveAutosDevModel.Product"><MappingFragment StoreEntitySet="Product">
+            <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+            <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+            <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+            <ScalarProperty Name="VIN" ColumnName="VIN" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="Stock" ColumnName="Stock" />
+            <ScalarProperty Name="Year" ColumnName="Year" />
+            <ScalarProperty Name="Model" ColumnName="Model" />
+            <ScalarProperty Name="Trim" ColumnName="Trim" />
+            <ScalarProperty Name="Free_Text" ColumnName="Free_Text" />
+            <ScalarProperty Name="Body" ColumnName="Body" />
+            <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+            <ScalarProperty Name="Price_Current" ColumnName="Price_Current" />
+            <ScalarProperty Name="Condition" ColumnName="Condition" />
+            <ScalarProperty Name="Exterior_Color" ColumnName="Exterior_Color" />
+            <ScalarProperty Name="Interior_Color" ColumnName="Interior_Color" />
+            <ScalarProperty Name="Doors" ColumnName="Doors" />
+            <ScalarProperty Name="Engine" ColumnName="Engine" />
+            <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+            <ScalarProperty Name="Fuel_Type" ColumnName="Fuel_Type" />
+            <ScalarProperty Name="Drive_Type" ColumnName="Drive_Type" />
+            <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Date_in_Stock" ColumnName="Date_in_Stock" />
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+            <ScalarProperty Name="IsFeature" ColumnName="IsFeature" />
+            <ScalarProperty Name="SavingAmount" ColumnName="SavingAmount" />
+            <ScalarProperty Name="StateID" ColumnName="StateID" />
+            <ScalarProperty Name="QualifyPrice" ColumnName="QualifyPrice" />
+            <ScalarProperty Name="AverageRetailPrice" ColumnName="AverageRetailPrice" />
+            <ScalarProperty Name="AverageTradeinPrice" ColumnName="AverageTradeinPrice" />
+            <ScalarProperty Name="City_Fuel" ColumnName="City_Fuel" />
+            <ScalarProperty Name="Highway_Fuel" ColumnName="Highway_Fuel" />
+            <ScalarProperty Name="zip" ColumnName="zip" />
+            <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+            <ScalarProperty Name="Price_Cost" ColumnName="Price_Cost" />
+            <ScalarProperty Name="Price_WholeSale" ColumnName="Price_WholeSale" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Pics" ColumnName="Pics" />
+            <ScalarProperty Name="OwnerDetail" ColumnName="OwnerDetail" />
+            <ScalarProperty Name="ShowOnDealerProfile" ColumnName="ShowOnDealerProfile" />
+            <ScalarProperty Name="SellerEmail" ColumnName="SellerEmail" />
+            <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+            <ScalarProperty Name="Offer" ColumnName="Offer" />
+            <ScalarProperty Name="ISQUALIFIED" ColumnName="ISQUALIFIED" />
+            <ScalarProperty Name="NADACheckedOn" ColumnName="NADACheckedOn" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CarfaxVehicleList" FunctionName="EDriveAutosDevModel.Store.SPRETRIEVE_CARFAXVEHICLELIST">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EDriveAutosDevModel.CarfaxVehicleListItem">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CarfaxDealerList" FunctionName="EDriveAutosDevModel.Store.SPRETRIEVE_CARFAXDEALERLIST">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EDriveAutosDevModel.CarfaxDealerListItem">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProductCarfaxReport" FunctionName="EDriveAutosDevModel.Store.ED_ProductCarfaxReport" />
+          <EntitySetMapping Name="ED_CarfaxLogDetail">
+            <EntityTypeMapping TypeName="EDriveAutosDevModel.ED_CarfaxLogDetail">
+              <MappingFragment StoreEntitySet="ED_CarfaxLogDetail">
+                <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="Success" ColumnName="Success" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LogMsg" ColumnName="LogMsg" />
+                <ScalarProperty Name="CarFax_logID" ColumnName="CarFax_logID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EdriveModel" ZoomLevel="82">
+        <EntityTypeShape EntityType="EDriveAutosDevModel.CARFAX_DEALER" Width="1.5" PointX="2.75" PointY="0.75" Height="2.4047859700520831" IsExpanded="true" />
+        <EntityTypeShape EntityType="EDriveAutosDevModel.Product" Width="1.5" PointX="0.75" PointY="0.75" Height="10.256429850260416" IsExpanded="true" />
+        <AssociationConnector Association="EDriveAutosDevModel.FK_Product_Product" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="11.006429850260416" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="11.256429850260416" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="11.256429850260416" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="11.006429850260416" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="EDriveAutosDevModel.ED_CarfaxLogDetail" Width="1.5" PointX="3.375" PointY="4.75" Height="2.0478930664062496" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

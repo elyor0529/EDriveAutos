@@ -1,0 +1,18 @@
+﻿<configuration>
+  <configSections>
+    <sectionGroup name="$rootnamespace$">
+      <section name="security" type="$rootnamespace$.Security.SecuritySection, $rootnamespace$.Security" requirePermission="false"/>
+      <section name="environment" type="$rootnamespace$.Security.EnvironmentSection, $rootnamespace$.Security" requirePermission="false"/>
+      <section name="errorPages" type="$rootnamespace$.Security.ErrorPagesSection, $rootnamespace$.Security" requirePermission="false"/>
+      <section name="webmaster" type="$rootnamespace$.Security.WebmasterSection, $rootnamespace$.Security" requirePermission="false"/>
+      <section name="monitoring" type="$rootnamespace$.Security.MonitoringSection, $rootnamespace$.Security" requirePermission="false"/>
+    </sectionGroup>
+  </configSections>
+  <$rootnamespace$>
+    <security useSsl="NoSecurity"/>
+    <environment level="Local"/>
+    <errorPages useFriendlyErrors="false"/>
+    <webmaster email="webmaster@$rootnamespace$"/>
+    <monitoring exceptionsEmail="ops+exception@$rootnamespace$"/>    
+  </$rootnamespace$>
+</configuration>

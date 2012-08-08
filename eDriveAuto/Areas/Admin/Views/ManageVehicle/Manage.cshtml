@@ -1,0 +1,54 @@
+﻿@model List<Edrive.Edrivie_Service_Ref.Products>
+
+@{
+    ViewBag.Title = "Manage";
+     
+}
+@section Head{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SelectAll").click(function () {
+          
+            $("input[name='chkProduct'][type='checkbox']").attr("checked", "checked");
+        });
+
+    });
+    function postPage(obj) {
+
+        //alert($(obj).attr("id"));
+
+        $("#PageIndex").val($(obj).attr("id"));
+        document.forms["form1"].submit();
+    }
+</script>
+
+
+<style>
+    th{width:200px;background:#189ef7;color:White;font-weight:bold;text-align:center;padding-top:3px;padding-bottom:3px;}
+ td{padding-left:5px;color:#245D75;background:white;height:21px;text-align:center;}
+tr.alter td{background:#eff7ff; text-align:center}
+td {border:solid 1px #AFDFFD}
+table#Searchmanage td{text-align:left;background-color:#f7fbff;border:0px;padding-bottom:5px;}
+div.divBack{background-color: #F7FFFF;
+    border: 1px solid #AFDFFD;
+    padding-bottom: 15px;
+    padding-left: 13px;
+    padding-top: 25px;
+    width: 949px;}
+div.divBack    table#Result{margin-right:5px;margin-bottom:10px;}
+table.tableGrid {margin-right:10px;}
+table.tableGrid tr td{border:solid 1px #AFDFFD}
+</style>
+
+}
+<div class="back">
+@Html.ActionLink("Back To DashBoard", "Index", "Dashboard")
+</div>
+<h2>
+    Manage</h2>
+
+@using (Html.BeginForm("Manage", "ManageVehicle", FormMethod.Post, new { name="form1"}))
+{
+        @Html.Partial("_ManageInventory",Model)
+
+}

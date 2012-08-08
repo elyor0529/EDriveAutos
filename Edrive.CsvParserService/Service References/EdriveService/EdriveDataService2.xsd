@@ -1,0 +1,1298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/EdriveService/EdriveDataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" />
+  <xs:import schemaLocation="http://localhost/EdriveService/EdriveDataService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="AddDealer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="cust" nillable="true" type="q1:Customer" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Profile" nillable="true" type="q2:_CustomerProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDealerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddDealerResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePassword_for_Dealer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="_DealerId" type="xs:int" />
+        <xs:element minOccurs="0" name="Pwd" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePassword_for_DealerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdatePassword_for_DealerResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update_Dealer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="cust" nillable="true" type="q3:Customer" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Profile" nillable="true" type="q4:_CustomerProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update_DealerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Update_DealerResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAdmin_InfoDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="cust" nillable="true" type="q5:Customer" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAdmin_InfoDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAdmin_InfoDetailsResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update_Dealer_Personal_Details">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="_customer" nillable="true" type="q6:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update_Dealer_Personal_DetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Update_Dealer_Personal_DetailsResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetED_ZipCodes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetED_ZipCodesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetED_ZipCodesResult" nillable="true" type="q7:ED_Zipcodes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHotSheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="latitude" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="longitude" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="NewLatitude" type="xs:double" />
+        <xs:element minOccurs="0" name="NewLongitude" type="xs:double" />
+        <xs:element minOccurs="0" name="makeID" type="xs:int" />
+        <xs:element minOccurs="0" name="Zipcode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHotSheetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetHotSheetResult" nillable="true" type="q8:ArrayOfProducts" />
+        <xs:element minOccurs="0" name="CarsCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Authenticate_Dealer_or_Admin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="customer" nillable="true" type="q9:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Authenticate_Dealer_or_AdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Authenticate_Dealer_or_AdminResult" type="xs:boolean" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="customer" nillable="true" type="q10:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerByDealerEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerByDealerEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetDealerByDealerEmailResult" nillable="true" type="q11:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerByDealerID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerByDealerIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetDealerByDealerIDResult" nillable="true" type="q12:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealer_Profile_ByDealerID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealer_Profile_ByDealerIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetDealer_Profile_ByDealerIDResult" nillable="true" type="q13:_CustomerProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSellerCount_for_HotSheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="lat1" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="lat2" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="long1" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="long2" nillable="true" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSellerCount_for_HotSheetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetSellerCount_for_HotSheetResult" nillable="true" type="q14:_SellerCount" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDealer_For_ManagDealerSection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyName2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RegFrom" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RegTo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDealer_For_ManagDealerSectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="SearchDealer_For_ManagDealerSectionResult" nillable="true" type="q15:ArrayOfCustomer" />
+        <xs:element minOccurs="0" name="CarsCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsDealerExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsDealerExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsDealerExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Is_other_DealerExist_for_same_email">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currrent_CustomerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Is_other_DealerExist_for_same_emailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Is_other_DealerExist_for_same_emailResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IntrestedCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="_customer" nillable="true" type="q16:IntrestedCustomer" />
+        <xs:element minOccurs="0" name="_productid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IntrestedCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IntrestedCustomerResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_Dealer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_DealerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Delete_DealerResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_Dealer_Profile_PageImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_Dealer_Profile_PageImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Delete_Dealer_Profile_PageImageResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_Dealer_Profile_Logo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_Dealer_Profile_LogoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Delete_Dealer_Profile_LogoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProductBy_Make_Model_City_Zip">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="SortByColumn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Zip" type="xs:int" />
+        <xs:element minOccurs="0" name="Warranty" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Transmission" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Engine" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isSearchByDealer" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SearchByDealerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProductBy_Make_Model_City_ZipResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="SearchProductBy_Make_Model_City_ZipResult" nillable="true" type="q17:ArrayOfProducts" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProductBy_Make_Model_City_Zip_Count">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="SortByColumn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Zip" type="xs:int" />
+        <xs:element minOccurs="0" name="Warranty" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Transmission" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Engine" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isSearchByDealer" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SearchByDealerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProductBy_Make_Model_City_Zip_CountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_TotalVehicles_Count">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_TotalVehicles_CountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Get_TotalVehicles_CountResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_TotalDealers_Count">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_TotalDealers_CountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Get_TotalDealers_CountResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_InterestedCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InterestType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_InterestedCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Get_InterestedCustomerResult" nillable="true" type="q18:ArrayOfIntrestedCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_InterestedCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete_InterestedCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Delete_InterestedCustomerResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchCars_for_home_Page">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Counts_to_ret" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchCars_for_home_PageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="SearchCars_for_home_PageResult" nillable="true" type="q19:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDealerGUIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductByIDs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="productIDs" nillable="true" type="q20:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductByIDsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetProductByIDsResult" nillable="true" type="q21:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_FeaturedVehicles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VehCounts" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_FeaturedVehiclesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Get_FeaturedVehiclesResult" nillable="true" type="q22:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsProductExist_by_VIN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsProductExist_by_VINResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsProductExist_by_VINResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsProductExist_by_VIN_for_other_vehicle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsProductExist_by_VIN_for_other_vehicleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsProductExist_by_VIN_for_other_vehicleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsByDealerID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DealerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsByDealerIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetProductsByDealerIDResult" nillable="true" type="q23:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OPTIONS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductOptionsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProductOptions">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProductOptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetAllProductOptionsResult" nillable="true" type="q24:ArrayOfProductOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProductOptions_By_ProductID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProductOptions_By_ProductIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetAllProductOptions_By_ProductIDResult" nillable="true" type="q25:ArrayOfProductOptions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPicsToProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Pics" nillable="true" type="q26:ArrayOfstring" />
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPicsToProductResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMakeById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="makeId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMakeByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetMakeByIdResult" nillable="true" type="q27:Product_Make" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBodybyId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bodyid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBodybyIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetBodybyIdResult" nillable="true" type="q28:Product_Body" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModelbyId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ModelID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModelbyIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetModelbyIdResult" nillable="true" type="q29:Product_Model" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerbyProductID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealerbyProductIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetDealerbyProductIDResult" nillable="true" type="q30:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProduct_for_ManageProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VIN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Stock" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="makeId" type="xs:int" />
+        <xs:element minOccurs="0" name="_ComapnyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_DealerEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isOnlyFeatured" type="xs:boolean" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CarsCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProduct_for_ManageProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="SearchProduct_for_ManageProductResult" nillable="true" type="q31:ArrayOfProducts" />
+        <xs:element minOccurs="0" name="CarsCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetDealersResult" nillable="true" type="q32:ArrayOfCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealers_for_ManageProoduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CountDownDays" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealers_for_ManageProoductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetDealers_for_ManageProoductResult" nillable="true" type="q33:ArrayOfCustomer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ProductIDs" nillable="true" type="q34:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteProductResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_Count_SearchProduct_for_ManageProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VIN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Stock" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="makeId" type="xs:int" />
+        <xs:element minOccurs="0" name="_ComapnyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_DealerEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isOnlyFeatured" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_Count_SearchProduct_for_ManageProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Get_Count_SearchProduct_for_ManageProductResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveProducts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApproveProductsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QualifyPriceofProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ProductIDs" nillable="true" type="q35:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QualifyPriceofProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QualifyPriceofProductResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductPicture_By_ProductID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductPicture_By_ProductIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetProductPicture_By_ProductIDResult" nillable="true" type="q36:ArrayOfProduct_Picture" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Prd" nillable="true" type="q37:Products" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="OptionsID" nillable="true" type="q38:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="UpdateProductResult" nillable="true" type="q39:Products" />
+        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update_Product_Picture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Pictures" nillable="true" type="q40:ArrayOfProduct_Picture" />
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update_Product_PictureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Update_Product_PictureResult" type="xs:boolean" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Pictures" nillable="true" type="q41:ArrayOfProduct_Picture" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountry">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetCountryResult" nillable="true" type="q42:ArrayOfCountry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStateByCountry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CountryID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStateByCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetStateByCountryResult" nillable="true" type="q43:ArrayOfState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetState_Detail_By_StateID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StateID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetState_Detail_By_StateIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetState_Detail_By_StateIDResult" nillable="true" type="q44:State" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeDealer_as_FeaturedDealer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DealerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeDealer_as_FeaturedDealerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MakeDealer_as_FeaturedDealerResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_Dealers_FeaturedVehicle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="rec_to_return" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_Dealers_FeaturedVehicleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Get_Dealers_FeaturedVehicleResult" nillable="true" type="q45:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadOnCarfax">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadOnCarfaxResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadFromCarfax">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadFromCarfaxResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Data_Import_Update">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="csvFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Data_Import_UpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Data_Import_UpdateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromAutoBase">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromAutoBaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataFromAutoBaseResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromGetAuto">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromGetAutoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataFromGetAutoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromSchumacher">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromSchumacherResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataFromSchumacherResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromAULtec">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromAULtecResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataFromAULtecResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchCars_Count">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Zip" type="xs:int" />
+        <xs:element minOccurs="0" name="Warranty" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Transmission" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Engine" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sortByColumn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchCars_CountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SearchCars_CountResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchCars">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Zip" type="xs:int" />
+        <xs:element minOccurs="0" name="Warranty" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Transmission" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Engine" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sortByColumn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchCarsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="SearchCarsResult" nillable="true" type="q46:ArrayOfProducts" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="makeID" type="xs:int" />
+        <xs:element minOccurs="0" name="modelId" type="xs:int" />
+        <xs:element minOccurs="0" name="zipCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="SortByColumn" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="searchProductResult" nillable="true" type="q47:ArrayOfProducts" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Qualify_All_Products">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Qualify_All_ProductsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Qualify_All_Products_to_RecoverDeletedProducts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Qualify_All_Products_to_RecoverDeletedProductsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductUsingNadaService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VIN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Condition" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mileage" type="xs:int" />
+        <xs:element minOccurs="0" name="SellerZip" type="xs:int" />
+        <xs:element minOccurs="0" name="SellerEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SellerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SellerNotes" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Offer" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductUsingNadaServiceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddProductUsingNadaServiceResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="Prd" nillable="true" type="q48:Products" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+        <xs:element xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="OptionsID" nillable="true" type="q49:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="AddProductResult" nillable="true" type="q50:Products" />
+        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductRating">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductRatingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProductRatingResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductRating">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="score" type="xs:int" />
+        <xs:element minOccurs="0" name="p" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductRatingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddProductRatingResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductPicture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductPictureResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdvancedSearchProducts_Count">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="_attributes" nillable="true" type="q51:AdvancedSearchAttributes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdvancedSearchProducts_CountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAdvancedSearchProducts_CountResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdvancedSearchProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="_attributes" nillable="true" type="q52:AdvancedSearchAttributes" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="SortByColumn" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdvancedSearchProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetAdvancedSearchProductsResult" nillable="true" type="q53:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindDriveType">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindDriveTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BindDriveTypeResult" nillable="true" type="q54:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="makeid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindModelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="BindModelResult" nillable="true" type="q55:ArrayOfProduct_Model" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindMake">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindMakeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="BindMakeResult" nillable="true" type="q56:ArrayOfProduct_Make" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bindMakeAttributes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bindMakeAttributesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="bindMakeAttributesResult" nillable="true" type="q57:ArrayOfProduct_Make" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bindtypeAttributes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bindtypeAttributesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="bindtypeAttributesResult" nillable="true" type="q58:ArrayOfProduct_Type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindBodyType">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BindBodyTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="BindBodyTypeResult" nillable="true" type="q59:ArrayOfProduct_Body" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransmission">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransmissionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetTransmissionResult" nillable="true" type="q60:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEngine">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEngineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetEngineResult" nillable="true" type="q61:ArrayOfProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="GetProductByIDResult" nillable="true" type="q62:Products" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

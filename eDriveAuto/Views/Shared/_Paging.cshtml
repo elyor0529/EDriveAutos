@@ -1,0 +1,52 @@
+﻿     <!-- paging start here-->
+            <div class="footer">
+
+            @{
+                Int32 pageIndex = Convert.ToInt32((int) (ViewData["PageIndex"] ?? 0));
+                Int32 CarsCount = Convert.ToInt32((int) (ViewData["CarsCount"] ?? 0));
+                Int32 PageSize = Convert.ToInt32((int) (ViewData["PageSize"] ?? 50));
+                Int32 maxIndex = (CarsCount - 1) / PageSize + 1; //50 is pagesize
+                Int32 stIndex = pageIndex / 10 * 10 + 1;
+                Int32 endIndex = stIndex + 9;
+                if(CarsCount==0)
+                {
+                    pageIndex = endIndex = stIndex = maxIndex = 0; 
+                }
+                if (endIndex >= maxIndex)
+                {
+                    endIndex = maxIndex;
+                }
+               
+           <input type="hidden" value="@pageIndex" id="PageIndex" name="PageIndex"/>
+                
+    if (pageIndex > 0)
+    {
+         <span class="" style="cursor:pointer;text-decoration:underline;color:Blue" id= "@(pageIndex-1)" onclick = "postPage(this)">Prev</span>
+    }
+   if(endIndex!=0)
+   { for (int i = stIndex; i <= endIndex; i++)
+    {
+                <span>
+                @{var clsName = "pageNumber";
+                  if (@pageIndex == i - 1)
+                  { clsName = "pageNumberActive"; }
+                }
+                
+                <span class="@clsName" style="cursor:pointer" id= "@(i - 1)" onclick = "postPage(this)">@i</span>
+                
+                  </span> 
+              
+    }
+    }
+                if (pageIndex < maxIndex - 1)
+    {
+         <span class="" style="cursor:pointer;text-decoration:underline;color:Blue" id= "@(pageIndex + 1)" onclick = "postPage(this)">Next</span>
+    }
+                if (ViewData["IsPostBack"]==null){
+        <span style="padding-left:150px;color:Red">Total Records = @CarsCount
+    </span>}
+                
+                }
+              
+            </div>
+             <!-- paging ends here-->

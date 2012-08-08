@@ -1,0 +1,192 @@
+﻿@model List<Edrive.Core.Model.Products>
+
+@if (Model != null)
+{
+   
+    foreach (var item in Model)
+    {
+     <div class="ResultItem">
+        <span class="Verified">
+           
+        </span>
+         @{
+             String productDetail = @Url.Action("ProductDetail", "Product", new { id = item.productId.ToString() });
+                                                             
+              <h3>
+                 <a href="@productDetail">
+                 @item.Year @item.MakeName @item.ModelName @item.body</a>
+        </h3>
+        <span class="ResultPic Flt">
+          
+                                                             
+                <a href="@productDetail">
+                    @{ 
+                    if (item.pics == null || item.pics.Split(';')[0] == "")
+                    {
+                        <img src="@Url.Content("~/Content/Images/photo-comming-soon.jpg")" alt="Car Image" width="120" height="100"/>
+                    }
+                    else
+                    {
+                        <script type="text/javascript">
+                        // this line check for if cdn image exist or not if image not exist it will show the default image
+                            $('#prd_@(item.productId)').error(function () {
+                                $('#prd_@(item.productId)').attr("src", "/Content/Images/photo-comming-soon.jpg");
+                            });
+                        </script>
+                        <img  id="prd_@(item.productId)" src="@item.pics.Split(';')[0]" alt="Car Image" width="120" height="100"/>
+                              
+                    }
+                                 
+                    }
+                </a>
+          <span style="color: maroon;
+font-weight: normal;
+margin-top: 7px;
+position: relative;
+top: 5px;
+left: 5px;
+font-size: 12px;">
+             <label>
+             <input type="checkbox" name="compareVehicle" id="compareVehicle@(item.productId)" value="@item.productId"/>
+             Compare Vehicle
+             </label>
+             
+              </span>
+        </span>
+               }
+
+        
+  
+        <div class="ResultInfo_Mid Flt">
+        <div style="overflow:hidden">
+        <div class="LocationZip Flt">
+       
+            <div>
+                <strong>Mileage:</strong> @(item.mileage==0?"N/A":item.mileage.ToString())</div>
+			<div>
+				<strong>Exterior:</strong> @(String.IsNullOrEmpty(item.exterior) ? "N/A" : item.exterior)</div>
+            <div>
+                <strong>Interior:</strong> @(String.IsNullOrEmpty(item.interior) ? "N/A" : item.interior)</div>
+			<div>
+				
+				<strong>Location Zip:</strong> @(item.zip == 0 ? "N/A" : Common_Methods.GetZip(item.zip))
+			</div>
+                 </div>
+                 <div class="Flt">
+                  <a    href="http://www.carfax.com/cfm/ccc_displayhistoryrpt.cfm?partner=EDA_0&vin=@item.vin" target="_blank">
+                     @if (item.OwnerDetail == "1")
+                    {
+                        <img src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/car-fax01.jpg")" alt="more" />
+                    }
+                    else
+                    {
+                           <img  src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/show-me01.jpg")" alt="more" />
+                    }
+                </a>
+                 </div>
+                </div>
+        
+
+            <div><strong>Seller&#39;s Notes:</strong><span class="SellerNotes">
+														@Html.Raw(String.IsNullOrWhiteSpace(item.descriptiont) ? "N/A" : Common_Methods.TrimText(item.descriptiont, 150))
+													</span></div>
+                     
+               
+             
+                    @*<a class="carfaceLinkImage" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?partner=EDA_0&amp;vin=WDBTK56F99T105100" target="_blank">
+                    <img src="/Content/Images/carfax.png" alt=""></a>*@
+    
+                  
+        </div>
+        <div class="ResultInfo_Rht Flr">
+            <div class="YourPrice">
+                Your Price: @string.Format("${0:n0}", item.price_Current)
+            </div>
+            <div class="ValidateBy">
+                Validated by NADA Guide
+            </div>
+            <div>
+             
+            <div style="position:relative;left:25px">
+             @{
+                                                        var LastDays = item.updatedOn.AddDays(Convert.ToDouble(ViewData["CountDownDays"]));
+
+                                                        TimeSpan diff = LastDays - DateTime.Now;
+                                                        var TotalDays = diff.TotalDays;
+                                                  
+                                     <div style="font-weight:bold;">This Listing Expires in:  </div>       
+                                    <div id="showTime@(item.productId)"></div>
+        var prdID = item.productId;
+                                    <script>
+                                        SetCountDown('@TotalDays', 'showTime@(prdID)');
+                                    </script>
+                       <div class="PriceLabel" style="font-size:11px;">
+                                        <div>Days</div> <div>Hours</div> <div>Mins</div> <div>Secs</div>
+                                    </div>
+                      }
+            </div>
+            </div>
+            <div class="Links">
+                <div>
+                @{
+                    if(User.Identity.IsAuthenticated==false)
+                    {
+                         <a href="/Account/Logon">Save to My Wishlist</a>
+                    }
+                    else
+                    {
+                        if (User.IsInRole("Guest"))
+                        {
+                  <span class="disabled"   style="color:Gray" onclick="ShowFullRegisterPopUp()">Save to My Wishlist</span>
+                        }
+                        else
+                        {
+                       
+                  <a href="#" onclick="AddToWishList(@item.productId,event)">Save to My Wishlist</a>
+                        }
+                    }
+                    
+                    }
+                  
+                @*@{if(User.Identity.IsAuthenticated)
+                  {
+                      @:<a href="#" onclick="AddToWishList(@item.productId,event)">Save to My Wishlist</a>
+                    }
+                    else
+                    {
+                    @:<a href="@productDetail">Save to My Wishlist</a>
+                    
+                    }
+                    }*@
+                </div>
+                <div>
+                    <a href="/Product/ProductDetail/@(item.productId)#ThirdBox">Contact
+                        Dealer</a></div>
+            </div>
+            <div class="MoreOption">
+              @*  <a href="@productDetail">More Options</a>*@
+                
+					<a href="#">More Options</a>
+					<div class="DropOption">
+						<a href="/Product/ProductDetail/@item.productId">View Details</a>
+						@*<a href="/Product/CompareVehicle">Compare This Vehicle</a>*@
+						<a class="last" href="#">Get Monthly Payment</a>
+					</div>
+				 
+
+            </div>
+
+
+        </div>
+        <div class="Clr">
+        </div>
+      
+    </div>
+    }
+}
+
+@if (Model == null || Model.Count == 0)
+{
+	Html.RenderAction("SearchNoResults", "Search");
+}
+  

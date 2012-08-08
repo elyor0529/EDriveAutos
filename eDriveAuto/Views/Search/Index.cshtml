@@ -1,0 +1,1391 @@
+﻿@model List<Edrive.Core.Model.Products>
+           
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{
+<style type="text/css">
+.modalPopUpWindowNew{padding:15px !important;z-index:99999;top:15px !important;position:relative;}
+.ui-dialog ui-widget ui-widget-content ui-corner-all modalPopUpWindowNew ui-draggable ui-resizable{margin-top:15px !important; }
+</style>
+
+@if(User.Identity.IsAuthenticated == false)
+{
+     <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"        type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+}
+@if(User.Identity.IsAuthenticated)
+{
+	if(User.IsInRole("Guest"))
+	{
+        <script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
+        <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+        
+	}
+}
+
+	<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script> 
+<script src="/Scripts/jquery.jcarousel.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/Content/skins/tango/skin.css" />
+<script type="text/javascript" src="/Scripts/jquery.balloon.js"></script>
+
+ <script type="text/javascript">
+ 	$(function () {
+ 		$('div .CarousalArea img').balloon({ css: {
+
+ 			padding: '10px',
+ 			fontSize: '12px',
+ 			opacity: 1,
+ 			lineHeight: '1',
+ 			backgroundColor: '#ffffff',
+ 			color: '#000000'
+ 		}
+ 		});
+ 	});
+    </script>
+
+     <script type="text/javascript">
+
+     	function showRegistrationPopup() {
+     		$('.darken-modal-bg').show();
+     		$.ajax({
+     			url: '@Url.Action("RegistrationDetailsPopup", "Search")',
+     			success: function (data) {
+     				$('.registration-details-popup').html(data);
+     				$('.registration-details-popup').show();
+     			},
+     			error: function () {
+     				$('.darken-modal-bg').hide();
+     			}
+     		});
+     	}
+
+     	function hideRegistrationPopup() {
+     		$('.registration-details-popup').hide();
+     		$('.darken-modal-bg').hide();
+     	}
+
+     	function mycarousel_initCallback(carousel) {
+
+
+
+     		// Pause autoscrolling if the user moves with the cursor over the clip.
+     		carousel.clip.hover(function () {
+     			carousel.stopAuto();
+     		}, function () {
+     			carousel.startAuto();
+     		});
+     	};
+
+     	jQuery(document).ready(function () {
+     		jQuery('div.carousel-wrap ul').jcarousel({
+     			scroll: 1,
+     			auto: 5,
+     			animation: 'slow',
+     			wrap: 'circular',
+     			initCallback: mycarousel_initCallback,
+     			buttonPrevHTML: null,
+     			buttonNextHTML: null
+     		});
+     	});
+
+     	function submitSearchCarForm(type) {
+     		$('#searchType').val(type);
+     		$('#searchCarForm').submit();
+     		return false;
+     	}
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+
+        function GetCarsForPrevPage() {//---------- when Prev button is clicked on paging---
+            try {
+
+                var cur_count = parseInt($("#currentpageIndex").val()); //cur_count =Current PageIndex
+                if (parseInt(cur_count) == 0) {
+                    return;
+                }
+                var pgSize = parseInt($("#PageSize").val());
+                var lastPageIndex = Math.floor((parseInt($("#CarsCount").val()) - 1) / pgSize);
+
+                if (1 == 1) {
+                    if ((cur_count) % 3 == 0 && cur_count!=0) {
+                        $("#ShowPaging").html("");
+                        $("#ShowPaging2").html("");
+                        var pages = "";
+                        var i = (cur_count - 3);
+
+                        //                        if (i > 0)// then add prev button
+                        //                        {
+                        //                            pages += "<li><a class='next' onclick='GetCarsForNewPage(" + cur_count + ");'> < Prev </a> </li>";
+                        //                        }
+
+                        //alert(cur_count);
+                        for (; i <= cur_count - 1 && i <= lastPageIndex; i++) {
+                            // alert("<li><a onclick='GetCarsForNewPage(" + i + ");'>" + (1 + i) + "</a> </li>");
+                            pages += "<li><a onclick='GetCarsForNewPage(" + i + ");'>" + (1 + i) + "</a> </li>";
+                        }
+                        $("#ShowPaging").html(pages);
+                        $("#ShowPaging2").html(pages);
+                    }
+
+                }
+                else {
+                    return;
+                }
+
+                // alert(cur_count);
+                //alert(lastPageIndex);
+
+                if (cur_count == 0) {
+                    $("#PrevButton").html('<span style="cursor:pointer">< Prev</span>');
+                    $("#PrevButton2").html('<span style="cursor:pointer">< Prev</span>');
+
+                    return;
+                }
+                else {
+                    GetCarsForNewPage(cur_count -1);
+                    $("#currentpageIndex").val(cur_count -1);
+                    $("#curPageIndexValue").html((cur_count));
+                    $("#curPageIndexValue2").html((cur_count));
+
+                }
+
+            }
+            catch (e) {
+                alert(e.Message);
+
+
+            }
+
+
+            //GetCarsForNewPage($("#currentpageIndex").val());
+        }
+
+    //---------construct the paging design-----------
+        function GetCarsForNextPage() {//---------- when next button is clicked on paging---
+            try {
+
+                var cur_count = parseInt($("#currentpageIndex").val());//cur_count =Current PageIndex
+          
+                var pgSize = parseInt($("#PageSize").val());
+                var lastPageIndex = Math.floor((parseInt($("#CarsCount").val()) - 1) / pgSize);
+
+                if (cur_count + 1 <= lastPageIndex) {
+                    if ((cur_count + 1) % 3 == 0) {
+                        $("#ShowPaging").html("");
+                        $("#ShowPaging2").html("");
+                        var pages = "";
+                        var i = (cur_count + 1);
+
+//                        if (i > 0)// then add prev button
+//                        {
+//                            pages += "<li><a class='next' onclick='GetCarsForNewPage(" + cur_count + ");'> < Prev </a> </li>";
+//                        }
+
+                        //alert(cur_count);
+                        for( ; i <= cur_count + 3 && i<= lastPageIndex; i++) {
+                           // alert("<li><a onclick='GetCarsForNewPage(" + i + ");'>" + (1 + i) + "</a> </li>");
+                            pages += "<li><a onclick='GetCarsForNewPage(" + i + ");'>" + (1 + i) + "</a> </li>";
+                        }
+                        $("#ShowPaging").html(pages);
+                        $("#ShowPaging2").html(pages);
+                    }
+
+                }
+                else {return;
+                }
+                
+                // alert(cur_count);
+                //alert(lastPageIndex);
+
+                if (cur_count == lastPageIndex) {
+                    return;
+                }
+                else {
+                // activate prev button on paging
+                    $("#PrevButton").html("<span onclick='GetCarsForPrevPage()' style='cursor:pointer'>< Prev</span>");
+                    $("#PrevButton2").html("<span onclick='GetCarsForPrevPage()' style='cursor:pointer'>< Prev</span>");
+
+                    GetCarsForNewPage(cur_count + 1);
+                    $("#currentpageIndex").val(cur_count + 1);
+                    $("#curPageIndexValue").html((cur_count + 2));
+                    $("#curPageIndexValue2").html((cur_count + 2));
+
+                }
+
+            }
+            catch (e) {
+                alert(e.Message);
+
+
+            }
+
+
+            //GetCarsForNewPage($("#currentpageIndex").val());
+        }
+
+        //--------hit the web service to get the records--
+        function GetCarsForNewPage(pageIndexNumber) {//-------when pageIndex is clicked on paging e.g. page number 1,2,3----------
+            try {
+                $("#currentpageIndex").val(pageIndexNumber);
+                $("#curPageIndexValue").html(pageIndexNumber + 1);//----update msg showing "1 of 3" to "2 of 3"
+                $("#curPageIndexValue2").html(pageIndexNumber + 1);
+
+              
+
+                //alert($(obj).val() );
+                var Prices = GetFiltersValues("Price");
+                if ($("#AdvSearchPriceRange").val() != "")//---Add Advance Search Price
+                    Prices += $("#AdvSearchPriceRange").val() + ",";
+                else {
+                    if (Prices == "")
+                        Prices = "-1,";
+                }
+                var Mileage = GetFiltersValues("Mileage");
+                if ($("#AdvSearchMileageRange").val() != "")//---Add Advance Search Price
+                    Mileage += $("#AdvSearchMileageRange").val() + ",";
+                else {
+                    if (Mileage == "")
+                        Mileage = "-1,";
+                }
+                var Make = GetFiltersValues("Make");
+                var Model = "";
+                if (Make == "-1," || Make == "")
+                    Model = "-1,";
+                else //Model is selected
+                    Model = GetFiltersValues("ModelDiv");
+                
+                //var Model = $("#Model").val();
+                var Year = GetFiltersValues("Year");
+                var Body = GetFiltersValues("Body");
+                var Type = GetFiltersValues("Type");
+                var CarsCount = $("#CarsCount").val();
+                var Warranty = $('input:radio[name=Warranty]:checked').val();
+                var Vin = $("#Vin").val();
+                var DriveType = $("#DriveType").val();
+                var Zip = $('#Zip').val();
+            	var Radius = $('#Radius').val();
+                var Transmission = $("#Transmission").val();
+                var Engine = $("#Engine").val();
+                var sortByColumn = $("#sortByColumn").val();
+                var pageSize = $("#PageSize").val(); //-----------------------------
+                var pageIndex = pageIndexNumber; //$(obj).val(); //$("#CurrentPageIndex").val();
+                var hiddenSearchKey = $("#hiddenSearchKey").val();
+                var SearchByDealerID = -1;
+                if ($("#SearchByDealerID").length > 0) {
+                    // do something here
+                    SearchByDealerID = $("#SearchByDealerID").val();
+                }
+                   $("#StatusMsg").show().html("  Searching Thousands of pre auctioned vehicles  ");
+               
+                var datastr = { "Price": Prices, "Mileage": Mileage, "Vin": Vin, "Transmission": Transmission, "Engine": Engine, "DriveType": DriveType, "Make": Make, "Model": Model, "Year": Year, "Body": Body
+        , "Type": Type, "Warranty": Warranty, "Zip": Zip, "pageSize": pageSize, "PageIndex": pageIndex, "sortByColumn": sortByColumn, "hiddenSearchKey": hiddenSearchKey
+             ,"SearchByDealerID":SearchByDealerID, radius: Radius  };
+                $.post(serverurl + "/Search/SearchOnSearchPage", datastr, function (result) {
+                    //alert(result);
+                    $("#ShowCars").html(result);
+                    $("#StatusMsg").fadeOut('slow');
+                    //$("#CurrentPage").html(parseInt(pageIndex) + 1);
+                    $("#lblPageMsg").html(pageIndex + 1);
+
+
+                }, "html");
+            } catch (e) {
+                alert(e.Message);
+            }
+        }
+        function GetCars(evt) {
+            if (evt.preventDefault) { evt.preventDefault(); }
+            else
+            { evt.returnValue = false; }
+            SearchyourCars();
+            ShowFilterParams();
+        }
+        function SearchyourCars() {
+
+            try {
+
+
+                var Prices = GetFiltersValues("Price");
+                if ($("#AdvSearchPriceRange").val() != "")//---Add Advance Search Price
+                    Prices += $("#AdvSearchPriceRange").val() + ",";
+                else {
+                    if (Prices == "")
+                        Prices = "-1,";
+                }
+                var Mileage = GetFiltersValues("Mileage");
+                if ($("#AdvSearchMileageRange").val() != "")//---Add Advance Search Price
+                    Mileage += $("#AdvSearchMileageRange").val() + ",";
+                else {
+                    if (Mileage == "")
+                        Mileage = "-1,";
+                }
+                var Make = GetFiltersValues("Make");
+                var Model = "";
+                if (Make == "-1," || Make == "")
+                    Model = "-1,";
+                else //Model is selected
+                    Model = GetFiltersValues("ModelDiv");
+              
+                //var Model = $("#Model").val();
+                var Year = GetFiltersValues("Year");
+                var Body = GetFiltersValues("Body");
+                var Type = GetFiltersValues("Type");
+                var CarsCount = $("#CarsCount").val();
+
+                var Vin = $("#Vin").val();
+                var DriveType = $("#DriveType").val();
+                var Vin = $("#Vin").val();
+                var sortByColumn = $("#sortByColumn").val();
+            	var Radius = $('#Radius').val();
+                var Warranty = $('input:radio[name=Warranty]:checked').val();
+                var Zip = $('#Zip').val();
+                var Transmission = $("#Transmission").val();
+                var Engine = $("#Engine").val();
+                var pageSize = $("#PageSize").val();
+                var hiddenSearchKey = $("#hiddenSearchKey").val();
+                var pageIndex = 0;
+            	var isSort = $('#isSort').val();
+
+                var SearchByDealerID = -1;
+                if ($("#SearchByDealerID").length > 0) {
+                    // do something here
+                    SearchByDealerID=$("#SearchByDealerID").val();
+                }
+                var datastr = { "Price": Prices, "Mileage": Mileage, "Vin": Vin, "Transmission": Transmission, "Engine": Engine
+        , "DriveType": DriveType, "Make": Make, "Model": Model, "Year": Year, "Body": Body
+        , "Type": Type, "Warranty": Warranty, "Zip": Zip, "pageSize": pageSize, "PageIndex": pageIndex, "sortByColumn": sortByColumn, "hiddenSearchKey": hiddenSearchKey
+        ,"SearchByDealerID":SearchByDealerID, isSort: isSort, radius: Radius
+                };
+
+
+                $("#StatusMsg").show().html("  Searching Thousands of pre auctioned vehicles ");
+                $.post(serverurl + "/Search/SearchOnSearchPage", datastr, function (result) {
+
+                	$("#ShowCars").html(result);
+                	$("#StatusMsg").fadeOut('slow');
+                	$('#isSort').val('false');
+                	//GetBreadCrumb();
+                	ShowFilterParams();
+                	/*-------to get the cars count-------*/
+
+                }, "html");
+
+                GetTotalCarsCount(datastr, pageSize, pageIndex);
+                return true;
+            } catch (e) {
+                alert("Error Message:" + e.Message);
+
+            }
+
+        }
+
+        //------------To get total cArs count from Web Service
+        function GetTotalCarsCount(datastr, pageSize, pageIndex) {
+            try {
+
+            
+            $.post(serverurl + "/Search/SearchOnSearchPage_CarsCount", datastr, function (totalRecords) {
+                $("#totalCarsCount").html(totalRecords);
+                var totalPages = Math.ceil(totalRecords / pageSize);
+                $("#TotalPages").html(totalPages);
+                //   $("#CurrentPage").html(parseInt(pageIndex) + 1);
+                $("#currentpageIndex").val(""); //---reset the page index---
+
+                // $("#pageIndex option").remove();
+
+                for (var i = 0; i < totalPages; i++) {
+                    $("#pageIndex").append("<option value='" + i + "'>" + (i + 1) + "</option>");
+
+                }
+                $("#pageIndex").val(pageIndex);
+                //alert(result);
+
+                $("#currentpageIndex").val(0);
+                $("#curPageIndexValue").html("1");
+                $("#curPageIndexValue2").html("1");
+                //alert(totalRecords);
+                $("#totalCarsCount").html(totalRecords);
+                $("#CarsCount").val(parseInt(totalRecords));
+                var pgSize = parseInt($("#PageSize").val());
+                var lastPageIndex = Math.floor((totalRecords - 1) / pgSize);
+                if (totalRecords == 0) {
+                    //if no record is found remove the pagination
+                    $("#ShowPaging").html("");
+                    $("#curPageIndexValue").html("0");
+                    $("#ShowPaging2").html("");
+                    $("#curPageIndexValue2").html("0");
+                }
+                else {
+                    var pages = "";
+                    for (var i = 0; i <= 2 && i <= lastPageIndex; i++) {
+                        pages += "<li><a onclick='GetCarsForNewPage(" + i + ");'>" + (1 + i) + "</a> </li>";
+
+                    }
+                    $("#ShowPaging").html(pages);
+                    $("#ShowPaging2").html(pages);
+
+                }
+
+
+                $("#totalpagesValue").html(lastPageIndex + 1);
+                $("#totalpagesValue2").html(lastPageIndex + 1);
+                //alert($("#CarsCount").val());
+
+            	ShowSearchFilters(totalRecords);
+
+            }, "json");
+        } catch (e) {
+        alert(e.Message);
+        }
+
+        }
+
+        //---------- end of--To get total cArs count from Web Service
+        //----------------------------------
+        function sort(FieldName, linkObj) {
+            try {
+            	$("#sortByColumn").val(FieldName);
+            	$('#isSort').val('true');
+                SearchyourCars();
+                $(".lnkSort").each(function () {
+                    $(this).css("text-decoration", "underline");
+                });
+
+                $(linkObj).css("text-decoration", "none");
+            }
+            catch (e) {
+                alert(e.Message);
+            }
+        }
+        function GetFiltersValues(FilterName) {
+            var Values = "";
+            $("#" + FilterName).find("input[type='checkbox']").each(function () {
+                if ($(this).is(":checked")) {
+                    Values += $(this).val() + ",";
+                }
+            });
+
+            //        if (Values == "")
+            //            Values = "-1,";
+            return Values;
+        }
+        function removefilter(evt) {
+            try {
+
+
+                if (evt.preventDefault) { evt.preventDefault(); }
+                else {
+                    evt.returnValue = false;
+                }
+                //  $("#Model").val("-1");
+                $("#ModelDiv").html("<div class='filterHeader'>Model</div>"); //-remove models
+                //--reset Makes--
+                $("#Make input[name=Make][type=checkbox]").attr("checked", "");
+                $("#Make input[name=Make][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Price input[name=Price][type=checkbox]").attr("checked", "");
+                $("#Price input[name=Price][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Mileage input[name=Mileage][type=checkbox]").attr("checked", "");
+                $("#Mileage input[name=Mileage][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Year input[name=Year][type=checkbox]").attr("checked", "");
+                $("#Year input[name=Year][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Type input[name=Type][type=checkbox]").attr("checked", "");
+                $("#Type input[name=Type][type=checkbox][value=-1]").attr("checked", "checked");
+                $("#Warranty input[name=Warranty][type=radio][value=-1]").attr("checked", "checked");
+                //------resetPrices
+                //-------
+                $("#Radius").val("-1");
+                $("#Transmission").val("-1");
+                $("#Engine").val("-1");
+                $("#DriveType").val("-1");
+                showMessage("Filters Removed now");
+                $("#AdvSearchPriceRange").val("");
+                $("#AdvSearchMileageRange").val("");
+                $("#hiddenSearchKey").val("");
+                $("#SearchByDealerID").val("-1");
+                SearchyourCars();
+             
+            } catch (e) {
+                alert("removefilter() errorMsg=" + e.Message);
+
+            }
+        }
+
+
+
+        function showMessage(msg) {
+            $("#StatusMsg").html(msg).fadeIn("slow");
+            setTimeout("HideStatusMsg()", 3000);
+        }
+        function HideStatusMsg() {
+            $("#StatusMsg").fadeOut("200");
+        }
+        $(document).ready(function () {
+
+
+        	//--when make is changed get modal using json
+        	$("#Make input[name=Make][type=checkbox]").click(function () {
+        		$("#Make input[name=Make][type=checkbox]").attr("checked", "");
+        		$(this).attr("checked", "checked");
+        		$.post(serverurl + "/Home/GetModel?MakeID=" + $(this).val(), null, function (data) {
+        			$("#ModelDiv").html("");
+        			//</div>
+        			// $("#ModelDiv").html("<div class='filterHeader'>Model");
+
+        			//alert(data);
+        			var i = 0;
+        			$.each(data, function () {
+
+        				++i;
+        				if (i == 1)
+        					$("#ModelDiv").append("<div><label><input type='checkbox' checked='checked' name='Model' id='Model" + this.id + "' value='" + this.id + "'>" + this.modelName + "</label></div>");
+        				else {
+        					$("#ModelDiv").append("<div><label><input type='checkbox' name='Model'  id='Model" + this.id + "' value='" + this.id + "'>" + this.modelName + "</label></div>");
+        				}
+        			});
+        			if (i == 1) {
+        				$("#ModelDiv").html("");
+        				//rebind the Model Div
+
+        			}
+        			////                    else $("#ModelDiv").append("</div>");
+
+
+        		}, "json");
+        	});
+        	CheckIsAllSelected("Price");
+        	CheckIsAllSelected("Mileage");
+        	CheckIsAllSelected("Year");
+        	CheckIsAllSelected("Body");
+        	CheckIsAllSelected("Type");
+        	try {
+        		CheckIsAllSelected("ModelDiv");
+
+
+        	} catch (e) {}
+
+        	HideSearchFilters();
+        });
+        
+		function HideSearchFilters() {
+			if(@(Model != null && Model.Count > 0 ? "1" : "0") < 1) {
+				$('div.TotalMatch').hide();
+				$('div.ChangeZip').hide();
+				$('div.Sorting').hide();
+			}
+		}
+		
+		function ShowSearchFilters(count) {
+			if(count > 0) {
+				$('div.TotalMatch').show();
+				$('div.ChangeZip').show();
+				$('div.Sorting').show();
+			}
+			else {
+				$('div.TotalMatch').hide();
+				$('div.ChangeZip').hide();
+				$('div.Sorting').hide();
+			}
+		}
+
+        //----- if All is get checked then it unchecked the other checked item
+        function CheckIsAllSelected(FilterName) {
+        	try {
+        		var i = 0;
+        		$("#" + FilterName + " input[type=checkbox]").live("click",
+        			function(evt) {
+        				if ($(this).val() == "-1" && $(this).is(":checked")) { //if selected item is all and all is checked, uncheck other
+        					$("#" + FilterName + " input[type=checkbox]").attr("checked", "");
+        					$(this).attr("checked", "checked");
+        				} else { //if selected item is other than all and it is selected then uncheck the all
+        					if ($(this).is(":checked")) {
+        						$("#" + FilterName + " input[type=checkbox][value='-1']").attr("checked", "");
+        					}
+        				}
+        			});
+        	} catch(e) {
+        		alert(e);
+        	}
+        }        
+
+    </script>
+    <script type="text/javascript">
+    	$(document).ready(function () {
+    		$(".Plus").click(function () {
+    			ExpandCollapse($(this));
+    		});
+    		$(".DropMain a.Title").click(function () {
+    			ExpandCollapse($(this).parent().children('.Plus'));
+    			return false;
+    		});
+
+    		//GetBreadCrumb();/*----Create Bread Crumb---*/
+    		ShowFilterParams(); //AI:Create Bread Crumb
+    	});
+
+    	function ExpandCollapse(plus) {
+    		plus.parents(".DropMain").find(".DropDiv").slideToggle(
+    				function () {
+    					if (plus.parents(".DropMain").find(".DropDiv").css('display') == 'none') {
+    						plus.children("img").attr('src', '@Url.Content("~/Content/Images/plus.png")');
+    					}
+    					else {
+    						plus.children("img").attr('src', '@Url.Content("~/Content/Images/minus.png")');
+    					}
+    				});
+    	}
+
+    	function ShowFilterParams() {
+    		var price = "";
+    		$.each($("input[type='checkbox'][name=Price]:checked"), function (index, sender) {
+    			if (sender.value == -1)
+    				price = "Any Price";
+    			else {
+    				if (price == "")
+    					price = "Price " + sender.value;
+    				else
+    					price += ", " + sender.value;
+    			}
+    		});
+
+    		var year = "";
+    		$.each($("input[type='checkbox'][name=Year]:checked"), function (index, sender) {
+    			if (sender.value == -1)
+    				year = "Any Year";
+    			else {
+    				if (year == "")
+    					year = "Year " + sender.value;
+    				else
+    					year += ", " + sender.value;
+    			}
+    		});
+
+    		var mileage = "";
+    		$.each($("input[type='checkbox'][name=Mileage]:checked"), function (index, sender) {
+    			if (sender.value == -1)
+    				mileage = "Any Mileage";
+    			else {
+    				if (mileage == "")
+    					mileage = "Mileage " + sender.value;
+    				else
+    					mileage += ", " + sender.value;
+    			}
+    		});
+
+    		var make = "";
+    		$.each($("label", $("input[type='checkbox'][name=Make]:checked").parent()), function (index, sender) {
+    			//alert(sender);
+    			if (sender.value == -1)
+    				make = "Any Make";
+    			else {
+    				if (make == "")
+    					make = "Make " + sender.innerHTML;
+    				else
+    					make += ", " + sender.innerHTML;
+    			}
+    		});
+
+    		var warranty = "";
+    		$.each($("input[type='radio'][name=Warranty]:checked"), function (index, sender) {
+    			if (sender.value == -1)
+    				warranty = "Any Warranty";
+    			else if (sender.value == 0)
+    				warranty = "Without Warranty";
+    			else
+    				warranty = "With Warranty";
+
+    		});
+
+    		var body = "";
+    		$.each($("label", $("input[type='checkbox'][name=Body]:checked").parent()), function (index, sender) {
+    			//alert(sender);
+    			if (sender.value == -1)
+    				body = "Any Body Type";
+    			else {
+    				if (body == "")
+    					body = "Body Type " + sender.innerHTML;
+    				else
+    					body += ", " + sender.innerHTML;
+    			}
+    		});
+
+    		var output = price + " > " + year + " > " + mileage + " > " + make + " > " + warranty + " > " + body;
+    		$("#breadcrumb").html(output);
+    	}
+
+    	function GetBreadCrumb() {
+
+    		var Selected_makeName = $("#Make input[type='checkbox'][name='Make']:checked").next().html();
+    		if (Selected_makeName == "All")
+    			$("#breadcrumb").html("All Makes");
+    		else
+    			$("#breadcrumb").html(toTitleCase(Selected_makeName));
+
+
+
+    	}
+    	function toTitleCase(str) {
+    		return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+    	}
+    </script>
+
+     
+<script type="text/javascript">
+	function AddToWishList(prdid, e) {
+
+
+		$.post(serverurl + "/Product/AddWistList/" + prdid, prdid, function (data) {
+			if (data == true) {
+
+				showMessage("Product Added to Wishlist.");
+			}
+
+		}, "json");
+
+		if (e.preventDefault) {
+			e.preventDefault();
+		} else {
+			e.returnValue = false;
+			e.cancelBubble = true;
+		}
+
+	}
+
+    
+</script>
+
+    <script src="@Url.Content("~/Scripts/jquery.countdown.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/jquery.countdown.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	//------------ to show the product count down--------
+
+	var todayDate = new Date();
+	function SetCountDown(datetoend, divId) {
+		try {
+
+
+			var tempDate = new Date();
+			tempDate.setDate(tempDate.getDate() + parseInt(datetoend));
+			//            alert(tempDate);
+			//            alert(datetoend);
+
+			$("#" + divId).countdown({ until: tempDate, compact: true,
+				layout: '<div class="Pricediv" style="margin:0px 0px 0px 0px"><div class="daydiv">{dn}</div><div class="daydiv"> {hnn}</div><div class="daydiv">{mnn}</div><div class="daydiv">{snn}</div></div>'
+			});
+
+		} catch (e) {
+
+		}
+	}
+</script>
+ 
+ <script type="text/javascript">
+ 	//--------To comapre vehicle use this script
+ 	function ViewCompareVehicle() {
+ 		var ids = "";
+ 		var i = 0;
+ 		$("input[name='compareVehicle']:checked").each(function () {
+ 			if (i < 3) {
+ 				ids = ids + $(this).attr("value") + "_";
+ 			}
+ 			++i;
+ 		});
+
+ 		//alert($("input[name='compareVehicle']:checked").length);
+ 		window.location = "/Product/CompareVehicle/" + ids;
+ 	}
+                        </script>
+
+<script type="text/javascript">
+	//--------to show the modalp popup for full register whne facebook users click on lock price ,wishlist etc.
+	function ShowFullRegisterPopUp() {
+		$("#ModalPopUpRegister").dialog();
+	}
+    </script>
+}
+
+
+<div id="ModalPopUpRegister" class="ModalPopUpRegister" style="">
+<b>To Use this Feature, Register For<br /> <a href="/Register">Full Access.</a> </b>
+</div>
+@{
+    
+    <div class="SearchPage">
+		<form id='form1' action="@Url.Content("~")Search/SearchOnSearchPage" method="post">
+		<div class="SearchSidebar Flt">
+            <div class="Srch_SideBox">
+                <h2 class="BoxTitle">
+                    <center>
+                        My User Info
+                    </center>
+                </h2>
+                <div class="WhiteArea">
+                    <div class="UserName BorderBtm">
+                        @User.Identity.Name
+                    </div>
+                    <div class="AdvSrch">
+                        <input type="hidden" id="hiddenSearchKey" name="hiddenSearchKey" value="@(ViewData["searchKey"] ?? "")" />
+                        <img src="@Url.Content("~/Content/Images/srch_icon.png")" alt="" />@Html.ActionLink("Advanced Search", "AdvanceSearch", "Search")</div>
+                </div>
+            </div>
+            <div class="Srch_SideBox">
+                <h2 class="BoxTitle">
+                    <center>
+                        Refine Search
+                    </center>
+                </h2>
+                <div class="WhiteArea">
+                    <div class="UserName BorderBtm">
+                        <a href="#" id="btnSearch" onclick="GetCars(event)">Search</a> |
+                         @if(User.Identity.IsAuthenticated)
+						 {
+                             @Html.ActionLink("My Wishlist", "Wishlist", "Product")
+						 }
+						 else
+						 {
+                             @Html.ActionLink("My Wishlist", "LogOn", "Account")
+						 }
+                         |
+                        <a href="#" onclick="removefilter(event)" id="btnRemove">Remove Filter</a></div>
+                    <div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+                                <img src="@Url.Content("~/Content/Images/minus.png")" alt="" /></span> 
+                                <a href="#" class="Title">PRICE</a>
+                            <div class="DropDiv">
+                                <div class="DropRow">
+                                @if((ViewData["Price"].GetType() == typeof(SelectList)))
+								{
+                                    @Html.CheckBoxList((SelectList)(ViewData["Price"]), "Price", new { @class = "clsPrice" })
+								}
+								else
+								{
+									if((ViewData["Price"].GetType() == typeof(List<SelectListItem>)))
+									{
+                                    @Html.CheckBoxList((List<SelectListItem>)(ViewData["Price"]), "Price", new { @class = "clsPrice" })
+									}
+								}
+                                
+                                        
+
+                                    @Html.Hidden("AdvSearchPriceRange", @ViewData["AdvSearchPriceRange"] == null ? "" : @ViewData["AdvSearchPriceRange"])
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+								<img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> 
+								<a href="#" class="Title">YEAR</a>
+                       
+                        <div class="DropDiv" style="display:none;">
+                            <div class="DropRow">
+                                @Html.CheckBoxList((List<SelectListItem>)(ViewData["Year"]), "Year", new { @class = "clsPrice" })
+                            </div>
+                        </div>
+                         </div>
+                    </div>
+                    <div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+								<img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> 
+								<a href="#" class="Title">MILEAGE</a>
+                       
+                        <div class="DropDiv" style="display:none;">
+                            <div class="DropRow">
+                                @Html.CheckBoxList((SelectList)(ViewData["Mileage"]), "Mileage", new { @class = "clsPrice" })
+                                <input type="hidden" id="AdvSearchMileageRange" name="AdvSearchMileageRange" value="@(ViewData["AdvSearchMileageRange"] ?? "")" />
+                                <input type="hidden" id="SearchByDealerID" name="SearchByDealerID" value="@(ViewData["SearchByDealerID"] ?? "-1")" />
+                                
+                              
+                            </div>
+                        </div> </div>
+                    </div>
+                    <div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+								<img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> 
+								<a href="#" class="Title">MAKE</a>
+                       
+                        <div class="DropDiv" style="display:none;">
+                            <div class="DropRow">
+
+                               @if((ViewData["Make"].GetType() == typeof(SelectList)))
+							   {
+                                   @:@Html.CheckBoxList((SelectList)(ViewData["Make"]), "Make", new { @class = "clsPrice" })
+
+							   }
+							   else
+							   {
+                                   @:@Html.CheckBoxList((List<SelectListItem>)(ViewData["Make"]), "Make", new { @class = "clsPrice" })
+
+							   }
+                                
+                            </div>
+                        </div>
+                         </div>
+                    </div>
+                    <div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+								<img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> 
+								<a href="#" class="Title">MODEL</a>
+                       
+                        <div class="DropDiv" style="display:none;">
+                            <div class="DropRow" id="ModelDiv">
+                                @if(ViewData["MakeSelected"] != null)
+								{
+									if((ViewData["Model"].GetType() == typeof(SelectList)))
+									{
+                                   @:@Html.CheckBoxList((SelectList)(ViewData["Model"]), "Model", new { @class = "clsPrice" })
+
+									}
+									else
+									{
+                                           @:@Html.CheckBoxList((List<SelectListItem>)(ViewData["Model"]), "Model", new { @class = "clsPrice" })
+                                     }
+								}
+								else
+								{
+
+								}
+                            </div>
+                        </div>
+                         </div>
+                    </div>
+                    <div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+								<img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> 
+								<a href="#" class="Title">WARRANTY</a>
+                        
+                        <div class="DropDiv" style="display:none;">
+                            <div class="DropRow">
+                            @if((ViewData["Warranty"].GetType() == typeof(SelectList)))
+							{
+                                @:@Html.RadioButtonList((SelectList)(ViewData["Warranty"]), "Warranty", null, new { @class = "clsPrice" })
+                                }
+							else
+							{
+                                  @:@Html.RadioButtonList((List<SelectListItem>)(ViewData["Warranty"]), "Warranty", new { @class = "clsPrice" })
+                                }
+                              
+                            
+
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    @*<div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+                                <img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> <a href="#"
+                                    class="Title">COLOR</a>
+                        </div>
+                        <div class="DropDiv">
+                            <div class="DropRow">
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="DropMain" style="display:none">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+								<img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> 
+								<a href="#" class="Title">ENGINE/TRANS/DRIVE TYPE</a>
+                      
+                        <div class="DropDiv">
+                            <div class="DropRow">
+                                @Html.CheckBoxList((SelectList)(ViewData["Type"]), "Type", new { @class = "clsPrice" })
+                            </div>
+                        </div>  </div>
+                    </div>
+                    <div class="DropMain">
+                        <div class="DropTitle BorderBtm">
+                            <span class="Plus">
+								<img src="@Url.Content("~/Content/Images/plus.png")" alt="" /></span> 
+								<a href="#" class="Title">BODY TYPE</a>
+                        
+                        <div class="DropDiv" style="display:none;">
+                            <div class="DropRow">
+                             @if((ViewData["Body"].GetType() == typeof(SelectList)))
+							 {
+                                @:@Html.CheckBoxList((SelectList)(ViewData["Body"]), "Body", new { @class = "clsPrice" })
+                                }
+							 else
+							 {
+								 if((ViewData["Body"].GetType() == typeof(List<SelectListItem>)))
+								 {
+                                     @:@Html.CheckBoxList((List<SelectListItem>)(ViewData["Body"]), "Body", new { @class = "clsPrice" })
+                                 }
+
+							 }
+                                
+
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="LastDiv">
+                        <a href="#" onclick="GetCars(event)">Search</a> |   @if(User.Identity.IsAuthenticated)
+																			{@:<a href="Product/Wishlist">My Wishlist</a>|
+                                                     }
+																			else
+																			{@:<a href="Account/LogOn">My Wishlist</a>|
+                         }
+
+                        | <a href="#" onclick="removefilter(event)">Remove Filter</a></div>
+                </div>
+            </div>
+        </div>
+		</form>
+		<div class="SearchRight Flr">
+        <!--<div>
+          <div>
+        <img src="@Url.Content("~/Content/Images/FeaturedList.gif")" style="margin-left: -1px;margin-bottom: 3PX;" />
+        </div>
+            @Html.Action("FeaturedDealersVehicle", "Search")
+        </div> -->
+              <div id="FeaturedVehicles">
+                <div class="LftCrv">
+                </div>
+                <h2>
+                    Today's Featured Vehicles <span style="font-size: 12px; font-weight: normal;">(Hold
+                        mouse over image for details)</span></h2>
+                <div class="CarousalArea js">
+                    @*<span class="LeftArrow"></span>*@
+                    <div class="carousel-wrap">
+                        <ul class="jcarousel-skin-tango">
+                            @Html.Action("FeaturedVehicle", "Home")</ul>
+                    </div>
+                </div>
+                <div class="RhtCrv">
+                </div>
+            </div>
+            <div class="Srch_Breadcrumb">
+                <span>Your Search :</span> Home > Cars For Sale ><span><span id="breadcrumb"></span></span>
+            </div>
+               
+            <div class="TotalMatch">
+                <span id="totalCarsCount">@(ViewData["CarsCount"] ?? 0)</span> matches were found.</div>
+            <div class="ChangeZip">
+         
+                <div style="">
+                @{
+					Int32 PageSize = ViewData["PageSize"] == null ? 25 : Convert.ToInt32(ViewData["PageSize"]);
+                <select id="PageSize" name="PageSize" onchange="GetCars(event)">
+                @for(int i = 25; i <= 100; i += 25)
+				{
+					if(i == PageSize)
+					{
+                       <option value="@i" selected="selected">Show @i per page</option>
+					}
+					else
+					{
+                          <option value="@i">Show @i per page</option>
+					}
+				}
+                    
+                </select>
+                    }
+                @Html.TextBox("Zip", @ViewData["Zip"] == null ? "" : ViewData["Zip"], new { style = "" })
+                <input id="btnZip" type="image" onclick="return GetCars(event)" src="@Url.Content("~/Content/themes/App_Themes/EDrive/images/changeZip.jpg")" style="" />
+                @Html.Hidden("Vin", @ViewData["Vin"] == null ? "-1" : ViewData["Vin"])
+                @Html.Hidden("DriveType", @ViewData["DriveType"] == null ? "-1" : ViewData["DriveType"])
+                @Html.Hidden("Radius", @ViewData["Radius"] == null ? "-1" : ViewData["Radius"])
+                @Html.Hidden("Transmission", @ViewData["Transmission"] == null ? "-1" : ViewData["Transmission"])
+                @Html.Hidden("Engine", @ViewData["Engine"] == null ? "-1" : ViewData["Engine"])
+
+                     <span style="color:Maroon;font-weight:bold;padding-left:12px;cursor:pointer"  onclick="ViewCompareVehicle()">
+                        View Vehicle Comparisons
+                    </span>
+                </div>
+                <div class="Clr">
+                </div>
+            </div>
+            <div class="Sorting">
+                <div class="SortBy">
+                    <span style="color: #29699c; font-weight: bold">Sort By</span>&nbsp&nbsp&nbsp&nbsp
+                    @{
+						String sortclsYear = "", sortclsMileage = "", sortclsPrice = "", sortclsSavingAmount = "";
+						if(Session["sortByColumn"] != null)
+						{
+							var sortByColumn = Session["sortByColumn"].ToString();
+
+							switch(sortByColumn)
+							{
+								case "Year":
+									{
+										sortclsYear = "sortbycolumn";
+										break;
+									}
+								case "Mileage":
+									{
+										sortclsMileage = "sortbycolumn";
+										break;
+									}
+								case "Price":
+									{
+										sortclsPrice = "sortbycolumn";
+										break;
+									}
+								case "savingAmount":
+									{
+										sortclsPrice = "sortbycolumn";
+										break;
+									}
+								default:
+									{
+										sortclsMileage = "";
+										break;
+									}
+							}
+
+
+						}
+                    <span   style="cursor: pointer; text-decoration: underline" class="lnkSort @sortclsYear" onclick="sort('Year',this)" id="sortbyYear">Year</span>
+                    <span style="margin-left:8px;text-decoration: underline;cursor: pointer" class="lnkSort @sortclsMileage" onclick="sort('Mileage',this)">Mileage</span>
+                    <span style="text-decoration: underline; cursor: pointer;margin-left:5px;" class="lnkSort @sortclsPrice" onclick="sort('Price',this)">Price</span>
+                    <span style="text-decoration: underline; cursor: pointer;margin-left:5px;" class="lnkSort @sortclsSavingAmount" onclick="sort('savingAmount',this)">Best Deals</span>
+                    @*href="/Product/CompareVehicle"*@
+                       
+                    }
+                        
+                    @Html.Hidden("sortByColumn", Session["sortByColumn"] ?? "")
+					@Html.Hidden("isSort", false)
+                </div>
+                <div class="Pagination Flr">
+                    <span id="CurrentPage">
+                        @{ 
+							var cnt = ViewBag.PageCounts > 0 ? "1" : "0";
+							Int32 CurrentPageNumber = 0;
+							if(ViewBag.PageCounts > 0)
+							{
+								CurrentPageNumber = Convert.ToInt32(ViewData["PageIndex"]) + 1;
+							}
+                           
+                            <text>
+                            <ul>
+                                <li>Showing <span id="curPageIndexValue">@(CurrentPageNumber)</span> 
+                                of <span id="totalpagesValue">
+                                    @ViewBag.PageCounts
+                                </span></li>
+                            </ul>
+                           <span id="PrevButton" style="float:left;padding-left:7px;">
+                           @{
+							   if(CurrentPageNumber > 1)
+							   {
+                              <span onclick="GetCarsForPrevPage()" style="cursor:pointer">< Prev</span> 
+							   }
+							   else
+							   {
+                                  <span style="cursor:pointer">< Prev</span> 
+                              
+							   }
+                                  
+                               
+                               }
+                            </span>
+                            <ul id="ShowPaging">
+                                @for(int i = (CurrentPageNumber - CurrentPageNumber % 3 + 1); i <= ViewBag.PageCounts && i <= (CurrentPageNumber - CurrentPageNumber % 3 + 3); i++)
+								{
+                                    <li><a onclick="GetCarsForNewPage(@(i - 1))" href="#">
+                                        @i
+                                    </a></li>
+
+								}
+                            </ul>
+                            <ul>
+                                <li><a class="next" href="#" onclick="GetCarsForNextPage();">Next ></a></li>
+                            </ul>
+                            </text>
+                            }
+                    </span>
+                    <input type="hidden" id="currentpageIndex" name="pageIndex" value="@(ViewData["pageIndex"] ?? 0)" />
+                    <input type="hidden" id="CarsCount"  value="@(ViewData["CarsCount"] ?? 0)"/>
+                    
+                </div>
+                <div class="Clr">
+                </div>
+            </div>
+            <div id="ShowCars">
+                @Html.Partial("_SearchResult", Model)
+            </div>
+            
+            <div class="Sorting">
+                
+                 <div class="Pagination Flr">
+                    <span id="CurrentPage2">
+                        @{   cnt = ViewBag.PageCounts > 0 ? "1" : "0"; <text>
+                            <ul>
+                                <li>Showing <span id="curPageIndexValue2">@(CurrentPageNumber)</span> of <span id="totalpagesValue2">
+                                    @ViewBag.PageCounts
+                                </span></li>
+                            </ul>
+                            <span id="PrevButton2" style="float:left;padding-left:7px;">
+                           @{
+							   if(CurrentPageNumber > 1)
+							   {
+                              <span onclick="GetCarsForPrevPage()" style="cursor:pointer">< Prev</span> 
+							   }
+							   else
+							   {
+                                  <span style="cursor:pointer">< Prev</span> 
+                              
+							   }
+                                  
+                               
+                               }
+                            </span>
+                           
+                            <ul id="ShowPaging2">
+                                 @for(int i = (CurrentPageNumber - CurrentPageNumber % 3 + 1); i <= ViewBag.PageCounts && i <= (CurrentPageNumber - CurrentPageNumber % 3 + 3); i++)
+								 {
+                                    <li><a onclick="GetCarsForNewPage(@(i - 1))" href="#">
+                                        @i
+                                    </a></li>
+								 }
+
+                            </ul>
+                            <ul>
+                                <li><a class="next" href="#" onclick="GetCarsForNextPage();">Next ></a></li>
+                            </ul>
+                            </text>
+                                 }
+                    </span>
+                    
+                </div>
+                <div class="Clr">
+                </div>
+            </div>
+        </div>
+        <div class="Clr">
+        </div>
+    </div>
+    
+                                }
+    @section Footer{
+    @{
+        <div class="MsgStatusDiv">
+            <span id="StatusMsg" class="StatusMsg">
+                </span>
+                </div>
+		if(User.Identity.IsAuthenticated == false)
+		{
+ 
+
+			<div class="overviewdetaillogowar" id="overviewdetaillogowar" style="overflow:hidden;height:671px;width:833px;background-color:transparent;">
+				<div id="Registration">
+					<div style="">
+     
+					</div>
+					@*<img src="@Url.Content("~/Content/Images/player_close.png")" style="position:relative;left:815px;;background:transparent;cursor:pointer" onclick="closeModal()" alt="Close"/>
+*@
+					<div class="htmlcontent" style="background-color:White">
+						<div class="htmlcontent-body">
+							<div>
+								<div style="color:red;text-align:center;position:relative;top:14px;">@(ViewData["Msg"] ?? "")</div>
+
+								<h2 style="margin-top:34px;">An E-Drive Pre-Auction Access Account is Required to View Vehicle Listings</h2>
+								<p class="font_14">The most rewarding car buying experience awaits you. Choose limited access or full access.</p>
+								<div class="MemberLogin">
+									<a href="/Account/Logon">Member Login</a>
+								</div>
+								<div class="LimitedAccount OfferList">
+									<h2>Create a Limited Access account</h2>
+									<ul>
+										<li>Free (no email required)</li>
+										<li>Login using facebook</li>
+										<li>No strings attached</li>
+									</ul>
+									<p>No form to fill out. Sign up for E-Drive Autos using<br />your Facebook account with just couple of clicks.</p>
+									<div>
+										<a href="@ViewData["facebookLoginUrl"]">
+											@*<a href="https://www.facebook.com/dialog/oauth?client_id=394447697245581&redirect_uri=http://localhost:2165/Search&scope=email">*@
+											<img src="@Url.Content("~/Content/images/facebook_connect.jpg")" alt="" />
+										</a>
+									</div>
+								</div>
+								<div class="divMsgCentre">
+									<div class="MsgCentreDiv1">
+									</div>
+									<div  class="MsgCentreDiv2" style="">
+										OR
+									</div>
+									<div  class="MsgCentreDiv3">
+									</div>
+									<div>
+									</div>
+								</div>
+								<div class="FullAccount OfferList" style="border:none">
+									<h2>Create a Full Access account</h2>
+									<h4>Only $10 USD. No recurring billing. (<a href="#" onclick="return showRegistrationPopup();">Details</a>)</h4>
+									<ul>
+										<li>Unlimited access 24/7</li>
+										<li>Save and customize searches</li>
+										<li>Save vehicles to wish list</li>
+										<li>Price Lock Guarantee</li>
+										<li>Print vehicle brochures</li>
+									</ul>
+									<p>Kick your vehicle search into high gear and experience all the best features of E-Drive Autos.</p>
+									<div align="center" class="Register"><a href="@Url.Action("Index", "Register")"><img src="@Url.Content("~/Content/Images/register_btn.jpg")" alt="" />
+																		 </a> </div>
+								</div>
+								<div class="Clr"></div>
+								<div class="divNothanks">
+									<a href="/Home"><u>No Thanks</u>, <u>I'm not Interested</u> </a>
+
+
+								</div>
+								<div class="ImpInfoTxt">
+									<p><strong>Important Information</strong></p>
+									<p>Every vehicle listed on the site has 16 filters that qualify or disqualify it. We only accept the very best vehicles - free of frame damage and with clear titles. Many of the vehicles listed herein are off-lease, fleet and repos that have never hit the retail market. The ones that are not sold will be listed at a car lot at considerable markup.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+            
+				</div>
+			</div>
+		
+			<div class="darken-modal-bg" style="display:none;"></div>
+			<div class="registration-details-popup"></div>
+            
+          @*  <div id="modalpopUp" style="background-color: black;position: fixed;top: 0px;opacity: .5;z-index: 2000;">
+            </div>
+            *@
+        <script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+    	$(document).ready(function () {
+    		$("#overviewdetaillogowar").dialog({ modal: true, width: 833, zIndex: 9999, dialogClass: 'modalPopUpWindowNew' }).css("top", "15px;");
+    		$(".ui-dialog-titlebar").hide();
+    	});
+
+    	//        var wid = $(window).width();
+    	//        var hig = $(window).height();
+    	//       
+    	//        $("#modalpopUp").css("width",wid).css("height",hig);
+    	//        $("#modalpopUp").show();
+
+    	function closeModal() {
+    		alert("closed fired");
+    	}
+
+
+
+    </script>
+      
+
+
+		}
+ 
+    }
+

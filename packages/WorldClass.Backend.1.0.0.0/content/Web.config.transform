@@ -1,0 +1,15 @@
+﻿<configuration>
+  <connectionStrings>
+    <remove name="DataContext"/>
+    <add name="DataContext" connectionString="Data Source=(local); Integrated Security=True;Initial Catalog=$rootnamespace$;Trusted_Connection=True;MultipleActiveResultSets=true" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <entityFramework>
+    <contexts>
+      <context type="$rootnamespace$.Data.DataContext, $rootnamespace$.Data">
+        <databaseInitializer type="System.Data.Entity.MigrateDatabaseToLatestVersion`2[[$rootnamespace$.Data.DataContext, $rootnamespace$.Data], [$rootnamespace$.Data.Migrations.Configuration, $rootnamespace$.Data]], EntityFramework" />
+      </context>
+    </contexts>
+  </entityFramework>
+
+</configuration>

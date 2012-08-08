@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+@section Head
+{
+    <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+}
+<div class="product-inner-page">
+    <div class="divdetail-inner">
+        <div class="clear">
+        </div>
+    </div>
+    <div class="tab-new">
+        <div class="teb-left">
+        </div>
+        <div class="tab-line">
+            <div class="tab-tital">
+                Registration</div>
+        </div>
+        <div class="tab-right">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="clear1">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new-top">
+        </div>
+        <div class="divbottommiddetail-new-line-top-inner">
+        </div>
+        <div class="divbottomright-new-top">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="divinnercontent-home-new-one">
+        <div class="divinnercontent">
+            <div class="diviconwar">
+            </div>
+            <div class="overviewdetaillogowar">
+                <div class="registration-page">
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td width="43%" valign="top" style="color: Black; font-family: Arial; font-size: 18px;
+                                                    font-weight: bold;">
+                                                    Register now... <span style="color: Red;">It's FREE!</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div style="font-size: 16px;" class="section-title">
+                                                        No credit card needed.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Fields marked with <span style="color: Red">*</span> are required to register.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 10px;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="body">
+                                                        <table cellspacing="0" cellpadding="0"  
+                                                            style="width: 100%; border-collapse: collapse;">
+                                                            <tbody>
+                                                                <tr style="height: 100%;">
+                                                                    <td>
+                                                                        <table cellspacing="0" cellpadding="0" style="height: 100%; width: 100%; border-collapse: collapse;">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="height: 100%; width: 100%;">
+                                                                                        <div class="section-body">
+                                                                                            <p>
+                                                                                                <b><span id="Msg">
+                                                                                                    Your registration completed</span></b>
+                                                                                            </p>
+                                                                                            <br />
+                                                                                            <a class="lnkbuttonreg"  href="@Url.Action("Index","Home")">
+                                                                                                Continue</a>
+                                                                                        </div>
+                                                                                        <div class="clear">
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="50%" valign="top">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td style="height: 99px;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="Content/themes/App_Themes/EDrive/images/text.jpg">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top">
+                                                    <table width="100%" style="margin-left: 5px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="height: 14px;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="25%">
+                                                                    <div class="divRegMap">
+                                                                        <img alt="Map" src="Content/themes/App_Themes/EDrive/images/map01.png">
+                                                                    </div>
+                                                                </td>
+                                                                <td valign="top">
+                                                                    <table width="100%">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="font-weight: bold; font-size: 14px;">
+                                                                                    Nationwide Coverage
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    Tens of thousands of deep-discounted vehicles nationwide at your fingertips.
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="height: 14px;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="divRegTrans">
+                                                                        <img src="Content/themes/App_Themes/EDrive/images/Transparent01.png">
+                                                                    </div>
+                                                                </td>
+                                                                <td valign="top">
+                                                                    <table width="100%">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="font-weight: bold; font-size: 14px;">
+                                                                                    Transparent &amp; Verified Pricing
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    Every Vehicle's price is validated by NADA Market data based upon millions of vehicles
+                                                                                    sold at auction annually.
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="height: 14px;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="divRegTimer">
+                                                                        <img alt="Timer" src="Content/themes/App_Themes/EDrive/images/time01.png">
+                                                                    </div>
+                                                                </td>
+                                                                <td valign="top">
+                                                                    <table width="100%">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="font-weight: bold; font-size: 14px;">
+                                                                                    Convenient &amp; Time-saving Process
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    You can forget about sifting through hundreds of vehicles to find the best deal.With
+                                                                                    E-DRIVE you will have easy access to vehicle deals in all makes and models guaranteed!
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="height: 14px;">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new">
+        </div>
+        <div class="divbottommiddetail-new-line-inner">
+        </div>
+        <div class="divbottomright-new">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>

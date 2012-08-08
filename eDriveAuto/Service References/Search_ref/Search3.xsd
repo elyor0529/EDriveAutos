@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://server/edriveauto/Search.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" />
+  <xs:element name="SearchProductBy_Make_Model_City_Zip">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="SortByColumn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Zip" type="xs:int" />
+        <xs:element minOccurs="0" name="Warranty" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Transmission" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Engine" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchProductBy_Make_Model_City_ZipResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EdriveService.DataContract" minOccurs="0" name="SearchProductBy_Make_Model_City_ZipResult" nillable="true" type="q1:ArrayOfProducts" />
+        <xs:element minOccurs="0" name="CarsCount" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Milage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DriveType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

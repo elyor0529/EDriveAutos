@@ -1,0 +1,98 @@
+﻿@model Edrive.Models.ED_Testimonials
+@{
+    ViewBag.Title = "AddTestimonials";
+}
+
+
+
+ 
+@section  Head{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+<style>
+    #Manage {}
+    #Manage table input[type='text']{width:250px;}
+    #Manage table textarea{width:200px;height:120px;}
+#Manage table{width:100%;border: 1px solid #AFDFFD;
+background-color: #F3FBFE;width:969px;}
+#Manage table tr td.firstManage{background-color: #F3FBFE;width: 177px;padding-left: 11px;}
+#Manage table tr td.secondManage{background-color: #F3FBFE;}
+#Manage table tr td {padding-bottom:5px;}
+
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$("#Name").rules("add", {
+ required: true,
+ messages: {
+   required: "* Required"
+ }
+});
+});
+
+</script>
+}
+<div id="Manage">
+@using (Html.BeginForm("AddTestimonials", "ManageContent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+ <h2>Add Testimonials</h2>  <br />
+  
+    
+    @Html.ActionLink("back to testimonials list", "Testimonials", "ManageContent")
+    <br />
+    <div style="color:Red;text-align:center">
+@(ViewData["Msg"] ?? "")
+</div>
+    <div style="text-align:right;margin-right:14px;">
+    <input type="submit" value="Save" />
+      <br />
+    <br />
+        </div>
+  <table>
+  <tr>
+  <td class="firstManage">
+  Name
+  </td>
+  <td class="secondManage">
+  @Html.TextBoxFor(m => m.Name)
+  </td>
+  
+  </tr><tr>
+  <td class="firstManage">
+  Address
+  </td>
+  <td class="secondManage">
+  @Html.TextAreaFor(m => m.Address)
+  </td>
+  
+  </tr><tr>
+  <td class="firstManage">
+  Select picture
+  </td>
+  <td class="secondManage">
+  <input type="file" name="Pic" id="Pic" />
+  <br />
+  
+  </td>
+  
+  </tr>
+  <tr>
+  <td class="firstManage" style="vertical-align:text-top">
+  Content
+  </td>
+  <td class="secondManage">
+  @Html.TextAreaFor(m => m.TContent, new { style = "width:350px;" })
+  </td>
+  
+  </tr>
+ 
+  </table>  
+                                 
+}
+
+
+
+</div>

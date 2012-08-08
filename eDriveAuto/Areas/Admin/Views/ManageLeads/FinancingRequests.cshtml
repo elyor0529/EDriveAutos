@@ -1,0 +1,189 @@
+﻿@model List<FinanceRequest>
+@{
+    ViewBag.Title = "FinancingRequests";
+}
+
+<script type="text/javascript">
+    function postPage(obj) {
+        $("#PageIndex").val($(obj).attr("id"));
+        document.forms["form1"].submit();
+    }
+    function ConfirmDelete(id) {
+        if (confirm("--Are you sure you want to delete this records.-") == false) {
+            return false;
+        }
+        else {
+            $("#form1").attr("action", "/Admin/ManageLeads/DeleteFinance/" + id);
+            
+            document.forms["form1"].submit();
+        }
+
+    }
+</script>
+
+<h2>Financing Requests</h2>
+
+<div style="color:Red;text-align:center;font-weight:bold">
+@(ViewData["Msg"]??"")
+</div>
+<div class="contentTable">
+@if (Model != null)
+{
+    if (((List<Edrive.Models.FinanceRequest>)Model).Count > 0)
+    {
+<table>
+<thead>
+
+<tr>
+<td>
+Name
+</td>
+<td>
+Personal Details
+</td>
+<td>
+Employement Details
+</td>
+ 
+<td>
+Income Details
+</td>
+<td>
+Created on
+</td>
+ <td>
+ Delete
+ </td>
+</tr>
+</thead><tbody>
+@foreach (var item in Model)
+{var clsName=(Model.IndexOf(item)%2==0)?"alterRow":"";  
+  
+    <tr>
+<td>
+<b>
+ @item.FirstName @item.LastName</b>
+
+</td>
+<td>
+<div style="text-align:right;margin-right:5px">
+@item.FirstName @item.LastName, 
+<br />
+@item.StreetAddress,<br />
+
+@item.City, @item.State,<br/>
+<b>
+@item.Email, <br />
+</b>
+
+<b>Home Phone:</b> @item.HomePhone<br />
+<b>Mobile Phone:</b> @item.MobilePhone<br />
+
+<b>Residence Type:</b> @item.ResidenceType<br />
+Staying from @item.HowLongAtAddress  <br />
+<b>Monthly Rent:</b> @item.MonthRent_Mortage
+
+
+
+
+ 
+
+</div>
+
+ 
+</td>
+<td>
+ <div style="text-align:right;padding-right:5px;">
+ @item.EmployerName,<br />
+ @item.JobTitle,<br />
+ <b>Work Phone</b> @item.WorkPhone, <br/>
+ <b>Working from @item.HowLongWorking </b>
+
+ </div>
+</td>
+<td>
+<div style="text-align:right;padding-right:5px;"> 
+<b>Monthly Income: </b> @item.MonthlyIncomeBeforeTaxes <br />
+<b>Downpayment: </b> @item.DownPayment  <br />
+<b>Is Bankrupt: </b> @(item.IsBankrupt == true ? "Yes" : "No") <br>
+<b>Credit Score: </b> @item.CreditScore <br/>
+<b>Co-Signor Available: </b> @(item.IsCosignerAvailable == true ? "Yes" : "No")  <br />
+
+ </div>
+ 
+</td>
+ 
+<td>
+@item.CreatedOn.ToString("D")
+</td>
+ <td>
+ <span href="#" style="color:Blue;cursor:pointer" onclick="ConfirmDelete(@item.id)">Delete</span>
+ </td>
+</tr>
+}
+
+
+</tbody>
+</table>
+    <br />
+        using (Html.BeginForm("FinancingRequests", "ManageLeads", FormMethod.Post, new { id = "form1" }))
+{ 
+        @Html.Partial("_Paging")
+    }
+    }
+    else
+    {
+        
+<table>
+<thead>
+<tr>
+<td>
+Name
+</td>
+<td>
+Personal Details
+</td>
+<td>
+Employement Details
+</td>
+ 
+<td>
+Income Details
+</td>
+<td>
+Created on
+</td>
+ 
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Name
+</td>
+<td>
+Email
+</td>
+<td>
+City,Stated
+</td>
+<td>
+EmployerName
+</td>
+<td>
+Monthly Income
+</td>
+<td>
+Details
+</td>
+</tr>
+</tbody>
+
+</table>
+    <div style="text-align:center;color:Red">
+    No Record Found.
+
+    </div>
+    }
+}
+</div>

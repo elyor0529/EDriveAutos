@@ -1,0 +1,230 @@
+﻿ @model Edrive.Models._DealerManageFilter
+            
+@{
+    ViewBag.Title = "Index";
+     
+}
+@section Head{
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#RegFrom").attr("readonly", "readonly");
+        $("#RegTo").attr("readonly", "readonly");
+        $("#RegFrom").datepicker({ changeMonth: true,
+            changeYear: true
+        });
+        $("#RegTo").datepicker({ changeMonth: true,
+            changeYear: true
+        });
+    }
+);
+
+
+    function SendEmail(Cust_ID) {
+        var CustIDValue=$("#" + Cust_ID).val();
+        $("#CustomerID").val(CustIDValue);
+
+    }
+function postPage(obj) {
+
+    
+
+    $("#PageIndex").val($(obj).attr("id"));
+    document.forms["form1"].submit();
+}
+</script>
+
+<style>
+    th{width:200px;background:#189ef7;color:White;font-weight:bold;text-align:center;padding-top:3px;padding-bottom:3px;}
+ td{padding-left:5px;color:#245D75;background:white;height:21px;text-align:center;border:1px solid #AFDFFD}
+tr.alter td{background:#eff7ff; text-align:center}
+tr {}
+ #ManageDealer td {text-align:left;border:0px;padding-bottom:5px;border:0px #AFDFFD;background:transparent;}
+ #ManageDealer tr{border:0px;}
+  div#sectionbody
+{
+	border: 1px solid #afdffd;
+	background-color: #F3FBFE;
+	padding: 15px;
+	width:936px;
+}
+.firstColmanageDealer {width:150px}
+  div.SearchDealer table{margin-top:0px;width:938px;}
+  div.SearchDealer table td{padding-bottom:3px;border:1px solid #AFDFFD}
+</style>
+
+
+
+}
+
+<h2>Manage Dealers</h2>
+
+
+@using (Html.BeginForm("Index", "ManageDealer", FormMethod.Post, new { id = "form1" }))
+{
+<div style="text-align:right" id="Manage">
+<div style="text-align:center;color:Red;">
+  @(ViewData["Msg"] ?? "")  
+  </div>
+
+<div style="margin-right:15px;">
+<input type="hidden" value="" id="CustomerID" name="CustomerID" />
+<input id="Button12" type="submit" name="Search" value="Search" />
+<input id="Button1" type="submit" name="AddNew" value="Add New" />
+
+</div>
+<br />
+</div>    
+       <div id="sectionbody" class="sectionbody">
+       <div class="CustomerManage">
+     <table id="ManageDealer">
+     <tr>
+     <td class="firstColmanageDealer">
+     @Html.LabelFor(m => m.RegFrom)
+     </td>
+     <td>
+     @Html.TextBoxFor(m => m.RegFrom, new { id = "RegFrom" })
+     </td>
+     </tr>
+      <tr>
+     <td class="firstColmanageDealer">
+     @Html.LabelFor(m => m.RegTo)
+     </td>
+     <td>
+     @Html.TextBoxFor(m => m.RegTo, new { id = "RegTo" })
+     </td>
+     </tr>
+ <tr>
+     <td class="firstColmanageDealer">
+     @Html.LabelFor(m => m.Email)
+     </td>
+     <td>
+     @Html.TextBoxFor(m => m.Email)
+     </td>
+     </tr>
+ <tr>
+     <td class="firstColmanageDealer">
+     @Html.LabelFor(m => m.LastName)
+     </td>
+     <td>
+     @Html.TextBoxFor(m => m.LastName)
+     </td>
+     </tr>
+ <tr>
+     <td class="firstColmanageDealer">
+     @Html.LabelFor(m => m.CompanyName)
+     </td>
+     <td>
+     @Html.TextBoxFor(m => m.CompanyName)
+     </td>
+     </tr>
+
+      <tr>
+     <td class="firstColmanageDealer">
+     @Html.LabelFor(m => m.CompanyName2)
+     </td>
+     <td>
+     @Html.DropDownListFor(m => m.CompanyName2, ViewData["Dealers"] as SelectList, "All")
+     </td>
+     </tr>
+
+     </table>
+       </div>
+    <div>
+    <br />
+    <input type="submit" name="Featured" value="Make Featured"  />
+    </div>
+  
+          
+     
+         
+@{List<Edrive.Edrivie_Service_Ref.Customer> lstCustomer = (List<Edrive.Edrivie_Service_Ref.Customer>)(ViewData["Customers"]);
+         <text>
+      <div class="SearchDealer">
+        <table>
+
+        <thead>
+        <th style="width:40px;">
+        Select
+        </th>
+        <th> Email
+        </th>
+
+         <th> Name
+        </th>  <th style="width:50px;">    Featured
+        </th>
+   
+         <th style="width:84px;">Active
+        </th>
+         <th>Registration Date
+        </th>
+         <th style="width:84px">Edit
+        </th>
+        <th style="width:100px;">Action
+        </th>
+        </thead>
+        <tbody>
+        @if (lstCustomer != null)
+        {
+            foreach (var item in lstCustomer)
+            {
+                var clsName = lstCustomer.IndexOf(item) % 2 == 0 ? "alter" : "";
+            <tr class="@clsName" >
+            <td>
+            @if (item.IsFeatured == false)
+            {
+                <input type="radio" name="chkFeatured"   value="@item.customerID"/>
+                
+            }
+            else
+            { 
+                <input type="radio" name="chkFeatured"  checked="checked"  value="@item.customerID"/>
+            }
+            </td>
+            
+            <td style="text-align:left;padding-left:5px;"> @item.email
+        </td>
+
+         <td  style="text-align:left;padding-left:5px;">  @item.Name
+        </td>
+         <td>
+         @if (item.IsFeatured)
+         {
+            @: <img   src="@Url.Content("~/Content/Images/checked.gif")" alt="True" style="border-width:0px;">
+         }
+         else
+         {
+             @: <img  src="@Url.Content("~/Content/Images/unchecked.gif")" alt="false" style="border-width:0px;">
+         } 
+         </td>
+         <td style="width:84px;text-align:center">
+         @if (item.active)
+         {
+            @: <img   src="@Url.Content("~/Content/Images/checked.gif")" alt="True" style="border-width:0px;">
+
+         }
+         else
+         {
+           
+             @: <img  src="@Url.Content("~/Content/Images/unchecked.gif")" alt="false" style="border-width:0px;">
+
+         } 
+        </td>
+         <td> @item.registrationDate.ToString("MM/dd/yyyy hh:mm:ss tt")
+        </td>
+         <td style="width:84px;">@Html.ActionLink("Edit", "Edit", new { id = @item.customerID })
+        </td>
+        <td>
+        <input type="hidden" value="@item.customerID" id="customer_@(item.customerID)" />
+        <input type="submit" onclick="SendEmail('customer_@(item.customerID)')"  id="SendMail"  name="SendMail" value="Send Email" />
+      
+        </td>
+            </tr>
+            }
+        }
+           </tbody>
+      </table>
+      @Html.Partial("_Paging")
+       </div> </text>
+}
+     </div>
+}

@@ -1,0 +1,39 @@
+﻿@model List<Edrive.Models.ED_Testimonials>
+
+@if(Model != null)
+{
+	foreach(var item in Model)
+	{
+	<div class="TestArt">
+		<p>
+			"@item.TContent</p>
+		<div class="testimonialMore">
+			<a class="Blue" href="@Url.Action("Index", "Customers_Speak")">@(item.Name.Length > 15 ? item.Name.Substring(0, 14) + "..." : item.Name)</a>
+		</div>
+	</div>
+            
+	}
+}
+else
+{  <div class="TestArt">
+		<p>
+			"I am very much impressed by the marketing tools available for affilates : probably
+			the best and most comprehensive i have seen so far.</p>
+		<div align="right">
+			<a class="Blue" href="#">Casey</a></div>
+	</div>
+	<div class="TestArt">
+		<p>
+			"I am very much impressed by the marketing tools available for affilates : probably
+			the best and most comprehensive i have seen so far.</p>
+		<div align="right">
+			<a class="Blue" href="#">Casey</a></div>
+	</div>
+	<div class="TestArt">
+		<p>
+			"I am very much impressed by the marketing tools available for affilates : probably
+			the best and most comprehensive i have seen so far.</p>
+		<div align="right">
+			<a class="Blue" href="#">Casey</a></div>
+	</div>
+}

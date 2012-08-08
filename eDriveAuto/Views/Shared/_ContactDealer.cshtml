@@ -1,0 +1,161 @@
+﻿@model Edrive.Core.Model.IntrestedCustomer
+           
+@{
+    if (User.IsInRole("Guest") == false)
+    {
+        using (Html.BeginForm("IntrestedCustomer", "Product", FormMethod.Post, new { id="form1"}))
+        {
+    <fieldset>
+        <div class="Row">
+        <input type="hidden" value='@ViewData["ProductId"]' name="hidProductId"/>
+            <label>
+                Hello, my name is</label>
+            @Html.TextBoxFor(m => m.firstname, new { id = "firstName", @class = "inpfld Txtfld width_105" })
+            @Html.TextBoxFor(m => m.lastname, new { id = "LastName", @class = "inpfld Txtfld width_105" })
+            <div class="Clr">
+            </div>
+        </div>
+        <div class="Row">
+            <p>
+                I am interested in speaking with you about the <strong>@ViewData["year"] @ViewData["make"]
+                    @ViewData["model"] @ViewData["body"]</strong> ( VIN# @ViewData["vin"] ) you
+                have for sale on eDriveAutos.com. I prefer to be contacted by &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="email">
+                    <input name="contactType" type="radio" value="Email"  checked="checked" />
+                    email</span></p>
+        </div>
+        <div class="Row">
+            @Html.TextBoxFor(m => m.email, new { @class = "inpfld Txtfld width_130 Flt required" })
+            <span class="width_93 Flt">
+                <input name="contactType" type="radio" value="Phone" />
+                phone</span>
+            @Html.TextBoxFor(m => m.phoneno, new { @class = "inpfld Txtfld width_105 Flt" })
+            <div class="Clr">
+            </div>
+        </div>
+        <div class="Row">
+            @Html.TextAreaFor(m => m.additionalComments, new { @class = "inpfld Txtarea" })
+        </div>
+        <div class="Row">
+        
+        <label class="Interestedtype"><input type="checkbox" name="InterestedType"  value="financing" checked="checked" />I need financing</label> 
+         
+       <label class="Interestedtype"> <input type="checkbox" name="InterestedType" value="trade-in" />I have a trade-in</label> 
+        </div>
+
+        <div class="InstCust"> @* class="lnkbuttonSendmessage"*@
+             
+            <input name="btnIntrestedCustomer"  onclick="return checkForm()" type="image" src="/Content/Images/SendMsgDealer.png"   title="Send Message" value="Send Message" />
+
+
+            @Html.ValidationSummary(false)
+
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+
+        function checkForm() {
+            if ($("#form1").valid() == false) {
+                return false;
+            }
+                      //alert($("#form1").valid());
+                    //if($(".required").length==0)                    return true;
+                      if ($.trim($(".required").val()) == "") 
+                      {
+                          $(".required").addClass("input-validation-error");
+                          return false;
+                      }
+                      else
+                      {
+                      return true;
+                      }
+                  }
+
+            
+        $(document).ready(function () {
+        //--- if contact type is changed then show error message---
+            //alert($("input[name='contactType'][type='radio']").length);
+            $("input[name='contactType'][type='radio']").change(function () {
+                $("#email").removeClass("required");
+                $("#phoneno").removeClass("required");
+                if ($(this).val() == "Email") {
+                    $("#email").addClass("required");
+                    $("#email").attr("data-val-required", "Email is required");
+
+
+                }
+                else {
+                    $("#phoneno").addClass("required");
+                    $("#email").attr("data-val-required", "Phoneno is required");
+
+                    
+                }
+                
+            })
+        });
+    </script>
+   
+        }
+    }
+    else
+    {
+     <fieldset>
+        <div class="Row">
+        <input type="hidden" value='@ViewData["ProductId"]' name="hidProductId"/>
+            <label>
+                Hello, my name is</label>
+            @Html.TextBoxFor(m => m.firstname, new { id = "firstName", @class = "inpfld Txtfld width_105",disabled="disabled" })
+            @Html.TextBoxFor(m => m.lastname, new { id = "LastName", @class = "inpfld Txtfld width_105", disabled = "disabled" })
+            <div class="Clr">
+            </div>
+        </div>
+          
+   
+        <div class="Row">
+            <p>
+                I am interested in speaking with you about the <strong>@ViewData["year"] @ViewData["make"]
+                    @ViewData["model"] @ViewData["body"]</strong> ( VIN# @ViewData["vin"] ) you
+                have for sale on eDriveAutos.com. I prefer to be contacted by &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="email">
+                    <input name="contactType" type="radio" value="Email" class="required" checked="checked" />
+                    email</span></p>
+        </div>
+        <div class="Row">
+            @Html.TextBoxFor(m => m.email, new { @class = "inpfld Txtfld width_130 Flt", disabled = "disabled" })
+            <span class="width_93 Flt">
+                <input name="contactType" type="radio" value="Phone" />
+                phone</span>
+            @Html.TextBoxFor(m => m.phoneno, new { @class = "inpfld Txtfld width_105 Flt", disabled = "disabled" })
+            <div class="Clr">
+            </div>
+        </div>
+        <div class="Row">
+            @Html.TextAreaFor(m => m.additionalComments, new { @class = "inpfld Txtarea", disabled = "disabled" })
+        </div>
+        <div class="Row">
+        
+        <label class="Interestedtype"><input type="checkbox" name="InterestedType" value="financing" checked="checked" />I need financing</label> 
+         
+       <label class="Interestedtype"> <input type="checkbox" name="InterestedType" value="trade-in" />I have a trade-in</label> 
+        </div>
+
+        <div class="InstCust"> @* class="lnkbuttonSendmessage"*@
+            
+           <b>To Send Message <a href="/Register">Register for full access.</a></b>
+           @* <input name="btnIntrestedCustomer" type="image" src="/Content/Images/SendMsgDealer.png" onclick="return checkForm()" title="Send Message" disabled="disabled" value="Send Message" />
+           *@ <br />
+           
+            @Html.ValidationSummary(false)
+        </div>
+    </fieldset> 
+    }
+}
+
+
+<script type="text/javascript" language="javascript">
+//    $(function () {
+//        $('#firstName').watermark('watermark', 'First Name');
+//        $('#LastName').watermark('watermark', 'Last Name');
+
+//    });
+    </script>

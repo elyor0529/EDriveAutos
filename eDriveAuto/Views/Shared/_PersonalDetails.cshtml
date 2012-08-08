@@ -1,0 +1,104 @@
+﻿@model Edrive.Models._PersonalDetails
+<div class="customer-info-box">
+    <div class="message-error">
+    </div>
+    <div class="clear">
+    </div>
+    <div class="section-title">
+        Personal Details
+    </div>
+    <div class="clear">
+    </div>
+    <div class="section-body">
+        <table class="table-container">
+            <tbody>
+                <tr class="row">
+                    <td class="item-name">
+                        Name:
+                    </td>
+                    <td class="item-value">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "textBox", style = "height:20px;width:200px;" })
+                        @Html.HiddenFor(m => m.CustomerID)
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="item-name">
+                        E-Mail:
+                    </td>
+                    <td class="item-value">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "textBox", style = "height:20px;width:200px;" })
+
+                    </td>
+                </tr>
+             
+                    <tr class="row">
+                        <td class="item-name">
+                           Post Code:
+                        </td>
+                        <td class="item-value">
+                                        @Html.TextBox("PostalCode", Model.PostalCode == 0 ? "" : Model.PostalCode.ToString(), new { @class = "textBox", style = "height:20px;width:200px;" })
+        
+                        </td>
+                    </tr> 
+               
+            
+                    <tr class="row">
+                        <td class="item-name">
+                             Telephone Number:
+                        </td>
+                        <td class="item-value">
+                                @Html.TextBoxFor(m => m.Telephone, new { @class = "textBox", style = "height:20px;width:200px;" })
+                        </td>
+                    </tr>
+              
+            </tbody>
+        </table>
+    </div>
+  
+    <div class="button">
+      <input type="submit" value="Save" style="border: 0px solid;" name="Submit" class="lnkClose" />
+        
+    </div>
+</div>
+@*<div class="section-body">
+    <table class="table-container">
+        <tbody>
+            <tr class="row">
+                <td class="item-name">
+                    Name:
+                </td>
+                <td class="item-value">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "textBox", style = "height:20px;width:200px;" })
+                    @Html.HiddenFor(m => m.CustomerID)
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="item-name">
+                    E-Mail:
+                </td>
+                <td class="item-value">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "textBox", style = "height:20px;width:200px;" })
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="item-name">
+                    Post Code:
+                </td>
+                <td class="item-value">
+                    @Html.TextBox("PostalCode", Model.PostalCode == 0 ? "" : Model.PostalCode.ToString(), new { @class = "textBox", style = "height:20px;width:200px;" })
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="item-name">
+                    Telephone Number:
+                </td>
+                <td class="item-value">
+                    @Html.TextBoxFor(m => m.Telephone, new { @class = "textBox", style = "height:20px;width:200px;" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="button">
+    <input type="submit" value="Submit" style="border: 0px solid;" name="Submit" class="lnkClose" />
+</div>*@

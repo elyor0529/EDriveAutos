@@ -1,0 +1,161 @@
+﻿@model Edrive.Models._SendDealerEmail
+
+
+<div id="ctl00_cph1_ctrlHotSheet_PnlContact" class="modalpopupSearchModal" >
+
+	    <div class="RoundedCornerContact">
+            <table width="100%" style="color: Black; text-align: left">
+                <tr>
+                    <td>
+                        <span ID="lblDealerName" runat="server" style="font-weight:bold">@ViewData["DealerName"]</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span ID="lblAddress1" runat="server">@ViewData["StreetAddress1"]</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span ID="lblCity" runat="server">@ViewData["City"]</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span ID="lblZipcode" runat="server">@ViewData["Phone"]</span>
+                    </td>
+                </tr>
+                <tr id="trviewNote" runat="server" visible="false">
+                    <td>
+                        <div style="width: 100px;">
+                          @*  <asp:Literal ID="literalNote" runat="server"></asp:Literal>*@
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="height: 10px;">
+        </div>
+        @using (Html.BeginForm("DealerInfo", "ManageVehicle", FormMethod.Post))
+        {
+        <div class="RoundedCornerContactNew">
+            <table width="100%" style="color: Black; text-align: left">
+                
+                <tbody><tr>
+                    <td colspan="4">
+                        
+                        <span style="font-weight: bold; color: #8190D5"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #8190D5">
+                        Name
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                    @Html.Hidden("_prdID",ViewData["ProductID"])
+                    @Html.TextBoxFor(m=>m.Name)
+                            
+                    </td>
+                    <td width="1%">
+                     </td>
+                </tr>
+                <tr>
+                    <td style="color: #8190D5">
+                        Email
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                   @Html.TextBoxFor(m=>m.Email)
+                     </td>
+                    <td>
+                          </td>
+                </tr>
+                <tr>
+                    <td style="color: #8190D5">
+                        Phone
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                            @Html.TextBoxFor(m=>m.Phone)
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #8190D5">
+                        City
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                     @Html.TextBoxFor(m=>m.City)   </td>
+                    <td>
+                       </td>
+                </tr>
+                <tr>
+                    <td style="color: #8190D5">
+                        State
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                           @Html.DropDownListFor(m=>m.StateID,ViewData["StateID"] as SelectList)
+
+ 
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: Red">
+                        Subject
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        
+                           @Html.TextBox("Subject", ViewData["Subject"])
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #8190D5">
+                        Comments / Question
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                   
+                       @Html.TextAreaFor(m => m.Comments, new { style = "width:200px" })
+                       </td>
+                    <td>
+                        <span id="ctl00_cph1_ctrlHotSheet_RequiredFieldValidator4" style="color:Red;display:none;">*</span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    </td>
+                    <td>
+                       @* <input type="image" name="ctl00$cph1$ctrlHotSheet$imgSendMsg" id="ctl00_cph1_ctrlHotSheet_imgSendMsg" src="../App_Themes/administration/images/send-this.jpg" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cph1$ctrlHotSheet$imgSendMsg&quot;, &quot;&quot;, true, &quot;Msg&quot;, &quot;&quot;, false, false))" style="border-width:0px;">
+                       *@
+                        <input id="SendMessage" type="submit" name="SendMessage" value="Send this Message" />
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        }
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+
+</div>

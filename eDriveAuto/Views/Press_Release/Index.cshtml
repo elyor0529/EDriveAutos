@@ -1,0 +1,114 @@
+﻿@model  List<Edrive.Models.Nop_News>
+@{
+	<title>Press Release</title>
+}
+@section Head
+{
+	<link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		function postPage(obj) {
+			try {
+
+				var pageindex = $(obj).attr("id");
+				// alert(pageindex);
+
+				$("#PageIndex").val(pageindex);
+				document.forms[0].submit();
+			} catch (e) {
+				alert(e.Message);
+			}
+		}
+	</script>
+}
+<form id="form1" action="" method="post">
+<div class="product-inner-page">
+	<div class="divdetail-inner">
+		<div class="clear">
+		</div>
+	</div>
+	<div class="tab-new">
+		<div class="teb-left">
+		</div>
+		<div class="tab-line">
+			<div class="tab-tital">
+				Press
+			</div>
+		</div>
+		<div class="tab-right">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+	<div class="clear1">
+	</div>
+	<div class="divbottom-home">
+		<div class="divbottomleft-new-top">
+		</div>
+		<div class="divbottommiddetail-new-line-top-inner">
+		</div>
+		<div class="divbottomright-new-top">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+	<div class="divinnercontent-home-new-one">
+		<div class="divinnercontent">
+			<div class="newslist">
+				<div class="htitle">
+				</div>
+				<div class="subtitle">
+					Keep up to date with the latest company news from <a href="@Html.Action("GetSetting", "Home", new { id = "Common.StoreURL" })">
+						EDRIVEAUTOS.COM</a>
+				</div>
+				<div class="clear">
+				</div>
+				<div class="newsitems">
+					<div class="item">
+						<div class="subtitle">
+							Latest News
+						</div>
+						@Html.Action("TopicDetail", "Home", new { id = "LatestNews" })
+					</div>
+				</div>
+				<div class="newsitems">
+					@foreach(var item in Model)
+					{
+						var title = System.Text.RegularExpressions.Regex.Replace(item.Title, @"[^\w\.@-]", "_");
+						var newsDetailUrl = Url.Action("Index", "News") + "/" + item.NewsID.ToString() + "_" + title;
+
+						<div class="item">
+							<a class="newstitle" href="@newsDetailUrl">
+								@Html.Raw(item.Title)
+							</a>
+							<br />
+							<div class="newsdate">
+								@item.CreatedOn.ToString("D")
+							</div>
+							<div class="newsdetails">
+								@item.Short
+							</div>
+							<div class="newsreadmore">
+								<a href="@newsDetailUrl" class="readmore">Read More</a></div>
+						</div>
+					}
+				</div>
+				<div class="pager">
+					@Html.Partial("_PagerPressRelease")
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+	<div class="divbottom-home">
+		<div class="divbottomleft-new">
+		</div>
+		<div class="divbottommiddetail-new-line-inner">
+		</div>
+		<div class="divbottomright-new">
+		</div>
+	</div>
+	<div class="clear">
+	</div>
+</div>
+</form>

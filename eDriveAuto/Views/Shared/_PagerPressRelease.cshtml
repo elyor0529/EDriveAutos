@@ -1,0 +1,55 @@
+﻿     <!-- paging start here-->
+            <div class="footer" style="background:none;height:auto">
+
+            @{
+                Int32 pageIndex = Convert.ToInt32((int) (ViewData["PageIndex"] ?? 0));
+                Int32 TotalCounts = Convert.ToInt32((int) (ViewData["TotalCounts"] ?? 0));
+                Int32 pageSize = Convert.ToInt32((int) (ViewData["PageSize"] ?? 10));
+                
+                Int32 maxIndex = (TotalCounts-1) / pageSize+1; //10 is pagesize
+                Int32 stIndex = pageIndex / 10 * 10 + 1;
+                Int32 endIndex = stIndex + 9;
+                if(TotalCounts==0)
+                {
+                    pageIndex = endIndex = stIndex = maxIndex = 0; 
+                }
+                if (endIndex >= maxIndex)
+                {
+                    endIndex = maxIndex;
+                }
+               
+           <input type="hidden" value="@pageIndex" id="PageIndex" name="PageIndex"/>
+                
+    if (pageIndex > 0)
+    {
+         <span class="" style="cursor:pointer;text-decoration:underline;color:Blue" id= "@(pageIndex-1)" onclick = "postPage(this)">Prev</span>
+    }
+   if(endIndex!=0)
+   { for (int i = stIndex; i <= endIndex ; i++)
+    {
+       if(endIndex!=1)  
+       {<span>
+                @{var clsName = "pageNumber";
+                  if (@pageIndex == i - 1)
+                  { clsName = "pageNumberActive"; }
+                }
+                
+                <span class="@clsName" style="cursor:pointer" id= "@(i - 1)" onclick = "postPage(this)">@i</span>
+                
+                  </span> 
+                }
+              
+    }
+    }
+                if (pageIndex < maxIndex - 1)
+    {
+         <span class="" style="cursor:pointer;text-decoration:underline;color:Blue" id= "@(pageIndex + 1)" onclick = "postPage(this)">Next</span>
+    }
+                if (ViewData["IsPostBack"]==null){
+       @* <span style="padding-left:150px;color:Red">Total Records = @TotalCounts
+    </span>*@}
+                
+                }
+              
+            </div>
+             <!-- paging ends here-->

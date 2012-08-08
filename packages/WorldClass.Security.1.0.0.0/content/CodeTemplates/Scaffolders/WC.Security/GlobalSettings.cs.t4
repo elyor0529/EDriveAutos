@@ -1,0 +1,49 @@
+﻿<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System.Web.Configuration;
+
+namespace <#= Model.Namespace #>.Security
+{
+    public static class GlobalSettings
+    {
+        private static readonly SecuritySection _security = (SecuritySection) WebConfigurationManager.GetSection("<#= Model.Namespace #>/security");
+
+        private static readonly EnvironmentSection _environment =
+            (EnvironmentSection) WebConfigurationManager.GetSection("<#= Model.Namespace #>/environment");
+
+        private static readonly ErrorPagesSection _errorPages =
+    (ErrorPagesSection)WebConfigurationManager.GetSection("<#= Model.Namespace #>/errorPages");
+
+        private static readonly WebmasterSection _webmasterSection =
+(WebmasterSection)WebConfigurationManager.GetSection("<#= Model.Namespace #>/webmaster");
+
+        private static readonly MonitoringSection _monitoringSection =
+(MonitoringSection)WebConfigurationManager.GetSection("<#= Model.Namespace #>/monitoring");
+
+
+        public static SecurityOption UseSecurity
+        {
+            get { return _security.UseSecurity; }
+        }
+
+        public static DevLevel Environment
+        {
+            get { return _environment.Level; }
+        }
+
+        public static bool UseFriendlyErrors
+        {
+            get { return _errorPages.UseFriendlyErrors; }
+        }
+
+        public static string WebmasterEmail
+        {
+            get { return _webmasterSection.EmailAddress; }
+        }
+
+        public static string ExceptionsEmail
+        {
+            get { return _monitoringSection.EmailAddress; }
+        }
+    }
+}

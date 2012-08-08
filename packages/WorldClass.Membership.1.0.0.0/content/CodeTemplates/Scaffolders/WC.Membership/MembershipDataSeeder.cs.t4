@@ -1,0 +1,49 @@
+﻿<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity.Migrations;
+<#
+	foreach(string ns in Model.ExtraUsings.Split(','))
+	{
+	#>
+using <#= ns #>;
+	<#
+	}
+#>
+
+namespace <#= Model.Namespace #>
+{
+	public class MembershipDataSeeder
+    {
+        public void Seed(DataContext context)
+        {
+
+            new List<Role>()
+                {
+                    new Role()
+                        {
+                            Id = 1,
+                            RoleId = new Guid("{26F1D9A0-5E1A-4964-BC78-B8813929DA97}"),
+                            RoleName = "SuperAdmin"
+                        }
+                }.ForEach(a => context.Roles.AddOrUpdate(a));
+
+            new List<User>()
+                {
+                    new User()
+                        {
+                            Id = 1,
+                            Email = "webmaster@localhost",
+                            Username = "administrator",
+                            FirstName = "Rod",
+                            LastName = "Johnson",
+                            Password = "1scool!!",
+                            IsApproved = true
+                        }
+                }.ForEach(u => context.Users.AddOrUpdate(u));
+
+        }
+    }
+}

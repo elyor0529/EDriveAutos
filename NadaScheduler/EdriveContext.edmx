@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NadaScheduler.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NadaSchedulerStoreContainer" />
+        <Function Name="SPRETRIEVE_VEHICLESTOPROCESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'EDriveAutos - Test DB.dbo.VEHICLE.TEMP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="VEHICLE_TEMP">
+        <Property Name="TYPE" Type="varchar" MaxLength="10" />
+        <Property Name="STOCK" Type="varchar" MaxLength="30" />
+        <Property Name="VIN" Type="varchar" MaxLength="20" />
+        <Property Name="YEAR" Type="varchar" MaxLength="10" />
+        <Property Name="MAKE" Type="varchar" MaxLength="50" />
+        <Property Name="MODEL" Type="varchar" MaxLength="50" />
+        <Property Name="TRIM" Type="varchar" MaxLength="50" />
+        <Property Name="FREE_TEXT" Type="text" />
+        <Property Name="BODY" Type="varchar" MaxLength="150" />
+        <Property Name="MILEAGE" Type="varchar" MaxLength="50" />
+        <Property Name="PRICE_CURRENT" Type="varchar" MaxLength="50" />
+        <Property Name="RESERVED" Type="varchar" MaxLength="50" />
+        <Property Name="PRICE_WHOLESALE" Type="varchar" MaxLength="50" />
+        <Property Name="PRICE_COST" Type="varchar" MaxLength="50" />
+        <Property Name="TITLE" Type="varchar" MaxLength="50" />
+        <Property Name="CONDITION" Type="varchar" MaxLength="50" />
+        <Property Name="EXTERIOR" Type="varchar" MaxLength="100" />
+        <Property Name="INTERIOR" Type="varchar" MaxLength="100" />
+        <Property Name="DOORS" Type="varchar" MaxLength="50" />
+        <Property Name="ENGINE" Type="varchar" MaxLength="50" />
+        <Property Name="TRANSMISSION" Type="varchar" MaxLength="50" />
+        <Property Name="FUEL_TYPE" Type="varchar" MaxLength="20" />
+        <Property Name="DRIVE_TYPE" Type="varchar" MaxLength="50" />
+        <Property Name="OPTIONS" Type="text" />
+        <Property Name="WARRANTY" Type="varchar" MaxLength="100" />
+        <Property Name="DESCRIPTION" Type="varchar" MaxLength="3000" />
+        <Property Name="PICS" Type="text" />
+        <Property Name="DATE_IN_STOCK" Type="varchar" MaxLength="30" />
+        <Property Name="EMAIL" Type="varchar" MaxLength="500" />
+        <Property Name="CONTACT" Type="varchar" MaxLength="50" />
+        <Property Name="DEALER_NAME" Type="varchar" MaxLength="100" />
+        <Property Name="ADDRESS" Type="varchar" MaxLength="50" />
+        <Property Name="CITY" Type="varchar" MaxLength="50" />
+        <Property Name="STATE" Type="varchar" MaxLength="50" />
+        <Property Name="ZIP" Type="varchar" MaxLength="50" />
+        <Property Name="TELEPHONE" Type="varchar" MaxLength="50" />
+      </EntityType>-->
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NadaScheduler" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EdriveEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="VehiclesToProcess" ReturnType="Collection(NadaScheduler.VehiclesToProcessItem)" />
+        </EntityContainer>
+        <ComplexType Name="VehiclesToProcessItem">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="400" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="VIN" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Stock" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Year" Nullable="true" />
+          <Property Type="Int32" Name="Model" Nullable="false" />
+          <Property Type="String" Name="Trim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Free_Text" Nullable="true" />
+          <Property Type="Int32" Name="Body" Nullable="false" />
+          <Property Type="Int32" Name="Mileage" Nullable="true" />
+          <Property Type="Decimal" Name="Price_Current" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Condition" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Exterior_Color" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Interior_Color" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Doors" Nullable="true" />
+          <Property Type="String" Name="Engine" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Transmission" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fuel_Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Drive_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Warranty" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="Date_in_Stock" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FileName" Nullable="true" />
+          <Property Type="Boolean" Name="IsNew" Nullable="true" />
+          <Property Type="Boolean" Name="IsFeature" Nullable="true" />
+          <Property Type="Decimal" Name="SavingAmount" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="StateID" Nullable="true" />
+          <Property Type="Decimal" Name="QualifyPrice" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AverageRetailPrice" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AverageTradeinPrice" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="City_Fuel" Nullable="true" />
+          <Property Type="Int32" Name="Highway_Fuel" Nullable="true" />
+          <Property Type="Int32" Name="zip" Nullable="true" />
+          <Property Type="String" Name="Reserved" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Price_Cost" Nullable="true" />
+          <Property Type="Double" Name="Price_WholeSale" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pics" Nullable="true" />
+          <Property Type="String" Name="OwnerDetail" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="ShowOnDealerProfile" Nullable="true" />
+          <Property Type="String" Name="SellerEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SellerName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Offer" Nullable="true" />
+          <Property Type="Boolean" Name="ISQUALIFIED" Nullable="false" />
+          <Property Type="DateTime" Name="NADACheckedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NadaSchedulerStoreContainer" CdmEntityContainer="EdriveEntities" >
+          <FunctionImportMapping FunctionImportName="VehiclesToProcess" FunctionName="NadaScheduler.Store.SPRETRIEVE_VEHICLESTOPROCESS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NadaScheduler.VehiclesToProcessItem">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Trim" ColumnName="Trim" />
+                <ScalarProperty Name="Free_Text" ColumnName="Free_Text" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="Price_Current" ColumnName="Price_Current" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Exterior_Color" ColumnName="Exterior_Color" />
+                <ScalarProperty Name="Interior_Color" ColumnName="Interior_Color" />
+                <ScalarProperty Name="Doors" ColumnName="Doors" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+                <ScalarProperty Name="Fuel_Type" ColumnName="Fuel_Type" />
+                <ScalarProperty Name="Drive_Type" ColumnName="Drive_Type" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date_in_Stock" ColumnName="Date_in_Stock" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="IsFeature" ColumnName="IsFeature" />
+                <ScalarProperty Name="SavingAmount" ColumnName="SavingAmount" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="QualifyPrice" ColumnName="QualifyPrice" />
+                <ScalarProperty Name="AverageRetailPrice" ColumnName="AverageRetailPrice" />
+                <ScalarProperty Name="AverageTradeinPrice" ColumnName="AverageTradeinPrice" />
+                <ScalarProperty Name="City_Fuel" ColumnName="City_Fuel" />
+                <ScalarProperty Name="Highway_Fuel" ColumnName="Highway_Fuel" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+                <ScalarProperty Name="Price_Cost" ColumnName="Price_Cost" />
+                <ScalarProperty Name="Price_WholeSale" ColumnName="Price_WholeSale" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Pics" ColumnName="Pics" />
+                <ScalarProperty Name="OwnerDetail" ColumnName="OwnerDetail" />
+                <ScalarProperty Name="ShowOnDealerProfile" ColumnName="ShowOnDealerProfile" />
+                <ScalarProperty Name="SellerEmail" ColumnName="SellerEmail" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+                <ScalarProperty Name="Offer" ColumnName="Offer" />
+                <ScalarProperty Name="ISQUALIFIED" ColumnName="ISQUALIFIED" />
+                <ScalarProperty Name="NADACheckedOn" ColumnName="NADACheckedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EdriveContext" />
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

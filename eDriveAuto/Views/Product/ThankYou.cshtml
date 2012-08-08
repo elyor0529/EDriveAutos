@@ -1,0 +1,253 @@
+﻿@model Edrive.Core.Model.Products
+@{
+    ViewBag.Title = "ThankYou";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section  Head{
+    <title>EDrive Autos.Thank You </title>
+    <meta name="metatitle" />
+    <meta name="description" />
+    <meta name="keywords" />
+    <link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+}
+<div class="product-inner-page">
+    <div class="divdetail-inner">
+        <div class="clear">
+        </div>
+    </div>
+    <div class="tab-new">
+        <div class="teb-left">
+        </div>
+        <div class="tab-line">
+            <div class="tab-tital">
+                Thank You</div>
+        </div>
+        <div class="tab-right">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="clear1">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new-top">
+        </div>
+        <div class="divbottommiddetail-new-line-top-inner">
+        </div>
+        <div class="divbottomright-new-top">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="divinnercontent-home-new-inner">
+        <div class="divinnercontent">
+            <div style="margin-left: 90%">
+                <img src="@Url.Content("~/Content/Themes/App_Themes/EDrive/images/icon.jpg")" style="position: relative; height: 46px;right: 50px; top: 0px; z-index: 1000;" />
+            </div>
+            <div class="thankyouBody">
+                <div class="firstRow">
+                    <div class="thankyou_picturemain">
+                        <img id="defaultImage"  src="@(ViewData["DefImage"] ?? "")"  Height="126px" Width="193px" />
+                    </div>
+                    <div class="thankyouLabel">
+                        <span class="thankProduct">
+                            <h3>
+                                Product Name: @Model.Year @Model.Make @Model.ModelName @Model.body</h3>
+                        </span><span><b>VIN :</b></span><span class="fontTex" style="margin-left: 6px;">@Model.vin</span>
+                        <span class="thankprice">   @String.Format("${0:n2}", Model.price_Current)</span>
+                        <br />
+                        <span><b>Color :</b></span><span class="fontTex" style="margin-left: 6px;">@Model.exterior</span><br />
+                        <span><b>Miles :</b></span><span class="fontTex" style="margin-left: 6px;">@Model.mileage
+                        </span>
+                        <br />
+                    </div>
+                </div>
+                <div class="firstRow">
+                    <table width="100%">
+                        <tr>
+                            <td class="leftHeader">
+                                <b>Client</b>
+                            </td>
+                            <td class="leftHeader">
+                                <b>Dealer</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="ClientInfo">
+									@{
+										if(Session["ClientInfo"] != null)
+										{
+											var clientInfo = (Edrive.Core.Model.IntrestedCustomer)Session["ClientInfo"];
+                                            
+                                        <table width="100%" style="margin-left: 5px;" visible="false">
+                                            <tr>
+                                                <td width="14%">
+                                                    <b>Name</b>
+                                                </td>
+                                                <td width="1%">
+                                                    <b>:</b>
+                                                </td>
+                                                <td>
+                                                    @clientInfo.firstname @clientInfo.lastname
+                                                </td>
+                                            </tr>
+											@if(!String.IsNullOrWhiteSpace(clientInfo.phoneno))
+											{
+												<tr>
+													<td>
+														<b>Phone</b>
+													</td>
+													<td width="1%">
+														<b>:</b>
+													</td>
+													<td>
+														@clientInfo.phoneno
+													</td>
+												</tr>
+											}
+											else
+											{
+												<tr>
+													<td>
+														<b>Email</b>
+													</td>
+													<td width="1%">
+														<b>:</b>
+													</td>
+													<td>
+														@clientInfo.email
+													</td>
+												</tr>
+											}
+											<tr>
+												<td>
+													<b>Message</b>
+												</td>
+												<td width="1%">
+													<b>:</b>
+												</td>
+												<td>
+													@clientInfo.additionalComments
+												</td>
+											</tr>
+											@if(clientInfo.finacing)
+											{
+												<tr>
+													<td>
+														<b>Financing</b>
+													</td>
+													<td width="1%">
+														<b>:</b>
+													</td>
+													<td>
+														I need financing
+													</td>
+												</tr>
+											}
+											@if(clientInfo.Trade_in)
+											{
+												<tr>
+													<td>
+														<b>Trade-in</b>
+													</td>
+													<td width="1%">
+														<b>:</b>
+													</td>
+													<td>
+														I have a trade-in
+													</td>
+												</tr>
+											}
+											
+                                        </table>
+                                        }
+                                    }
+                                </div>
+                            </td>
+                            <td>
+                                <div class="DealearInfo">
+                                    @{   var details = ViewData["ThankDealDetails"] as Edrive.Core.Model.Customer; 
+                                        <table width="100%" style="margin-left: 5px;" visible="false">
+                                            <tr>
+                                                <td width="14%">
+                                                    <b>Name</b>
+                                                </td>
+                                                <td width="1%">
+                                                    <b>:</b>
+                                                </td>
+                                                <td>
+                                                    @details.FirstName @details.LastName
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>Phone</b>
+                                                </td>
+                                                <td width="1%">
+                                                    <b>:</b>
+                                                </td>
+                                                <td>
+                                                    @details.Phone
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>City</b>
+                                                </td>
+                                                <td width="1%">
+                                                    <b>:</b>
+                                                </td>
+                                                <td>
+                                                    @details.City
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>State</b>
+                                                </td>
+                                                <td width="1%">
+                                                    <b>:</b>
+                                                </td>
+                                                <td>
+                                                    @details.City
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>Zip</b>
+                                                </td>
+                                                <td width="1%">
+                                                    <b>:</b>
+                                                </td>
+                                                <td>
+                                                    @Common_Methods.GetZip(details.Zip)
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="margin-left: 83%; margin-top: -40px;">
+            <img src="@Url.Content("~/Content/images/print_button.png")" alt="print"  onclick="javascript:print();"  class="img_print"  style="cursor:pointer"/>
+             
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div class="divbottom-home">
+        <div class="divbottomleft-new">
+        </div>
+        <div class="divbottommiddetail-new-line-inner">
+        </div>
+        <div class="divbottomright-new">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>

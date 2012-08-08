@@ -1,0 +1,16 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System.Configuration;
+
+namespace <#= Model.Namespace #>.Security
+{
+    public class EnvironmentSection : ConfigurationSection
+    {
+        [ConfigurationProperty("level", IsRequired = true)]
+        public DevLevel Level
+        {
+            get { return (DevLevel)base["level"]; }
+            set { base["level"] = value; }
+        }
+    }
+}

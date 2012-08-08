@@ -1,0 +1,16 @@
+﻿<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using System.Configuration;
+
+namespace <#= Model.Namespace #>.Security
+{
+    public class SecuritySection : ConfigurationSection
+    {
+        [ConfigurationProperty("useSsl", IsRequired = true)]
+        public SecurityOption UseSecurity
+        {
+            get { return (SecurityOption) base["useSsl"]; }
+            set { base["useSsl"] = value; }
+        }
+    }
+}
