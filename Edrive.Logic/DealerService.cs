@@ -17,7 +17,7 @@ namespace Edrive.Logic
 				var dealer = (from c in Context.DEALERs
 				              join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
 				              where c.ID == customerID
-				              select ConvertToCustomEntity(p)).FirstOrDefault();
+							  select p).Select(ConvertToCustomEntity).FirstOrDefault();
 
 				if (dealer == null)
 					return null;
@@ -40,7 +40,7 @@ namespace Edrive.Logic
 				var dealer = (from c in Context.DEALERs
 				              join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
 				              where p.ID == customerID
-				              select ConvertToCustomEntity(p)).FirstOrDefault();
+							  select p).Select(ConvertToCustomEntity).FirstOrDefault();
 
 				SetDealerName(dealer);
 				
@@ -57,7 +57,7 @@ namespace Edrive.Logic
 				var dealer = (from c in Context.DEALERs
 				              join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
 				              where c.EMAIL.ToLower() == email
-				              select ConvertToCustomEntity(p)).FirstOrDefault();
+							  select p).Select(ConvertToCustomEntity).FirstOrDefault();
 
 				if (dealer == null)
 					return null;
@@ -92,7 +92,7 @@ namespace Edrive.Logic
 				var dealers = (from c in Context.DEALERs
 				             join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
 				             where c.ZIP == zipcode && p.ISACTIVE && p.ISDELETED == false
-				             select ConvertToCustomEntity(p)).ToList();
+							   select p).Select(ConvertToCustomEntity).ToList();
 
 				return dealers;
 			}

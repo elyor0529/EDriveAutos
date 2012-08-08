@@ -585,7 +585,7 @@ namespace Edrive.Logic
 		private string GetSortByString(string sortByColumn)
 		{
 			if(String.IsNullOrWhiteSpace(sortByColumn) ||
-				(!sortByColumn.StartsWith("Year") && !sortByColumn.StartsWith("Mileage") && !sortByColumn.StartsWith("Price") && !sortByColumn.StartsWith("savingAmount")))
+				(!sortByColumn.StartsWith("Year") && !sortByColumn.StartsWith("Mileage") && !sortByColumn.StartsWith("Price") && !sortByColumn.StartsWith("Savings")))
 				sortByColumn = "ID";
 
 			sortByColumn = sortByColumn.Replace("ProductID", "ID");
@@ -593,9 +593,9 @@ namespace Edrive.Logic
 			if(sortByColumn.StartsWith("Price"))
 			{
 				if(sortByColumn.ToLower().EndsWith("desc"))
-					sortByColumn = "Price_Current desc";
+					sortByColumn = "Price desc";
 				else
-					sortByColumn = "Price_Current";
+					sortByColumn = "Price";
 			}
 
 			return sortByColumn;
