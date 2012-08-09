@@ -69,6 +69,7 @@
     <Compile Include="Interfaces\IProductTypeService.cs" />
     <Compile Include="Interfaces\ISettingsService.cs" />
     <Compile Include="Interfaces\IStateProvinceService.cs" />
+    <Compile Include="Interfaces\ITopicLocalizedService.cs" />
     <Compile Include="ProductBodyService.cs" />
     <Compile Include="ProductMakeService.cs" />
     <Compile Include="ProductModelService.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsService.cs" />
     <Compile Include="StateProvinceService.cs" />
+    <Compile Include="TopicLocalizedService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
