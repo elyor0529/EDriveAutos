@@ -1,52 +1,26 @@
-﻿@using Edrive.NADA_UsedCars
-@using Edrive.UsedCarPrices
-@model List<Edrive.Edrivie_Service_Ref.Products>
+﻿@model List<Edrive.Core.Model.Products>
 @{
     
 	if(Model != null)
 	{
 		foreach(var item in Model)
 		{
-			string customerAddress = "";
-			if(item.Customer.City.Trim() == "")
+			string customerAddress;
+			if(item.CustomerCity.Trim() == "")
 			{
-				customerAddress = item.Customer.StateName;
+				customerAddress = item.CustomerState;
 
 			}
 			else
 			{
-				customerAddress = item.Customer.City + ", " + item.Customer.StateName;
+				customerAddress = item.CustomerCity + ", " + item.CustomerState;
 
 			}
 			String title = String.Format("<div><b>{0}</b><br/>{1:n0} Miles<br/>{2} </div>", item.Year + " " + item.MakeName + " " + item.ModelName + " " + item.body, item.mileage, customerAddress);
 
 
-			String priceSave = String.Format("${0:n0}", item.averageRetailPrice - item.price_Current);
-			try
-			{
-
-				UsedCars oUsedCarService = new UsedCars();
-				UsedCarResultSet oUsedCarsResultSet = oUsedCarService.GetUsedCars("EdriveAutos", "ed12uc20", item.vin);
-				UsedCarPrices oUsedCarPrices = new UsedCarPrices();
-				if(oUsedCarsResultSet.UsedCars != null)
-				{
-					foreach(UsedCar uc in oUsedCarsResultSet.UsedCars)
-					{
-						//var userLogin = NopContext.Current.User;
-						ViewData["ltrAverageRetail"] = uc.AverageRetailPrice.ToString();
-						ViewData["ltrDifference"] = ((Decimal)uc.AverageRetailPrice - item.price_Current).ToString();
-						// ltrDifference.Visible = false;
-
-
-						priceSave = String.Format("${0:n0}", ((Decimal)uc.AverageRetailPrice - item.price_Current));
-						break;
-					}
-				}
-			}
-			catch(Exception ex)
-			{
-				
-			}
+			String priceSave = String.Format("${0:n0}", item.savingAmount);
+			
 
 			if(String.IsNullOrEmpty(item.pics))
 			{

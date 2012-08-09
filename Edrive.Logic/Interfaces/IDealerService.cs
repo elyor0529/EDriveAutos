@@ -9,8 +9,6 @@ namespace Edrive.Logic.Interfaces
 
 		Customer GetDealerByProductID(int productID);
 
-		_CustomerProfile GetProfile(int dealerID);
-
 		Customer GetDealerByDealerEmail(string email);
 
 		int GetTotalDealersCount();

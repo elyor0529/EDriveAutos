@@ -43,7 +43,7 @@ namespace Edrive.Areas.Dealer.Controllers
             {
                 var CustomerID = service.GetDealerByDealerEmail(User.Identity.Name).customerID;
                 BindFilter(service);
-               DealerInfo DealerModel =Admin.Controllers.ManageDealerController.GetDealerModel(CustomerID, service);
+               DealerInfo DealerModel =Admin.Controllers.ManageDealerController.GetDealerModel(CustomerID);
                 return View(DealerModel);
             }
         }
@@ -226,7 +226,7 @@ namespace Edrive.Areas.Dealer.Controllers
                 using (Edrive_ServiceClient service = new Edrivie_Service_Ref.Edrive_ServiceClient())
                 {
                     var CustomerID = service.GetDealerByDealerEmail(User.Identity.Name).customerID;
-                    DealerInfo DealerModel_to_Update = Admin.Controllers.ManageDealerController.GetDealerModel(CustomerID, service);
+                    DealerInfo DealerModel_to_Update = Admin.Controllers.ManageDealerController.GetDealerModel(CustomerID);
                    //----------Update only profile Info
                     DealerModel_to_Update.ApplicationURL = DealerModel.ApplicationURL;
                     DealerModel_to_Update.WarrantyURL = DealerModel.WarrantyURL;

@@ -235,10 +235,10 @@ height: 15px;}
 .SideBox .BackBox .FrontBox .AllVideo{ width:262px; height: 208px;overflow-x: auto; margin:0 auto; padding:20px 0; min-height:200px; display:none;}
 .SideBox .BackBox .FrontBox .TestimonialsIn{ padding:20px 40px 10px 35px;height: 207px;margin-bottom:10px;}
 .SideBox .BackBox .FrontBox .TestimonialsIn .TestArt,.SideBox .BackBox .FrontBox .NewsIn .TestArt{ margin-bottom:10px;}
-.SideBox .BackBox .FrontBox .TestimonialsIn p{ margin-bottom:10px;}
+.SideBox .BackBox .FrontBox .TestimonialsIn p{ margin-bottom:10px;height: 75px;overflow: hidden;}
 .SideBox .BackBox .FrontBox .TestimonialsIn .Blue,.SideBox .BackBox .FrontBox .NewsIn .Blue{ color:#0070D8; font-style:italic;}
 .SideBox .BackBox .FrontBox .NewsIn{ padding:20px 40px 10px 35px; margin-bottom:10px; display:none;height: 207px;}
-.SideBox .BackBox .FrontBox .NewsIn p{ margin-bottom:10px;}
+.SideBox .BackBox .FrontBox .NewsIn p{ height: 50px;margin-bottom: 10px;overflow: hidden;padding-bottom: 10px;}
 
 #PreFooter{ background:url(images/prefooter.png) repeat-x top left; padding:50px 0 30px 0;margin: auto;width: 964px;}
 #PreFooter h3{ font-size:14px; line-height:18px; font-weight:bold; color:#57A800; margin-bottom:18px;}
@@ -546,7 +546,7 @@ table#featuredList {width:675px;height:106px;margin-bottom:26px;}
 
  table#featuredList  td.price{color:#e79e4a;font-weight:bold;padding-right:11px;}
  
- .newsHOmePage{position:relative;left:-119px;}
+ .newsHOmePage{position:relative;left:-105px;}
  .TestiHOmePage{position:relative;left:-136px;}
  div.AllVideo table{width:100%;}
  div.AllVideo table td{text-align:left}

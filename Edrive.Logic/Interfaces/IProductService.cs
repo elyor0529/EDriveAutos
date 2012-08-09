@@ -6,6 +6,8 @@ namespace Edrive.Logic.Interfaces
 {
 	public interface IProductService
 	{
+		int AddProduct(Products product);
+
 		Products GetProductByID(int productID);
 
 		List<Products> GetProductsByIDs(IEnumerable<int> productIDs);
@@ -32,10 +34,14 @@ namespace Edrive.Logic.Interfaces
 
 		List<Products> GetDealerFeaturedVehicles(int pageSize);
 
+		List<Products> GetFeaturedVehicles(int totalCount);
+
 		List<string> GetTransmissionsList();
 
 		List<string> GetEnginesList();
 
 		List<string> GetDriveTypesList();
+
+		List<Products> HomePageSearchHint(string searchKey, int pageSize);
 	}
 }

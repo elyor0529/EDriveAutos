@@ -22,5 +22,32 @@ namespace Edrive.Logic
 				return productBodies;
 			}
 		}
+
+		public Product_Body AddProductBody(string bodyName)
+		{
+			using(EDriveEntities entities = new EDriveEntities())
+			{
+				var body = entities.Product_Body.FirstOrDefault(m => m.Body == bodyName);
+
+				if(body == null)
+				{
+					body = new Data.Product_Body
+					{
+						Body = bodyName
+					};
+
+					entities.Product_Body.AddObject(body);
+					entities.SaveChanges();
+				}
+
+				var result = new Product_Body
+				{
+					id = body.id,
+					body = body.Body
+				};
+
+				return result;
+			}
+		}
 	}
 }

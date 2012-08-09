@@ -6,5 +6,7 @@ namespace Edrive.Logic.Interfaces
 	public interface IProductTypeService
 	{
 		List<Product_Type> GetAll();
+
+		Product_Type GetProductTypeByType(string type);
 	}
 }

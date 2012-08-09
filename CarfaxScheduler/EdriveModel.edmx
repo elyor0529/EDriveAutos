@@ -416,7 +416,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="EdriveModel" ZoomLevel="88">
+      <Diagram Name="EdriveModel" ZoomLevel="82">
         <EntityTypeShape EntityType="EDriveAutosDevModel.CARFAX_DEALER" Width="1.5" PointX="2.75" PointY="0.75" Height="2.4047859700520831" IsExpanded="true" />
         <EntityTypeShape EntityType="EDriveAutosDevModel.Product" Width="1.5" PointX="0.75" PointY="0.75" Height="10.256429850260416" IsExpanded="true" />
         <AssociationConnector Association="EDriveAutosDevModel.FK_Product_Product" ManuallyRouted="false">

@@ -6,5 +6,7 @@ namespace Edrive.Logic.Interfaces
 	public interface IProductBodyService
 	{
 		List<Product_Body> GetAll();
+
+		Product_Body AddProductBody(string bodyName);
 	}
 }

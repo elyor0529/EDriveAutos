@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using Edrive.CommonHelpers;
 using Edrive.Edrivie_Service_Ref;
-using Edrive.Logic;
 using Edrive.Logic.Interfaces;
 using Edrive.Models;
 
 using Edrive.NADA_UsedCars;
-using Products = Edrive.Edrivie_Service_Ref.Products;
 
 namespace Edrive.Controllers
 {
@@ -19,20 +16,23 @@ namespace Edrive.Controllers
         //
         // GET: /Product/
 
-    	private IProductService _productService;
-		private IProductPictureService _productPictureService;
-    	private IDealerService _dealerService;
-		private IInterestedCustomerService _interestedCustomerService;
+    	private readonly IProductService _productService;
+		private readonly IProductPictureService _productPictureService;
+    	private readonly IDealerService _dealerService;
+		private readonly IInterestedCustomerService _interestedCustomerService;
+    	private readonly ICustomerProfileService _customerProfileService;
 
 		public ProductController(IProductService productService, 
 			IProductPictureService productPictureService, 
 			IDealerService dealerService,
-			IInterestedCustomerService interestedCustomerService)
+			IInterestedCustomerService interestedCustomerService,
+			ICustomerProfileService customerProfileService)
 		{
 			_productService = productService;
 			_productPictureService = productPictureService;
 			_dealerService = dealerService;
 			_interestedCustomerService = interestedCustomerService;
+			_customerProfileService = customerProfileService;
 		}
 
         public ActionResult Index()
@@ -73,10 +73,9 @@ namespace Edrive.Controllers
             ViewData["make"] = product.Make;
             ViewData["model"] = product.ModelName;
             ViewData["body"] = product.body;
-            Int32 CountDownDays;
-            CountDownDays = GetCountDownDays();
-            ViewData["CountDownDays"] = CountDownDays;
-            string logo = _dealerService.GetProfile(dealer.customerID).Logo;
+        	int countDownDays = GetCountDownDays();
+            ViewData["CountDownDays"] = countDownDays;
+            string logo = _customerProfileService.GetProfile(dealer.customerID).Logo;
             if (String.IsNullOrEmpty(logo) == false)
             {
                 ViewData["ProfileLogo"] = logo;
@@ -84,10 +83,7 @@ namespace Edrive.Controllers
 
 			return View(product);
         }
-
-
-
-
+		
         [HttpPost]
         public ActionResult AddRating(Int32 id, Int32 score)
         {

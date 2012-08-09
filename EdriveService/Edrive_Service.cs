@@ -3441,11 +3441,6 @@ namespace EdriveService
 						string Engine = string.Empty;
 
 
-						string condition = string.Empty;
-						string name = string.Empty;
-						//string mileage = string.Empty;
-						string options = string.Empty;
-						string zip = string.Empty;
 						int city_fuel = 0;
 						int highway_fuel = 0;
 						decimal retail_price = 0;
@@ -3458,17 +3453,11 @@ namespace EdriveService
 						highway_fuel = uc.HighwayFuelHigh;
 						retail_price = uc.AverageRetailPrice;
 						tradein_price = uc.AverageTradeinPrice;
-
-
-						DataTable dtOptions = new DataTable();
-
-
+						
 						String Make = uc.MakeDisplay;
 						Int32 Makeid = AddProductMake(Make).id;
 						String ModelName = uc.ModelDisplay.Trim();
 						Int32 ModelID = AddProductModel(ModelName, Makeid).id;
-
-						name = uc.MakeDisplay + " " + uc.ModelDisplay;
 
 						DataObject obj = oUsedCarPrices.GetStylesForModel("EdriveAutos", "ed12uc20", uc.C_ModelID);
 						DataSet ds = obj.GetData;

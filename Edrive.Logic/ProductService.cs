@@ -10,14 +10,68 @@ namespace Edrive.Logic
 {
 	public class ProductService : IProductService
 	{
+		public int AddProduct(Products product)
+		{
+			using(EDriveEntities entities = new EDriveEntities())
+			{
+				Product newProduct = new Product
+				{
+					AverageRetailPrice = product.averageRetailPrice,
+					AverageTradeinPrice = product.averageTradeinPrice,
+					Body = product.bodyID,
+					City_Fuel = product.city_Fuel,
+					Condition = product.condition,
+					CreatedOn = DateTime.Now,
+					CustomerID = product.customerId,
+					Stock = product.stock,
+					Trim = product.trim,
+					Transmission = product.transmission,
+					Warranty = product.warranty,
+					Reserved = product.Reserved,
+					Title = product.Title,
+					Date_in_Stock = DateTime.Now,
+					Deleted = product.deleted,
+					Model = product.model,
+					Offer = product.Offer,
+					Description = product.descriptiont,
+					Drive_Type = product.drive_Type,
+					Engine = product.engine,
+					Exterior_Color = product.exterior,
+					FileName = product.fileName,
+					Free_Text = product.free_Text,
+					Fuel_Type = product.fuel_Type,
+					Highway_Fuel = product.highWay_Fuel,
+					Interior_Color = product.interior,
+					IsFeature = product.isfeature,
+					IsNew = product.isNew,
+					Mileage = product.mileage,
+					Name = string.Format("{0} {1} {2} {3} {4}", product.Make, product.ModelName, product.vin, product.Year, product.SellerZip.ToString().PadLeft(5)),
+					OwnerDetail = product.OwnerDetail,
+					Pics = product.pics,
+					UpdatedOn = DateTime.Now,
+					Price_Current = product.price_Current,
+					VIN = product.vin,
+					Year = product.Year,
+					Type = product.type,
+					SellerEmail = product.SellerEmail,
+					SellerName = product.SellerName,
+					zip = product.SellerZip
+				};
+
+				entities.Product.AddObject(newProduct);
+				entities.SaveChanges();
+
+				return newProduct.ProductId;
+			}
+		}
+
 		public Products GetProductByID(int productID)
 		{
 			var adPics = new ProductPictureService().GetProductPicture_By_ProductID(productID);
-			Product product = null;
 
 			using(EDriveEntities entities = new EDriveEntities())
 			{
-				product = entities.Product.FirstOrDefault(m => m.ProductId == productID);
+				Product product = entities.Product.FirstOrDefault(m => m.ProductId == productID);
 
 				string pictureUrl = string.Empty;
 
@@ -346,7 +400,7 @@ namespace Edrive.Logic
 		{
 			using(EDriveEntities entities = new EDriveEntities())
 			{
-				int totalCount = entities.Product.Count(m => m.Deleted == false);
+				int totalCount = entities.QualifiedVehiclesCount().FirstOrDefault().GetValueOrDefault(0);
 
 				return totalCount;
 			}
@@ -381,7 +435,8 @@ namespace Edrive.Logic
 							            	exterior = m.Exterior_Color,
 							            	customerId = m.CustomerID ?? 0,
 							            	OwnerDetail = ownerDet,
-							            	price_Current = m.Price_Current ?? 0
+							            	price_Current = m.Price_Current ?? 0,
+											savingAmount = m.SavingAmount ?? 0
 							            }).ToList();
 
 					foreach (var item in result)
@@ -394,6 +449,54 @@ namespace Edrive.Logic
 
 				return result;
 			}
+		}
+
+		public List<Products> GetFeaturedVehicles(int totalCount)
+		{
+			List<Products> vehicles;
+
+			using(EDriveEntities entities = new EDriveEntities())
+			{
+				vehicles = entities.FeaturedVehicles().Select(c => new Products
+				{
+					productId = c.ProductId,
+					pics = c.Pics,
+					mileage = c.Mileage ?? 0,
+					body = c.ProductBodyName,
+					price_Current = c.Price_Current ?? 0,
+					transmission = c.Transmission ?? "",
+					exterior = c.Exterior_Color ?? "",
+					OwnerDetail = c.OwnerDetail,
+					drive_Type = c.Drive_Type,
+					vin = c.VIN,
+					MakeName = c.MakeName,
+					ModelName = c.ModelName,
+					//zip = c.zip??0,
+					zip = c.ZipPostalCode ?? 0,
+					Year = c.Year ?? 0,
+					model = c.Model,
+					updatedOn = c.UpdatedOn,
+					customerId = c.CustomerID ?? 0,
+					savingAmount = c.SavingAmount ?? 0,
+					CustomerCity = c.City ?? "",
+					CustomerState = c.StateProvince ?? ""
+				}).ToList();
+			}
+
+			// to update the product picture by sort order
+			new ProductPictureService().GetProductsPictures(vehicles);
+			foreach(var item in vehicles)
+			{
+				if(!String.IsNullOrEmpty(item.pics))
+				{
+					if(item.pics.Contains(';'))
+					{
+						item.pics = item.pics.Split(';')[0];
+					}
+				}
+
+			}
+			return vehicles;
 		}
 
 		public List<string> GetTransmissionsList()
@@ -428,6 +531,30 @@ namespace Edrive.Logic
 				return query;
 			}
 		}
+
+		public List<Products> HomePageSearchHint(string searchKey, int pageSize)
+		{
+			using(EDriveEntities entities = new EDriveEntities())
+			{
+				if(String.IsNullOrWhiteSpace(searchKey))
+					return new List<Products>();
+
+				var searcharray = searchKey.Trim().Split(' ');
+
+				var query = entities.Product_Model.Select(m => new
+				                                               	{
+				                                               		name = m.Product_Make.Make + " " + m.ModeLName,
+				                                               		model = m.id,
+				                                               		modelName = m.ModeLName,
+				                                               		makeName = m.Product_Make.Make
+				                                               	});
+
+				query = searcharray.Select(q => q.Trim()).Aggregate(query, (current, key) => current.Where(m => m.name.Contains(key.Trim())));
+				var result = query.OrderBy(m => m.makeName).ThenBy(m => m.modelName).Take(pageSize).ToList();
+
+				return result.Select(m => new Products { name = m.name }).ToList();
+			}
+		} 
 
 		#region private methods
 		

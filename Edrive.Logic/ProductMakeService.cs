@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Edrive.Data;
 using Edrive.Logic.Interfaces;
@@ -20,6 +21,38 @@ namespace Edrive.Logic
 					     	}).ToList();
 				
 				return makes;
+			}
+		}
+
+		public Product_Make AddProductMake(string productMake)
+		{
+			using(EDriveEntities entities = new EDriveEntities())
+			{
+				if(!String.IsNullOrWhiteSpace(productMake))
+				{
+					var make = entities.Product_Make.FirstOrDefault(m => m.Make == productMake);
+
+					if(make == null)
+					{
+						make = new Data.Product_Make
+						{
+							Make = productMake
+						};
+
+						entities.Product_Make.AddObject(make);
+						entities.SaveChanges();
+					}
+
+					var result = new Product_Make
+					{
+						id = make.id,
+						make = make.Make
+					};
+
+					return result;
+				}
+
+				return null;
 			}
 		}
 	}

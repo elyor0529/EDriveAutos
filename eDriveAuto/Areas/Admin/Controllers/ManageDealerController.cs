@@ -7,6 +7,8 @@ using System.Text;
 using System.Web.Mvc;
 using Edrive.CommonHelpers;
 using Edrive.Edrivie_Service_Ref;
+using Edrive.Logic;
+using Edrive.Logic.Interfaces;
 using Edrive.Models;
 using Customer = Edrive.Edrivie_Service_Ref.Customer;
 
@@ -15,9 +17,19 @@ namespace Edrive.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class ManageDealerController : Controller
     {
-        //
-        // GET: /Admin/ManageDealer/
+    	private readonly IDealerService _dealerService;
+    	private readonly ICustomerProfileService _customerProfileService;
 
+		public ManageDealerController()
+		{
+			
+		}
+
+		public ManageDealerController(IDealerService dealerService, ICustomerProfileService customerProfileService)
+		{
+			_dealerService = dealerService;
+			_customerProfileService = customerProfileService;
+		}
 
         public ActionResult Index()
         {
@@ -106,62 +118,51 @@ namespace Edrive.Areas.Admin.Controllers
         public ActionResult Edit(Int32 id)
         {
             ViewData["Msg"]=TempData["Msg"];
-            var CustomerID = id;
+            var customerID = id;
             using (Edrive_ServiceClient service = new Edrivie_Service_Ref.Edrive_ServiceClient())
             {
     
-                DealerInfo DealerModel = GetDealerModel(CustomerID, service);
-                BindFilter(service,DealerModel.StateID);
-                return View(DealerModel);
+                DealerInfo dealerModel = GetDealerModel(customerID);
+                BindFilter(service,dealerModel.StateID);
+                return View(dealerModel);
             }
         }
-
-
-         public static DealerInfo GetDealerModel(int CustomerID, Edrive_ServiceClient service)
+		
+        public static DealerInfo GetDealerModel(int customerID)
         {
-            var dealer = new Edrivie_Service_Ref.Customer();
-            //if (CustomerID == null)
-            //{
-            //    ViewData["Msg"] = TempData["Msg"];
-            //    // TempData["EmailID"] = DealerModel.Email;
-            //      dealer = service.GetDealerByDealerEmail(TempData["EmailID"].ToString());
-            //}
-            //else
-            //{
-            dealer = service.GetDealerByDealerID(CustomerID);
-            //}
-            DealerInfo DealerModel = new DealerInfo();
-            DealerModel.Email = dealer.email;
+            var dealer = new DealerService().GetByID(customerID);
+			var profile = new CustomerProfileService().GetProfile(dealer.customerID);
 
-            DealerModel.Gender = dealer.Gender;
-            DealerModel.FirstName = dealer.FirstName;
-            DealerModel.LastName = dealer.LastName;
-            DealerModel.DateofBirth = dealer.DateofBirth;
-            DealerModel.Company = dealer.CompanyName;
-            DealerModel.StreetAddress1 = dealer.StreetAddress1;
-            DealerModel.StreetAddress2 = dealer.StreetAddress2;
-            DealerModel.Zip = dealer.Zip;
-            DealerModel.City = dealer.City;
-            DealerModel.StateID = dealer.StateID;
-            DealerModel.Phone = dealer.Phone;
-            DealerModel.Newsletter = dealer.Newsletter;
-            DealerModel.Password = dealer.password;
-            DealerModel.Fax = dealer.Fax;
+        	dealer.Profile = profile;
 
+         	DealerInfo dealerModel = new DealerInfo
+         	                         	{
+         	                         		Email = dealer.email,
+         	                         		Gender = dealer.Gender,
+         	                         		FirstName = dealer.FirstName,
+         	                         		LastName = dealer.LastName,
+         	                         		DateofBirth = dealer.DateofBirth,
+         	                         		Company = dealer.CompanyName,
+         	                         		StreetAddress1 = dealer.StreetAddress1,
+         	                         		StreetAddress2 = dealer.StreetAddress2,
+         	                         		Zip = dealer.Zip,
+         	                         		City = dealer.City,
+         	                         		StateID = dealer.StateID,
+         	                         		Phone = dealer.Phone,
+         	                         		Newsletter = dealer.Newsletter,
+         	                         		Password = dealer.password,
+         	                         		Fax = dealer.Fax,
+         	                         		CustomerID = dealer.customerID,
+         	                         		RegisterationDate = dealer.registrationDate,
+         	                         		ApplicationURL = profile.ApplicationURL,
+         	                         		Description = profile.Description,
+         	                         		Logo = profile.Logo,
+         	                         		PageImage = profile.PageImage,
+         	                         		ServiceURL = profile.ServiceURL,
+         	                         		WarrantyURL = profile.WarrantyURL
+         	                         	};
 
-
-
-            DealerModel.CustomerID = dealer.customerID;
-            DealerModel.RegisterationDate = dealer.registrationDate;
-            var _Profile = service.GetDealer_Profile_ByDealerID(dealer.customerID);
-            DealerModel.ApplicationURL = _Profile.ApplicationURL;
-            DealerModel.Description = _Profile.Description;
-            DealerModel.Logo = _Profile.Logo;
-            DealerModel.PageImage = _Profile.PageImage;
-            DealerModel.ServiceURL = _Profile.ServiceURL;
-            DealerModel.WarrantyURL = _Profile.WarrantyURL;
-
-            return DealerModel;
+         	return dealerModel;
         }
 
         [HttpPost]

@@ -22,5 +22,34 @@ namespace Edrive.Logic
 				return models;
 			}
 		}
+
+		public Product_Model AddProductModel(string modelName, int makeID)
+		{
+			using(EDriveEntities entities = new EDriveEntities())
+			{
+				var model = entities.Product_Model.FirstOrDefault(m => m.ModeLName == modelName && m.MakeID == makeID);
+
+				if(model == null)
+				{
+					model = new Data.Product_Model
+					{
+						MakeID = makeID,
+						ModeLName = modelName
+					};
+
+					entities.Product_Model.AddObject(model);
+					entities.SaveChanges();
+				}
+
+				var result = new Product_Model
+				{
+					id = model.id,
+					makeID = model.MakeID,
+					modelName = model.ModeLName
+				};
+
+				return result;
+			}
+		}
 	}
 }

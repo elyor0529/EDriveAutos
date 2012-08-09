@@ -145,7 +145,7 @@
 										<div class="rows">
 											<label>
 												State</label>
-											@Html.TextBoxFor(m => m.State, new { @class = "inpfld" })
+											@Html.DropDownList("State", (IEnumerable<SelectListItem>)ViewData["StateProvince"], new { @class = "inpfld" })
 											<div class="Clr">
 											</div>
 										</div>
@@ -159,9 +159,7 @@
 									</div>
                                     <div class="Col_3">
                                         <div class="rows">
-											<label>
-												Country</label>
-											@Html.TextBoxFor(m => m.Country, new { @class = "inpfld" })
+											@Html.Hidden("Country", "US")
 											<div class="Clr">
 											</div>
 										</div>

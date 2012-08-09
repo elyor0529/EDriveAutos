@@ -8,14 +8,15 @@ namespace Edrive.Core.Model
     public class _StateProvince
     {
         [DataMember]
-
-        public int StateProvinceID { get; set; }
-        [DataMember]
+		public int StateProvinceID { get; set; }
+        
+		[DataMember]
         public int CountryID { get; set; }
-        [DataMember]
+        
+		[DataMember]
+		public String Name { get; set; }
 
-        public String Name { get; set; }
-
-
+		[DataMember]
+		public String Abbreviation { get; set; }
     }
 }

@@ -347,6 +347,7 @@
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ModeLName" Type="varchar" MaxLength="200" />
           <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product_Rating">
           <Key>
@@ -652,6 +653,7 @@
         <Function Name="SPRETRIEVE_CARFAXVEHICLELIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPRETRIEVE_DEALERSFORMANAGEPRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPRETRIEVE_ERRORINFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPRETRIEVE_FEATUREDVEHICLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPRETRIEVE_FTPDIRECTORIES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPRETRIEVE_QUALIFIEDVEHICLECOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPRETRIEVE_SITESTATISTICS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -834,6 +836,7 @@
           </FunctionImport>
           <FunctionImport Name="DealersForManagerProduct" EntitySet="Customer" ReturnType="Collection(EDriveModel.Customer)" />
           <FunctionImport Name="QualifiedVehiclesCount" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="FeaturedVehicles" ReturnType="Collection(EDriveModel.FeaturedVehiclesItem)" />
         </EntityContainer>
         <EntityType Name="ContactType">
           <Key>
@@ -1096,6 +1099,7 @@
           <NavigationProperty Name="Product" Relationship="EDriveModel.Product_MOdel_Type" FromRole="Product_Model" ToRole="Product" />
           <NavigationProperty Name="Product_Make" Relationship="EDriveModel.FK__Product_M__MakeI__45F365D3" FromRole="Product_Model" ToRole="Product_Make" />
           <NavigationProperty Name="Product_Make1" Relationship="EDriveModel.FK__Product_M__MakeI__46E78A0C" FromRole="Product_Model" ToRole="Product_Make" />
+          <Property Type="Int32" Name="TypeID" Nullable="false" />
         </EntityType>
         <EntityType Name="Product_Rating">
           <Key>
@@ -1304,6 +1308,65 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="FeaturedVehiclesItem">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="400" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="VIN" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Stock" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Year" Nullable="true" />
+          <Property Type="Int32" Name="Model" Nullable="false" />
+          <Property Type="String" Name="Trim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Free_Text" Nullable="true" />
+          <Property Type="Int32" Name="Body" Nullable="false" />
+          <Property Type="Int32" Name="Mileage" Nullable="true" />
+          <Property Type="Decimal" Name="Price_Current" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Condition" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Exterior_Color" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Interior_Color" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Doors" Nullable="true" />
+          <Property Type="String" Name="Engine" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Transmission" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fuel_Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Drive_Type" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Warranty" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="Date_in_Stock" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FileName" Nullable="true" />
+          <Property Type="Boolean" Name="IsNew" Nullable="true" />
+          <Property Type="Boolean" Name="IsFeature" Nullable="true" />
+          <Property Type="Decimal" Name="SavingAmount" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="StateID" Nullable="true" />
+          <Property Type="Decimal" Name="QualifyPrice" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AverageRetailPrice" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AverageTradeinPrice" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="City_Fuel" Nullable="true" />
+          <Property Type="Int32" Name="Highway_Fuel" Nullable="true" />
+          <Property Type="Int32" Name="zip" Nullable="true" />
+          <Property Type="String" Name="Reserved" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Price_Cost" Nullable="true" />
+          <Property Type="Double" Name="Price_WholeSale" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pics" Nullable="true" />
+          <Property Type="String" Name="OwnerDetail" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="ShowOnDealerProfile" Nullable="true" />
+          <Property Type="String" Name="SellerEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SellerName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Offer" Nullable="true" />
+          <Property Type="Boolean" Name="ISQUALIFIED" Nullable="false" />
+          <Property Type="DateTime" Name="NADACheckedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Abbreviation" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="StateProvince" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="ZipPostalCode" Nullable="true" />
+          <Property Type="String" Name="ProductBodyName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="MakeName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ModelName" Nullable="true" MaxLength="200" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1494,7 +1557,8 @@
             <ScalarProperty Name="Make" ColumnName="Make" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Product_Model"><EntityTypeMapping TypeName="EDriveModel.Product_Model"><MappingFragment StoreEntitySet="Product_Model">
-            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="ModeLName" ColumnName="ModeLName" />
             <ScalarProperty Name="MakeID" ColumnName="MakeID" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
@@ -1548,6 +1612,69 @@
           <FunctionImportMapping FunctionImportName="SearchStandard" FunctionName="EDriveModel.Store.SPSEARCH_STANDARD" />
           <FunctionImportMapping FunctionImportName="DealersForManagerProduct" FunctionName="EDriveModel.Store.SPRETRIEVE_DEALERSFORMANAGEPRODUCT" />
           <FunctionImportMapping FunctionImportName="QualifiedVehiclesCount" FunctionName="EDriveModel.Store.SPRETRIEVE_QUALIFIEDVEHICLECOUNT" />
+          <FunctionImportMapping FunctionImportName="FeaturedVehicles" FunctionName="EDriveModel.Store.SPRETRIEVE_FEATUREDVEHICLES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EDriveModel.FeaturedVehiclesItem">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Trim" ColumnName="Trim" />
+                <ScalarProperty Name="Free_Text" ColumnName="Free_Text" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="Price_Current" ColumnName="Price_Current" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Exterior_Color" ColumnName="Exterior_Color" />
+                <ScalarProperty Name="Interior_Color" ColumnName="Interior_Color" />
+                <ScalarProperty Name="Doors" ColumnName="Doors" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+                <ScalarProperty Name="Fuel_Type" ColumnName="Fuel_Type" />
+                <ScalarProperty Name="Drive_Type" ColumnName="Drive_Type" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date_in_Stock" ColumnName="Date_in_Stock" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="IsFeature" ColumnName="IsFeature" />
+                <ScalarProperty Name="SavingAmount" ColumnName="SavingAmount" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="QualifyPrice" ColumnName="QualifyPrice" />
+                <ScalarProperty Name="AverageRetailPrice" ColumnName="AverageRetailPrice" />
+                <ScalarProperty Name="AverageTradeinPrice" ColumnName="AverageTradeinPrice" />
+                <ScalarProperty Name="City_Fuel" ColumnName="City_Fuel" />
+                <ScalarProperty Name="Highway_Fuel" ColumnName="Highway_Fuel" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+                <ScalarProperty Name="Price_Cost" ColumnName="Price_Cost" />
+                <ScalarProperty Name="Price_WholeSale" ColumnName="Price_WholeSale" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Pics" ColumnName="Pics" />
+                <ScalarProperty Name="OwnerDetail" ColumnName="OwnerDetail" />
+                <ScalarProperty Name="ShowOnDealerProfile" ColumnName="ShowOnDealerProfile" />
+                <ScalarProperty Name="SellerEmail" ColumnName="SellerEmail" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+                <ScalarProperty Name="Offer" ColumnName="Offer" />
+                <ScalarProperty Name="ISQUALIFIED" ColumnName="ISQUALIFIED" />
+                <ScalarProperty Name="NADACheckedOn" ColumnName="NADACheckedOn" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="ZipPostalCode" ColumnName="ZipPostalCode" />
+                <ScalarProperty Name="ProductBodyName" ColumnName="ProductBodyName" />
+                <ScalarProperty Name="MakeName" ColumnName="MakeName" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

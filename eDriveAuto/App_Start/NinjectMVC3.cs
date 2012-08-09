@@ -57,6 +57,8 @@ namespace Edrive.App_Start
 			kernel.Bind<IProductBodyService>().To<ProductBodyService>();
 			kernel.Bind<IProductModelService>().To<ProductModelService>();
 			kernel.Bind<IProductMakeService>().To<ProductMakeService>();
+			kernel.Bind<ICustomerProfileService>().To<CustomerProfileService>();
+			kernel.Bind<IStateProvinceService>().To<StateProvinceService>();
         }        
     }
 }

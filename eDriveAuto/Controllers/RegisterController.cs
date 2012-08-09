@@ -10,6 +10,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Edrive.CommonHelpers;
+using Edrive.Logic.Interfaces;
 using Edrive.Models;
 using Edrive.PayPalAPI;
 
@@ -19,6 +20,13 @@ namespace Edrive.Controllers
 {
 	public class RegisterController : Controller
 	{
+		private readonly IStateProvinceService _stateProvinceService;
+
+		public RegisterController(IStateProvinceService stateProvinceService)
+		{
+			_stateProvinceService = stateProvinceService;
+		}
+
 		private string ActivationCode
 		{
 			get { return (Session["NewAccountActivationCode"] ?? String.Empty).ToString(); }
@@ -34,6 +42,7 @@ namespace Edrive.Controllers
 				ViewData["keywords"] = SettingManager.GetSettingValue("SEO.Register.keywords");
 				var lstOptions = GetOptions();
 				ViewData["Options"] = lstOptions;
+				ViewData["StateProvince"] = GetStates();
 
 				if(HttpContext.User.Identity.IsAuthenticated)
 				{
@@ -244,6 +253,8 @@ namespace Edrive.Controllers
 				}
 				#endregion
 			}
+
+			ViewData["StateProvince"] = GetStates();
 
 			return View();
 		}
@@ -538,6 +549,9 @@ namespace Edrive.Controllers
 					newCustomer.Phone = String.Empty;
 					newCustomer.RegisterationDate = DateTime.Now;
 					newCustomer.zip = userModel.Zip;
+					newCustomer.ADDRESS = userModel.Address;
+					newCustomer.CITY = userModel.City;
+					newCustomer.STATE = userModel.State;
 
 					entity.SaveChanges();
 				}
@@ -640,6 +654,18 @@ namespace Edrive.Controllers
 			}
 
 			return success;
+		}
+
+		private List<SelectListItem> GetStates()
+		{
+			var states = _stateProvinceService.GetStatesByCountryCode("USA")
+				.OrderBy(c => c.Name).Select(c => new SelectListItem
+				                                  	{
+				                                  		Text = c.Abbreviation,
+				                                  		Value = c.StateProvinceID.ToString()
+				                                  	}).ToList();
+
+			return states;
 		}
 	}
 }

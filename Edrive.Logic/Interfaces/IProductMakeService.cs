@@ -6,5 +6,7 @@ namespace Edrive.Logic.Interfaces
 	public interface IProductMakeService
 	{
 		List<Product_Make> GetAll();
+
+		Product_Make AddProductMake(string productMake);
 	}
 }

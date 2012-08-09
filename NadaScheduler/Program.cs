@@ -70,8 +70,8 @@ namespace NadaScheduler
 				int counter = 0;
 
 				StringBuilder sb = new StringBuilder();
-                const string updateQualified = @" update [Product.STAGING] set ISQUALIFIED = 1, Deleted = 0, SavingAmount = {0}, QualifyPrice = {1}, AverageRetailPrice = {2},UpdatedOn = GETDATE(), NADACheckedOn = GETDATE(), City_Fuel = {3}, Highway_Fuel = {4} where VIN = '{5}'; ";
-                const string updateNotQualified = @" update [Product.STAGING] set ISQUALIFIED = 0, Deleted = 1, SavingAmount = null, QualifyPrice = null, AverageRetailPrice = null, NADACheckedOn = GETDATE() where VIN = '{0}'; ";
+                const string updateQualified = @" update [VEHICLE.STAGING] set ISQUALIFIED = 1, ISDELETED = 0, SAVINGS = {0}, PRICE_QUALIFY = {1}, PRICE_AVERAGERETAIL = {2},DATE_UPDATED = GETDATE(), DATE_NADACHECKED = GETDATE(), FUEL_CITY = {3}, FUEL_HIGHWAY = {4} where VIN = '{5}'; ";
+                const string updateNotQualified = @" update [VEHICLE.STAGING] set ISQUALIFIED = 0, ISDELETED = 1, SAVINGS = null, PRICE_QUALIFY = null, PRICE_AVERAGERETAIL = null, DATE_NADACHECKED = GETDATE() where VIN = '{0}'; ";
 
                 foreach(var car in vehicles)
 				{

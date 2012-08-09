@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web.Mvc;
 using Edrive.CommonHelpers;
-using Edrive.Edrivie_Service_Ref;
-using Edrive.Logic;
 using Edrive.Logic.Interfaces;
 using Edrive.Models;
-using Edrive.NADA_UsedCars;
-using Customer = Edrive.Edrivie_Service_Ref.Customer;
-using Products = Edrive.Edrivie_Service_Ref.Products;
 
 namespace Edrive.Controllers
 {
@@ -40,71 +34,48 @@ namespace Edrive.Controllers
 			_productMakeService = productMakeService;
 			_dealerService = dealerService;
 		}
-
-		#region property
-
-		#endregion
-
+		
 		#region Search
 
-		/// <summary>
-		/// This action is for the Home Page Search
-		/// </summary>
-		/// <param name="SearchKey"></param>
-		/// <returns></returns>
-		public ActionResult Index(String SearchKey, String SearchByDealer, string ZipCode = "")
+		public ActionResult Index(String searchKey, String searchByDealer, string zipCode = "")
 		{
-			int? CarsCount = 0;
+			int? carsCount = 0;
 			if(TempData["BackButton"] != null)
 			{
-				if((Session["SearchType"] as SearchSession).prpSearchType == SearchType.SearchonSearchPage)
+				if(Session["SearchType"] != null && ((SearchSession)Session["SearchType"]).prpSearchType == SearchType.SearchonSearchPage)
 				{
-					SearchOnSearchPage objSearch = TempData["BackButton"] as SearchOnSearchPage;
-					using(Edrive_ServiceClient _service = new Edrive_ServiceClient())
-					{
-						objSearch.Make = objSearch.Make.Trim(',');
-						objSearch.Model = objSearch.Model.Trim(',');
-						objSearch.Body = objSearch.Body.Trim(',');
-						objSearch.DriveType = objSearch.DriveType.Trim(',');
-						objSearch.Engine = objSearch.Engine.Trim(',');
-						objSearch.hiddenSearchKey = objSearch.hiddenSearchKey.Trim(',');
-						objSearch.Mileage = objSearch.Mileage.Trim(',');
-						objSearch.PageIndex = objSearch.PageIndex.Trim(',');
-						objSearch.pageSize = objSearch.pageSize.Trim(',');
+					SearchOnSearchPage objSearch = (SearchOnSearchPage)TempData["BackButton"];
+					
+					objSearch.Make = objSearch.Make.Trim(',');
+					objSearch.Model = objSearch.Model.Trim(',');
+					objSearch.Body = objSearch.Body.Trim(',');
+					objSearch.DriveType = objSearch.DriveType.Trim(',');
+					objSearch.Engine = objSearch.Engine.Trim(',');
+					objSearch.hiddenSearchKey = objSearch.hiddenSearchKey.Trim(',');
+					objSearch.Mileage = objSearch.Mileage.Trim(',');
+					objSearch.PageIndex = objSearch.PageIndex.Trim(',');
+					objSearch.pageSize = objSearch.pageSize.Trim(',');
 
-						objSearch.Price = objSearch.Price.Trim(',');
-						objSearch.SearchByDealerID = objSearch.SearchByDealerID;
-						objSearch.sortByColumn = objSearch.sortByColumn.Trim(',');
-						objSearch.Transmission = objSearch.Transmission.Trim(',');
-						objSearch.Type = objSearch.Type.Trim(',');
+					objSearch.Price = objSearch.Price.Trim(',');
+					objSearch.SearchByDealerID = objSearch.SearchByDealerID;
+					objSearch.sortByColumn = objSearch.sortByColumn.Trim(',');
+					objSearch.Transmission = objSearch.Transmission.Trim(',');
+					objSearch.Type = objSearch.Type.Trim(',');
 
-						objSearch.Vin = objSearch.Vin.Trim(',');
-						objSearch.Warranty = objSearch.Warranty.Trim(',');
-						objSearch.Year = objSearch.Year.Trim(',');
-						objSearch.Zip = ZipCode.PadLeft(5, '0').Trim(',');
+					objSearch.Vin = objSearch.Vin.Trim(',');
+					objSearch.Warranty = objSearch.Warranty.Trim(',');
+					objSearch.Year = objSearch.Year.Trim(',');
+					objSearch.Zip = zipCode.PadLeft(5, '0').Trim(',');
 
-						BindSearchPageFilter(objSearch.Price,
-											objSearch.Mileage,
-											objSearch.Make,
-											objSearch.Model,
-											objSearch.Year,
-											objSearch.Vin,
-											objSearch.DriveType,
-											objSearch.Transmission,
-											objSearch.Engine,
-												objSearch.Body,
-											objSearch.Type,
-											objSearch.Zip,
-											objSearch.Warranty,
-											objSearch.sortByColumn,
-											objSearch.pageSize,
-											objSearch.PageIndex,
-											objSearch.hiddenSearchKey,
-											objSearch.SearchByDealerID
-											);
-						// String Makeid=Convert.ToInt32(objSearch.Make.Contains(",")?objSearch.Make.Remove())
-					}
-
+					BindSearchPageFilter(objSearch.Price,
+					                     objSearch.Mileage,
+					                     objSearch.Make,
+					                     objSearch.Model,
+					                     objSearch.Year,
+					                     objSearch.Body,
+					                     objSearch.Type,
+					                     objSearch.Warranty
+						);
 
 					int pageIndex = 0;
 
@@ -112,22 +83,16 @@ namespace Edrive.Controllers
 						pageIndex = -1;
 
 					var lstPRoducts = GetSearchOnSearchPage(
-		   objSearch.Price, objSearch.Mileage, objSearch.Make, objSearch.Model, objSearch.Year,
-		   objSearch.Vin, objSearch.DriveType, objSearch.Transmission, objSearch.Engine,
-			objSearch.Body, objSearch.Type, objSearch.Zip, objSearch.Warranty, objSearch.sortByColumn,
-		   objSearch.pageSize, pageIndex.ToString(), objSearch.hiddenSearchKey, objSearch.SearchByDealerID, CarsCount);
-
-
-					//ViewData["PageIndex"] = objSearch.PageIndex;
-					//ViewData["CarsCount"] = CarsCount;
+						objSearch.Price, objSearch.Mileage, objSearch.Make, objSearch.Model, objSearch.Year,
+						objSearch.Vin, objSearch.DriveType, objSearch.Transmission, objSearch.Engine,
+						objSearch.Body, objSearch.Type, objSearch.Zip, objSearch.Warranty, objSearch.sortByColumn,
+						objSearch.pageSize, pageIndex.ToString(), objSearch.hiddenSearchKey, objSearch.SearchByDealerID, carsCount);
 
 					return View(lstPRoducts);
 				}
 			}
-			///--save the Search Type Session so that user can come back to search from product detail page
-			var homePageSearchSession = new SearchSession(SearchType.HomePageSearch, SearchKey, SearchByDealer, ZipCode);
+			var homePageSearchSession = new SearchSession(SearchType.HomePageSearch, searchKey, searchByDealer, zipCode);
 			Session["SearchType"] = homePageSearchSession;
-			///-end of  Search Type Session
 
 			#region for facebook authentication
 			if(User.Identity.IsAuthenticated == false)
@@ -145,9 +110,9 @@ namespace Edrive.Controllers
 					Common_Methods.CreateUserFromFaceBook("Search");
 					//  return RedirectToAction("Index", "Home");
 
-					if(String.IsNullOrWhiteSpace(SearchKey) == false)
+					if(String.IsNullOrWhiteSpace(searchKey) == false)
 					{
-						return RedirectToAction("Index", "Search", new { SearchKey = SearchKey });
+						return RedirectToAction("Index", "Search", new { SearchKey = searchKey });
 					}
 					else
 					{
@@ -161,267 +126,168 @@ namespace Edrive.Controllers
 
 			}
 			#endregion
-			try
-			{
-				ViewData["metatitle"] = SettingManager.GetSettingValue("SEO.Search-metatitle");
-				ViewData["description"] = SettingManager.GetSettingValue("SEO.Search-description");
-				ViewData["keywords"] = SettingManager.GetSettingValue("SEO.Search-keywords");
 
+			ViewData["metatitle"] = SettingManager.GetSettingValue("SEO.Search-metatitle");
+			ViewData["description"] = SettingManager.GetSettingValue("SEO.Search-description");
+			ViewData["keywords"] = SettingManager.GetSettingValue("SEO.Search-keywords");
+			int countDownDays = GetCountDownDays();
+			ViewData["CountDownDays"] = countDownDays;
+			
+			if(!String.IsNullOrEmpty(searchByDealer))
+			{
+				ViewData["SearchByDealerID"] = Request.QueryString["DealerID"].ConvertTo(-1);
 			}
+			
+			String price = string.Empty;
+			String mileage = string.Empty;
+			String make = string.Empty;
+			String model = string.Empty;
+			String year = string.Empty;
+			String body = string.Empty;
+			String warranty = string.Empty;
+			int zip = zipCode.ConvertTo(-1);
+			
+			if(zip > 0)
+				ViewData["Zip"] = zip;
 
-			catch(Exception)
+			var vehicles = _productService.SearchStandard(searchKey, 25, 0,
+				                                            ref carsCount, null, ref price, ref mileage, ref make, ref model,
+				                                            ref year, ref body, zip, null, warranty);
+
+			ViewData["CarsCount"] = carsCount;
+
+			if((carsCount ?? 0) > 0)
+				ViewData["pageIndex"] = 0;
+
+			#region Set Filters for Search summary page using Home page SearchKey
+			int makeid = -1;
+			int modelId = -1;
+			String minYear = "-1";
+			String maxYear = "-1";
+
+			if(Request.QueryString["SearchKey"] != null)
 			{
-
-
-			}
-			int CountDownDays;
-			CountDownDays = GetCountDownDays();
-			ViewData["CountDownDays"] = CountDownDays;
-			var isSearchByDealer = false;
-			int DealerID = -1;
-			if(String.IsNullOrEmpty(SearchByDealer) == false)
-			{
-
-				int.TryParse(Request.QueryString["DealerID"].ToString(), out DealerID);
-				ViewData["SearchByDealerID"] = DealerID;
-				isSearchByDealer = true;
-			}
-
-			// if SearchByDealerID is +ve  then search is on for Dealer product
-
-			if(String.IsNullOrWhiteSpace(SearchKey))
-				SearchKey = "";
-			else
-			{
-				/// this is for  the home page search to split the work and add 'and' between the words e.g. 'acura 2009' will become 'acura and 2009'
-				SearchKey = GetFullTextSearchKey(SearchKey);
-
-			}
-
-			using(Edrive_ServiceClient _service = new Edrive_ServiceClient())
-			{
-				int searchString;
-				bool search_Key = int.TryParse(SearchKey, out searchString);
-
-				String Price = string.Empty;
-				String Mileage = string.Empty;
-				String Make = string.Empty;
-				String Model = string.Empty;
-				String Year = string.Empty;
-				String Vin = string.Empty;
-				String DriveType = string.Empty;
-				String Transmission = string.Empty;
-				String Engine = string.Empty;
-				String Body = string.Empty;
-				String Type = string.Empty;
-				String Warranty = string.Empty;
-				int Zip;
-
-				if(!int.TryParse(ZipCode, out Zip))
-					Zip = -1;
-				else
-					ViewData["Zip"] = Zip;
-
-				var vehicles = _productService.SearchStandard(SearchKey, 25, 1,
-				                                              ref CarsCount, null, ref Price, ref Mileage, ref Make, ref Model,
-				                                              ref Year, ref Body, Zip, null, Warranty);
-
-//				List<Products> collections = _service.SearchProductBy_Make_Model_City_Zip(SearchKey, 25, 0,
-//					ref CarsCount, "", ref Price, ref Mileage, ref Make, ref Model, ref Year, ref Body, ref Type,
-//					Convert.ToInt32(Zip), null, Warranty, ref Vin, Transmission, Engine, ref DriveType, isSearchByDealer, DealerID);
-
-				//collections = CheckNADAPrice(collections);
-
-				//CheckCarfax(collections);
-
-				ViewData["CarsCount"] = CarsCount;
-
-				if((CarsCount ?? 0) > 0)
-					ViewData["pageIndex"] = 0;
-				//else
-				//{
-				//    ViewData["pageIndex"] = -1;
-				//}
-
-				#region Set Filters for Search summary page using Home page SearchKey
-				int Makeid = -1;
-				int ModelId = -1;
-				String MinYear = "-1", MaxYear = "-1";
-				// int Year = -1;
-
-
-
-				if(Request.QueryString["SearchKey"] != null)
+				var searchString = Request.QueryString["SearchKey"].ToLower();
+				var searchValue = searchString.Replace(" ", "");
+				var lstMakes = GetMakeList();
+				foreach(var item in lstMakes)
 				{
-					var SearchString = Request.QueryString["SearchKey"].ToString().ToLower();
-					var searchValue = SearchString.Replace(" ", "");
-					var lstMakes = _service.BindMake().OrderBy(m => m.make);
-					foreach(Product_Make item in lstMakes)
+					var ismakeSpecified = searchValue.Contains(item.Text.Replace(" ", "").ToLower());
+					if(ismakeSpecified)
 					{
-						var ismakeSpecified = searchValue.Contains(item.make.Replace(" ", "").ToLower());
-						if(ismakeSpecified)
-						{
-							Makeid = item.id;
-							// remove the make name from search string
-							searchValue = SearchString.Remove(SearchString.IndexOf(item.make.ToLower()), item.make.Length);
+						makeid = item.Value.ConvertTo<int>();
+						// remove the make name from search string
+						if(searchString.IndexOf(item.Text.ToLower(), StringComparison.Ordinal) != -1)
+							searchValue = searchString.Remove(searchString.IndexOf(item.Text.ToLower(), StringComparison.Ordinal), item.Text.Length);
 
-							#region checkforModel
-							if(String.IsNullOrEmpty(searchValue.Trim()) == false)
+						#region checkforModel
+						if(String.IsNullOrEmpty(searchValue.Trim()) == false)
+						{
+							var lstModel = GetModelList(makeid);
+							foreach(var itemModel in lstModel)
 							{
-								List<Product_Model> lstModel = _service.BindModel(item.id);
-								foreach(var itemModel in lstModel)
+								// remove blan spaces
+								searchValue = searchValue.Replace(" ", "").Trim();
+								var itemModelName = itemModel.Text.Replace(" ", "").ToLower();
+								var isModelSpecified = searchValue.Contains(itemModelName);
+								if(isModelSpecified)
 								{
-									// remove blan spaces
-									var itemModelName = itemModel.modelName.Replace(" ", "").ToLower();
-									var isModelSpecified = searchValue.Contains(itemModelName);
-									if(isModelSpecified)
-									{
-										ModelId = itemModel.id;
-										searchValue = searchValue.Remove(searchValue.IndexOf(itemModelName), itemModelName.Length);
-										break;
-									}
+									modelId = itemModel.Value.ConvertTo<int>();
+
+									if(searchValue.IndexOf(itemModelName, StringComparison.Ordinal) != -1)
+										searchValue = searchValue.Remove(searchValue.IndexOf(itemModelName, StringComparison.Ordinal), itemModelName.Length);
+									
+									break;
 								}
 							}
-							#endregion
-							break;
 						}
+						#endregion
+						break;
 					}
+				}
 
-					// now check for the year.
-					for(int i = 1998; i <= DateTime.Now.Year; i++)
+				// now check for the year.
+				for(int i = 1998; i <= DateTime.Now.Year; i++)
+				{
+					var strYear = i.ToString();
+					if(searchValue.Contains(strYear))
 					{
-						var strYear = i.ToString();
-						if(searchValue.Contains(strYear))
-						{
-							searchValue = searchValue.Remove(searchValue.IndexOf(strYear), strYear.Length);
-							MinYear = MaxYear = strYear;
-							break;
-						}
-
+						if(searchValue.IndexOf(strYear, StringComparison.Ordinal) != -1)
+							searchValue = searchValue.Remove(searchValue.IndexOf(strYear, StringComparison.Ordinal), strYear.Length);
+						
+						minYear = maxYear = strYear;
+						break;
 					}
-
-
-					// modified the searh key
-					SearchKey = GetFullTextSearchKey(searchValue);
-
-
 				}
 
-				#endregion
+				// modified the searh key
+				searchKey = GetFullTextSearchKey(searchValue);
+			}
 
-				BindFilters(Makeid, ModelId, minYear: MinYear, maxYear: MaxYear);
-				// if cars count is zero then remove search key
-				if((CarsCount ?? 0) > 0)
-				{
-					ViewData["searchKey"] = SearchKey;
-				}
-				if((CarsCount ?? 0) > 0)
-				{
-					ViewData["PageCounts"] = CarsCount.Value / 25 + 1;
-				}
-				else
-				{
-					ViewData["PageCounts"] = 0;
-				}
+			#endregion
 
-				if(search_Key == true)
-					ViewData["Zip"] = searchString;
-				if(vehicles != null)
-				{
-					return View("Index", vehicles.ToList());
-				}
-				else
-				{
-					return View("Index", vehicles);
-				}
+			BindFilters(makeid, modelId, minYear: minYear, maxYear: maxYear);
+			// if cars count is zero then remove search key
+			if((carsCount ?? 0) > 0)
+			{
+				ViewData["searchKey"] = searchKey;
+			}
+			if((carsCount ?? 0) > 0)
+			{
+				ViewData["PageCounts"] = carsCount.GetValueOrDefault(0) / 25 + 1;
+			}
+			else
+			{
+				ViewData["PageCounts"] = 0;
+			}
+
+			if(vehicles != null)
+			{
+				return View("Index", vehicles.ToList());
+			}
+			else
+			{
+				return View("Index", null);
 			}
 		}
 
 		[HttpPost]
 		public ActionResult Index(
-			String Body, String DriveType, String Engine,
-			String PriceMax, String YearMax, String Mileage, String PriceMin, String YearMin, int Make,
-			int? Model, int Radius, String Transmission, int Type, String Vin, String Zip
+			String body, String driveType, String engine,
+			String priceMax, String yearMax, String mileage, String priceMin, String yearMin, int make,
+			int? model, int radius, String transmission, int type, String vin, String zip
 			)
 		{
-			///--save the Search Type Session so that user can come back to search from product detail page
-
-			var AdvancePageSearchSession = new SearchSession();
-			AdvancePageSearchSession.prpSearchType = SearchType.AdvanceSearch;
-			AdvancePageSearchSession.prpAdvSearchParameter = new AdvanceSearch
+			var advancePageSearchSession = new SearchSession();
+			advancePageSearchSession.prpSearchType = SearchType.AdvanceSearch;
+			advancePageSearchSession.prpAdvSearchParameter = new AdvanceSearch
 			{
-				Body = Body,
-				DriveType = DriveType
+				Body = body,
+				DriveType = driveType
 				,
-				Engine = Engine,
-				PriceMax = PriceMax,
-				YearMax = YearMax,
-				Mileage = Mileage,
-				PriceMin = PriceMin,
-				YearMin = YearMin,
-				Make = Make,
-				Model = Model,
-				Radius = Radius,
-				Transmission = Transmission,
-				Type = Type,
-				Vin = Vin,
-				Zip = Zip
+				Engine = engine,
+				PriceMax = priceMax,
+				YearMax = yearMax,
+				Mileage = mileage,
+				PriceMin = priceMin,
+				YearMin = yearMin,
+				Make = make,
+				Model = model,
+				Radius = radius,
+				Transmission = transmission,
+				Type = type,
+				Vin = vin,
+				Zip = zip
 			};
-			Session["SearchType"] = AdvancePageSearchSession;
+			Session["SearchType"] = advancePageSearchSession;
 			// end of  Search Type Session 
-			return SearchAdvance(Body, DriveType, Engine,
-						   PriceMax, YearMax, Mileage, PriceMin, YearMin, Make,
-						   Model, Radius, Transmission, Type, Vin,
-						   Zip);
+			return SearchAdvance(body, driveType, engine,
+						   priceMax, yearMax, mileage, priceMin, yearMin, make,
+						   model, radius, transmission, type, vin,
+						   zip);
 
 		}
-
-		private List<Products> CheckCarfax(List<Products> products)
-		{
-			List<Products> result = new List<Products>();
-
-			var carfaxUrl = "ftp://ftp.carfax.com";
-			var inboundCredential = new NetworkCredential("EDRIVEAUTO", "8883163374");
-			var outboundCredential = new NetworkCredential("EDRIVEAUTO_get", "8883163374");
-
-			FileInfo file = new FileInfo(Server.MapPath(String.Format("~/edriveauto _cfxiicr_{0}.txt", DateTime.UtcNow.ToString("MMddyyyy"))));
-
-			if(DateTime.UtcNow.Hour < 6 && DateTime.UtcNow.Hour > 12)
-			{
-				return products;
-			}
-			using(var service = new Edrive_ServiceClient())
-			{
-				using(StreamWriter write = file.CreateText())
-				{
-
-					foreach(var product in products)
-					{
-						write.WriteLine(product.vin + "|" + service.GetDealerbyProductID(product.productId).customerID);
-					}
-				}
-			}
-			FtpWebRequest request = WebRequest.Create(carfaxUrl + "/" + file.Name) as FtpWebRequest;
-			request.Method = WebRequestMethods.Ftp.UploadFile;
-			request.Credentials = inboundCredential;
-
-			StreamReader sourceStream = new StreamReader(file.FullName);
-			byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
-			sourceStream.Close();
-			request.ContentLength = fileContents.Length;
-
-			Stream requestStream = request.GetRequestStream();
-			requestStream.Write(fileContents, 0, fileContents.Length);
-			requestStream.Close();
-
-			FtpWebResponse response = request.GetResponse() as FtpWebResponse;
-
-			var temp = result;
-
-
-			return result;
-		}
-
+		
 		public string DownloadFromFtp(string url, string username, string password)
 		{
 			// Get the object used to communicate with the server.
@@ -431,14 +297,17 @@ namespace Edrive.Controllers
 			// This example assumes the FTP site uses anonymous logon.
 			request.Credentials = new NetworkCredential(username, password);
 
-			FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+			string content = String.Empty;
+			using (FtpWebResponse response = (FtpWebResponse) request.GetResponse())
+			{
+				Stream responseStream = response.GetResponseStream();
 
-			Stream responseStream = response.GetResponseStream();
-			StreamReader reader = new StreamReader(responseStream);
-			var content = reader.ReadToEnd();
-
-			reader.Close();
-			response.Close();
+				if(responseStream != null)
+					using (StreamReader reader = new StreamReader(responseStream))
+					{
+						content = reader.ReadToEnd();
+					}
+			}
 
 			return content;
 		}
@@ -469,250 +338,157 @@ namespace Edrive.Controllers
 			return response;
 		}
 
-		private List<Products> CheckNADAPrice(List<Products> collections)
+		private void BindSearchPageFilter(String prices, String mileage, String make, String model, String year, String body, String type, String warranties)
 		{
-			List<Products> autos = new List<Products>();
+			var lstPrices = new List<SelectListItem>();
+			lstPrices.Add(new SelectListItem {Value = "-1", Text = "All"});
 
-			using(UsedCars nadaService = new UsedCars())
+			lstPrices.Add(new SelectListItem {Value = "0 - 5000", Text = "0 - 5000"});
+			for (int i = 5001; i <= 50001; i += 5000)
 			{
-				foreach(var car in collections)
-				{
-					var nadaAuto = nadaService.GetUsedCars("EdriveAutos", "ed12uc20", car.vin);
-
-					if(nadaAuto == null) //auto don't find in nada service
-					{
-						continue;
-					}
-
-					var nadaPriceMin = nadaAuto.PriceMinMax.Values.Where(it => it.Min > 0).Average(it => it.Min);
-					var nadaPriceMax = nadaAuto.PriceMinMax.Values.Where(it => it.Max > 0).Average(it => it.Max);
-
-
-					if(car.price_Current < (decimal)nadaPriceMin - 500 || car.price_Current > (decimal)nadaPriceMax + 500)
-					{
-						continue;
-					}
-
-					autos.Add(car);
-				}
-
+				var str = i.ToString() + " - " + (i + 5000 - 1).ToString();
+				lstPrices.Add(new SelectListItem {Value = str, Text = str});
 			}
 
-			return collections;
-		}
-
-		private void BindSearchPageFilter(String Prices,
-			String Mileage,
-			String Make,
-			String Model,
-			String Year,
-			String Vin,
-			String DriveType,
-			String Transmission,
-			String Engine,
-			 String Body,
-			String Type,
-			String Zip,
-			String Warranties,
-			String sortByColumn,
-			String pageSize,
-			String PageIndex,
-			String hiddenSearchKey,
-			int SearchByDealerID
-)
-		{
-			using(Edrive_ServiceClient _service = new Edrive_ServiceClient())
+			String[] arPrices = prices.Split(',');
+			if (arPrices.Any())
 			{
-
-				var lstPrices = new List<SelectListItem>();
-				lstPrices.Add(new SelectListItem { Value = "-1", Text = "All" });
-
-				lstPrices.Add(new SelectListItem { Value = "0 - 5000", Text = "0 - 5000" });
-				for(int i = 5001; i <= 50001; i += 5000)
+				foreach (var item in lstPrices)
 				{
-					var str = i.ToString() + " - " + (i + 5000 - 1).ToString();
-					lstPrices.Add(new SelectListItem { Value = str, Text = str });
-				}
-
-				//if (String.IsNullOrEmpty(MinPrice) && String.IsNullOrEmpty(MaxPrice))//--no price range is selected
-
-				String[] arPrices = Prices.Split(',');
-				if(arPrices.Count() > 0)
-				{
-					foreach(var item in lstPrices)
+					if (arPrices.Contains(item.Value))
 					{
-						if(arPrices.Contains(item.Value))
-						{
-							item.Selected = true;
-						}
+						item.Selected = true;
 					}
 				}
-				else
+			}
+			else
+			{
+				lstPrices[0].Selected = true;
+			}
+			ViewData["Price"] = lstPrices;
+			var lstMileages = new List<SelectListItem>
+			                  	{
+			                  		new SelectListItem {Value = "-1", Text = "All"},
+			                  		new SelectListItem {Value = "0 - 10000", Text = "0 - 10000"}
+			                  	};
+
+			for (int i = 10001; i <= 90001; i += 10000)
+			{
+				var str = i.ToString() + " - " + (i + 10000 - 1).ToString();
+				lstMileages.Add(new SelectListItem {Value = str, Text = str});
+			}
+
+			var mileages = new SelectList(lstMileages, "Value", "Text", mileage);
+			ViewData["Mileage"] = mileages;
+			var makes = GetMakeList();
+			var makeID = Convert.ToInt32(make);
+			ViewData["Make"] = new SelectList(makes, "Value", "Text", makeID);
+
+			if (makeID > 0)
+			{
+				var lstmodel = GetModelList(makeID);
+				var arModel = model.Split(',');
+				foreach (var item in lstmodel)
 				{
-					lstPrices[0].Selected = true;
-				}
-				ViewData["Price"] = lstPrices;
-				//}
-				//else
-				//{
-				//    var Price = new SelectList(lstPrices, "Value", "Text");
-				//    ViewData["Price"] = Price;
-				//}
-
-				//-- bind Mileage
-				var lstMileages = new List<SelectListItem>();
-				lstMileages.Add(new SelectListItem { Value = "-1", Text = "All" });
-				lstMileages.Add(new SelectListItem { Value = "0 - 10000", Text = "0 - 10000" });
-				for(int i = 10001; i <= 90001; i += 10000)
-				{
-					var str = i.ToString() + " - " + (i + 10000 - 1).ToString();
-					lstMileages.Add(new SelectListItem { Value = str, Text = str });
-				}
-				var _Mileages = new SelectList(lstMileages, "Value", "Text", Mileage);
-				ViewData["Mileage"] = _Mileages;
-
-				//-- bind make
-				var makes = _service.BindMake().Select(m => new SelectListItem { Text = m.make, Value = m.id.ToString() }).ToList();
-				makes.Insert(0, new SelectListItem { Value = "-1", Text = "All" });
-
-				var MakeID = Convert.ToInt32(Make);
-				ViewData["Make"] = new SelectList(makes, "Value", "Text", MakeID);
-
-				if(MakeID > 0)
-				{
-					var lstmodel = _service.BindModel(MakeID).Select(m => new SelectListItem { Text = m.modelName, Value = m.id.ToString() }).ToList();
-
-
-					lstmodel.Insert(0, new SelectListItem { Value = "-1", Text = "All" });
-					var arModel = Model.Split(',');
-					foreach(var item in lstmodel)
-					{
-						if(arModel.Contains(item.Value))
-							item.Selected = true;
-
-					}
-					ViewData["Model"] = lstmodel;
-					ViewData["MakeSelected"] = "yes";
-				}
-				else
-				{
-					// Change_to_titleCase(makes);
-					ViewData["Model"] = null;
-				}
-				//-- bind Year
-				List<SelectListItem> lstYear = new List<SelectListItem>();
-				lstYear.Add(new SelectListItem { Text = "All", Value = "-1" });
-				{
-					for(int i = 1998; i <= DateTime.Now.Year; i++)
-					{
-						lstYear.Add(new SelectListItem { Value = i.ToString(), Text = i.ToString() });
-					}
-
-					String[] arYears = Year.Split(',');
-					if(arYears.Count() > 0)
-					{
-						foreach(var item in lstYear)
-						{
-							if(arYears.Contains(item.Value))
-								item.Selected = true;
-						}
-					}
-					else
-					{
-						if(lstYear.Any(m => m.Selected == true) == false)
-							lstYear[0].Selected = true;
-
-					}
-					ViewData["Year"] = lstYear;
-				}
-				//new SelectList(lstYear, "Value", "Text");
-
-				var _bodyList = _service.BindBodyType().Select(m => new SelectListItem { Value = m.id.ToString(), Text = m.body }).ToList();
-				_bodyList.Insert(0, new SelectListItem { Text = "All", Value = "-1" });
-				String[] arBody = Body.Split(',');
-				foreach(var item in _bodyList)
-				{
-					if(arBody.Contains(item.Value))
+					if (arModel.Contains(item.Value))
 						item.Selected = true;
 
 				}
-				//if none is selected then all should be checked
-				if(_bodyList.Any(m => m.Selected) == false)
-					_bodyList[0].Selected = true;
-
-
-				ViewData["Body"] = _bodyList;
-
-				var Product_types = _service.bindtypeAttributes().Select(m => new SelectListItem { Value = m.id.ToString(), Text = m.type }).ToList(); ;
-				Product_types.Insert(0, new SelectListItem { Text = "All", Value = "-1" });
-				ViewData["Type"] = new SelectList(Product_types, "Value", "Text", Type);
-
-
-				List<SelectListItem> Warranty = new List<SelectListItem>();
-				Warranty.Add(new SelectListItem { Text = "All", Value = "-1" });
-				Warranty.Add(new SelectListItem { Text = "No", Value = "0" });
-				Warranty.Add(new SelectListItem { Text = "Yes", Value = "1" });
-				if(Warranty.Any(m => m.Value == Warranties))
-				{
-					Warranty.First(m => m.Value == Warranties).Selected = true;
-				}
-				ViewData["Warranty"] = new SelectList(Warranty, "Value", "Text");
-
+				ViewData["Model"] = lstmodel;
+				ViewData["MakeSelected"] = "yes";
 			}
-		}
-
-		public List<Core.Model.Products> GetSearchOnSearchPage(String Price, String Mileage, String Make, String Model, String Year,
-		   String Vin, string DriveType, string Transmission, string Engine,
-			String Body, String Type, String Zip, string Warranty, String sortByColumn,
-		   String pageSize, String PageIndex, string hiddenSearchKey, int SearchByDealerID, int? CarsCount)
-		{
-			using(Edrive_ServiceClient _service = new Edrive_ServiceClient())
+			else
 			{
-
-				//int? CarsCount = null;
-				string searchKey = string.Empty;
-				if(hiddenSearchKey != string.Empty || hiddenSearchKey != null)
-				{
-					searchKey = hiddenSearchKey;
-				}
-				if(String.IsNullOrEmpty(Model))
-					Model = "-1";
-				if(String.IsNullOrEmpty(Zip))
-					Zip
-						= "-1";
-
-				var isSearchByDealer = false;
-				// if SearchByDealerID is +ve  then search is on for Dealer product
-				if(SearchByDealerID > 0)
-				{
-					isSearchByDealer = true;
-				}
-
-				int pageIndex = Convert.ToInt32(PageIndex);
-
-				var vehicles = _productService.SearchStandard(searchKey, Convert.ToInt32(pageSize), pageIndex,
-				                                              ref CarsCount, sortByColumn, ref Price, ref Mileage, ref Make,
-				                                              ref Model, ref Year, ref Body, Convert.ToInt32(Zip), null, Warranty);
-
-//				var Cars_collection = _service.SearchProductBy_Make_Model_City_Zip(searchKey, Convert.ToInt32(pageSize), pageIndex,
-//					ref CarsCount, sortByColumn, ref Price, ref Mileage, ref Make, ref Model, ref Year, ref Body, ref Type, Convert.ToInt32(Zip), null, Warranty, ref Vin, Transmission, Engine, ref DriveType, isSearchByDealer, SearchByDealerID);
-				ViewData["CarsCount"] = CarsCount;
-				int CountDownDays;
-				CountDownDays = GetCountDownDays();
-				ViewData["CountDownDays"] = CountDownDays;
-				Session["sortByColumn"] = sortByColumn;
-				ViewData["pageIndex"] = pageIndex < 0 ? 0 : pageIndex;
-				ViewData["PageCounts"] = CarsCount.Value / Convert.ToInt32(pageSize) + 1;
-				ViewData["PageSize"] = pageSize;
-
-				return vehicles;
+				ViewData["Model"] = null;
 			}
+			//-- bind Year
+			List<SelectListItem> lstYear = new List<SelectListItem>();
+			lstYear.Add(new SelectListItem {Text = "All", Value = "-1"});
+			{
+				for (int i = 1998; i <= DateTime.Now.Year; i++)
+				{
+					lstYear.Add(new SelectListItem {Value = i.ToString(), Text = i.ToString()});
+				}
+
+				String[] arYears = year.Split(',');
+				if (arYears.Any())
+				{
+					foreach (var item in lstYear)
+					{
+						if (arYears.Contains(item.Value))
+							item.Selected = true;
+					}
+				}
+				else
+				{
+					if (!lstYear.Any(m => m.Selected))
+						lstYear[0].Selected = true;
+
+				}
+				ViewData["Year"] = lstYear;
+			}
+			
+			var bodyList = GetBodyTypeList().ToArray();
+			String[] arBody = body.Split(',');
+			foreach (var item in bodyList)
+			{
+				if (arBody.Contains(item.Value))
+					item.Selected = true;
+
+			}
+			//if none is selected then all should be checked
+			if (bodyList.Any(m => m.Selected) == false)
+				bodyList[0].Selected = true;
+			
+			ViewData["Body"] = bodyList;
+
+			var productTypes = GetProductTypeList();
+			ViewData["Type"] = new SelectList(productTypes, "Value", "Text", type);
+			List<SelectListItem> warranty = GetWarrantyList().ToList();
+
+			if (warranty.Any(m => m.Value == warranties))
+			{
+				warranty.First(m => m.Value == warranties).Selected = true;
+			}
+
+			ViewData["Warranty"] = new SelectList(warranty, "Value", "Text");
 		}
 
-		private static String GetFullTextSearchKey(String SearchKey)
+		public List<Core.Model.Products> GetSearchOnSearchPage(String price, String mileage, String make, String model, String year,
+		   String vin, string driveType, string transmission, string engine,
+			String body, String type, String zip, string warranty, String sortByColumn,
+		   String pageSize, String pageNumber, string hiddenSearchKey, int searchByDealerID, int? carsCount)
 		{
-			SearchKey = SearchKey.Trim();
-			var tempSearchKey = SearchKey.Split(' ');
+			string searchKey = string.Empty;
+			if(!String.IsNullOrWhiteSpace(hiddenSearchKey))
+			{
+				searchKey = hiddenSearchKey;
+			}
+			if(String.IsNullOrEmpty(model))
+				model = "-1";
+			if(String.IsNullOrEmpty(zip))
+				zip = "-1";
+
+			int pageIndex = Convert.ToInt32(pageNumber);
+			var vehicles = _productService.SearchStandard(searchKey, Convert.ToInt32(pageSize), pageIndex,
+				                                            ref carsCount, sortByColumn, ref price, ref mileage, ref make,
+				                                            ref model, ref year, ref body, Convert.ToInt32(zip), null, warranty);
+
+			ViewData["CarsCount"] = carsCount;
+			int countDownDays = GetCountDownDays();
+			ViewData["CountDownDays"] = countDownDays;
+			Session["sortByColumn"] = sortByColumn;
+			ViewData["pageIndex"] = pageIndex < 0 ? 0 : pageIndex;
+			ViewData["PageCounts"] = carsCount.GetValueOrDefault(0) / Convert.ToInt32(pageSize) + 1;
+			ViewData["PageSize"] = pageSize;
+
+			return vehicles;
+		}
+
+		private static String GetFullTextSearchKey(String searchKey)
+		{
+			searchKey = searchKey.Trim();
+			var tempSearchKey = searchKey.Split(' ');
 			var tempSrch = "";
 			for(int i = 0; i < tempSearchKey.Length; i++)
 			{
@@ -722,12 +498,12 @@ namespace Edrive.Controllers
 				}
 
 			}
-			if(tempSrch.LastIndexOf(" and") > 0)
+			if(tempSrch.LastIndexOf(" and", StringComparison.Ordinal) > 0)
 			{
-				tempSrch = tempSrch.Substring(0, tempSrch.LastIndexOf(" and"));
+				tempSrch = tempSrch.Substring(0, tempSrch.LastIndexOf(" and", StringComparison.Ordinal));
 			}
-			SearchKey = tempSrch;
-			return SearchKey;
+			searchKey = tempSrch;
+			return searchKey;
 		}
 
 		public ActionResult SearchCars()
@@ -738,220 +514,199 @@ namespace Edrive.Controllers
 		[HttpPost]
 		public ActionResult SearchCars(SearchType searchType, bool isPreAuction = false)
 		{
-			String Price,
-				   Mileage = "-1",
-				   Make = "-1",
-				   Model = "-1",
-				   Year = "-1",
-				   Vin = "",
-				   DriveType = "-1",
-				   Transmission = "-1",
-				   Engine = "-1",
-				   Body = "-1",
-				   Type = "-1",
-				   Zip = "",
-				   Warranty = "-1",
-				   sortByColumn = "",
-				   pageSize = "25",
-				   PageIndex = "0",
-				   hiddenSearchKey = "";
+			String mileage = "-1";
+			String make = "-1";
+			String model = "-1";
+			String year = "-1";
+			String vin = "";
+			String driveType = "-1";
+			String transmission = "-1";
+			String engine = "-1";
+			String body = "-1";
+			String type = "-1";
+			String zip = "";
+			String warranty = "-1";
+			String sortByColumn = "";
+			String pageSize = "25";
+			String pageIndex = "0";
+			String hiddenSearchKey = "";
+			string price = "0 - 10000";
 
-			Price = "0 - 10000";
-
-			var selectedPrices = new List<SelectListItem>();
-
-			selectedPrices.Add(new SelectListItem { Value = "0 - 5000", Text = "0 - 5000" });
-			selectedPrices.Add(new SelectListItem { Value = "5001 - 10000", Text = "5001 - 10000" });
+			var selectedPrices = new List<SelectListItem>
+			                     	{
+			                     		new SelectListItem {Value = "0 - 5000", Text = "0 - 5000"},
+			                     		new SelectListItem {Value = "5001 - 10000", Text = "5001 - 10000"}
+			                     	};
 
 			if(searchType == SearchType.Luxury)
 			{
-				Price = "50001 - 2000000";
+				price = "50001 - 2000000";
 				selectedPrices.Clear();
 				selectedPrices.Add(new SelectListItem { Value = "50001 - 2000000", Text = "50001 and above" });
 			}
 
-			var SearchPageSearchSession = new SearchSession();
-			SearchPageSearchSession.prpSearchType = SearchType.SearchonSearchPage;
+			var searchPageSearchSession = new SearchSession();
+			searchPageSearchSession.prpSearchType = SearchType.SearchonSearchPage;
 			var objSearch = new SearchOnSearchPage
 			{
-				Price = Price,
-				Mileage = Mileage,
-				Make = Make,
-				Model = Model,
-				Year = Year,
-				Vin = Vin,
-				DriveType = DriveType,
-				Transmission = Transmission,
-				Engine = Engine,
-				Body = Body,
-				Type = Type,
-				Zip = Zip,
-				Warranty = Warranty,
+				Price = price,
+				Mileage = mileage,
+				Make = make,
+				Model = model,
+				Year = year,
+				Vin = vin,
+				DriveType = driveType,
+				Transmission = transmission,
+				Engine = engine,
+				Body = body,
+				Type = type,
+				Zip = zip,
+				Warranty = warranty,
 				sortByColumn = sortByColumn,
 				pageSize = pageSize,
-				PageIndex = PageIndex,
+				PageIndex = pageIndex,
 				hiddenSearchKey = hiddenSearchKey,
 				SearchByDealerID = 0
 			};
 
-			SearchPageSearchSession.prpSearchonSearchPageParameter = objSearch;
-			Session["SearchType"] = SearchPageSearchSession;
+			searchPageSearchSession.prpSearchonSearchPageParameter = objSearch;
+			Session["SearchType"] = searchPageSearchSession;
 
 			BindSearchPageFilter(objSearch.Price,
 											objSearch.Mileage,
 											objSearch.Make,
 											objSearch.Model,
 											objSearch.Year,
-											objSearch.Vin,
-											objSearch.DriveType,
-											objSearch.Transmission,
-											objSearch.Engine,
 												objSearch.Body,
 											objSearch.Type,
-											objSearch.Zip,
-											objSearch.Warranty,
-											objSearch.sortByColumn,
-											objSearch.pageSize,
-											objSearch.PageIndex,
-											objSearch.hiddenSearchKey,
-											objSearch.SearchByDealerID
+											objSearch.Warranty
 											);
 
-			using(Edrive_ServiceClient _service = new Edrive_ServiceClient())
+			int? carsCount = null;
+			string searchKey = string.Empty;
+			ViewData["pageIndex"] = pageIndex;
+			if(!String.IsNullOrWhiteSpace(hiddenSearchKey))
 			{
-				int? CarsCount = null;
-				string searchKey = string.Empty;
-				ViewData["pageIndex"] = PageIndex;
-				if(hiddenSearchKey != string.Empty || hiddenSearchKey != null)
-				{
-					searchKey = hiddenSearchKey;
-				}
-				if(String.IsNullOrEmpty(Model))
-					Model = "-1";
-				if(String.IsNullOrEmpty(Zip))
-					Zip
-						= "-1";
-
-				var isSearchByDealer = false;
-
-				var vehicles = _productService.SearchStandard(searchKey, Convert.ToInt32(pageSize), Convert.ToInt32(PageIndex),
-				                                              ref CarsCount, sortByColumn, ref Price, ref Mileage, ref Make,
-				                                              ref Model, ref Year, ref Body, Convert.ToInt32(Zip), null, Warranty);
-
-//				var Cars_collection = _service.SearchProductBy_Make_Model_City_Zip(searchKey, Convert.ToInt32(pageSize), Convert.ToInt32(PageIndex),
-//					ref CarsCount, sortByColumn, ref Price, ref Mileage, ref Make, ref Model, ref Year, ref Body, ref Type, Convert.ToInt32(Zip), null, Warranty, ref Vin, Transmission, Engine, ref DriveType, isSearchByDealer, 0);
-
-				ViewData["CarsCount"] = CarsCount;
-
-				if((CarsCount ?? 0) > 0)
-					ViewData["pageIndex"] = 0;
-				//else
-				//{
-				//    ViewData["pageIndex"] = -1;
-				//}
-
-				#region Set Filters for Search summary page using Home page SearchKey
+				searchKey = hiddenSearchKey;
+			}
+			if(String.IsNullOrEmpty(model))
+				model = "-1";
+			if(String.IsNullOrEmpty(zip))
+				zip
+					= "-1";
 				
-				int makeid = -1;
-				int modelId = -1;
-				string minYear = "-1";
-				string maxYear = "-1";
+			var vehicles = _productService.SearchStandard(searchKey, Convert.ToInt32(pageSize), Convert.ToInt32(pageIndex),
+				                                            ref carsCount, sortByColumn, ref price, ref mileage, ref make,
+				                                            ref model, ref year, ref body, Convert.ToInt32(zip), null, warranty);
+
+			ViewData["CarsCount"] = carsCount;
+			if((carsCount ?? 0) > 0)
+				ViewData["pageIndex"] = 0;
+
+			#region Set Filters for Search summary page using Home page SearchKey
 				
-				if(Request.QueryString["SearchKey"] != null)
-				{
-					var searchString = Request.QueryString["SearchKey"].ToLower();
-					var searchValue = searchString.Trim();
-					var lstMakes = _productMakeService.GetAll().OrderBy(m => m.make);
+			int makeid = -1;
+			int modelId = -1;
+			string minYear = "-1";
+			string maxYear = "-1";
+				
+			if(Request.QueryString["SearchKey"] != null)
+			{
+				var searchString = Request.QueryString["SearchKey"].ToLower();
+				var searchValue = searchString.Trim();
+				var lstMakes = _productMakeService.GetAll().OrderBy(m => m.make);
 					
-					foreach(var item in lstMakes)
+				foreach(var item in lstMakes)
+				{
+					var ismakeSpecified = searchValue.Contains(item.make.Replace(" ", "").ToLower());
+					if(ismakeSpecified)
 					{
-						var ismakeSpecified = searchValue.Contains(item.make.Replace(" ", "").ToLower());
-						if(ismakeSpecified)
-						{
-							makeid = item.id;
-							// remove the make name from search string
-							searchValue = searchString.Remove(searchString.IndexOf(item.make.ToLower()), item.make.Length);
+						makeid = item.id;
+						// remove the make name from search string
 
-							#region checkforModel
-							if(String.IsNullOrEmpty(searchValue.Trim()) == false)
+						if(searchString.IndexOf(item.make.ToLower(), StringComparison.Ordinal) != -1)
+							searchValue = searchString.Remove(searchString.IndexOf(item.make.ToLower(), StringComparison.Ordinal), item.make.Length);
+
+						#region checkforModel
+						if(String.IsNullOrEmpty(searchValue.Trim()) == false)
+						{
+							var lstModel = _productModelService.GetModelsByMake(item.id);
+							foreach(var itemModel in lstModel)
 							{
-								var lstModel = _productModelService.GetModelsByMake(item.id);
-								foreach(var itemModel in lstModel)
+								// remove blan spaces
+								var itemModelName = itemModel.modelName.Replace(" ", "").ToLower();
+								var isModelSpecified = searchValue.Contains(itemModelName);
+								if(isModelSpecified)
 								{
-									// remove blan spaces
-									var itemModelName = itemModel.modelName.Replace(" ", "").ToLower();
-									var isModelSpecified = searchValue.Contains(itemModelName);
-									if(isModelSpecified)
-									{
-										modelId = itemModel.id;
-										searchValue = searchValue.Remove(searchValue.IndexOf(itemModelName), itemModelName.Length);
-										break;
-									}
+									modelId = itemModel.id;
+
+									if(searchValue.IndexOf(itemModelName, StringComparison.Ordinal) != -1)
+										searchValue = searchValue.Remove(searchValue.IndexOf(itemModelName, StringComparison.Ordinal), itemModelName.Length);
+									
+									break;
 								}
 							}
-							#endregion
-							break;
 						}
+						#endregion
+						break;
 					}
+				}
 
-					// now check for the year.
-					for(int i = 1998; i <= DateTime.Now.Year; i++)
+				// now check for the year.
+				for(int i = 1998; i <= DateTime.Now.Year; i++)
+				{
+					var strYear = i.ToString();
+					if(searchValue.Contains(strYear))
 					{
-						var strYear = i.ToString();
-						if(searchValue.Contains(strYear))
-						{
-							searchValue = searchValue.Remove(searchValue.IndexOf(strYear), strYear.Length);
-							minYear = maxYear = strYear;
-							break;
-						}
-
+						minYear = maxYear = strYear;
+						break;
 					}
-				}
 
-				#endregion
-
-				BindFilters(makeid, modelId, minYear: minYear, maxYear: maxYear, selectedPrices: selectedPrices);
-				// if cars count is zero then remove search key
-				if((CarsCount ?? 0) > 0)
-				{
-					ViewData["PageCounts"] = CarsCount.GetValueOrDefault(0) / 25 + 1;
 				}
-				else
-				{
-					ViewData["PageCounts"] = 0;
-				}
-
-				ViewData["CarsCount"] = CarsCount;
-				int countDownDays = GetCountDownDays();
-				ViewData["CountDownDays"] = countDownDays;
-				return PartialView("Index", vehicles);
 			}
+
+			#endregion
+
+			BindFilters(makeid, modelId, minYear: minYear, maxYear: maxYear, selectedPrices: selectedPrices);
+			// if cars count is zero then remove search key
+			if((carsCount ?? 0) > 0)
+			{
+				ViewData["PageCounts"] = carsCount.GetValueOrDefault(0) / 25 + 1;
+			}
+			else
+			{
+				ViewData["PageCounts"] = 0;
+			}
+
+			ViewData["CarsCount"] = carsCount;
+			int countDownDays = GetCountDownDays();
+			ViewData["CountDownDays"] = countDownDays;
+			return PartialView("Index", vehicles);
 		}
 
-		public ActionResult SearchAdvance(String Body, String DriveType, String Engine,
-			String PriceMax, String YearMax, String Mileage, String PriceMin, String YearMin, int? Make,
-			int? Model, int? Radius, String Transmission, int? Type, String Vin, String Zip
-		   )
+		public ActionResult SearchAdvance(String body, String driveType, String engine,
+			String priceMax, String yearMax, String mileage, String priceMin, String yearMin, int? make,
+			int? model, int? radius, String transmission, int? type, String vin, String zip)
 		{
 			// if it is back button clicked on  prodcut detail page
 			if(TempData["BackButton"] != null)
 			{
-				AdvanceSearch advSearch = TempData["BackButton"] as AdvanceSearch;
-				Body = advSearch.Body;
-				DriveType = advSearch.DriveType;
-				Engine = advSearch.Engine;
-				PriceMax = advSearch.PriceMax;
-				YearMax = advSearch.YearMax;
-				Mileage = advSearch.Mileage;
-				PriceMin = advSearch.PriceMin;
-				YearMin = advSearch.YearMin;
-				Make = advSearch.Make;
-				Model = advSearch.Model;
-				Radius = advSearch.Radius;
-				Transmission = advSearch.Transmission;
-				Type = advSearch.Type;
-				Vin = advSearch.Vin;
-				Zip = advSearch.Zip;
+				AdvanceSearch advSearch = (AdvanceSearch)TempData["BackButton"];
+				body = advSearch.Body;
+				driveType = advSearch.DriveType;
+				engine = advSearch.Engine;
+				priceMax = advSearch.PriceMax;
+				yearMax = advSearch.YearMax;
+				mileage = advSearch.Mileage;
+				priceMin = advSearch.PriceMin;
+				yearMin = advSearch.YearMin;
+				make = advSearch.Make;
+				model = advSearch.Model;
+				radius = advSearch.Radius;
+				transmission = advSearch.Transmission;
+				type = advSearch.Type;
+				vin = advSearch.Vin;
+				zip = advSearch.Zip;
 			}
 
 			int countDownDays = GetCountDownDays();
@@ -959,23 +714,23 @@ namespace Edrive.Controllers
 			
 			Core.Model.AdvancedSearchAttributes attr = new Core.Model.AdvancedSearchAttributes
 				                                        {
-				                                           	_body = Convert.ToInt32(Body),
-				                                           	_driveType = DriveType,
-				                                           	_engine = Engine,
-				                                           	_make = Make ?? -1,
-				                                           	_maxYear = YearMax.ConvertTo(-1)
+				                                           	_body = Convert.ToInt32(body),
+				                                           	_driveType = driveType,
+				                                           	_engine = engine,
+				                                           	_make = make ?? -1,
+				                                           	_maxYear = yearMax.ConvertTo(-1)
 				                                        };
 
-			if(Mileage != null)
+			if(mileage != null)
 			{
-				if(Mileage == "-1" || String.IsNullOrEmpty(Mileage))
+				if(mileage == "-1" || String.IsNullOrEmpty(mileage))
 				{
 					attr._mileageFrom = -1; attr._mileageTo = -1;
 				}
 				else
 				{
 					attr._mileageFrom = 0;
-					attr._mileageTo = Convert.ToInt32(Mileage);
+					attr._mileageTo = Convert.ToInt32(mileage);
 					ViewData["AdvSearchMileageRange"] = attr._mileageFrom + " - " + attr._mileageTo;
 				}
 			}
@@ -984,10 +739,10 @@ namespace Edrive.Controllers
 				attr._mileageFrom = -1;
 				attr._mileageTo = -1;
 			}
-			if(!String.IsNullOrEmpty(PriceMin) && !String.IsNullOrEmpty(PriceMax))
+			if(!String.IsNullOrEmpty(priceMin) && !String.IsNullOrEmpty(priceMax))
 			{
 				int minPrice, maxPrice;
-				if(int.TryParse(PriceMin, out minPrice) && int.TryParse(PriceMax, out maxPrice))
+				if(int.TryParse(priceMin, out minPrice) && int.TryParse(priceMax, out maxPrice))
 					ViewData["AdvSearchPriceRange"] = string.Format("{0} - {1}", minPrice, maxPrice);
 				else
 				{
@@ -998,29 +753,28 @@ namespace Edrive.Controllers
 			{
 				ViewData["AdvSearchPriceRange"] = "";
 			}
-			attr._maxPrice = String.IsNullOrEmpty(PriceMax) ? -1 : Convert.ToInt32(PriceMax);
-			attr._minPrice = String.IsNullOrEmpty(PriceMin) ? -1 : Convert.ToInt32(PriceMin);
-			attr._minYaer = String.IsNullOrEmpty(YearMin) ? -1 : Convert.ToInt32(YearMin);
-			attr._maxYear = String.IsNullOrEmpty(YearMax) ? -1 : Convert.ToInt32(YearMax);
-			var modelID = Model == null ? -1 : Model.Value;
+			attr._maxPrice = priceMax.ConvertTo<decimal>(-1);
+			attr._minPrice = priceMin.ConvertTo<decimal>(-1);
+			attr._minYaer = yearMin.ConvertTo(-1);
+			attr._maxYear = yearMax.ConvertTo(-1);
+			var modelID = model.GetValueOrDefault(-1);
 			attr._model = modelID;
-			attr._radius = Radius.ToString();
-			attr._transmission = Transmission;
-			attr._Type = Type ?? -1;
-			attr._vin = Vin ?? "";
-			attr._zip = String.IsNullOrEmpty(Zip) ? -1 : Convert.ToInt32(Zip);
+			attr._radius = radius.ToString();
+			attr._transmission = transmission;
+			attr._Type = type ?? -1;
+			attr._vin = vin ?? "";
+			attr._zip = zip.ConvertTo(-1);
 			int count;
-			List<Core.Model.Products> collection = _productService.SearchAdvanced(attr, 25, 1, null, out count);
+			List<Core.Model.Products> collection = _productService.SearchAdvanced(attr, 25, 0, null, out count);
 			ViewData["pageIndex"] = 0;
-			Mileage = Mileage == "" ? "-1" : Mileage;
-			BindFilters(Make ?? -1, modelID, Type.ToString(), Mileage, Body,
-			Transmission, Engine, attr._minYaer.ToString(), attr._maxYear.ToString(), PriceMin, PriceMax);
-			ViewData["Vin"] = Vin;
-			ViewData["Zip"] = Zip;
-			ViewData["Transmission"] = Transmission;
-			ViewData["Engine"] = Engine;
-			ViewData["Radius"] = Radius;
-			var carsCount = _productService.SearchAdvancedCount(attr, 1, 1, null, out count);
+			mileage = mileage == "" ? "-1" : mileage;
+			BindFilters(make ?? -1, modelID, type.ToString(), mileage, body, attr._minYaer.ToString(), attr._maxYear.ToString(), priceMin, priceMax);
+			ViewData["Vin"] = vin;
+			ViewData["Zip"] = zip;
+			ViewData["Transmission"] = transmission;
+			ViewData["Engine"] = engine;
+			ViewData["Radius"] = radius;
+			var carsCount = _productService.SearchAdvancedCount(attr, 1, 0, null, out count);
 			ViewData["CarsCount"] = carsCount;
 			ViewData["PageCounts"] = carsCount / 25 + 1;
 			return View("Index", collection);
@@ -1028,43 +782,43 @@ namespace Edrive.Controllers
 
 		[HttpPost]
 		public ActionResult SearchOnSearchPage(
-			String Price, String Mileage, String Make, String Model, String Year,
-			String Vin, string DriveType, string Transmission, string Engine,
-			String Body, String Type, String Zip, string Warranty, String sortByColumn,
-			String pageSize, String PageIndex, string hiddenSearchKey, int SearchByDealerID, bool isSort = false, int? radius = null)
+			String price, String mileage, String make, String model, String year,
+			String vin, string driveType, string transmission, string engine,
+			String body, String type, String zip, string warranty, String sortByColumn,
+			String pageSize, String pageIndex, string hiddenSearchKey, int searchByDealerID, bool isSort = false, int? radius = null)
 		{
 			var searchPageSearchSession = new SearchSession();
 			searchPageSearchSession.prpSearchType = SearchType.SearchonSearchPage;
 			searchPageSearchSession.prpSearchonSearchPageParameter = new SearchOnSearchPage
 			{
-				Price = Price,
-				Mileage = Mileage,
-				Make = Make,
-				Model = Model,
-				Year = Year,
-				Vin = Vin,
-				DriveType = DriveType,
-				Transmission = Transmission,
-				Engine = Engine,
-				Body = Body,
-				Type = Type,
-				Zip = Zip,
-				Warranty = Warranty,
+				Price = price,
+				Mileage = mileage,
+				Make = make,
+				Model = model,
+				Year = year,
+				Vin = vin,
+				DriveType = driveType,
+				Transmission = transmission,
+				Engine = engine,
+				Body = body,
+				Type = type,
+				Zip = zip,
+				Warranty = warranty,
 				sortByColumn = sortByColumn,
 				pageSize = pageSize,
-				PageIndex = PageIndex,
+				PageIndex = pageIndex,
 				hiddenSearchKey = hiddenSearchKey,
-				SearchByDealerID = SearchByDealerID
+				SearchByDealerID = searchByDealerID
 			};
 			Session["SearchType"] = searchPageSearchSession;
 		
 			int? carsCount = null;
-			ViewData["pageIndex"] = PageIndex;
+			ViewData["pageIndex"] = pageIndex;
 
-			if(String.IsNullOrEmpty(Model))
-				Model = "-1";
-			if(String.IsNullOrEmpty(Zip))
-				Zip
+			if(String.IsNullOrEmpty(model))
+				model = "-1";
+			if(String.IsNullOrEmpty(zip))
+				zip
 					= "-1";
 				
 			if(isSort)
@@ -1086,9 +840,9 @@ namespace Edrive.Controllers
 			Session["sortByColumn"] = sortByColumn;
 			sortByColumn = string.Format("{0} {1}", sortByColumn, Session["SearchSortOrder"] ?? String.Empty).Trim();
 
-			var vehicles = _productService.SearchStandard(hiddenSearchKey, Convert.ToInt32(pageSize), Convert.ToInt32(PageIndex),
-				                            ref carsCount, sortByColumn, ref Price, ref Mileage, ref Make, ref Model, ref Year,
-				                            ref Body, Convert.ToInt32(Zip), radius, Warranty);
+			var vehicles = _productService.SearchStandard(hiddenSearchKey, Convert.ToInt32(pageSize), Convert.ToInt32(pageIndex),
+				                            ref carsCount, sortByColumn, ref price, ref mileage, ref make, ref model, ref year,
+				                            ref body, Convert.ToInt32(zip), radius, warranty);
 
 			ViewData["CarsCount"] = carsCount;
 			int countDownDays = GetCountDownDays();
@@ -1098,35 +852,35 @@ namespace Edrive.Controllers
 
 		private static int GetCountDownDays()
 		{
-			int CountDownDays = 0;
+			int countDownDays = 0;
 			using(eDriveAutoWebEntities entity = new eDriveAutoWebEntities())
 			{
-				var Set = entity.Settings.FirstOrDefault(m => m.Name == "CountDownDays");
-				if(Set != null)
+				var set = entity.Settings.FirstOrDefault(m => m.Name == "CountDownDays");
+				if(set != null)
 				{
-					CountDownDays = Convert.ToInt32(Set.Value);
+					countDownDays = Convert.ToInt32(set.Value);
 				}
 			}
-			return CountDownDays;
+			return countDownDays;
 		}
 
 		[HttpPost]
-		public JsonResult SearchOnSearchPage_CarsCount(String Price, String Mileage, String Make, String Model, String Year,
-			String Vin, string DriveType, string Transmission, string Engine,
-			 String Body, String Type, String Zip, string Warranty, String sortByColumn,
-			String pageSize, String pageIndex, string hiddenSearchKey, int SearchByDealerID, int? radius = null)
+		public JsonResult SearchOnSearchPage_CarsCount(String price, String mileage, String make, String model, String year,
+			String vin, string driveType, string transmission, string engine,
+			 String body, String type, String zip, string warranty, String sortByColumn,
+			String pageSize, String pageIndex, string hiddenSearchKey, int searchByDealerID, int? radius = null)
 		{
 			int? carsCount = null;
 			ViewData["pageIndex"] = pageIndex;
 				
-			if(String.IsNullOrEmpty(Model))
-				Model = "-1";
-			if(String.IsNullOrEmpty(Zip))
-				Zip = "-1";
+			if(String.IsNullOrEmpty(model))
+				model = "-1";
+			if(String.IsNullOrEmpty(zip))
+				zip = "-1";
 
-			carsCount = _productService.SearchStandardCount(hiddenSearchKey, 1, 1, ref carsCount, null, ref Price, ref Mileage,
-				                                            ref Make, ref Model, ref Year, ref Body, Convert.ToInt32(Zip), null,
-				                                            Warranty);
+			carsCount = _productService.SearchStandardCount(hiddenSearchKey, 1, 1, ref carsCount, null, ref price, ref mileage,
+				                                            ref make, ref model, ref year, ref body, Convert.ToInt32(zip), null,
+				                                            warranty);
 
 			return Json(carsCount);
 		}
@@ -1198,7 +952,7 @@ namespace Edrive.Controllers
 		}
 
 		private void BindFilters(int makeID = -1, int modelID = -1, string type = "-1", String mileage = "-1", 
-			String body = "-1", String transmission = "", String engine = "", String minYear = "", 
+			String body = "-1", String minYear = "", 
 			String maxYear = "", String minPrice = "", String maxPrice = "", IEnumerable<SelectListItem> selectedPrices = null)
 		{
 			var lstPrices = new List<SelectListItem>();
