@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Model\AdvancedSearchAttributes.cs" />
+    <Compile Include="Model\Buyer.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Customer_Type.cs" />

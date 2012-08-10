@@ -10,21 +10,23 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Edrive.CommonHelpers;
+using Edrive.Core.Enums;
+using Edrive.Core.Model;
 using Edrive.Logic.Interfaces;
 using Edrive.Models;
 using Edrive.PayPalAPI;
-
-using Customer = Edrive.Models.Customer;
 
 namespace Edrive.Controllers
 {
 	public class RegisterController : Controller
 	{
 		private readonly IStateProvinceService _stateProvinceService;
+		private readonly IBuyerService _buyerService;
 
-		public RegisterController(IStateProvinceService stateProvinceService)
+		public RegisterController(IStateProvinceService stateProvinceService, IBuyerService buyerService)
 		{
 			_stateProvinceService = stateProvinceService;
+			_buyerService = buyerService;
 		}
 
 		private string ActivationCode
@@ -46,32 +48,29 @@ namespace Edrive.Controllers
 
 				if(HttpContext.User.Identity.IsAuthenticated)
 				{
-					using(eDriveAutoWebEntities context = new eDriveAutoWebEntities())
+					string email = HttpContext.User.Identity.Name.ToLower();
+					var user = _buyerService.GetByUsername(email);
+
+					if(user != null)
 					{
-						string email = HttpContext.User.Identity.Name.ToLower();
-						var user = context.Customer.FirstOrDefault(c => c.Email.ToLower() == email);
-
-						if(user != null)
+						_UserRegisteration model = new _UserRegisteration
 						{
-							_UserRegisteration model = new _UserRegisteration
-							{
-								Firstname = user.FirstName,
-								Lastname = user.LastName,
-								Address = user.ADDRESS,
-								Email = user.Email,
-								City = user.CITY,
-								State = user.STATE,
-								Zip = user.zip.GetValueOrDefault(0)
-							};
+							Firstname = user.FirstName,
+							Lastname = user.LastName,
+							Address = user.Address,
+							Email = user.Email,
+							City = user.City,
+							State = user.State,
+							Zip = user.Zip.ConvertTo(0)
+						};
 
-							return View(model);
-						}
+						return View(model);
 					}
 				}
 			}
 			catch(Exception ex)
 			{
-				Edrive.Helpers.Log.Event("Error", ex.Message, "");
+				Helpers.Log.Event("Error", ex.Message, "");
 			}
 
 			return View();
@@ -139,29 +138,29 @@ namespace Edrive.Controllers
 				#region PayPal
 				if(userModel.PaymentType == "PayPal")
 				{
-                    Customer newCustomer = CreateGuestCustomer(userModel);
+                    var newCustomer = CreateGuestCustomer(userModel);
                     var requesterCredentials = PayPalUtility.BuildPayPalWebservice();
 
                     SetExpressCheckoutRequestDetailsType details = new SetExpressCheckoutRequestDetailsType();
                     details.NoShipping = "1";
 
-                    PaymentDetailsType payment = new PaymentDetailsType()
+                    PaymentDetailsType payment = new PaymentDetailsType
                     {
                         OrderDescription = "Full Access Registration (10 days)",
-                        OrderTotal = new BasicAmountType()
+                        OrderTotal = new BasicAmountType
                         {
                             currencyID = CurrencyCodeType.USD,
                             Value = "9.95"
                         }
                     };
 
-                    details.PaymentDetails = new PaymentDetailsType[]{payment};
-					details.CancelURL = string.Format("{0}Register/ConfirmMemberShip?uid={1}&cancel=true", Common_Methods.GetDomainUrl(), newCustomer.CustomerID);
-					details.ReturnURL = string.Format("{0}Register/ConfirmMemberShip?uid={1}", Common_Methods.GetDomainUrl(), newCustomer.CustomerID);
+                    details.PaymentDetails = new []{payment};
+					details.CancelURL = string.Format("{0}Register/ConfirmMemberShip?uid={1}&cancel=true", Common_Methods.GetDomainUrl(), newCustomer.ID);
+					details.ReturnURL = string.Format("{0}Register/ConfirmMemberShip?uid={1}", Common_Methods.GetDomainUrl(), newCustomer.ID);
 
-					SetExpressCheckoutReq request = new SetExpressCheckoutReq()
+					SetExpressCheckoutReq request = new SetExpressCheckoutReq
                     {
-                        SetExpressCheckoutRequest = new SetExpressCheckoutRequestType()
+                        SetExpressCheckoutRequest = new SetExpressCheckoutRequestType
                         {
                             SetExpressCheckoutRequestDetails = details,
                             Version = PayPalUtility.Version
@@ -182,12 +181,12 @@ namespace Edrive.Controllers
 				#region CreditCard
 				if(userModel.PaymentType == "CreditCard")
 				{
-					Customer newCustomer = CreateGuestCustomer(userModel);
+					var newCustomer = CreateGuestCustomer(userModel);
 					string message;
 
 					if(ProcessCrediCard(userModel, out message))
 					{
-						var isSuccess = ActivateAccount(newCustomer.CustomerID);
+						var isSuccess = ActivateAccount(newCustomer.ID);
 
 						try
 						{
@@ -197,7 +196,7 @@ namespace Edrive.Controllers
 						}
 						catch(Exception ex)
 						{
-							Edrive.Helpers.Log.Event("Error", ex.Message, "");
+							Helpers.Log.Event("Error", ex.Message, "");
 						}
 
 						if(isSuccess)
@@ -216,33 +215,31 @@ namespace Edrive.Controllers
 				#region PredefinedForm
 				if(userModel.PaymentType == "PreDefinedForm")
 				{
-					Customer newCustomer = CreateGuestCustomer(userModel);
+					var newCustomer = CreateGuestCustomer(userModel);
 
 					try
 					{
-						using(eDriveAutoWebEntities entity = new eDriveAutoWebEntities())
+						//Update recoard from Guest to Customer
+						var cust = _buyerService.GetByID(newCustomer.ID);
+						cust.IsDeleted = false;
+						cust.ExpirationDate = DateTime.Now.AddYears(1);
+						cust.IsTrial = true;
+						cust.RegistrationDate = DateTime.Now;
+
+						_buyerService.SaveBuyer(cust);
+
+						try
 						{
-							//Update recoard from Guest to Customer
-							var cust = entity.Customer.First(m => m.CustomerID == newCustomer.CustomerID);
-							cust.Deleted = false;
-							cust.ExpirationDate = DateTime.Now.AddYears(1);
-							cust.IsTrial = true;
-							cust.RegisterationDate = DateTime.Now;
-
-							entity.SaveChanges();
-
-							try
-							{
-								MessageManager.SendFreeAccessCustomerWelcomeMessageNew(cust, cust.Name, 0);
-								MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
-								SendAccountCreatedNotification(cust);
-							}
-							catch
-							{
-								//NOTE: it should normally send on the sever. Locally it doesn't send.
-							}
-							//MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
+							MessageManager.SendFreeAccessCustomerWelcomeMessageNew(cust, cust.FirstName, 0);
+							MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
+							SendAccountCreatedNotification(cust);
 						}
+						catch
+						{
+							//NOTE: it should normally send on the sever. Locally it doesn't send.
+						}
+						//MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
+						
 						return RedirectToAction("Success");
 					}
 					catch(Exception ex)
@@ -268,16 +265,13 @@ namespace Edrive.Controllers
 			if(User.Identity.IsAuthenticated || String.IsNullOrWhiteSpace(token)
 				|| userID <= 0 || String.IsNullOrWhiteSpace(payerID))
 				return RedirectToAction("Index", "Home");
+			
+			var userDetails = _buyerService.GetByID(userID);
 
-			using(eDriveAutoWebEntities entities = new eDriveAutoWebEntities())
-			{
-				var userDetails = entities.Customer.FirstOrDefault(c => c.CustomerID == userID);
+			ViewBag.Token = token;
+			ViewBag.PayerID = payerID;
 
-				ViewBag.Token = token;
-				ViewBag.PayerID = payerID;
-
-				return View(userDetails);
-			}
+			return View(userDetails);
 		}
 
 		[HttpPost]
@@ -306,12 +300,8 @@ namespace Edrive.Controllers
 					if(ActivateAccount(userID))
 					{
 						ViewBag.Message = "success";
-						
-						using(eDriveAutoWebEntities entities = new eDriveAutoWebEntities())
-						{
-							var userDetails = entities.Customer.FirstOrDefault(c => c.CustomerID == userID);
-							SendAccountCreatedNotification(userDetails, "paypal");
-						}
+						var userDetails = _buyerService.GetByID(userID);
+						SendAccountCreatedNotification(userDetails, "paypal");
 
 						return RedirectToAction("Success");
 					}
@@ -322,7 +312,7 @@ namespace Edrive.Controllers
 				return RedirectToAction("RegisterUser");
 			}
 			
-			return View((Customer)null);
+			return View((Buyer)null);
 		}
 
         /// <summary>
@@ -335,9 +325,9 @@ namespace Edrive.Controllers
             var requesterCredentials = PayPalUtility.BuildPayPalWebservice();
 			
 			// build getdetails request               
-            GetExpressCheckoutDetailsReq req = new GetExpressCheckoutDetailsReq()                
+            GetExpressCheckoutDetailsReq req = new GetExpressCheckoutDetailsReq                
             {                    
-                GetExpressCheckoutDetailsRequest = new GetExpressCheckoutDetailsRequestType()                    
+                GetExpressCheckoutDetailsRequest = new GetExpressCheckoutDetailsRequestType                    
                 {                        
                     Version = PayPalUtility.Version,                        
                     Token = token                    
@@ -349,7 +339,7 @@ namespace Edrive.Controllers
 			{
 				GetExpressCheckoutDetailsResponseType resp = client.GetExpressCheckoutDetails(ref requesterCredentials, req);
 				PayPalUtility.HandleError(resp);
-				GetExpressCheckoutDetailsResponseDetailsType respDetails = resp.GetExpressCheckoutDetailsResponseDetails;
+//				GetExpressCheckoutDetailsResponseDetailsType respDetails = resp.GetExpressCheckoutDetailsResponseDetails;
 
 				// setup UI and save transaction details to session                
 				Session["CheckoutDetails"] = resp;
@@ -368,23 +358,23 @@ namespace Edrive.Controllers
             GetExpressCheckoutDetailsResponseType resp = Session["CheckoutDetails"] as GetExpressCheckoutDetailsResponseType;                     
             
             // prepare for commiting transaction            
-            DoExpressCheckoutPaymentReq payReq = new DoExpressCheckoutPaymentReq()            
+            DoExpressCheckoutPaymentReq payReq = new DoExpressCheckoutPaymentReq            
             {                
-                DoExpressCheckoutPaymentRequest = new DoExpressCheckoutPaymentRequestType()                
+                DoExpressCheckoutPaymentRequest = new DoExpressCheckoutPaymentRequestType                
                 {                    
                     Version = PayPalUtility.Version,                   
                     DoExpressCheckoutPaymentRequestDetails 
-                        = new DoExpressCheckoutPaymentRequestDetailsType()                    
+                        = new DoExpressCheckoutPaymentRequestDetailsType                    
                     {                        
                         Token = token,                        
                         PaymentAction = PaymentActionCodeType.Sale,                        
                         PaymentActionSpecified = true,                        
                         PayerID = payerID,                        
-                        PaymentDetails = new PaymentDetailsType[] 
+                        PaymentDetails = new [] 
                         {                            
-                            new PaymentDetailsType()                            
+                            new PaymentDetailsType                            
                             {                                
-                                OrderTotal = new BasicAmountType()                                
+                                OrderTotal = new BasicAmountType                                
                                 {                                    
                                     currencyID = CurrencyCodeType.USD,                                    
                                     Value = "9.95"                                
@@ -426,8 +416,8 @@ namespace Edrive.Controllers
 
 			Dictionary<string, string> postValues = new Dictionary<string, string>();
 			//the API Login ID and Transaction Key must be replaced with valid values
-			String merchantLoginID = ConfigurationManager.AppSettings["PayLeapId"].ToString();
-			String merchantTransKey = ConfigurationManager.AppSettings["PayLeapTransKey"].ToString();
+			String merchantLoginID = ConfigurationManager.AppSettings["PayLeapId"];
+			String merchantTransKey = ConfigurationManager.AppSettings["PayLeapTransKey"];
 
 			postValues.Add("UserName", merchantLoginID);
 			postValues.Add("Password", merchantTransKey);
@@ -477,11 +467,11 @@ namespace Edrive.Controllers
 
 			if(pResponse.Result != 0)
 			{
-				Edrive.Helpers.Log.Event("Transaction Declined", pResponse.Response(), "");
+				Helpers.Log.Event("Transaction Declined", pResponse.Response(), "");
 			}
 			else
 			{
-				Edrive.Helpers.Log.Event("Transaction Approved", pResponse.Response(), "");
+				Helpers.Log.Event("Transaction Approved", pResponse.Response(), "");
 			}
 
 			return (pResponse.Result == 0);
@@ -492,73 +482,49 @@ namespace Edrive.Controllers
 		/// </summary>
 		/// <param name="userModel"></param>
 		/// <returns></returns>
-		private Customer CreateGuestCustomer(_UserRegisteration userModel)
+		private Buyer CreateGuestCustomer(_UserRegisteration userModel)
 		{
-			using(eDriveAutoWebEntities entity = new eDriveAutoWebEntities())
+			#region CustomerCreate
+			string ipaddress = Request.UserHostAddress;
+			Buyer buyer = _buyerService.GetByUsername(userModel.Email.ToLower());
+			int custType = (int)UserType.Guest;
+			int buyerID = 0;
+
+			if(buyer != null)
 			{
-				#region CustomerCreate
-				//Create user as Guest
-				string ipaddress = Request.UserHostAddress;
-				// if customer already exist as Guest-- then update the Guest--
-				Customer newCustomer;
+				buyerID = buyer.ID;
 
-				if((newCustomer = entity.Customer.FirstOrDefault(m => m.Customer_Type.RoleName == "Guest" && m.Email == userModel.Email)) == null)
-				{
-					var custType = entity.Customer_Type.First(m => m.RoleName == "Guest").id;
-
-					newCustomer = new Customer
-					{
-						Active = false,
-						CustomerType = custType,
-						Deleted = true,
-						Email = userModel.Email,
-						ExpirationDate = DateTime.Now,
-						FirstName = userModel.Firstname,
-						GUID = Guid.NewGuid().ToString(),
-						IPAddress = ipaddress,
-						IsNewsLetter = false,
-						IsTrial = true,
-						LastName = userModel.Lastname,
-						Name = userModel.Firstname + " " + userModel.Lastname,
-						Password = userModel.Password,
-						Phone = String.Empty,
-						RegisterationDate = DateTime.Now,
-						zip = userModel.Zip,
-						ADDRESS = userModel.Address,
-						CITY = userModel.City,
-						STATE = userModel.State
-					};
-
-					entity.Customer.AddObject(newCustomer);
-					entity.SaveChanges();
-				}
-				else // update customer
-				{
-					newCustomer.Active = false;
-					newCustomer.Deleted = true;
-					newCustomer.Email = userModel.Email;
-					newCustomer.ExpirationDate = DateTime.Now;
-					newCustomer.FirstName = userModel.Firstname;
-					newCustomer.GUID = Guid.NewGuid().ToString();
-					newCustomer.IPAddress = ipaddress;
-					newCustomer.IsNewsLetter = false;
-					newCustomer.IsTrial = true;
-					newCustomer.LastName = userModel.Lastname;
-					newCustomer.Name = string.Format("{0} {1}", userModel.Firstname, userModel.Lastname);
-					newCustomer.Password = userModel.Password;
-					newCustomer.Phone = String.Empty;
-					newCustomer.RegisterationDate = DateTime.Now;
-					newCustomer.zip = userModel.Zip;
-					newCustomer.ADDRESS = userModel.Address;
-					newCustomer.CITY = userModel.City;
-					newCustomer.STATE = userModel.State;
-
-					entity.SaveChanges();
-				}
-
-				#endregion
-				return newCustomer;
+				if(buyer.TypeID != custType)//do not update the customer if it's not a guest
+					return null;
 			}
+
+			buyer = new Buyer
+			{
+				ID               = buyerID,
+				IsActive         = false,
+				TypeID           = custType,
+				IsDeleted        = true,
+				Email            = userModel.Email,
+				ExpirationDate   = DateTime.Now,
+				FirstName        = userModel.Firstname,
+				IPAddress        = ipaddress,
+				IsNewsLetter     = false,
+				IsTrial          = true,
+				LastName         = userModel.Lastname,
+				Password         = userModel.Password,
+				Phone            = String.Empty,
+				RegistrationDate = DateTime.Now,
+				Zip              = userModel.Zip.ToString().PadLeft(5),
+				Address          = userModel.Address,
+				City             = userModel.City,
+				State            = userModel.State
+			};
+				
+			_buyerService.SaveBuyer(buyer);
+				
+			#endregion
+				
+			return buyer;
 		}
 
 		private static List<SelectListItem> GetOptions()
@@ -580,7 +546,7 @@ namespace Edrive.Controllers
 			return lstOptions;
 		}
 
-		private void SendAccountCreatedNotification(Customer customer, string paymentType = "free")
+		private void SendAccountCreatedNotification(Buyer customer, string paymentType = "free")
 		{
 			string emailBody = String.Format(@"Hi Derek, <br/> New user has been registered, 'Limited access account', on www.edriveautos.com <br/> user email is: {0}", customer.Email);
 
@@ -621,30 +587,27 @@ namespace Edrive.Controllers
 
 			try
 			{
-				using(eDriveAutoWebEntities entity = new eDriveAutoWebEntities())
+				//Update recoard from Guest to Customer
+				var custType = (int)UserType.Buyer;
+				var cust = _buyerService.GetByID(id);
+
+				cust.IsActive = true;
+				cust.TypeID = custType;
+				cust.IsDeleted = false;
+				cust.ExpirationDate = DateTime.Now.AddDays(11).AddHours(-1);
+				cust.IsTrial = false;
+				cust.RegistrationDate = DateTime.Now;
+
+				_buyerService.SaveBuyer(cust);
+
+				try
 				{
-					//Update recoard from Guest to Customer
-					var custType = entity.Customer_Type.First(m => m.RoleName == "Customer").id;
-					var cust = entity.Customer.First(m => m.CustomerID == id);
-
-					cust.Active = true;
-					cust.CustomerType = custType;
-					cust.Deleted = false;
-					cust.ExpirationDate = DateTime.Now.AddDays(11).AddHours(-1);
-					cust.IsTrial = false;
-					cust.RegisterationDate = DateTime.Now;
-
-					entity.SaveChanges();
-
-					try
-					{
-						MessageManager.SendCustomerWelcomeMessageNew(cust, cust.Name, 0);
-						MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
-					}
-					catch
-					{
-						//LOG: Error occurred while sending an email
-					}
+					MessageManager.SendCustomerWelcomeMessageNew(cust, cust.FirstName, 0);
+					MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
+				}
+				catch
+				{
+					//LOG: Error occurred while sending an email
 				}
 			}
 			catch(Exception ex)

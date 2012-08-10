@@ -8,6 +8,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Edrive.Core.Model;
 using Edrive.Edrivie_Service_Ref;
 using Edrive.Models;
 using Customer = Edrive.Models.Customer;
@@ -664,24 +665,25 @@ namespace Edrive.CommonHelpers
         /// <param name="firstName"></param>
         /// <param name="languageId"></param>
         /// <returns></returns>
-        public static void SendCustomerWelcomeMessageNew(Customer customer, string firstName, int languageId)
+        public static void SendCustomerWelcomeMessageNew(Buyer customer, string firstName, int languageId)
         {
             if (customer == null)
                 throw new ArgumentNullException("customer");
 			
             string templateName = "Customer.WelcomeMessage";
-            var localizedMessageTemplate = MessageManager.GetLocalizedMessageTemplate(templateName, languageId);
+            var localizedMessageTemplate = GetLocalizedMessageTemplate(templateName, languageId);
           
             string subject = ReplaceMessageTemplateTokensNew(customer, firstName, localizedMessageTemplate.Subject);
             string body = ReplaceMessageTemplateTokensNew(customer, firstName, localizedMessageTemplate.Body);
             string bcc = localizedMessageTemplate.BCCEmailAddresses;
             string cc = AdminEmailAddress;
+	        string name = String.Format("{0} {1}", customer.FirstName, customer.LastName);
             var from = new MailAddress(AdminEmailAddress, AdminEmailDisplayName);
-            var to = new MailAddress(customer.Email, customer.Name);
+            var to = new MailAddress(customer.Email, name);
             InsertQueuedEmail( from, to, cc, bcc, subject, body,  0);
         }
 
-		public static void SendFreeAccessCustomerWelcomeMessageNew(Customer customer, string firstName, int languageId)
+		public static void SendFreeAccessCustomerWelcomeMessageNew(Buyer customer, string firstName, int languageId)
 		{
 			if(customer == null)
 				throw new ArgumentNullException("customer");
@@ -695,14 +697,15 @@ namespace Edrive.CommonHelpers
 			string body = ReplaceMessageTemplateTokensNew(customer, firstName, localizedMessageTemplate.Body);
 			string bcc = localizedMessageTemplate.BCCEmailAddresses;
 			string cc = AdminEmailAddress;
+			string name = String.Format("{0} {1}", customer.FirstName, customer.LastName);
 			var from = new MailAddress(AdminEmailAddress, AdminEmailDisplayName);
-			var to = new MailAddress(customer.Email, customer.Name);
+			var to = new MailAddress(customer.Email, name);
 			InsertQueuedEmail(from, to, cc, bcc, subject, body, 0);
-
 		}
 
-        public static string ReplaceMessageTemplateTokensNew(Customer customer, string firstName, string template)
+        public static string ReplaceMessageTemplateTokensNew(Buyer customer, string firstName, string template)
         {
+			string name = String.Format("{0} {1}", customer.FirstName, customer.LastName);
             var tokens = new NameValueCollection();
             tokens.Add("Store.Name", SettingManager.StoreName);
             tokens.Add("Store.URL", SettingManager.StoreUrl);
@@ -710,16 +713,8 @@ namespace Edrive.CommonHelpers
             tokens.Add("Customer.Name", firstName);
             tokens.Add("Customer.Email", HttpUtility.HtmlEncode(customer.Email));
             tokens.Add("Customer.Username", customer.Email);
-            tokens.Add("Customer.FullName", HttpUtility.HtmlEncode(customer.Name));
+            tokens.Add("Customer.FullName", HttpUtility.HtmlEncode(name));
             tokens.Add("Customer.Password", HttpUtility.HtmlEncode(customer.Password));
-
-            //string passwordRecoveryUrl = string.Empty;
-            //passwordRecoveryUrl = string.Format("{0}passwordrecovery.aspx?prt={1}&email={2}", SettingManager.StoreUrl, customer.PasswordRecoveryToken, customer.Email);
-            //tokens.Add("Customer.PasswordRecoveryURL", passwordRecoveryUrl);
-
-            //string accountActivationUrl = string.Empty;
-            //accountActivationUrl = string.Format("{0}accountactivation.aspx?act={1}&email={2}", SettingManager.StoreUrl, customer.AccountActivationToken, customer.Email);
-            //tokens.Add("Customer.AccountActivationURL", accountActivationUrl);
 
             foreach (string token in tokens.Keys)
             {
@@ -730,7 +725,7 @@ namespace Edrive.CommonHelpers
             return template;
         }
 
-        public static void SendStoreOwnerRegistrationNotification(Customer customer, string code, string here, int languageId)
+        public static void SendStoreOwnerRegistrationNotification(Buyer customer, string code, string here, int languageId)
         {
             if (customer == null)
                 throw new ArgumentNullException("customer");
@@ -882,8 +877,9 @@ namespace Edrive.CommonHelpers
 			return template;
 		}
 
-		public static string ReplaceMessageTemplateTokensForAdmin(Customer customer, string code, string here, string template)
-        {
+		public static string ReplaceMessageTemplateTokensForAdmin(Buyer customer, string code, string here, string template)
+		{
+			string name = String.Format("{0} {1}", customer.FirstName, customer.LastName);
             var tokens = new NameValueCollection();
             tokens.Add("Store.Name", SettingManager.StoreName);
             tokens.Add("Store.URL", SettingManager.StoreUrl);
@@ -891,10 +887,10 @@ namespace Edrive.CommonHelpers
             tokens.Add("Customer.FirstName", customer.FirstName);
             tokens.Add("Customer.Email", HttpUtility.HtmlEncode(customer.Email));
             tokens.Add("Customer.LastName", HttpUtility.HtmlEncode(customer.LastName));
-            tokens.Add("Customer.FullName", HttpUtility.HtmlEncode(customer.Name));
+            tokens.Add("Customer.FullName", HttpUtility.HtmlEncode(name));
             tokens.Add("Customer.Password", HttpUtility.HtmlEncode(customer.Password));
             tokens.Add("Customer.Phone", HttpUtility.HtmlEncode(customer.Phone));
-            tokens.Add("Customer.ZipCode", HttpUtility.HtmlEncode(customer.zip));
+            tokens.Add("Customer.ZipCode", HttpUtility.HtmlEncode(customer.Zip));
             tokens.Add("Customer.Code", HttpUtility.HtmlEncode(code));
             tokens.Add("Customer.YourHere", HttpUtility.HtmlEncode(here));
 

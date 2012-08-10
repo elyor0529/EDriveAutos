@@ -51,11 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="BuyerService.cs" />
     <Compile Include="CountryService.cs" />
     <Compile Include="CustomerProfileService.cs" />
     <Compile Include="DealerService.cs" />
     <Compile Include="InterestedCustomerService.cs" />
     <Compile Include="Interfaces\IBaseService.cs" />
+    <Compile Include="Interfaces\IBuyerService.cs" />
     <Compile Include="Interfaces\ICountryService.cs" />
     <Compile Include="Interfaces\ICustomerProfileService.cs" />
     <Compile Include="Interfaces\IDealerService.cs" />
