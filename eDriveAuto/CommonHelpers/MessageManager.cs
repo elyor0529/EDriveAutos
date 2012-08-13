@@ -211,7 +211,6 @@ namespace Edrive.CommonHelpers
 			var to = new MailAddress(customer.email, customer.Name);
 			InsertQueuedEmail(from, to, cc, bcc, subject, body);
 			//return queuedEmail.QueuedEmailId;
-
 		}
 		/// <summary>
 		/// To send the Enquir to Dealer

@@ -5,7 +5,7 @@ namespace Edrive.Logic.Interfaces
 {
 	public interface IDealerService
 	{
-		Customer GetByID(int customerID);
+		Customer GetByID(int dealerID);
 
 		Customer GetDealerByProductID(int productID);
 
@@ -14,5 +14,7 @@ namespace Edrive.Logic.Interfaces
 		int GetTotalDealersCount();
 
 		List<Customer> GetDealersByZip(string zipcode);
+
+		bool ChangePassword(int dealerID, string newPassword);
 	}
 }

@@ -15,11 +15,13 @@ namespace Edrive.Controllers
     {
 	    private readonly IDealerService _dealerService;
 	    private readonly IEmailTemplateService _emailTemplateService;
+	    private readonly IBuyerService _buyerService;
 
-		public AccountController(IDealerService dealerService, IEmailTemplateService emailTemplateService)
+		public AccountController(IDealerService dealerService, IEmailTemplateService emailTemplateService, IBuyerService buyerService)
 		{
 			_dealerService = dealerService;
 			_emailTemplateService = emailTemplateService;
+			_buyerService = buyerService;
 		}
 
         // **************************************
@@ -381,9 +383,11 @@ namespace Edrive.Controllers
                         var Dealer = _dealerService.GetDealerByDealerEmail(Modal.Email);
                         if (cust != null || Dealer != null)
                         {
-                            if (cust != null)
-                                MessageManager.SendCustomerPasswordRecoveryMessage(cust, 0);
-							if(Dealer != null)
+							if(cust != null)
+							{
+								MessageManager.SendCustomerPasswordRecoveryMessage(cust, 0);
+							}
+	                        if(Dealer != null)
 							{
 								var template = _emailTemplateService.GetByName("Customer.PasswordRecovery");
 								MessageManager.SendCustomerPasswordRecoveryMessage(Dealer, template);
@@ -412,7 +416,6 @@ namespace Edrive.Controllers
             }
             return View();
         }
-
 
         public ActionResult ChangePassword(String CustomerType, String Email, String Guid)
         {
@@ -454,60 +457,48 @@ namespace Edrive.Controllers
             return View(model);
 
         }
-        [HttpPost]
+        
+		[HttpPost]
         public ActionResult ChangePassword(_ChangePassword passwordmodel)
         {
             if (passwordmodel.CustomerType == "Dealer")
             {
-                using (Edrive_ServiceClient _service = new Edrive_ServiceClient())
-                {
-                    Edrivie_Service_Ref.Customer cust;
-                    cust = _service.GetDealerByDealerEmail(passwordmodel.CustomerEmail);
-                    String Msg = "";
-                    if (_service.UpdatePassword_for_Dealer(out Msg, cust.customerID, passwordmodel.NewPassword))
-                    {
-                        ViewData["Success"] = true;
-                        return View();
-                    }
-                    else
-                    {
-                        ViewData["Msg"] = Msg;
-                        return View(passwordmodel);
-                    }
+	            var cust = _dealerService.GetDealerByDealerEmail(passwordmodel.CustomerEmail);
 
+				if(_dealerService.ChangePassword(cust.customerID, passwordmodel.NewPassword))
+                {
+                    ViewData["Success"] = true;
+                    return View();
+                }
+                else
+                {
+                    ViewData["Msg"] = "Error occurred while changing the password";
+                    return View(passwordmodel);
                 }
             }
             if (passwordmodel.CustomerType == "Customer")
             {
-                using (eDriveAutoWebEntities _entity = new eDriveAutoWebEntities())
+	            try
                 {
-                    String Msg = "";
-                    try
-                    {
+					//TODO: Add GUID column to Customers table
+//						var cust = _entity.Customer.First(m => m.Email == passwordmodel.CustomerEmail && m.GUID == passwordmodel.CustomerGUID);
+//                        cust.Password = passwordmodel.NewPassword;
+//                        _entity.SaveChanges();
+	                var buyer = _buyerService.GetByUsername(passwordmodel.CustomerEmail);
+	                _buyerService.ChangePassword(buyer.ID, passwordmodel.NewPassword);
 
-
-                        var cust = _entity.Customer.First(m => m.Email == passwordmodel.CustomerEmail && m.GUID == passwordmodel.CustomerGUID);
-                        cust.Password = passwordmodel.NewPassword;
-                        _entity.SaveChanges();
-                        ViewData["Success"] = true;
-                        return View();
-                    }
-                    catch (Exception ex)
-                    {
-                        Msg = ex.Message;
-                        ViewData["Msg"] = Msg;
-                        return View(passwordmodel);
-                    }
-
+                    ViewData["Success"] = true;
+                    return View();
                 }
-
-
-
+                catch (Exception ex)
+                {
+                    string message = ex.Message;
+                    ViewData["Msg"] = message;
+                    return View(passwordmodel);
+                }
             }
 
             return View(passwordmodel);
-
-
         }
     }
 }

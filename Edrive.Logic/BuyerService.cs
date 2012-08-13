@@ -109,6 +109,24 @@ namespace Edrive.Logic
 			}
 		}
 
+		public bool ChangePassword(int id, string newPassword)
+		{
+			using(Context = GetDataContext())
+			{
+				bool result = false;
+				var query = Context.BUYERs.FirstOrDefault(c => c.ID == id);
+
+				if(query != null)
+				{
+					query.PASSWORD = newPassword;
+					Context.SaveChanges();
+					result = true;
+				}
+
+				return result;
+			}
+		}
+
 		#region Private Methods
 		
 		private Buyer ConvertType(BUYER item)

@@ -12,5 +12,7 @@ namespace Edrive.Logic.Interfaces
 		bool SaveBuyer(Buyer item);
 
 		Buyer Authenticate(string username, string password, UserType role);
+
+		bool ChangePassword(int id, string newPassword);
 	}
 }

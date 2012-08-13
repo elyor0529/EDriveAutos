@@ -10,14 +10,14 @@ namespace Edrive.Logic
 {
 	public class DealerService : BaseService, IDealerService
 	{
-		public Customer GetByID(int customerID)
+		public Customer GetByID(int dealerID)
 		{
 			using(Context = GetDataContext())
 			{
 				var dealer = (from c in Context.DEALERs
 				              join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
-				              where c.ID == customerID
-							  select p).Select(ConvertToCustomEntity).FirstOrDefault();
+				              where c.ID == dealerID
+							  select p).Select(ConvertType).FirstOrDefault();
 
 				if (dealer == null)
 					return null;
@@ -40,7 +40,7 @@ namespace Edrive.Logic
 				var dealer = (from c in Context.DEALERs
 				              join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
 				              where p.ID == customerID
-							  select p).Select(ConvertToCustomEntity).FirstOrDefault();
+							  select p).Select(ConvertType).FirstOrDefault();
 
 				SetDealerName(dealer);
 				
@@ -57,7 +57,7 @@ namespace Edrive.Logic
 				var dealer = (from c in Context.DEALERs
 				              join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
 				              where c.EMAIL.ToLower() == email
-							  select p).Select(ConvertToCustomEntity).FirstOrDefault();
+							  select p).Select(ConvertType).FirstOrDefault();
 
 				if (dealer == null)
 					return null;
@@ -92,11 +92,31 @@ namespace Edrive.Logic
 				var dealers = (from c in Context.DEALERs
 				             join p in Context.DEALER_SALESPERSON on c.ID equals p.DEALER_ID
 				             where c.ZIP == zipcode && p.ISACTIVE && p.ISDELETED == false
-							   select p).Select(ConvertToCustomEntity).ToList();
+							   select p).Select(ConvertType).ToList();
 
 				return dealers;
 			}
 		}
+		
+		public bool ChangePassword(int dealerID, string newPassword)
+		{
+			using(Context = GetDataContext())
+			{
+				bool result = false;
+				var query = Context.DEALER_SALESPERSON.FirstOrDefault(c => c.ID == dealerID);
+
+				if(query != null)
+				{
+					query.PASSWORD = newPassword;
+					Context.SaveChanges();
+					result = true;
+				}
+
+				return result;
+			}
+		}
+
+		#region private methods
 
 		private void SetDealerName(Customer dealer)
 		{
@@ -118,7 +138,7 @@ namespace Edrive.Logic
 			dealer.LastName = lastName;
 		}
 
-		private Customer ConvertToCustomEntity(DEALER_SALESPERSON salesPerson)
+		private Customer ConvertType(DEALER_SALESPERSON salesPerson)
 		{
 			var customer = new Customer
 			               	{
@@ -145,5 +165,7 @@ namespace Edrive.Logic
 
 			return customer;
 		}
+
+		#endregion
 	}
 }
