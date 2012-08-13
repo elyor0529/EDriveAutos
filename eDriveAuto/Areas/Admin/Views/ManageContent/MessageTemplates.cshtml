@@ -1,4 +1,4 @@
-﻿@model List<MessageTemplate>
+﻿@model List<Edrive.Core.Model.EmailTemplate>
 @{
     ViewBag.Title = "MessageTemplates";
 }
@@ -47,7 +47,7 @@ div#topicEdit ul li {background-color:White;color:Black;}
 <td style="padding-left:10px;">@item.Name
 </td>
 <td style="text-align:center">
-@Html.ActionLink("Edit","EditMessagaeTemplate",new{id=@item.MessageTemplateID})
+@Html.ActionLink("Edit","EditMessagaeTemplate",new{id=@item.ID})
 </td>
 
 </tr>

@@ -63,6 +63,7 @@ namespace Edrive.App_Start
 			kernel.Bind<ISettingsService>().To<SettingsService>();
 			kernel.Bind<IProductOptionService>().To<ProductOptionService>();
 			kernel.Bind<IBuyerService>().To<BuyerService>();
+			kernel.Bind<IEmailTemplateService>().To<EmailTemplateService>();
         }        
     }
 }

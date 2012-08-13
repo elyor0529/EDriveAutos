@@ -1,4 +1,5 @@
-﻿@model Edrive.Models._MessageTemplateLocalized
+﻿@model Edrive.Core.Model.EmailTemplate
+	   
 @{
     
 }
@@ -20,10 +21,10 @@
         oFCKeditor.ReplaceTextarea();
     }
     </script>
-    <script  language="javascript">
+    <script type="text/javascript">
         function Deletemessage() {
             if (confirm("--Are you sure you want to delete this record.--")) {
-                var urldel = '@Url.Action("DeleteMessagaeTemplate")'
+	            var urldel = '@Url.Action("DeleteMessagaeTemplate")';
                 $("#form1").attr("action", urldel);
                 return true;
             }
@@ -78,15 +79,14 @@
 <td class="firstPress">Template:
   </td>
   <td class="secondPress">
-  @Html.DisplayFor(m=>m.TemplateName)
-  @Html.HiddenFor(m => m.MessageTemplateLocalizedID)
-    @Html.HiddenFor(m => m.MessageTemplateID)
+  @Html.DisplayFor(m=>m.Name)
+  @Html.HiddenFor(m => m.ID)
   </td></tr>
 
   <tr>
 <td class="firstPress">BCC:
   </td>
-  <td class="secondPress">@Html.TextBox("BCCEmailAddresses",(Model.BCCEmailAddresses??" "))
+  <td class="secondPress">@Html.TextBox("Bcc", (Model.Bcc ?? " "))
   </td></tr>
 <tr>
 <td class="firstPress">Subject:
@@ -102,7 +102,7 @@
    <tr>
 <td class="firstPress">Is Active:
   </td>
-  <td class="secondPress">@Html.CheckBox("IsActive",Model.IsActive)
+  <td class="secondPress">@Html.CheckBox("IsActive", Model.IsActive)
   </td></tr>
 
 </table>

@@ -8,7 +8,9 @@ using System.Net.Mail;
 using System.Text;
 using System.Web.Mvc;
 using Edrive.CommonHelpers;
+using Edrive.Core.Model;
 using Edrive.Edrivie_Service_Ref;
+using Edrive.Logic.Interfaces;
 using Edrive.Models;
 using System.Web;
 
@@ -17,6 +19,13 @@ namespace Edrive.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class ManageContentController : Controller
     {
+	    private readonly IEmailTemplateService _emailTemplateService;
+
+		public ManageContentController(IEmailTemplateService emailTemplateService)
+		{
+			_emailTemplateService = emailTemplateService;
+		}
+
         //
         // GET: /Admin/ManageContent/
 
@@ -1456,8 +1465,10 @@ namespace Edrive.Areas.Admin.Controllers
         public ActionResult MessageTemplates()
         {
             ViewData["Msg"] = TempData["Msg"];
-            var lstMsgTemp = MessageManager.GetAllMessageTemplates();
-            return View(lstMsgTemp);
+
+            var lstMsgTemp = _emailTemplateService.GetAll();
+            
+			return View(lstMsgTemp);
         }
 
         public ActionResult AddMessageTemplate()
@@ -1468,11 +1479,12 @@ namespace Edrive.Areas.Admin.Controllers
 
         }
         [HttpPost]
-        public ActionResult AddMessageTemplate(_MessageTemplateLocalized model)
+        public ActionResult AddMessageTemplate(EmailTemplate model)
         {
-            var MessageTemplateID = MessageManager.AddMessgaeTemplate(model).MessageTemplateID;
+			int messageTemplateID = _emailTemplateService.Save(model);
+
             TempData["Msg"] = "Record added successfully.";
-            return RedirectToAction("EditMessagaeTemplate", new { id = MessageTemplateID });
+            return RedirectToAction("EditMessagaeTemplate", new { id = messageTemplateID });
         }
 
         public ActionResult EditMessagaeTemplate(Int32 id)
@@ -1480,42 +1492,30 @@ namespace Edrive.Areas.Admin.Controllers
             ViewData["Msg"] = TempData["Msg"];
             ViewData["AllowedTokens"] = MessageManager.GetListOfAllowedTokens();
             var msgTempId = id;
-            //   ViewData["TempName"]= MessageManager.GetMessageTemplate_by_tempId(msgTempId).Name;
-            var msgTemp = MessageManager.GetLocalizedMessageTemplate_by_templateID(msgTempId);
-            _MessageTemplateLocalized model = new _MessageTemplateLocalized();
-            model.MessageTemplateID = msgTemp.MessageTemplateID;
-            model.MessageTemplateLocalizedID = msgTemp.MessageTemplateLocalizedID;
-            model.TemplateName = MessageManager.GetMessageTemplate_by_tempId(msgTempId).Name;
-            model.BCCEmailAddresses = msgTemp.BCCEmailAddresses;
-            model.Body = msgTemp.Body;
-            model.IsActive = msgTemp.IsActive ?? false;
-            model.Subject = msgTemp.Subject;
-            return View(model);
-
+            var msgTemp = _emailTemplateService.GetByID(msgTempId);
+            
+            return View(msgTemp);
         }
+
         [HttpPost]
-        public ActionResult EditMessagaeTemplate(_MessageTemplateLocalized msgTemp)
+        public ActionResult EditMessagaeTemplate(EmailTemplate template)
         {
+	        int messageTemplateID = 0;
+
             try
             {
-                MessageTemplateLocalized msg = new MessageTemplateLocalized();
-                msg.MessageTemplateID = msgTemp.MessageTemplateID;
-                msg.MessageTemplateLocalizedID = msgTemp.MessageTemplateLocalizedID;
-                msg.BCCEmailAddresses = msgTemp.BCCEmailAddresses??"";
-                msg.Body = msgTemp.Body;
-                msg.IsActive = msgTemp.IsActive;
-                msg.Subject = msgTemp.Subject;
-
-                MessageManager.Update_LocalizedMessageTemplate_by_templateID(msg);
+	            messageTemplateID = _emailTemplateService.Save(template);
             }
             catch (Exception ex)
             {
                 ViewData["Msg"] = "Error:" + ex.Message;
-                return EditMessagaeTemplate(msgTemp.MessageTemplateID);
+                
+				return EditMessagaeTemplate(messageTemplateID);
             }
-            TempData["Msg"] = "Record Updated successfully.";
-            return RedirectToAction("EditMessagaeTemplate", new { id = msgTemp.MessageTemplateID });
-
+            
+			TempData["Msg"] = "Record Updated successfully.";
+            
+			return RedirectToAction("EditMessagaeTemplate", new { id = messageTemplateID });
         }
 
         [HttpPost]
@@ -1523,14 +1523,17 @@ namespace Edrive.Areas.Admin.Controllers
         {
             try
             {
-                MessageManager.Deleted_MessageTemplate(model.MessageTemplateID);
-                TempData["Msg"] = "Record deleted successfully.";
-                return RedirectToAction("MessageTemplates");
+	            _emailTemplateService.Delete(model.MessageTemplateID);
+				
+				TempData["Msg"] = "Record deleted successfully.";
+                
+				return RedirectToAction("MessageTemplates");
             }
             catch (Exception ex)
             {
                 TempData["Msg"] = "Error:" + ex.Message;
-                return RedirectToAction("EditMessagaeTemplate", new { id = model.MessageTemplateID });
+                
+				return RedirectToAction("EditMessagaeTemplate", new { id = model.MessageTemplateID });
             }
 
         }

@@ -94,7 +94,7 @@ namespace Edrive.Areas.Admin.Controllers
                     Int32 customerID;
                     if (Int32.TryParse(CustomerID, out customerID))
                     {
-                        var customer = service.GetDealerByDealerID(customerID);
+                        var customer = _dealerService.GetByID(customerID);
                         MessageManager.SendCustomerWelcomeMessage(customer, 0);
                         ViewData["Msg"] = "Message sent successfully!";
                     }

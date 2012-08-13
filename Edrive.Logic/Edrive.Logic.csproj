@@ -55,12 +55,14 @@
     <Compile Include="CountryService.cs" />
     <Compile Include="CustomerProfileService.cs" />
     <Compile Include="DealerService.cs" />
+    <Compile Include="EmailTemplateService.cs" />
     <Compile Include="InterestedCustomerService.cs" />
     <Compile Include="Interfaces\IBaseService.cs" />
     <Compile Include="Interfaces\IBuyerService.cs" />
     <Compile Include="Interfaces\ICountryService.cs" />
     <Compile Include="Interfaces\ICustomerProfileService.cs" />
     <Compile Include="Interfaces\IDealerService.cs" />
+    <Compile Include="Interfaces\IEmailTemplateService.cs" />
     <Compile Include="Interfaces\IInterestedCustomerService.cs" />
     <Compile Include="Interfaces\IProductBodyService.cs" />
     <Compile Include="Interfaces\IProductMakeService.cs" />

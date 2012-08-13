@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Edrive.CommonHelpers;
 using Edrive.Edrivie_Service_Ref;
+using Edrive.Logic.Interfaces;
 using Edrive.Models;
 
 
@@ -12,7 +13,14 @@ namespace Edrive.Controllers
 {
     public class AccountController : Controller
     {
+	    private readonly IDealerService _dealerService;
+	    private readonly IEmailTemplateService _emailTemplateService;
 
+		public AccountController(IDealerService dealerService, IEmailTemplateService emailTemplateService)
+		{
+			_dealerService = dealerService;
+			_emailTemplateService = emailTemplateService;
+		}
 
         // **************************************
         // URL: /Account/LogOn
@@ -365,21 +373,22 @@ namespace Edrive.Controllers
             if (ModelState.IsValid)
             {
                 using (eDriveAutoWebEntities _entity = new eDriveAutoWebEntities())
-                using (Edrivie_Service_Ref.Edrive_ServiceClient _service = new Edrive_ServiceClient())
                     try
                     {
 
                         var cust = _entity.Customer.FirstOrDefault(m => m.Deleted == false && m.Email == Modal.Email);
 
-                        var Dealer = _service.GetDealerByDealerEmail(Modal.Email);
+                        var Dealer = _dealerService.GetDealerByDealerEmail(Modal.Email);
                         if (cust != null || Dealer != null)
                         {
-
                             if (cust != null)
                                 MessageManager.SendCustomerPasswordRecoveryMessage(cust, 0);
-                            if (Dealer != null)
-                                MessageManager.SendCustomerPasswordRecoveryMessage(Dealer, 0);
-                            ViewData["Msg"] = "Email with instructions has been sent to you.";
+							if(Dealer != null)
+							{
+								var template = _emailTemplateService.GetByName("Customer.PasswordRecovery");
+								MessageManager.SendCustomerPasswordRecoveryMessage(Dealer, template);
+							}
+	                        ViewData["Msg"] = "Email with instructions has been sent to you.";
 
                         }
                         else
@@ -400,9 +409,6 @@ namespace Edrive.Controllers
                         //    pnlNewPassword.Visible = false;
                         //
                     }
-
-
-
             }
             return View();
         }

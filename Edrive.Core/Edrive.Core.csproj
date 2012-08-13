@@ -80,6 +80,7 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Customer_Type.cs" />
     <Compile Include="Model\ED_Zipcodes.cs" />
+    <Compile Include="Model\EmailTemplate.cs" />
     <Compile Include="Model\IntrestedCustomer.cs" />
     <Compile Include="Model\Nop_Country.cs" />
     <Compile Include="Model\Nop_CustomerAttribute.cs" />
