@@ -33,111 +33,17 @@
 </head>
 <body>
 	<div class="Wrapper">
-		<div id="Header">
-			<div class="header-content">
-				<h1 class="Logo"><a href="@Url.Action("Index", "Home")">Edriveautos</a></h1>
-				@Html.Partial("_LogOnPartial")
-				<div class="SingleLine Flr Clr-Rht">
-					<div class="slogan">
-						<b>The World's Largest Wholesale Vehicle Marketplace</b>
-					</div>
-				</div>
-				<div class="MainMenu">
-					<ul>
-						<li class="first">@Html.ActionLink("Home", "Index", "Home")</li>
-						<li>@Html.ActionLink("FAQ", "Index", "Frequently_asked_questions")</li>
-						<li>@Html.ActionLink("About Us", "AboutUs", "Home")</li>
-						<li><a href="@Url.Action("Index", "Apply_for_financing")">Get Financing</a></li>
-						<li>
-							@Html.ActionLink("Advertisers", "Advertiser", "Home")
-							@* <a href="#">Advertisers</a>*@ </li>
-						<li><a target="_blank" class="menublog" href="http://www.edriveautos.blogspot.com">Blog</a></li>
-						<li><a href="@Url.Action("Index", "Press_Release")">Press</a></li>
-						<li class="last">
-							@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="separator-line">
-			</div>
-		</div>
+		@{ Html.RenderPartial("Header"); }
 		<div id="Content">
 			@RenderBody()
 		</div>
-		<div id="PreFooter">
-			<div class="Column_01 Flt">
-				<h3>Customers</h3>
-				<ul class="FooterLinks">
-					<li>@Html.ActionLink("Contact Us", "Index", "ContactUs")</li>
-					<li>@Html.ActionLink("FAQ", "Index", "Frequently_asked_questions")</li>
-					<li><a href="@Url.Action("Index", "Apply_for_financing")">Financing</a></li>
-					<li><a href="@Url.Action("Index", "Get_a_warranty")">Warranties</a></li>
-					<li><a href="http://www.edriveautos.blogspot.com" class="menublog" target="_blank">Blog</a></li>
-					<li><a href="@Url.Action("Index", "Customers_Speak")">Testimonials</a></li>
-					<li><a href="@Url.Action("Index", "EGear")">EGear</a></li>
-					<li><a href="@Url.Action("SiteMap", "Home")">Site Map</a></li>
-				</ul>
-			</div>
-			<div class="Column_02 Flt">
-				<h3>Business Partners</h3>
-				<ul class="FooterLinks">
-					<li><a href="@Url.Action("Index", "Vendors")">Vendors</a></li>
-					<li><a href="@Url.Action("Index", "Dealers")">Dealers </a></li>
-					<li><a href="@Url.Action("Index", "AffiliateProgram")">Affiliate Program</a></li>
-					<li>@*<a href="#">Advertise Us</a>
-*@
-						@Html.ActionLink("Advertise with Us", "Advertiser", "Home")
-					</li>
-				</ul>
-			</div>
-			<div class="Column_03 Flt">
-				<h3>Company</h3>
-				<ul class="FooterLinks">
-					<li><a href="@Url.Action("Index", "Press_Release")">Press</a></li>
-					<li><a href="@Url.Action("Index", "Management")">Management</a></li>
-					<li><a target="_blank" href="http://www.e-zdealership.com/">e-zdealership.com</a></li>
-					<li><a target="_blank" href="http://www.vehilist.com/">vehilist.com</a></li>
-				</ul>
-				<div style="color: Gray; font-size: 13px; margin-top: 10px; text-align: left;">
-					<a href="#">
-						<img src="@Url.Content("~/Content/Images/rss-feeds.png")" alt="rss feeds" />
-					</a>
-					<a href="https://www.facebook.com/eDriveAutos">
-						<img src="@Url.Content("~/Content/Images/FACEBOOK25.png")" alt="facebook" />
-					</a>
-					<a href="https://twitter.com/#!/dwhite0566">
-						<img src="@Url.Content("~/Content/Images/twitter-small-trans.png")" alt="twitter" />
-					</a>
-					<a href="http://www.youtube.com/user/edriveautos">
-						<img src="@Url.Content("~/Content/Images/YouTube25_25.png")" alt="youtube" />
-					</a>
-				</div>
-			</div>
-			<div class="Column_04 Flr">
-				<h3>
-					Disclosures</h3>
-				<ul class="FooterLinks">
-					<li><a href="@Url.Action("Index", "privacyinfo")">Privacy Policy</a></li>
-					<li><a href="@Url.Action("Index", "ConditionsOfUse")">Terms of Use</a></li>
-					<li><a href="@Url.Action("Index", "Disclaimer")">Disclaimer</a></li>
-				</ul>
-			</div>
-			<div class="Clr">
-			</div>
-		</div>
-		<div id="Footer">
-			<div class="FooterLogo">
-				<a href="#">
-					<img src="@Url.Content("~/Content/Images/footer_logo.png")" alt="" /></a></div>
-			<p>
-				Copyright 2011-2012 E-Drive Autos, LLC. All rights reserved worldwide.</p>
-			<p class="lower-text">
-				TargetSpot, Carfax, Military.com, Recycler.com and NADA Guides logos are the property
-				of their respective companies.</p>
-		</div>
+		@{ Html.RenderPartial("PreFooter"); }
+		
+		@{ Html.RenderPartial("Footer"); }
 	</div>
+
 	@RenderSection("Footer", false)
+	
 	<!-- Start of StatCounter Code for Default Guide -->
 	<script type="text/javascript">
 		var sc_project = 7127908;

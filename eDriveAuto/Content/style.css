@@ -19,7 +19,7 @@ ol, ul{ list-style:none;}
 
 .Wrapper{ margin:0 auto;}
 
-#Header{ position:relative; height:195px;background-color: #231F20;}
+#Header{clear: both; height:100px;}
 #Header .separator-line {
     border-bottom: 1px solid #818181;
     box-shadow: 0 1px 3px #565656;
@@ -27,9 +27,10 @@ ol, ul{ list-style:none;}
     float: left;
     width: 100%;
 }
-#Header .header-content {margin: auto;width: 964px;height: 196px;}
+#Header .header-content {height: 72px;width: 100%;background: url('images/header-bg.gif') repeat-x top right;}
+#Header .header-content .content{ width: 964px; margin: auto;}
 #Header .header-content .slogan {color: #d6d6d6; margin-top: 6px;}
-#Header .Logo {background: url("images/logo.gif") no-repeat scroll 0 0 transparent;float: left;height: 71px;margin: 50px 0 0;width: 318px;}
+#Header .Logo {background: url("images/logo.gif") no-repeat scroll 0 0 transparent;float: left;margin: 10px 0 0;width: 318px;}
 #Header .Logo a{ height:55px; display:block; text-indent:-9999em;}
 /**/
 #Header .Menu_01 ul li{ float:left; position:relative; background:url(images/divider_01.gif) no-repeat top right; line-height:14px; padding:0 12px 5px 12px; font-weight:bold;}
@@ -43,10 +44,12 @@ ol, ul{ list-style:none;}
 #Header .Menu_01 ul{}
 #Header .Menu_01 ul li{ float:left; background:url(images/divider_01.gif) no-repeat top right; line-height:14px; padding:0 12px; font-weight:bold;}
 #Header .Menu_01 ul li.last{ background:none;}
-#Header .Menu_01 ul li a{ color:#257FFB;}
-#Header .Menu_01 ul li a:hover{ color:#0070d8;}
+#Header .Menu_01 ul li a{ color:#FFFFFF;}
+#Header .Menu_01 ul li a:hover{ color:#E7E7E7;}
 
-#Header .MainMenu{clear: both;padding: 44px 0 0 0;}
+
+#Header .MainMenu{clear: both;width: 100%;background: url('images/main-menu-bg.gif') repeat-x top right;height: 28px;}
+#Header .MainMenu .content{margin: auto;width: 964px;padding: 5px 0 0 0;}
 #Header .MainMenu ul{}
 #Header .MainMenu ul li{ float:left; background:url(images/divider_02.gif) no-repeat top right; line-height:16px; font-size:14px; padding:0 30px;}
 #Header .MainMenu ul li.first{ padding-left: 0;}

@@ -1,0 +1,22 @@
+﻿<div id="Header">
+	<div class="header-content">
+		<div class="content">
+			<h1 class="Logo"><a href="@Url.Action("Index", "Home")">Edriveautos</a></h1>
+			@Html.Partial("_LogOnPartial")
+		</div>
+	</div>
+	<div class="MainMenu">
+		<div class="content">
+			<ul>
+				<li class="first">@Html.ActionLink("Home", "Index", "Home")</li>
+				<li>@Html.ActionLink("FAQ", "Index", "Frequently_asked_questions")</li>
+				<li>@Html.ActionLink("About Us", "AboutUs", "Home")</li>
+				<li><a href="@Url.Action("Index", "Apply_for_financing")">Get Financing</a></li>
+				<li>@Html.ActionLink("Advertisers", "Advertiser", "Home")</li>
+				<li><a target="_blank" class="menublog" href="http://www.edriveautos.blogspot.com">Blog</a></li>
+				<li><a href="@Url.Action("Index", "Press_Release")">Press</a></li>
+				<li class="last">@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
+			</ul>
+		</div>
+	</div>
+</div>

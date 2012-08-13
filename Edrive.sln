@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edrive", "eDriveAuto\Edrive
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdriveService", "EdriveService\EdriveService.csproj", "{18885C68-6DA0-4A66-8411-916105CFA886}"
 EndProject
-Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Edrive.Database", "Edrive.Database\Edrive.Database.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edrive.FtpRecordsScheduler", "Edrive.FtpRecordsScheduler\Edrive.FtpRecordsScheduler.csproj", "{7325EAB0-649F-4930-9F90-CB4217B1886F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edrive.CsvParserService", "Edrive.CsvParserService\Edrive.CsvParserService.csproj", "{F8DCA9B8-0457-481A-8A67-F6C5EA4DD183}"
@@ -29,48 +27,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarfaxScheduler", "CarfaxScheduler\CarfaxScheduler.csproj", "{4909F136-4929-45D7-9195-F171F5FF10BC}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 13
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://64.72.103.245:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = EdriveService\\EdriveService.csproj
-		SccProjectName1 = EdriveService
-		SccLocalPath1 = EdriveService
-		SccProjectUniqueName2 = Edrive.Database\\Edrive.Database.dbproj
-		SccProjectName2 = Edrive.Database
-		SccLocalPath2 = Edrive.Database
-		SccProjectUniqueName3 = eDriveAuto\\Edrive.csproj
-		SccProjectName3 = eDriveAuto
-		SccLocalPath3 = eDriveAuto
-		SccProjectUniqueName4 = Edrive.FtpRecordsScheduler\\Edrive.FtpRecordsScheduler.csproj
-		SccProjectName4 = Edrive.FtpRecordsScheduler
-		SccLocalPath4 = Edrive.FtpRecordsScheduler
-		SccProjectUniqueName5 = Edrive.CsvParserService\\Edrive.CsvParserService.csproj
-		SccProjectName5 = Edrive.CsvParserService
-		SccLocalPath5 = Edrive.CsvParserService
-		SccProjectUniqueName6 = Edrive.Core\\Edrive.Core.csproj
-		SccProjectName6 = Edrive.Core
-		SccLocalPath6 = Edrive.Core
-		SccProjectUniqueName7 = Edrive.Data\\Edrive.Data.csproj
-		SccProjectName7 = Edrive.Data
-		SccLocalPath7 = Edrive.Data
-		SccProjectUniqueName8 = Edrive.Service\\Edrive.Service.csproj
-		SccProjectName8 = Edrive.Service
-		SccLocalPath8 = Edrive.Service
-		SccProjectUniqueName9 = Edrive.Security\\Edrive.Security.csproj
-		SccProjectName9 = Edrive.Security
-		SccLocalPath9 = Edrive.Security
-		SccProjectUniqueName10 = Edrive.Membership\\Edrive.Membership.csproj
-		SccProjectName10 = Edrive.Membership
-		SccLocalPath10 = Edrive.Membership
-		SccProjectUniqueName11 = Edrive.Logic\\Edrive.Logic.csproj
-		SccProjectName11 = Edrive.Logic
-		SccLocalPath11 = Edrive.Logic
-		SccProjectUniqueName12 = CarfaxScheduler\\CarfaxScheduler.csproj
-		SccProjectName12 = CarfaxScheduler
-		SccLocalPath12 = CarfaxScheduler
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -113,25 +69,6 @@ Global
 		{18885C68-6DA0-4A66-8411-916105CFA886}.Staging|Mixed Platforms.ActiveCfg = Staging|Any CPU
 		{18885C68-6DA0-4A66-8411-916105CFA886}.Staging|Mixed Platforms.Build.0 = Staging|Any CPU
 		{18885C68-6DA0-4A66-8411-916105CFA886}.Staging|x86.ActiveCfg = Staging|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|x86.ActiveCfg = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Staging|Any CPU.ActiveCfg = Staging|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Staging|Any CPU.Build.0 = Staging|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Staging|Any CPU.Deploy.0 = Staging|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Staging|Mixed Platforms.ActiveCfg = Staging|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Staging|Mixed Platforms.Build.0 = Staging|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Staging|Mixed Platforms.Deploy.0 = Staging|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Staging|x86.ActiveCfg = Staging|Any CPU
 		{7325EAB0-649F-4930-9F90-CB4217B1886F}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{7325EAB0-649F-4930-9F90-CB4217B1886F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{7325EAB0-649F-4930-9F90-CB4217B1886F}.Debug|Mixed Platforms.Build.0 = Debug|x86

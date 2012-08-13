@@ -558,6 +558,7 @@
     <Content Include="Content\Images\Chase_634725899794967208.png" />
     <Content Include="Content\Images\Chase_634729347302362865.png" />
     <Content Include="Content\Images\Chase_634729348160674865.png" />
+    <Content Include="Content\Images\check.png" />
     <Content Include="Content\Images\checked.gif" />
     <Content Include="Content\Images\click-here.jpg" />
     <Content Include="Content\Images\close.gif" />
@@ -649,6 +650,9 @@
     <Content Include="Content\Images\google.jpg" />
     <Content Include="Content\Images\GoogleMaps.gif" />
     <Content Include="Content\Images\green-arrow.png" />
+    <Content Include="Content\Images\green-button-center.png" />
+    <Content Include="Content\Images\green-button-left.png" />
+    <Content Include="Content\Images\green-button-right.png" />
     <Content Include="Content\Images\grey_arrow.gif" />
     <Content Include="Content\Images\grey_button_bg.gif" />
     <Content Include="Content\Images\grid-bg.gif" />
@@ -656,6 +660,7 @@
     <Content Include="Content\Images\groupon.jpg" />
     <Content Include="Content\Images\h2_trigger.jpg" />
     <Content Include="Content\Images\h2_trigger_a.gif" />
+    <Content Include="Content\Images\header-bg.gif" />
     <Content Include="Content\Images\header4.gif" />
     <Content Include="Content\Images\header4_ipad.gif" />
     <Content Include="Content\Images\help.png" />
@@ -3019,6 +3024,7 @@
     <Content Include="Views\Mailer\WelcomeMember.cshtml" />
     <Content Include="Views\Mailer\_Layout.cshtml" />
     <Content Include="Views\Shared\RegistrationDetailsPopup.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
     <None Include="Web References\NADA_UsedCars\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
