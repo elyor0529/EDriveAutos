@@ -1,47 +1,51 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using Edrive.Edrivie_Service_Ref;
-using Edrive.Models;
+using Edrive.Core.Model;
+using Edrive.Logic;
 
 namespace Edrive.CommonHelpers
 {
-    public static class PictureManager
-    {
-        public static Nop_Picture SavePicture(HttpPostedFileBase Pic  )
-        {
-            try
-            {
+	public static class PictureManager
+	{
+		public static int SavePicture(HttpPostedFileBase picture)
+		{
+			int pictureID = 0;
 
-            
-            using (eDriveAutoWebEntities _entity = new eDriveAutoWebEntities())
-            {
-                #region "SaveFile"
-                if (Pic!= null)
-                    if (Pic.ContentLength > 0)
-                    {
-                        var Length = Pic.ContentLength;
-                        byte[] filsbyte = new byte[Length];
-                     Pic.InputStream.Read(filsbyte, 0, Length);
-                        var ext = Path.GetExtension(Pic.FileName);
-                        if (ext.Contains("."))
-                            ext = ext.Substring(ext.LastIndexOf('.') + 1);
-                        Nop_Picture newPartenerImage = new Nop_Picture { PictureBinary = filsbyte, IsNew = true, Extension = "image/" + ext };
-                        _entity.Nop_Picture.AddObject(newPartenerImage);
-                        _entity.SaveChanges();
-                        return newPartenerImage;
-                    }
-                #endregion
-            }
-            }
-            catch (Exception)
-            {
+			try
+			{
+				if(picture != null && picture.ContentLength > 0)
+				{
+					var length = picture.ContentLength;
+					byte[] filsbyte = new byte[length];
+					picture.InputStream.Read(filsbyte, 0, length);
+					var ext = Path.GetExtension(picture.FileName);
 
-                return null;
-            }
-            return null;
-        }
-    }
+					if(ext != null)
+						ext = ext.Trim('.');
+					else
+						return 0;
+
+					var image = new Picture
+						{
+							Binary = filsbyte,
+							IsNew = true,
+							Extension = string.Format("image/{0}", ext)
+						};
+					
+					PictureService service = new PictureService();
+
+					pictureID = service.Save(image);
+					
+					return pictureID;
+				}
+			}
+			catch(Exception)
+			{
+				return pictureID;
+			}
+
+			return pictureID;
+		}
+	}
 }

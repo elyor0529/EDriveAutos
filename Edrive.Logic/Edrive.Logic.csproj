@@ -64,6 +64,7 @@
     <Compile Include="Interfaces\IDealerService.cs" />
     <Compile Include="Interfaces\IEmailTemplateService.cs" />
     <Compile Include="Interfaces\IInterestedCustomerService.cs" />
+    <Compile Include="Interfaces\IPictureService.cs" />
     <Compile Include="Interfaces\IProductBodyService.cs" />
     <Compile Include="Interfaces\IProductMakeService.cs" />
     <Compile Include="Interfaces\IProductModelService.cs" />
@@ -73,7 +74,9 @@
     <Compile Include="Interfaces\IProductTypeService.cs" />
     <Compile Include="Interfaces\ISettingsService.cs" />
     <Compile Include="Interfaces\IStateProvinceService.cs" />
+    <Compile Include="Interfaces\ITestimonialService.cs" />
     <Compile Include="Interfaces\ITopicLocalizedService.cs" />
+    <Compile Include="PictureService.cs" />
     <Compile Include="ProductBodyService.cs" />
     <Compile Include="ProductMakeService.cs" />
     <Compile Include="ProductModelService.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsService.cs" />
     <Compile Include="StateProvinceService.cs" />
+    <Compile Include="TestimonialService.cs" />
     <Compile Include="TopicLocalizedService.cs" />
   </ItemGroup>
   <ItemGroup>

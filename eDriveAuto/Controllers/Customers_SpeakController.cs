@@ -81,14 +81,9 @@ namespace Edrive.Controllers
                 {
                     if (Request.Files["Pic"].ContentLength > 0)
                     {
-
-                    var newPicd=   PictureManager.SavePicture(Request.Files["Pic"]);
-                    if (newPicd != null)
-                    {
-                        newObj.PictureId = newPicd.PictureID;
+						var pictureID = PictureManager.SavePicture(Request.Files["Pic"]);
+						newObj.PictureId = pictureID;
                     }
-                    }
-                
                 }
                 _entity.ED_Testimonials.AddObject(newObj);
                 _entity.SaveChanges();

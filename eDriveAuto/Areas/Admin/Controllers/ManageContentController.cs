@@ -1316,12 +1316,11 @@ namespace Edrive.Areas.Admin.Controllers
                     {
                         if (string.IsNullOrEmpty(Request.Files["Pic"].FileName) == false && Request.Files["Pic"].ContentLength > 0)
                         {
-                            var newPicture = PictureManager.SavePicture(Request.Files["Pic"]);
-                            if (newPicture != null)
-                                Model.ImageID = newPicture.PictureID;
+                            var pictureID = PictureManager.SavePicture(Request.Files["Pic"]);
+                            
+							Model.ImageID = pictureID;
                         }
                     }
-
 
                     _entity.ED_EGear.AddObject(Model);
                     _entity.SaveChanges();
@@ -1377,9 +1376,9 @@ namespace Edrive.Areas.Admin.Controllers
                 {
                     if (string.IsNullOrEmpty(Request.Files["Pic"].FileName) == false && Request.Files["Pic"].ContentLength > 0)
                     {
-                        var newPicture = PictureManager.SavePicture(Request.Files["Pic"]);
-                        if (newPicture != null)
-                            Model.ImageID = newPicture.PictureID;
+                        var pictureID = PictureManager.SavePicture(Request.Files["Pic"]);
+                        
+						Model.ImageID = pictureID;
                     }
                 }
 

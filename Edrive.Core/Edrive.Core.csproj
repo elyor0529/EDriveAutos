@@ -85,6 +85,7 @@
     <Compile Include="Model\Nop_Country.cs" />
     <Compile Include="Model\Nop_CustomerAttribute.cs" />
     <Compile Include="Model\Nop_StateProvince.cs" />
+    <Compile Include="Model\Picture.cs" />
     <Compile Include="Model\ProductOptions.cs" />
     <Compile Include="Model\Products.cs" />
     <Compile Include="Model\Product_Body.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\SiteSetting.cs" />
     <Compile Include="Model\State.cs" />
+    <Compile Include="Model\Testimonial.cs" />
     <Compile Include="Model\TopicLocalized.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\_CustomerProfile.cs" />
