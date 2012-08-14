@@ -28,7 +28,7 @@ ol, ul{ list-style:none;}
     width: 100%;
 }
 #Header .header-content {height: 72px;width: 100%;background: url('images/header-bg.gif') repeat-x top right;}
-#Header .header-content .content{ width: 964px; margin: auto;}
+#Header .header-content .content{ width: 964px; margin: 0 auto;padding: 0;}
 #Header .header-content .slogan {color: #d6d6d6; margin-top: 6px;}
 #Header .Logo {background: url("images/logo.gif") no-repeat scroll 0 0 transparent;float: left;margin: 10px 0 0;width: 318px;}
 #Header .Logo a{ height:55px; display:block; text-indent:-9999em;}
@@ -254,7 +254,82 @@ height: 15px;}
 #PreFooter .FooterLinks li a{ color:#2c2d2e;}
 #PreFooter .FooterLinks li a:hover{ color:#2c2d2e; text-decoration:underline;}
 
-#Footer{ background:url(images/prefooter.png) repeat-x top left; padding:80px 0 50px 0; position:relative;margin: auto;width: 964px;}
+#Footer{ background-color: #EBEBEB;height: 230px;margin: auto;padding: 50px 0 30px;position: relative;font-family: Verdana;}
+#Footer .footer-wrapper {
+	width: 964px;
+	margin: auto;
+	font-weight: normal;
+}
+#Footer .separator {
+    border-right: 4px dotted #4A911B;
+    float: left;
+    height: 230px;
+    margin: 0 40px 0 40px;	
+}
+#Footer .left-part {
+    float: left;
+    margin: 0 0 0 340px;
+}
+#Footer .left-part h4 {
+	font-weight: bold;
+	font-size: 13px;
+	color: #595959;
+}
+#Footer .left-part .text {
+    color: #595959;
+    font-size: 13px;
+    line-height: 1.7;
+    width: 245px;
+}
+#Footer .left-part .publishers {
+    font-size: 11px;
+    margin: 20px 0 0;	
+}
+#Footer .left-part .publishers b {
+	color: #008F19;
+	font-weight: bold;
+}
+#Footer .right-part {
+	float: left;
+	font-size: 11px;
+	line-height: 1.3;
+}
+#Footer .right-part .mailing-address {
+	padding: 0 0 10px;	
+}
+#Footer .right-part .help {
+	padding: 0 0 10px;
+}
+#Footer .right-part .investor {
+	padding: 0 0 10px;
+}
+#Footer .right-part .footer-menu {
+	padding: 5px 0 0;	
+}
+#Footer .right-part .footer-menu a {
+	color: #000000;
+	text-decoration: underline;	
+}
+#Footer .right-part .copyright {
+	padding: 20px 0 0 0;
+}
+#Footer .right-part .copyright img {
+	vertical-align: text-bottom;
+}
+#Footer .right-part .copyright span {
+	
+}
+#Footer .right-part .copyright a {
+	color: #008F19;	
+}
+#Footer .right-part div h4 {
+	font-weight: bold;
+}
+#Footer .right-part a.email {
+    color: #000000;
+    text-decoration: underline;	
+}
+
 #Footer .FooterLogo{ text-align:center; margin-bottom:10px;font-size: 11px;}
 #Footer p.lower-text {
 	color: gray;	

@@ -2410,21 +2410,6 @@ textarea.textBox
 	color: red;
 }
 
-.copyright
-{
-	float: right;
-	padding-top: 10px;
-	font-family: Arial,Verdana, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #D0CFD5;
-}
-
-.copyright a
-{
-	color: #3664A5;
-	background-color: inherit;
-}
-
 ul.sitemap
 {
 	margin: 0px;

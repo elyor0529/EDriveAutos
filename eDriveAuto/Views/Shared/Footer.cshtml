@@ -1,11 +1,41 @@
 ﻿<div id="Footer">
-	<div class="FooterLogo">
-		<a href="#"><img src="@Url.Content("~/Content/Images/footer_logo.png")" alt="" /></a>
+	<div class="footer-wrapper">
+		<div class="left-part">
+			<h4>About Us</h4>
+			<div class="text">
+				E-Drive provides auto dealers, banks and leasing companies 
+				broader retail visibility to select wholesale vehicle inventory 
+				via an unrestricted consumer buying platform.
+			</div>
+			<div class="publishers">
+				<b>Publishers</b> - add unique content to your website
+			</div>
+		</div>
+		<div class="separator"></div>
+		<div class="right-part">
+			<div class="mailing-address">
+				<h4>Mailing Address</h4>
+				<div>52 Tuscan Way, Suite 202-317</div>
+				<div>St. Augustine, FL 32092</div>
+			</div>
+			<div class="help">
+				<h4>Help</h4>
+				<a href="mailto:support@edriveautos.com" class="email">support@edriveautos.com</a>
+			</div>
+			<div class="investor">
+				<h4>Investor Relations/PR</h4>
+				<a href="mailto:info@edriveautos.com" class="email">info@edriveautos.com</a>
+			</div>
+			<div class="footer-menu">
+				<a href="@Url.Action("Index", "Press_Release")">Press</a> |
+				<a href="http://www.edriveautos.blogspot.com" target="_blank">Blog</a> |
+				<a href="@Url.Action("Advertiser", "Home")">Advertisers</a>
+			</div>
+			<div class="copyright">
+				<img src="@Url.Content("~/Content/Images/small-logo.png")" alt="" />
+				<span>Copyright 2010-@(DateTime.Now.Year).</span>
+				<a href="@Url.Action("ConditionsOfUse", "Home")">Terms of Use</a>
+			</div>
+		</div>
 	</div>
-	<p>
-		Copyright 2011-2012 E-Drive Autos, LLC. All rights reserved worldwide.</p>
-	<p class="lower-text">
-		TargetSpot, Carfax, Military.com, Recycler.com and NADA Guides logos are the property
-		of their respective companies.
-	</p>
 </div>

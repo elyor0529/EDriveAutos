@@ -109,7 +109,9 @@ namespace Edrive.Controllers
 		{
 			using(eDriveAutoWebEntities entity = new eDriveAutoWebEntities())
 			{
-				return View(entity.Nop_TopicLocalized.FirstOrDefault(m => m.Nop_Topic.Name == "ConditionsOfUse"));
+				var content = entity.Nop_TopicLocalized.FirstOrDefault(m => m.Nop_Topic.Name == "ConditionsOfUse");
+				
+				return View(content);
 			}
 		}
 

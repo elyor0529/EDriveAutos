@@ -766,6 +766,7 @@
     <Content Include="Content\Images\logo_2.png" />
     <Content Include="Content\Images\logo_3.png" />
     <Content Include="Content\Images\lunapic_133233330550892_2.png" />
+    <Content Include="Content\Images\main-menu-bg.gif" />
     <Content Include="Content\Images\map.jpg" />
     <Content Include="Content\Images\map01.png" />
     <Content Include="Content\Images\mazda.jpg" />
@@ -904,6 +905,7 @@
     <Content Include="Content\Images\Slogan.png" />
     <Content Include="Content\Images\Slogan01.png" />
     <Content Include="Content\Images\small-banner.jpg" />
+    <Content Include="Content\Images\small-logo.png" />
     <Content Include="Content\Images\sp.gif" />
     <Content Include="Content\Images\srch_icon.png" />
     <Content Include="Content\Images\startyou.png" />
@@ -3025,6 +3027,8 @@
     <Content Include="Views\Mailer\_Layout.cshtml" />
     <Content Include="Views\Shared\RegistrationDetailsPopup.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\PreFooter.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <None Include="Web References\NADA_UsedCars\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
