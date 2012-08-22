@@ -6,10 +6,8 @@
 }
 
 @section Head{
-<style type="text/css">
-.modalPopUpWindowNew{padding:15px !important;z-index:99999;top:15px !important;position:relative;}
-.ui-dialog ui-widget ui-widget-content ui-corner-all modalPopUpWindowNew ui-draggable ui-resizable{margin-top:15px !important; }
-</style>
+
+	<link rel="stylesheet" type="text/css" href="/Content/skins/tango/skin.css" />
 
 @if(User.Identity.IsAuthenticated == false)
 {
@@ -26,13 +24,6 @@
         
 	}
 }
-
-	<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-	<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
-	<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script> 
-<script src="/Scripts/jquery.jcarousel.min.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="/Content/skins/tango/skin.css" />
-<script type="text/javascript" src="/Scripts/jquery.balloon.js"></script>
 
  <script type="text/javascript">
  	$(function () {
@@ -1273,119 +1264,42 @@
     @section Footer{
     @{
         <div class="MsgStatusDiv">
-            <span id="StatusMsg" class="StatusMsg">
-                </span>
-                </div>
+            <span id="StatusMsg" class="StatusMsg"></span>
+		</div>
+		
 		if(User.Identity.IsAuthenticated == false)
 		{
- 
-
-			<div class="overviewdetaillogowar" id="overviewdetaillogowar" style="overflow:hidden;height:671px;width:833px;background-color:transparent;">
-				<div id="Registration">
-					<div style="">
-     
+			<div class="registration-popup" style="display: none;">
+				@using(Ajax.BeginForm("RegistrationPopup", "Search",
+									  new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrationPopupSection", OnSuccess = "showRegistrationPopup" }))
+				{
+					Html.EnableUnobtrusiveJavaScript();
+					Html.EnableClientValidation();
+				
+					<div id="registrationPopupSection">		
+						@{ Html.RenderAction("RegistrationPopup", "Search"); }
 					</div>
-					@*<img src="@Url.Content("~/Content/Images/player_close.png")" style="position:relative;left:815px;;background:transparent;cursor:pointer" onclick="closeModal()" alt="Close"/>
-*@
-					<div class="htmlcontent" style="background-color:White">
-						<div class="htmlcontent-body">
-							<div>
-								<div style="color:red;text-align:center;position:relative;top:14px;">@(ViewData["Msg"] ?? "")</div>
+				}
+				<script type="text/javascript">
+					$(document).ready(function () {
+						showRegistrationPopup();
+					});
 
-								<h2 style="margin-top:34px;">An E-Drive Pre-Auction Access Account is Required to View Vehicle Listings</h2>
-								<p class="font_14">The most rewarding car buying experience awaits you. Choose limited access or full access.</p>
-								<div class="MemberLogin">
-									<a href="/Account/Logon">Member Login</a>
-								</div>
-								<div class="LimitedAccount OfferList">
-									<h2>Create a Limited Access account</h2>
-									<ul>
-										<li>Free (no email required)</li>
-										<li>Login using facebook</li>
-										<li>No strings attached</li>
-									</ul>
-									<p>No form to fill out. Sign up for E-Drive Autos using<br />your Facebook account with just couple of clicks.</p>
-									<div>
-										<a href="@ViewData["facebookLoginUrl"]">
-											@*<a href="https://www.facebook.com/dialog/oauth?client_id=394447697245581&redirect_uri=http://localhost:2165/Search&scope=email">*@
-											<img src="@Url.Content("~/Content/images/facebook_connect.jpg")" alt="" />
-										</a>
-									</div>
-								</div>
-								<div class="divMsgCentre">
-									<div class="MsgCentreDiv1">
-									</div>
-									<div  class="MsgCentreDiv2" style="">
-										OR
-									</div>
-									<div  class="MsgCentreDiv3">
-									</div>
-									<div>
-									</div>
-								</div>
-								<div class="FullAccount OfferList" style="border:none">
-									<h2>Create a Full Access account</h2>
-									<h4>Only $10 USD. No recurring billing. (<a href="#" onclick="return showRegistrationPopup();">Details</a>)</h4>
-									<ul>
-										<li>Unlimited access 24/7</li>
-										<li>Save and customize searches</li>
-										<li>Save vehicles to wish list</li>
-										<li>Price Lock Guarantee</li>
-										<li>Print vehicle brochures</li>
-									</ul>
-									<p>Kick your vehicle search into high gear and experience all the best features of E-Drive Autos.</p>
-									<div align="center" class="Register"><a href="@Url.Action("Index", "Register")"><img src="@Url.Content("~/Content/Images/register_btn.jpg")" alt="" />
-																		 </a> </div>
-								</div>
-								<div class="Clr"></div>
-								<div class="divNothanks">
-									<a href="/Home"><u>No Thanks</u>, <u>I'm not Interested</u> </a>
+					function showRegistrationPopup() {
+						//$("#overviewdetaillogowar").dialog({ modal: true, width: 654, height: 853, zIndex: 9999, dialogClass: 'modalPopUpWindowNew' }).css("top", "150px;");
+						//$(".ui-dialog-titlebar").hide();
+						$('.darken-modal-bg').show();
+						$('.registration-popup').show();
+					}
 
-
-								</div>
-								<div class="ImpInfoTxt">
-									<p><strong>Important Information</strong></p>
-									<p>Every vehicle listed on the site has 16 filters that qualify or disqualify it. We only accept the very best vehicles - free of frame damage and with clear titles. Many of the vehicles listed herein are off-lease, fleet and repos that have never hit the retail market. The ones that are not sold will be listed at a car lot at considerable markup.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-            
-				</div>
+					function closeModal() {
+						$('.registration-popup').hide();
+						$('.darken-modal-bg').hide();
+					}
+				</script>
 			</div>
-		
-			<div class="darken-modal-bg" style="display:none;"></div>
+			<div class="darken-modal-bg" style="display: none;"></div>
 			<div class="registration-details-popup"></div>
-            
-          @*  <div id="modalpopUp" style="background-color: black;position: fixed;top: 0px;opacity: .5;z-index: 2000;">
-            </div>
-            *@
-        <script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
-
-    <script type="text/javascript">
-
-    	$(document).ready(function () {
-    		$("#overviewdetaillogowar").dialog({ modal: true, width: 833, zIndex: 9999, dialogClass: 'modalPopUpWindowNew' }).css("top", "15px;");
-    		$(".ui-dialog-titlebar").hide();
-    	});
-
-    	//        var wid = $(window).width();
-    	//        var hig = $(window).height();
-    	//       
-    	//        $("#modalpopUp").css("width",wid).css("height",hig);
-    	//        $("#modalpopUp").show();
-
-    	function closeModal() {
-    		alert("closed fired");
-    	}
-
-
-
-    </script>
-      
-
-
 		}
- 
-    }
+	}
 

@@ -4853,7 +4853,7 @@ ul.languagelist li .selected
 
 .search-panel table.basic-search, .search-panel table.adv-search
 {
-	border: collapse;
+	border-collapse: collapse;
 	color: #333;
 	margin: 0px;
 	width: 100%;
@@ -6023,7 +6023,7 @@ ul.languagelist li .selected
 	padding: 1px;
 	top: 0px;
 	color: Black;
-	z-index: 200px;
+	z-index: 200;
 }
 .modalpopupHeader
 {
@@ -8183,7 +8183,7 @@ pre
 	border: 1px solid #A9D5D6;
 	width: 400px;
 	height: 140px;
-	padding: 16px,0px,0px,6px;
+	padding: 16px 0px 0px 6px;
 	margin: 0px 6px 10px 7px;
 	float: right;
 }
@@ -8792,7 +8792,7 @@ pre
 }
 .textBox-how
 {
-	background: url(../Images/bgTextBox.gif) repeat-x scroll left top white;
+	background: url(../../../Images/bgTextBox.gif) repeat-x scroll left top white;
 	border: 1px solid #A9D5D6;
 	color: #333333;
 	height: 84px;
@@ -8957,7 +8957,7 @@ width:31px;
 	background-attachment: scroll;
 	background-color: transparent;
 	background-image: url("images/bg-pop_01.png");
-	background-position: s0 0;
+	background-position: 0 0;
 	background-repeat: repeat;
 }
 .popup-close-new
@@ -9395,7 +9395,7 @@ width:31px;
 	width: 448px; /*top:9px;*/
 	margin-top: 57px; *margin-top:15px;
 height:328px;
-border:1pxsolid#a6b5c0;
+border:1px solid #a6b5c0;
 behavior:url(ie-css3.htc);
 /*z-index: 999999;*/
 /*float: right;*/
@@ -10111,7 +10111,7 @@ margin-top:5px;
 padding:2px;
 z-index:9999;
 background-color:White;
-border:2pxsolid#ADD8DE;
+border:2px solid #ADD8DE;
 
 }
 .popup-close-new
@@ -10569,7 +10569,7 @@ h2.active
 .toggle_container .block
 {
 	padding: 3px;
-	background: url(toggle_block_btm.gif) no-repeat left bottom;
+	background: url(images/toggle_block_btm.gif) no-repeat left bottom;
 }
 .toggle_container .block p
 {

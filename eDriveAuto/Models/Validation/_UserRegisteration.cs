@@ -1,9 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Web.Mvc;
-using Edrive.Edrivie_Service_Ref;
-using Edrive.Models;
 
 namespace Edrive.Models
 {
@@ -39,13 +36,29 @@ namespace Edrive.Models
         [Required(ErrorMessage = "*")]
         public Int32 Zip { get; set; }
 
-        // public String Telephone { get; set; }
+		[Required(ErrorMessage = "*")]
+		public string ZipCode { get; set; }
 
+		[DataType(DataType.PhoneNumber)]
+		public string Phone { get; set; }
+		
+		public string VehicleInterest { get; set; }
 
+		public string MaxBudget { get; set; }
 
+		[Display(Name = "I have a trade-in")]
+		public bool HaveTradeIn { get; set; }
 
-        //[Range(typeof(String), "true", "true", ErrorMessage = "you must acknowledge that you have read and agree to abide by the terms of use in order to register.")]
-        public Boolean TermsofUse { get; set; }
+		[Display(Name = "I need cheap financing")]
+		public bool NeedCheapFinancing { get; set; }
+
+		[Display(Name = "I need cheap insurance")]
+		public bool NeedCheapInsurance { get; set; }
+
+		[Display(Name = "I am interested in becoming a Premimum Member ($29.95 Lifetime)")]
+		public bool InterestedForPremiumMember { get; set; }
+
+	    public Boolean TermsofUse { get; set; }
 
         [Required(ErrorMessage = "*")]
         public String Address { get; set; }
@@ -59,10 +72,6 @@ namespace Edrive.Models
         [Required(ErrorMessage = "*")]
         public String PaymentType { get; set; }
 
-
-        // public string Coupon { get; set; }
-        //[Required]
-        //public String howDidYouHearAboutUs { get; set; }
         [Required(ErrorMessage = "*")]
 
         public string Country { get; set; }
@@ -72,8 +81,5 @@ namespace Edrive.Models
         public String ExpYear { get; set; }
 
         public String CVV { get; set; }
-
-
-
     }
 }

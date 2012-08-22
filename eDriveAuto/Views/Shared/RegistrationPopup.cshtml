@@ -1,0 +1,113 @@
+﻿@model Edrive.Models._UserRegisteration
+
+@{
+	Layout = null;
+}
+		
+<div id="registration">
+	<div class="htmlcontent">
+		<div class="htmlcontent-body">
+			<h1>A Free E-Drive Membership is Required to View Listings</h1>
+			<h2>Set up your pre-auction access account in seconds!</h2>
+			<div class="registration-top">
+				<div class="checkpoints">
+					<ul>
+						<li>Search the best deals online</li>
+						<li>Transparent pricing validation</li>
+						<li>Buy at auction prices (like the dealer)</li>
+						<li>60% of our vehicles are exclusive</li>
+					</ul>
+				</div>
+				<div class="video-box">
+					<div class="SideBox featured-seller" id="ThirdBox">
+						<div class="BackBox">
+							<div class="BoxTabs">
+								<span class="Tabs tab"><a href="javascript:void(0);">Watch our Commercial</a></span>
+							</div>
+							<div class="FrontBox">
+								<div class="content">
+									<object width="220" height="176">
+										<param name="movie" value="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US" />
+										<param name="allowFullScreen" value="true" />
+										<param name="allowscriptaccess" value="always" />
+										<embed src="http://www.youtube.com/v/A3pzNGX2-mo?version=3&amp;hl=en_US" type="application/x-shockwave-flash"
+											   width="220" height="176" wmode="transparent" allowscriptaccess="always" allowfullscreen="true" />
+									</object>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form">
+				<div class="left-form">
+					<h3>
+						<b>Enter Your Information</b>
+						<span>Already a Member?</span>
+						@Html.ActionLink("Log In", "LogOn", "Account")
+					</h3>
+					
+					@Html.EditorFor(c => c.Firstname, new { @class = "name" })
+					@Html.EditorFor(c => c.Lastname, new { @class = "name" })
+					@Html.EditorFor(c => c.Email)
+					@Html.EditorFor(c => c.ConfimrEmail)
+					@Html.PasswordFor(c => c.Password)
+					@Html.PasswordFor(c => c.ConfirmPassword)
+				</div>
+				<div class="right-form">
+					<div class="fields-required">
+						All Fields Are Required
+					</div>
+					@Html.EditorFor(c => c.City)
+					@Html.DropDownList("State", (IEnumerable<SelectListItem>)(ViewBag.StatesList ?? new List<SelectListItem>()))
+					@Html.EditorFor(c => c.ZipCode)
+				</div>
+				<div class="checkboxes">
+					@Html.CheckBoxFor(c => c.NeedCheapFinancing)
+					@Html.LabelFor(c => c.NeedCheapFinancing)
+					@Html.CheckBoxFor(c => c.NeedCheapInsurance)
+					@Html.LabelFor(c => c.NeedCheapInsurance)
+					@Html.CheckBoxFor(c => c.HaveTradeIn)
+					@Html.LabelFor(c => c.HaveTradeIn)
+				</div>
+				<div class="separator"></div>
+				<div class="subsription">
+					<h3>Select a Subscription</h3>
+					<div class="box">
+						<h4>Basic Membership</h4>
+						<label>
+							<input type="radio" id="freeMembership" name="membership" value="free" /> 
+							Free. No obligation. No hassle.
+						</label>
+					</div>
+					<div class="box">
+						<h4>Premium Membership</h4>
+						<div class="note">
+							No information shared with dealers, and many added benefits!
+							<a href="#">More Details</a>
+						</div>
+						<div class="radio-box">
+							<label>
+								<input type="radio" id="premiumMembership" name="membership" value="premium" />
+								$9.95 for one year.
+							</label>
+							<img src="@Url.Content("~/Content/Images/best-choice.png")" alt="" />
+						</div>
+					</div>
+				</div>
+				<div class="your-search">
+					Your Search: 2007 BMW 3-series in zipcode 98434
+				</div>
+				<div class="submit-button">
+					<a href="#" onclick="$('#form0').submit();return false;" class="green-button">Continue to Vehicle Listings</a>
+					<div class="terms">
+						By clicking above, I agree to E-Drive's <a href="@Url.Action("ConditionsOfUse", "Home")">Terms of Use</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div></div>
+</div>
+
+@Html.Hidden("IsPost", "true")

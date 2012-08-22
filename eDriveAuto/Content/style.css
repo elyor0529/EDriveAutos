@@ -899,9 +899,22 @@ padding-right: 9px;}
    }
    .sortbycolumn{text-decoration:none !important;}
       
-.green-button {
+.green-submit-button {
 	background: url('themes/App_Themes/EDrive/images/submit.png') transparent top left;border: 0px; padding-left: 38px; width: 107px; height: 35px;	cursor: pointer;
 }   
+
+.green-button {
+	
+}
+.green-button .left {
+	
+}
+.green-button .right {
+	
+}
+.green-button .text {
+	
+}
  
 .no-results-section {
 	width: 100%;
@@ -968,7 +981,7 @@ padding-right: 9px;}
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100000;
+    z-index: 1000;
 }
 
 .product-inner-page .paypal-details-form h2 {
@@ -990,7 +1003,252 @@ padding-right: 9px;}
 }   
    
    
-   
+/*--------------------------------REGISTRATION POPUP----------------------------------------------*/
+.ui-dialog {
+	
+}
+.registration-popup {
+	display: block; 
+	z-index: 10001; 
+	outline: 0px none;
+	border: 4px solid #84AFE2; 
+	position: absolute; 
+	height: auto; 
+	top: 40px; 
+	left: 610px;	
+}
+.registration-popup .htmlcontent {
+	background-color: #FFFFFF;
+    height: 1033px;
+    width: 645px;
+	margin: 0;
+	padding: 0;
+}
+.registration-popup .htmlcontent .htmlcontent-body {
+	margin: 0;
+	padding: 20px 30px;
+}
+.registration-popup .htmlcontent .htmlcontent-body h1 {
+    font-size: 21px;
+    font-weight: bold;	
+}
+.registration-popup .htmlcontent .htmlcontent-body h2 {
+    font-size: 16px;
+    text-align: center;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top {
+	border-bottom: 1px solid #D6D6D6;
+    clear: both;
+    float: left;
+    padding: 0 0 20px;
+    width: 100%;
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .checkpoints {
+	float: left;
+	margin: 60px 0 0;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .checkpoints ul li {
+	background: url("Images/check.png") no-repeat scroll left center transparent;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 2.5;
+    padding: 0 0 0 40px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box {
+	float: left;
+	margin: 30px 0 0 15px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box .SideBox {
+	width: 240px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box .SideBox .BackBox {
+	background: url("images/registration-video-box.png") no-repeat scroll 0 0 #FFFFFF;
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box .SideBox .BackBox span.tab a {
+	font-size: 15px;
+	color: #5E5E5E;
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box .SideBox .BackBox .FrontBox {
+	height: 190px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box .SideBox .BackBox .FrontBox .content {
+	padding: 0px;
+	margin: 10px 0 0 0;
+}
+.registration-popup .htmlcontent .htmlcontent-body .testimonial {
+	
+}
+.registration-popup .htmlcontent .htmlcontent-body .testimonial .photo {
+	
+}
+.registration-popup .htmlcontent .htmlcontent-body .testimonial .photo img {
+	
+}
+.registration-popup .htmlcontent .htmlcontent-body .testimonial .text {
+	
+}
+.registration-popup .htmlcontent .htmlcontent-body .testimonial .name {
+	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form {
+	float: left;
+	width: 100%;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .separator {
+	clear: both;
+    width: 100%;
+	border-bottom: 1px solid #D6D6D6;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form {
+	width: 370px;
+	float: left;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form h3 {
+	font-size: 12px;
+	margin: 20px 0 10px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form h3 b {
+	font-size: 14px;
+	margin-right: 36px;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form h3 a {
+	color: #3765BD;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .right-form select,
+.registration-popup .htmlcontent .htmlcontent-body .form .right-form input,
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form input {
+	border: 1px solid #969291;
+    border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 2px 3px #D2D2D2 inset;
+    color: #696A6C;
+    font-size: 14px;
+    margin: 3px 0;
+    padding: 5px;
+    width: 330px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form input:focus {
+	box-shadow: 0 2px 3px #C4C4C4 inset;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form input#Firstname {
+	margin-right: 15px; 
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form input#Lastname,
+.registration-popup .htmlcontent .htmlcontent-body .form .left-form input#Firstname {
+	width: 150px;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .right-form {
+    float: left;
+    width: 215px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .right-form .fields-required {
+	color: #F70505;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 56px 0 40px;
+	text-align: center;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .right-form input {
+	width: 205px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .right-form select {
+	width: 217px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .checkboxes {
+	clear: both;
+    float: left;
+    margin: 15px 0 10px;
+    width: 100%;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .checkboxes input {
+	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .checkboxes label {
+	font-size: 15px;
+    margin: 0 40px 0 3px;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription {
+	clear: both;
+    float: left;
+    width: 100%;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription h3 {
+	font-weight: bold;
+    margin: 20px 0 10px;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .box {
+    border: 1px solid #D6D6D6;
+    margin: 0 0 5px 20px;
+    padding: 8px;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .box h4 {
+	color: #696D70;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+	margin: 0 0 5px 0;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .box .note {
+	color: #5F5F5F;
+    margin: 0 0 10px;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .box .note a {
+	color: #009017;
+    text-decoration: underline;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .radio-box {
+	background-color: #EDF9D5;
+    border: 1px solid #EEEEEE;
+    height: 34px;
+    width: 97%;
+	margin: 0 0 20px 0;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .radio-box label {
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 0 0;
+	color: #000000 !important;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .radio-box img {
+    float: right;
+    margin: -8px -17px 0 0;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .your-search {
+	clear: both;
+    color: #5F5F5F;
+    float: left;
+    font-size: 13px;
+    margin: 25px 0;
+    text-align: center;
+    width: 100%;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .box label {
+	margin: 0 0 0 8px;
+	color: #5F5F5F;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .subsription .box label input {
+	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button {
+	clear: both;
+    float: left;
+    text-align: center;
+    width: 100%;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button a.green-button {
+	
+}
+
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button .terms  {
+	font-size: 11px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button .terms a {
+	color: #2727FB;
+	text-decoration: underline;
+}
+
+
+/*--------------------------------REGISTRATION POPUP END----------------------------------------------*/   
    
    
    

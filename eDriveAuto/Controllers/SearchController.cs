@@ -19,13 +19,15 @@ namespace Edrive.Controllers
 		private readonly IProductModelService _productModelService;
 		private readonly IProductMakeService _productMakeService;
 		private readonly IDealerService _dealerService;
+		private readonly IStateProvinceService _stateProvinceService;
 		
 		public SearchController(IProductService productService, 
 			IProductTypeService productTypeService, 
 			IProductBodyService productBodyService,
 			IProductModelService productModelService,
 			IProductMakeService productMakeService,
-			IDealerService dealerService)
+			IDealerService dealerService,
+			IStateProvinceService stateProvinceService)
 		{
 			_productService = productService;
 			_productTypeService = productTypeService;
@@ -33,6 +35,7 @@ namespace Edrive.Controllers
 			_productModelService = productModelService;
 			_productMakeService = productMakeService;
 			_dealerService = dealerService;
+			_stateProvinceService = stateProvinceService;
 		}
 		
 		#region Search
@@ -263,8 +266,7 @@ namespace Edrive.Controllers
 			advancePageSearchSession.prpAdvSearchParameter = new AdvanceSearch
 			{
 				Body = body,
-				DriveType = driveType
-				,
+				DriveType = driveType,
 				Engine = engine,
 				PriceMax = priceMax,
 				YearMax = yearMax,
@@ -280,12 +282,12 @@ namespace Edrive.Controllers
 				Zip = zip
 			};
 			Session["SearchType"] = advancePageSearchSession;
+			
 			// end of  Search Type Session 
 			return SearchAdvance(body, driveType, engine,
 						   priceMax, yearMax, mileage, priceMin, yearMin, make,
 						   model, radius, transmission, type, vin,
 						   zip);
-
 		}
 		
 		public string DownloadFromFtp(string url, string username, string password)
@@ -777,6 +779,7 @@ namespace Edrive.Controllers
 			var carsCount = _productService.SearchAdvancedCount(attr, 1, 0, null, out count);
 			ViewData["CarsCount"] = carsCount;
 			ViewData["PageCounts"] = carsCount / 25 + 1;
+
 			return View("Index", collection);
 		}
 
@@ -1133,6 +1136,40 @@ namespace Edrive.Controllers
 			ViewBag.TotalVehicleCount = _productService.GetTotalVehiclesCount().ToString("###,###,###");
 			
 			return View();
+		}
+
+		public ActionResult RegistrationPopup()
+		{
+			ViewBag.StatesList = GetStates();
+
+			return View(new _UserRegisteration());
+		}
+
+		[HttpPost]
+		public ActionResult RegistrationPopup(_UserRegisteration model, FormCollection collection)
+		{
+			ViewBag.StatesList = GetStates();
+
+			if(!collection["IsPost"].ConvertTo(false))
+			{
+				ModelState.Clear();
+
+				return View(new _UserRegisteration());
+			}
+			
+			return View(model);
+		}
+
+		private List<SelectListItem> GetStates()
+		{
+			var states = _stateProvinceService.GetStatesByCountryCode("USA")
+				.OrderBy(c => c.Name).Select(c => new SelectListItem
+				{
+					Text = c.Abbreviation,
+					Value = c.StateProvinceID.ToString()
+				}).ToList();
+
+			return states;
 		}
 	}
 }

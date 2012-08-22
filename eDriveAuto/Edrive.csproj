@@ -459,6 +459,7 @@
     <Content Include="Content\Images\BarAlliance.png" />
     <Content Include="Content\Images\bata.png" />
     <Content Include="Content\Images\bbeditor-button-bg.gif" />
+    <Content Include="Content\Images\best-choice.png" />
     <Content Include="Content\Images\bestdeal01.jpg" />
     <Content Include="Content\Images\bg-pop_01.png" />
     <Content Include="Content\Images\bgTextBox.gif" />
@@ -865,6 +866,7 @@
     <Content Include="Content\Images\register_now02.png" />
     <Content Include="Content\Images\register_now1.png" />
     <Content Include="Content\Images\register_today.png" />
+    <Content Include="Content\Images\registration-video-box.png" />
     <Content Include="Content\Images\remove.png" />
     <Content Include="Content\Images\remove01.jpg" />
     <Content Include="Content\Images\result_pic.png" />
@@ -3029,6 +3031,7 @@
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\PreFooter.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shared\RegistrationPopup.cshtml" />
     <None Include="Web References\NADA_UsedCars\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
