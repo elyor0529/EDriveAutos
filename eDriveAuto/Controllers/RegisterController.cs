@@ -77,6 +77,113 @@ namespace Edrive.Controllers
 			return View();
 		}
 
+		public ActionResult RegistrationPopup()
+		{
+			ViewBag.StatesList = GetStates();
+
+			return View(new _UserRegisteration());
+		}
+
+		[HttpPost]
+		public ActionResult RegistrationPopup(_UserRegisteration model, FormCollection collection)
+		{
+			ViewBag.StatesList = GetStates();
+
+			if(!collection["IsPost"].ConvertTo(false))
+			{
+				ModelState.Clear();
+
+				return View(new _UserRegisteration());
+			}
+
+			if(!ModelState.IsValid)
+				return View(model);
+
+			#region PayPal
+			if(model.PaymentType == "premium")
+			{
+				Customer newCustomer = CreateGuestCustomer(model);
+				var requesterCredentials = PayPalUtility.BuildPayPalWebservice();
+
+				SetExpressCheckoutRequestDetailsType details = new SetExpressCheckoutRequestDetailsType();
+				details.NoShipping = "1";
+
+				PaymentDetailsType payment = new PaymentDetailsType()
+				{
+					OrderDescription = "Full Access Registration (1 Year)",
+					OrderTotal = new BasicAmountType()
+					{
+						currencyID = CurrencyCodeType.USD,
+						Value = "9.95"
+					}
+				};
+
+				details.PaymentDetails = new PaymentDetailsType[] { payment };
+				details.CancelURL = string.Format("{0}Register/ConfirmMemberShip?uid={1}&cancel=true", Common_Methods.GetDomainUrl(), newCustomer.CustomerID);
+				details.ReturnURL = string.Format("{0}Register/ConfirmMemberShip?uid={1}", Common_Methods.GetDomainUrl(), newCustomer.CustomerID);
+
+				SetExpressCheckoutReq request = new SetExpressCheckoutReq()
+				{
+					SetExpressCheckoutRequest = new SetExpressCheckoutRequestType()
+					{
+						SetExpressCheckoutRequestDetails = details,
+						Version = PayPalUtility.Version
+					}
+				};
+
+				using(PayPalAPIAAInterfaceClient client = new PayPalAPIAAInterfaceClient())
+				{
+					SetExpressCheckoutResponseType resp = client.SetExpressCheckout(ref requesterCredentials, request);
+					PayPalUtility.HandleError(resp);
+
+					return Redirect(string.Format("{0}?cmd=_express-checkout&token={1}", PayPalUtility.URL, resp.Token ?? resp.Any.InnerText));
+				}
+			}
+			#endregion
+
+			#region PredefinedForm
+			if(model.PaymentType == "free")
+			{
+				Customer newCustomer = CreateGuestCustomer(model);
+
+				try
+				{
+					using(eDriveAutoWebEntities entity = new eDriveAutoWebEntities())
+					{
+						//Update recoard from Guest to Customer
+						var cust = entity.Customer.First(m => m.CustomerID == newCustomer.CustomerID);
+						cust.Deleted = false;
+						cust.ExpirationDate = DateTime.Now.AddDays(30);
+						cust.IsTrial = true;
+						cust.RegisterationDate = DateTime.Now;
+
+						entity.SaveChanges();
+
+						try
+						{
+							MessageManager.SendFreeAccessCustomerWelcomeMessageNew(cust, cust.Name, 0);
+							MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
+							SendAccountCreatedNotification(cust);
+						}
+						catch
+						{
+							//NOTE: it should normally send on the sever. Locally it doesn't send.
+						}
+						//MessageManager.SendStoreOwnerRegistrationNotification(cust, "", "", 0);
+					}
+					return RedirectToAction("Success");
+				}
+				catch(Exception ex)
+				{
+					ViewData["Msg"] = "Error" + ex.Message;
+					return View("MembershipRenewed");
+				}
+			}
+			#endregion
+
+			return View(model);
+		}
+
 		public ActionResult RegisterUser()
 		{
 			ViewData["Msg"] = TempData["Msg"];
@@ -147,7 +254,7 @@ namespace Edrive.Controllers
 
                     PaymentDetailsType payment = new PaymentDetailsType()
                     {
-                        OrderDescription = "Full Access Registration (10 days)",
+                        OrderDescription = "Full Access Registration (1 Year)",
                         OrderTotal = new BasicAmountType()
                         {
                             currencyID = CurrencyCodeType.USD,
@@ -526,7 +633,10 @@ namespace Edrive.Controllers
 						zip = userModel.Zip,
 						ADDRESS = userModel.Address,
 						CITY = userModel.City,
-						STATE = userModel.State
+						STATE = userModel.State,
+						FINANCING = userModel.NeedCheapFinancing,
+						INSURANCE = userModel.NeedCheapInsurance,
+						TRADE_IN = userModel.HaveTradeIn
 					};
 
 					entity.Customer.AddObject(newCustomer);
@@ -548,10 +658,13 @@ namespace Edrive.Controllers
 					newCustomer.Password = userModel.Password;
 					newCustomer.Phone = String.Empty;
 					newCustomer.RegisterationDate = DateTime.Now;
-					newCustomer.zip = userModel.Zip;
+					newCustomer.zip = userModel.ZipCode;
 					newCustomer.ADDRESS = userModel.Address;
 					newCustomer.CITY = userModel.City;
 					newCustomer.STATE = userModel.State;
+					newCustomer.FINANCING = userModel.NeedCheapFinancing;
+					newCustomer.INSURANCE = userModel.NeedCheapInsurance;
+					newCustomer.TRADE_IN = userModel.HaveTradeIn;
 
 					entity.SaveChanges();
 				}
@@ -630,7 +743,7 @@ namespace Edrive.Controllers
 					cust.Active = true;
 					cust.CustomerType = custType;
 					cust.Deleted = false;
-					cust.ExpirationDate = DateTime.Now.AddDays(11).AddHours(-1);
+					cust.ExpirationDate = DateTime.Now.AddYears(1);
 					cust.IsTrial = false;
 					cust.RegisterationDate = DateTime.Now;
 
@@ -655,7 +768,7 @@ namespace Edrive.Controllers
 
 			return success;
 		}
-
+		
 		private List<SelectListItem> GetStates()
 		{
 			var states = _stateProvinceService.GetStatesByCountryCode("USA")

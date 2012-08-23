@@ -83,6 +83,11 @@
           <Property Name="ADDRESS" Type="varchar" MaxLength="200" />
           <Property Name="CITY" Type="varchar" MaxLength="100" />
           <Property Name="STATE" Type="char" MaxLength="2" />
+          <Property Name="VEHICLE_INTEREST" Type="varchar" MaxLength="300" />
+          <Property Name="BUDGET" Type="money" />
+          <Property Name="TRADE_IN" Type="bit" />
+          <Property Name="FINANCING" Type="bit" />
+          <Property Name="INSURANCE" Type="bit" />
         </EntityType>
         <EntityType Name="Customer_Type">
           <Key>
@@ -703,6 +708,11 @@
           <Property Type="String" Name="CITY" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="STATE" MaxLength="2" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="CustomerVehicleRequests" Relationship="eDriveAutoModels.FK_CustomerVehicleRequests_Customer" FromRole="Customer" ToRole="CustomerVehicleRequests" />
+          <Property Type="String" Name="VEHICLE_INTEREST" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BUDGET" Precision="19" Scale="4" />
+          <Property Type="Boolean" Name="TRADE_IN" />
+          <Property Type="Boolean" Name="FINANCING" />
+          <Property Type="Boolean" Name="INSURANCE" />
         </EntityType>
         <Association Name="FK__Customer__Role__060DEAE8">
           <End Type="eDriveAutoModels.Customer_Type" Role="Customer_Type" Multiplicity="0..1" />
@@ -1049,6 +1059,11 @@
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="eDriveAutoModels.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="INSURANCE" ColumnName="INSURANCE" />
+                <ScalarProperty Name="FINANCING" ColumnName="FINANCING" />
+                <ScalarProperty Name="TRADE_IN" ColumnName="TRADE_IN" />
+                <ScalarProperty Name="BUDGET" ColumnName="BUDGET" />
+                <ScalarProperty Name="VEHICLE_INTEREST" ColumnName="VEHICLE_INTEREST" />
                 <ScalarProperty Name="STATE" ColumnName="STATE" />
                 <ScalarProperty Name="CITY" ColumnName="CITY" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />

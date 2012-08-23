@@ -50,9 +50,11 @@
 					@Html.EditorFor(c => c.Firstname, new { @class = "name" })
 					@Html.EditorFor(c => c.Lastname, new { @class = "name" })
 					@Html.EditorFor(c => c.Email)
+					@Html.ValidationMessageFor(c => c.Email)
 					@Html.EditorFor(c => c.ConfimrEmail)
 					@Html.PasswordFor(c => c.Password)
 					@Html.PasswordFor(c => c.ConfirmPassword)
+					@Html.Hidden("Country", "USA")
 				</div>
 				<div class="right-form">
 					<div class="fields-required">
@@ -76,7 +78,7 @@
 					<div class="box">
 						<h4>Basic Membership</h4>
 						<label>
-							<input type="radio" id="freeMembership" name="membership" value="free" /> 
+							<input type="radio" id="freeMembership" name="PaymentType" value="free" checked="checked" /> 
 							Free. No obligation. No hassle.
 						</label>
 					</div>
@@ -88,7 +90,7 @@
 						</div>
 						<div class="radio-box">
 							<label>
-								<input type="radio" id="premiumMembership" name="membership" value="premium" />
+								<input type="radio" id="premiumMembership" name="PaymentType" value="premium" />
 								$9.95 for one year.
 							</label>
 							<img src="@Url.Content("~/Content/Images/best-choice.png")" alt="" />
@@ -99,7 +101,11 @@
 					Your Search: 2007 BMW 3-series in zipcode 98434
 				</div>
 				<div class="submit-button">
-					<a href="#" onclick="$('#form0').submit();return false;" class="green-button">Continue to Vehicle Listings</a>
+					<a href="#" onclick="$('.registration-popup form').submit();return false;" class="green-button">
+						<span class="left"></span>
+						<span class="text">Continue to Vehicle Listings</span>
+						<span class="right"></span>
+					</a>
 					<div class="terms">
 						By clicking above, I agree to E-Drive's <a href="@Url.Action("ConditionsOfUse", "Home")">Terms of Use</a>
 					</div>

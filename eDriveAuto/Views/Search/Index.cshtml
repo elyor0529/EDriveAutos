@@ -14,6 +14,7 @@
      <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"        type="text/javascript"></script>
     <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
 	<link href="@Url.Content("~/Content/contentstyle.css")" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.tinywatermark-2.1.0.min.js")"></script>
 }
 @if(User.Identity.IsAuthenticated)
 {
@@ -1270,14 +1271,17 @@
 		if(User.Identity.IsAuthenticated == false)
 		{
 			<div class="registration-popup" style="display: none;">
-				@using(Ajax.BeginForm("RegistrationPopup", "Search",
-									  new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrationPopupSection", OnSuccess = "showRegistrationPopup" }))
+				<a href="@Url.Action("Logon", "Account")" class="close-button">
+					<img src="@Url.Content("~/Content/Images/close-icon.png")" alt="X" />
+				</a>
+				
+				@using(Html.BeginForm("RegistrationPopup", "Register", FormMethod.Post))
 				{
 					Html.EnableUnobtrusiveJavaScript();
 					Html.EnableClientValidation();
 				
 					<div id="registrationPopupSection">		
-						@{ Html.RenderAction("RegistrationPopup", "Search"); }
+						@{ Html.RenderAction("RegistrationPopup", "Register"); }
 					</div>
 				}
 				<script type="text/javascript">
@@ -1290,6 +1294,15 @@
 						//$(".ui-dialog-titlebar").hide();
 						$('.darken-modal-bg').show();
 						$('.registration-popup').show();
+
+						$('.form #Firstname').watermark('watermark', 'First Name');
+						$('.form #Lastname').watermark('watermark', 'Last Name');
+						$('.form #Email').watermark('watermark', 'Your Email (must be valid)');
+						$('.form #ConfimrEmail').watermark('watermark', 'Re-type Email');
+						$('.form #Password').watermark('watermark', 'Password');
+						$('.form #ConfirmPassword').watermark('watermark', 'Password');
+						$('.form #City').watermark('watermark', 'City');
+						$('.form #ZipCode').watermark('watermark', 'Zip');
 					}
 
 					function closeModal() {

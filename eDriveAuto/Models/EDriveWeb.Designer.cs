@@ -1129,6 +1129,126 @@ namespace Edrive.Models
         private global::System.String _STATE;
         partial void OnSTATEChanging(global::System.String value);
         partial void OnSTATEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VEHICLE_INTEREST
+        {
+            get
+            {
+                return _VEHICLE_INTEREST;
+            }
+            set
+            {
+                OnVEHICLE_INTERESTChanging(value);
+                ReportPropertyChanging("VEHICLE_INTEREST");
+                _VEHICLE_INTEREST = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VEHICLE_INTEREST");
+                OnVEHICLE_INTERESTChanged();
+            }
+        }
+        private global::System.String _VEHICLE_INTEREST;
+        partial void OnVEHICLE_INTERESTChanging(global::System.String value);
+        partial void OnVEHICLE_INTERESTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> BUDGET
+        {
+            get
+            {
+                return _BUDGET;
+            }
+            set
+            {
+                OnBUDGETChanging(value);
+                ReportPropertyChanging("BUDGET");
+                _BUDGET = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BUDGET");
+                OnBUDGETChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _BUDGET;
+        partial void OnBUDGETChanging(Nullable<global::System.Decimal> value);
+        partial void OnBUDGETChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> TRADE_IN
+        {
+            get
+            {
+                return _TRADE_IN;
+            }
+            set
+            {
+                OnTRADE_INChanging(value);
+                ReportPropertyChanging("TRADE_IN");
+                _TRADE_IN = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TRADE_IN");
+                OnTRADE_INChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _TRADE_IN;
+        partial void OnTRADE_INChanging(Nullable<global::System.Boolean> value);
+        partial void OnTRADE_INChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> FINANCING
+        {
+            get
+            {
+                return _FINANCING;
+            }
+            set
+            {
+                OnFINANCINGChanging(value);
+                ReportPropertyChanging("FINANCING");
+                _FINANCING = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FINANCING");
+                OnFINANCINGChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _FINANCING;
+        partial void OnFINANCINGChanging(Nullable<global::System.Boolean> value);
+        partial void OnFINANCINGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> INSURANCE
+        {
+            get
+            {
+                return _INSURANCE;
+            }
+            set
+            {
+                OnINSURANCEChanging(value);
+                ReportPropertyChanging("INSURANCE");
+                _INSURANCE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("INSURANCE");
+                OnINSURANCEChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _INSURANCE;
+        partial void OnINSURANCEChanging(Nullable<global::System.Boolean> value);
+        partial void OnINSURANCEChanged();
 
         #endregion
     

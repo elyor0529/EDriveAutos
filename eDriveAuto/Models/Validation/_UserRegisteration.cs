@@ -60,7 +60,6 @@ namespace Edrive.Models
 
 	    public Boolean TermsofUse { get; set; }
 
-        [Required(ErrorMessage = "*")]
         public String Address { get; set; }
 
         [Required(ErrorMessage = "*")]

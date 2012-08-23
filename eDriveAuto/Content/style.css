@@ -1004,9 +1004,6 @@ padding-right: 9px;}
    
    
 /*--------------------------------REGISTRATION POPUP----------------------------------------------*/
-.ui-dialog {
-	
-}
 .registration-popup {
 	display: block; 
 	z-index: 10001; 
@@ -1016,6 +1013,10 @@ padding-right: 9px;}
 	height: auto; 
 	top: 40px; 
 	left: 610px;	
+}
+.registration-popup .close-button {
+	float: right;
+	margin: -30px -30px 0 0;
 }
 .registration-popup .htmlcontent {
 	background-color: #FFFFFF;
@@ -1051,7 +1052,7 @@ padding-right: 9px;}
 	background: url("Images/check.png") no-repeat scroll left center transparent;
     font-size: 16px;
     font-weight: bold;
-    line-height: 2.5;
+    line-height: 2.8;
     padding: 0 0 0 40px;
 }
 .registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box {
@@ -1074,21 +1075,6 @@ padding-right: 9px;}
 .registration-popup .htmlcontent .htmlcontent-body .registration-top .video-box .SideBox .BackBox .FrontBox .content {
 	padding: 0px;
 	margin: 10px 0 0 0;
-}
-.registration-popup .htmlcontent .htmlcontent-body .testimonial {
-	
-}
-.registration-popup .htmlcontent .htmlcontent-body .testimonial .photo {
-	
-}
-.registration-popup .htmlcontent .htmlcontent-body .testimonial .photo img {
-	
-}
-.registration-popup .htmlcontent .htmlcontent-body .testimonial .text {
-	
-}
-.registration-popup .htmlcontent .htmlcontent-body .testimonial .name {
-	
 }
 .registration-popup .htmlcontent .htmlcontent-body .form {
 	float: left;
@@ -1120,7 +1106,7 @@ padding-right: 9px;}
 	border: 1px solid #969291;
     border-radius: 4px 4px 4px 4px;
 	box-shadow: 0 2px 3px #D2D2D2 inset;
-    color: #696A6C;
+    color: #323232;
     font-size: 14px;
     margin: 3px 0;
     padding: 5px;
@@ -1158,9 +1144,6 @@ padding-right: 9px;}
     float: left;
     margin: 15px 0 10px;
     width: 100%;	
-}
-.registration-popup .htmlcontent .htmlcontent-body .form .checkboxes input {
-	
 }
 .registration-popup .htmlcontent .htmlcontent-body .form .checkboxes label {
 	font-size: 15px;
@@ -1226,9 +1209,6 @@ padding-right: 9px;}
 	margin: 0 0 0 8px;
 	color: #5F5F5F;
 }
-.registration-popup .htmlcontent .htmlcontent-body .form .subsription .box label input {
-	
-}
 .registration-popup .htmlcontent .htmlcontent-body .form .submit-button {
 	clear: both;
     float: left;
@@ -1236,17 +1216,51 @@ padding-right: 9px;}
     width: 100%;	
 }
 .registration-popup .htmlcontent .htmlcontent-body .form .submit-button a.green-button {
-	
+	float: left;
+    margin: 0 0 10px 188px;
+    text-align: center;
 }
-
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button a.green-button .left {
+	background: url('Images/green-button-left.png') no-repeat top left transparent scroll;
+	float: left;
+	height: 29px;
+	width: 5px;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button a.green-button .right {
+	background: url('Images/green-button-right.png') no-repeat top left transparent scroll;
+	float: left;
+	height: 29px;
+	width: 5px;	
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button a.green-button .text {
+	background: url("Images/green-button-center.png") repeat scroll left top transparent;
+	color: #FFFFFF;
+	float: left;
+	font-size: 15px;
+	font-weight: bold;
+	height: 24px;
+	min-width: 200px;
+	padding: 5px 0 0;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .submit-button a.green-button:hover .text {
+	color: #F1EFEF;
+}
 .registration-popup .htmlcontent .htmlcontent-body .form .submit-button .terms  {
 	font-size: 11px;
+	clear: both;
 }
 .registration-popup .htmlcontent .htmlcontent-body .form .submit-button .terms a {
 	color: #2727FB;
 	text-decoration: underline;
 }
 
+.registration-popup .htmlcontent .htmlcontent-body .form input.watermark[type="text"],
+.registration-popup .htmlcontent .htmlcontent-body .form input.watermark[type="password"] {
+	color: #9E9E9F !important;
+}
+.registration-popup .htmlcontent .htmlcontent-body .form .field-validation-error {
+	float: left;
+}
 
 /*--------------------------------REGISTRATION POPUP END----------------------------------------------*/   
    

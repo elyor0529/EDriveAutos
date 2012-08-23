@@ -562,6 +562,7 @@
     <Content Include="Content\Images\check.png" />
     <Content Include="Content\Images\checked.gif" />
     <Content Include="Content\Images\click-here.jpg" />
+    <Content Include="Content\Images\close-icon.png" />
     <Content Include="Content\Images\close.gif" />
     <Content Include="Content\Images\close.jpg" />
     <Content Include="Content\Images\close.png" />
@@ -651,9 +652,9 @@
     <Content Include="Content\Images\google.jpg" />
     <Content Include="Content\Images\GoogleMaps.gif" />
     <Content Include="Content\Images\green-arrow.png" />
-    <Content Include="Content\Images\green-button-center.png" />
-    <Content Include="Content\Images\green-button-left.png" />
     <Content Include="Content\Images\green-button-right.png" />
+    <Content Include="Content\Images\green-button-left.png" />
+    <Content Include="Content\Images\green-button-center.png" />
     <Content Include="Content\Images\grey_arrow.gif" />
     <Content Include="Content\Images\grey_button_bg.gif" />
     <Content Include="Content\Images\grid-bg.gif" />

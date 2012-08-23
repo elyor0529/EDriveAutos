@@ -1137,39 +1137,5 @@ namespace Edrive.Controllers
 			
 			return View();
 		}
-
-		public ActionResult RegistrationPopup()
-		{
-			ViewBag.StatesList = GetStates();
-
-			return View(new _UserRegisteration());
-		}
-
-		[HttpPost]
-		public ActionResult RegistrationPopup(_UserRegisteration model, FormCollection collection)
-		{
-			ViewBag.StatesList = GetStates();
-
-			if(!collection["IsPost"].ConvertTo(false))
-			{
-				ModelState.Clear();
-
-				return View(new _UserRegisteration());
-			}
-			
-			return View(model);
-		}
-
-		private List<SelectListItem> GetStates()
-		{
-			var states = _stateProvinceService.GetStatesByCountryCode("USA")
-				.OrderBy(c => c.Name).Select(c => new SelectListItem
-				{
-					Text = c.Abbreviation,
-					Value = c.StateProvinceID.ToString()
-				}).ToList();
-
-			return states;
-		}
 	}
 }
